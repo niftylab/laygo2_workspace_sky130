@@ -1,0 +1,897 @@
+grids:
+  skywater130_microtemplates_dense:
+    placement_basic:
+      horizontal:
+        elements:
+        - 0
+        scope:
+        - 0
+        - 24 #15
+      type: placement
+      vertical:
+        elements:
+        - 0
+        scope:
+        - 0
+        - 72
+    routing_12_cmos:
+      horizontal:
+        elements:
+        - 0
+        - 144
+        - 216
+        - 360
+        - 504
+        - 648
+        - 792
+        - 864
+        extension:
+        - 20
+        - 10
+        - 10
+        - 10
+        - 10
+        - 10
+        - 10
+        - 10
+        extension0:
+        #  TODO
+        - 0
+        layer:
+        - - M2
+          - drawing
+        - - M2
+          - drawing
+        - - M2
+          - drawing
+        - - M2
+          - drawing
+        - - M2
+          - drawing
+        - - M2
+          - drawing
+        - - M2
+          - drawing
+        - - M2
+          - drawing
+        pin_layer:
+        - - M2
+          - pin
+        - - M2
+          - pin
+        - - M2
+          - pin
+        - - M2
+          - pin
+        - - M2
+          - pin
+        - - M2
+          - pin
+        - - M2
+          - pin
+        - - M2
+          - pin
+        scope:
+        - 0
+        - 1008
+        width:
+        - 60
+        - 30
+        - 30
+        - 30
+        - 30
+        - 30
+        - 30
+        - 30
+        ycolor:
+        - not MPT
+        - not MPT
+        - not MPT
+        - not MPT
+        - not MPT
+        - not MPT
+        - not MPT
+        - not MPT
+      primary_grid: horizontal
+      type: routing
+      vertical:
+        elements:
+        - 0
+        extension:
+        - 10
+        extension0:
+        - 72
+        layer:
+        - - M1
+          - drawing
+        pin_layer:
+        - - M1
+          - pin
+        scope:
+        - 0
+        - 72 #43
+        width:
+        - 30
+        xcolor:
+        - not MPT
+      via:
+        map:
+        - - via_M1_M2_1
+          - via_M1_M2_0
+          - via_M1_M2_0
+          - via_M1_M2_0
+          - via_M1_M2_0
+          - via_M1_M2_0
+          - via_M1_M2_0
+          - via_M1_M2_0
+    routing_23_cmos:
+      horizontal:
+        elements:
+        - 0
+        - 144 #216
+        - 216 #288
+        - 360
+        - 504
+        - 648
+        - 792
+        - 864
+        extension:
+        - 20
+        - 10
+        - 10
+        - 10
+        - 10
+        - 10
+        - 10
+        - 10
+        extension0:
+        #  TODO
+        - 0
+        layer:
+        - - M2
+          - drawing
+        - - M2
+          - drawing
+        - - M2
+          - drawing
+        - - M2
+          - drawing
+        - - M2
+          - drawing
+        - - M2
+          - drawing
+        - - M2
+          - drawing
+        - - M2
+          - drawing
+        pin_layer:
+        - - M2
+          - pin
+        - - M2
+          - pin
+        - - M2
+          - pin
+        - - M2
+          - pin
+        - - M2
+          - pin
+        - - M2
+          - pin
+        - - M2
+          - pin
+        - - M2
+          - pin
+        scope:
+        - 0
+        - 1008
+        width:
+        - 30
+        - 30
+        - 30
+        - 30
+        - 30
+        - 30
+        - 30
+        - 30
+        ycolor:
+        - not MPT
+        - not MPT
+        - not MPT
+        - not MPT
+        - not MPT
+        - not MPT
+        - not MPT
+        - not MPT
+      primary_grid: horizontal
+      type: routing
+      vertical:
+        elements:
+        - 0
+        extension:
+        - 15
+        extension0:
+        #  TODO
+        - 72
+        layer:
+        - - M3
+          - drawing
+        pin_layer:
+        - - M3
+          - pin
+        scope:
+        - 0
+        - 72 #43
+        width:
+        - 30
+        xcolor:
+        - not MPT
+      via:
+        map:
+        - - via_M2_M3_1 
+          - via_M2_M3_0 
+          - via_M2_M3_0
+          - via_M2_M3_0
+          - via_M2_M3_0
+          - via_M2_M3_0
+          - via_M2_M3_0
+          - via_M2_M3_0
+    routing_34_basic:
+      horizontal:
+        elements:
+        - 0
+        extension:
+        - 15
+        extension0:
+        - 15
+        layer:
+        - - M4
+          - drawing
+        pin_layer:
+        - - M4
+          - pin
+        scope:
+        - 0
+        - 72 #45
+        width:
+        - 30
+        ycolor:
+        - not MPT
+      primary_grid: horizontal
+      type: routing
+      vertical:
+        elements:
+        - 0
+        extension:
+        - 15
+        extension0:
+      # - 140
+        - 30
+        layer:
+        - - M3
+          - drawing
+        pin_layer:
+        - - M3
+          - pin
+        scope:
+        - 0
+      #  - 43
+        - 72
+        width:
+        - 30
+        xcolor:
+        - not MPT
+      via:
+        map:
+        - - via_M3_M4_0
+templates:
+  skywater130_microtemplates_dense:
+    nmos13_fast_boundary:
+      pins: {}
+      unit_size:
+      - 72 #43
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 72 #- 43
+        - 504
+    nmos13_fast_space:
+      pins: {}
+      unit_size:
+    #  - 43
+      - 72
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 72 #- 43
+        - 504
+    nmos13_fast_space_1x:
+      pins: {}
+      unit_size:
+    #  - 43
+      - 72
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 72 #- 43
+        - 504
+    nmos13_fast_space_2x:
+      pins: {}
+      unit_size:
+    #  - 86
+      - 144
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 144 #- 86
+        - 504
+    pmos13_fast_boundary:
+      pins: {}
+      unit_size:
+      - 72 #- 43
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 72 #- 43
+        - 504
+    pmos13_fast_space:
+      pins: {}
+      unit_size:
+      - 72 #- 43
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 72 #- 43
+        - 504
+    pmos13_fast_space_1x:
+      pins: {}
+      unit_size:
+      - 72 #- 43
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 72 #- 43
+        - 504
+    pmos13_fast_space_2x:
+      pins: {}
+      unit_size:
+      - 144 #- 86
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 144 #- 86
+        - 504
+    nmos13_fast_center_nf2:
+      pins:
+        D0:
+          layer:
+          - M2
+          - pin
+          netname: D0
+          xy:
+          - - 57 #30
+            - 144 #216 #173
+          - - 87 #56
+            - 307 #288 #204 #207
+        G0:
+          layer:
+          - M1
+          - pin
+          netname: G0
+          xy:
+          - - 62 #11
+            - 345 #225
+          - - 82 #75
+            - 375 #253
+        S0:
+          layer:
+          - M1
+          - pin
+          netname: S0
+          xy:
+          - - -15 #-11
+            - 144
+          - - 15 #11
+            - 307 #207
+        S1:
+          layer:
+          - M1
+          - pin
+          netname: S1
+          xy:
+          - - 129 #75
+            - 144
+          - - 159 #97
+            - 307 #207
+      unit_size:
+      - 144 #86
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 144 #86
+        - 504
+    pmos13_fast_center_nf2:
+      pins:
+        D0:
+          layer:
+          - M2
+          - pin
+          netname: D0
+          xy:
+          - - 57 #61 #31
+            - 144 #216 #132
+          - - 87 #83 #56
+            - 297 #288 #196
+        G0:
+          layer:
+          - M1
+          - pin
+          netname: G0
+          xy:
+          - - 62 #11
+            - 345 #224 #225
+          - - 82 #76
+            - 375 #260 #253
+        S0:
+          layer:
+          - M1
+          - pin
+          netname: S0
+          xy:
+          - - -15 #-11.5 #-11
+            - 144 #60
+          - - 15 #11.5 #12
+            - 297 #198
+        S1:
+          layer:
+          - M1
+          - pin
+          netname: S1
+          xy:
+          - - 129 #132.5 #75
+            - 144 #60
+          - - 159 #155.5 #98
+            - 297 #198
+      unit_size:
+      - 144 #86
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 144 #86
+        - 504
+    nmos13_fast_center_2stack:
+      pins:
+        D0:
+          layer:
+          - M1
+          - pin
+          netname: D0
+          xy:
+          - - 129 #132.5
+            - 144 #216 #166.5
+          - - 159 #155.5
+            - 307 #288 #189.5
+        G0:
+          layer:
+          - M1
+          - pin
+          netname: G0
+          xy:
+          - - -16
+            - 344 #224
+          - - 16
+            - 376 #260
+        G1:
+          layer:
+          - M1
+          - pin
+          netname: G1
+          xy:
+          - - 128
+            - 344 #224
+          - - 160
+            - 376 #260
+        S0:
+          layer:
+          - M1
+          - pin
+          netname: S0
+          xy:
+          - - -15 #-11.5
+            - 144 #216 #166.5
+          - - 15 #11.5
+            - 307 #288 #189.5
+      unit_size:
+      - 144
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 144
+        - 504
+    pmos13_fast_center_2stack:
+      pins:
+        D0:
+          layer:
+          - M1
+          - pin
+          netname: D0
+          xy:
+          - - 129 #132.5
+            - 144 #216 #166.5
+          - - 159 #155.5
+            - 307 #288 #189.5
+        G0:
+          layer:
+          - M1
+          - pin
+          netname: G0
+          xy:
+          - - -16
+            - 344 #224
+          - - 16
+            - 376 #260
+        G1:
+          layer:
+          - M1
+          - pin
+          netname: G1
+          xy:
+          - - 128
+            - 344 #224
+          - - 160
+            - 376 #260
+        S0:
+          layer:
+          - M1
+          - pin
+          netname: S0
+          xy:
+          - - -15 #-11.5
+            - 144 #216 #166.5
+          - - 15 #11.5
+            - 307 #288 #189.5
+      unit_size:
+      - 144
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 144
+        - 504
+    via_M1_M2_0:
+      unit_size:
+      - 0
+      - 0
+      xy:
+      - - 0
+        - 0
+      - - 0
+        - 0
+    via_M1_M2_1:
+      unit_size:
+      - 0
+      - 0
+      xy:
+      - - 0
+        - 0
+      - - 0
+        - 0
+    via_M2_M3_0:
+      unit_size:
+      - 0
+      - 0
+      xy:
+      - - 0
+        - 0
+      - - 0
+        - 0
+    via_M2_M3_1:
+      unit_size:
+      - 0
+      - 0
+      xy:
+      - - 0
+        - 0
+      - - 0
+        - 0
+    via_M3_M4_0:
+      unit_size:
+      - 0
+      - 0
+      xy:
+      - - 0
+        - 0
+      - - 0
+        - 0
+  #TODO make dmy layout for skywater
+    nmos13_fast_dmy_nf2:
+      pins:
+        D0:
+          layer:
+          - M1
+          - pin
+          netname: D0
+          xy:
+          - - 30
+            - 173
+          - - 56
+            - 207
+        G0:
+          layer:
+          - M1
+          - pin
+          netname: G0
+          xy:
+          - - 11
+            - 225
+          - - 75
+            - 253
+        S0:
+          layer:
+          - M1
+          - pin
+          netname: S0
+          xy:
+          - - -11
+            - 103
+          - - 11
+            - 207
+        S1:
+          layer:
+          - M1
+          - pin
+          netname: S1
+          xy:
+          - - 75
+            - 103
+          - - 97
+            - 207
+      unit_size:
+      - 86
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 86
+        - 504
+    nmos13_fast_left:
+      pins: {}
+      unit_size:
+      - 0
+      - 0
+      xy:
+      - - 0
+        - 0
+      - - 0
+        - 0
+    nmos13_fast_right:
+      pins: {}
+      unit_size:
+      - 0
+      - 0
+      xy:
+      - - 0
+        - 0
+      - - 0
+        - 0
+    pmos13_fast_dmy_nf2:
+      pins:
+        D0:
+          layer:
+          - M1
+          - pin
+          netname: D0
+          xy:
+          - - 0
+            - 0
+          - - 0
+            - 0
+        G0:
+          layer:
+          - M1
+          - pin
+          netname: G0
+          xy:
+          - - 0
+            - 0
+          - - 0
+            - 0
+        S0:
+          layer:
+          - M1
+          - pin
+          netname: S0
+          xy:
+          - - 0
+            - 0
+          - - 0
+            - 0
+        S1:
+          layer:
+          - M1
+          - pin
+          netname: S1
+          xy:
+          - - 0
+            - 0
+          - - 0
+            - 0
+      unit_size:
+      - 0
+      - 0
+      xy:
+      - - 0
+        - 0
+      - - 0
+        - 0
+    pmos13_fast_left:
+      pins: {}
+      unit_size:
+      - 0
+      - 0
+      xy:
+      - - 0
+        - 0
+      - - 0
+        - 0
+    pmos13_fast_right:
+      pins: {}
+      unit_size:
+      - 0
+      - 0
+      xy:
+      - - 0
+        - 0
+      - - 0
+        - 0
+  #TODO set size of tap to 144 like mos_center
+    ntap_fast_center_nf2_v2:
+      pins:
+        TAP0:
+          layer:
+          - M1
+          - pin
+          netname: TAP0
+          xy:
+          - - -10
+            - 216 #152
+          - - 10
+            - 288 #220
+        TAP1:
+          layer:
+          - M1
+          - pin
+          netname: TAP1
+          xy:
+          - - 33
+            - 216 #152
+          - - 53
+            - 288 #220
+        TAP2:
+          layer:
+          - M1
+          - pin
+          netname: TAP2
+          xy:
+          - - 76
+            - 216 #152
+          - - 96
+            - 288 #220
+      unit_size:
+      - 86
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 86
+        - 504
+    ptap_fast_center_nf2_v2:
+      pins:
+        TAP0:
+          layer:
+          - M1
+          - pin
+          netname: TAP0
+          xy:
+          - - -10
+            - 216 #122
+          - - 10
+            - 288 #206
+        TAP1:
+          layer:
+          - M1
+          - pin
+          netname: TAP1
+          xy:
+          - - 33
+            - 216 #122
+          - - 53
+            - 288 #206
+        TAP2:
+          layer:
+          - M1
+          - pin
+          netname: TAP2
+          xy:
+          - - 76
+            - 216 #122
+          - - 96
+            - 288 #206
+      unit_size:
+      - 86
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 86
+        - 504
+    ntap_fast_boundary:
+      pins: {}
+      unit_size:
+      - 72 #43
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 72 #43
+        - 504
+    ntap_fast_left:
+      pins: {}
+      unit_size:
+      - 72 #43
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 72 #43
+        - 504
+    ntap_fast_right:
+      pins: {}
+      unit_size:
+      - 72 #43
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 72 #43
+        - 504
+    ptap_fast_boundary:
+      pins: {}
+      unit_size:
+      - 72 #43
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 72 #43
+        - 504
+    ptap_fast_left:
+      pins: {}
+      unit_size:
+      - 72 #43
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 72 #43
+        - 504
+    ptap_fast_right:
+      pins: {}
+      unit_size:
+      - 72 #43
+      - 504
+      xy:
+      - - 0
+        - 0
+      - - 72 #43
+        - 504
