@@ -1,0 +1,10 @@
+magic
+tech sky130A
+timestamp 1655825477
+<< error_p >>
+rect 43 104 84 224
+<< nwell >>
+rect 0 66 72 342
+<< labels >>
+flabel space 0 0 72 315 0 FreeSans 160 90 0 0 ptap_boundary
+<< end >>

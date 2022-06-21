@@ -1,0 +1,93 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1653232784
+<< pwell >>
+rect -78 546 370 682
+<< nmoslvt >>
+rect 59 572 89 656
+rect 203 572 233 656
+<< ndiff >>
+rect -55 634 59 656
+rect -55 594 -18 634
+rect 22 594 59 634
+rect -55 572 59 594
+rect 89 634 203 656
+rect 89 594 126 634
+rect 166 594 203 634
+rect 89 572 203 594
+rect 233 634 347 656
+rect 233 594 270 634
+rect 310 594 347 634
+rect 233 572 347 594
+<< ndiffc >>
+rect -18 594 22 634
+rect 126 594 166 634
+rect 270 594 310 634
+<< poly >>
+rect 59 736 233 753
+rect 59 702 82 736
+rect 116 702 176 736
+rect 210 702 233 736
+rect 59 687 233 702
+rect 59 656 89 687
+rect 203 656 233 687
+rect 59 546 89 572
+rect 203 546 233 572
+<< polycont >>
+rect 82 702 116 736
+rect 176 702 210 736
+<< locali >>
+rect 59 736 233 753
+rect 59 702 82 736
+rect 116 702 176 736
+rect 210 702 233 736
+rect 59 687 233 702
+rect -34 634 38 650
+rect -34 594 -18 634
+rect 22 594 38 634
+rect -34 578 38 594
+rect 110 634 182 650
+rect 110 594 126 634
+rect 166 594 182 634
+rect 110 578 182 594
+rect 254 634 326 650
+rect 254 594 270 634
+rect 310 594 326 634
+rect 254 578 326 594
+<< viali >>
+rect 82 702 116 736
+rect 176 702 210 736
+rect -18 594 22 634
+rect 126 594 166 634
+rect 270 594 310 634
+<< metal1 >>
+rect 62 736 230 748
+rect 62 702 82 736
+rect 116 702 176 736
+rect 210 702 230 736
+rect 62 692 230 702
+rect -28 634 32 650
+rect -28 594 -18 634
+rect 22 594 32 634
+rect -28 430 32 594
+rect 116 634 176 650
+rect 116 594 126 634
+rect 166 594 176 634
+rect 116 430 176 594
+rect 260 634 320 650
+rect 260 594 270 634
+rect 310 594 320 634
+rect 260 430 320 594
+<< labels >>
+flabel metal1 -28 430 32 650 0 FreeSans 240 0 0 0 D0
+port 3 nsew
+flabel metal1 116 430 176 650 0 FreeSans 240 0 0 0 S0
+port 1 nsew
+flabel metal1 260 430 320 650 0 FreeSans 240 0 0 0 D1
+port 4 nsew
+flabel metal1 62 692 230 748 0 FreeSans 240 0 0 0 G0
+port 2 nsew
+rlabel pwell -18 662 2 676 1 BODY
+port 5 n
+<< end >>

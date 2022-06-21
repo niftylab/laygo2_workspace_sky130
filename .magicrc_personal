@@ -1,0 +1,4 @@
+addpath /WORK/hjpark/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+addpath /WORK/hjpark/laygo2_workspace_sky130/magic_layout/logic_generated
+addpath /WORK/hjpark/laygo2_workspace_sky130/laygo2_generators_private/magic/logic/logic_generated
+addpath /WORK/hjpark/laygo2_workspace_sky130/magic_script

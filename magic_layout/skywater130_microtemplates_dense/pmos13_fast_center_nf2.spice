@@ -1,0 +1,7 @@
+* SPICE3 file created from pmos13_fast_center_nf2.ext - technology: sky130A
+
+.subckt pmos13_fast_center_nf2 DRAIN GATE SOURCE BULK
+X0 SOURCE GATE DRAIN BULK sky130_fd_pr__pfet_01v8 ad=4.452e+11p pd=4.42e+06u as=2.352e+11p ps=2.24e+06u w=840000u l=150000u
+X1 DRAIN GATE SOURCE BULK sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=840000u l=150000u
+.ends
+

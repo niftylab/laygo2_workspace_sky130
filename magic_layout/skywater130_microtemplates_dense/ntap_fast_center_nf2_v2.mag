@@ -1,0 +1,60 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1652857545
+<< checkpaint >>
+rect -30 214 202 440
+<< pwell >>
+rect -30 304 202 440
+<< psubdiff >>
+rect -30 414 202 440
+rect -30 330 -17 414
+rect 17 330 69 414
+rect 103 330 155 414
+rect 189 330 202 414
+rect -30 304 202 330
+<< psubdiffcont >>
+rect -17 330 17 414
+rect 69 330 103 414
+rect 155 330 189 414
+<< locali >>
+rect -20 414 20 440
+rect -20 330 -17 414
+rect 17 330 20 414
+rect -20 304 20 330
+rect 66 414 106 440
+rect 66 330 69 414
+rect 103 330 106 414
+rect 66 304 106 330
+rect 152 414 192 440
+rect 152 330 155 414
+rect 189 330 192 414
+rect 152 304 192 330
+<< viali >>
+rect -17 332 17 412
+rect 69 332 103 412
+rect 155 332 189 412
+<< metal1 >>
+rect -20 418 20 440
+rect 66 418 106 440
+rect 152 418 192 440
+rect -24 412 24 418
+rect -24 332 -17 412
+rect 17 332 24 412
+rect -24 326 24 332
+rect 62 412 110 418
+rect 62 332 69 412
+rect 103 332 110 412
+rect 62 326 110 332
+rect 148 412 196 418
+rect 148 332 155 412
+rect 189 332 196 412
+rect 148 326 196 332
+rect -20 214 20 326
+rect 66 304 106 326
+rect 152 214 192 326
+<< labels >>
+flabel metal1 152 304 192 440 0 FreeSans 160 0 0 0 TAP2
+flabel metal1 66 304 106 440 0 FreeSans 160 0 0 0 TAP1
+flabel metal1 -20 304 20 440 0 FreeSans 160 0 0 0 TAP0
+<< end >>

@@ -1,0 +1,3 @@
+[submodule "laygo2"]
+	path = laygo2
+	url = https://github.com/niftylab/laygo2.git
