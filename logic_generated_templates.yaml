@@ -1,0 +1,738 @@
+logic_generated:
+  dff_2x:
+    bbox:
+    - - 0
+      - 0
+    - - 3168
+      - 1008
+    cellname: dff_2x
+    libname: logic_generated
+    pins:
+      CLK:
+        layer:
+        - M3
+        - pin
+        name: CLK
+        netname: CLK
+        xy:
+        - - 57
+          - 360
+        - - 87
+          - 648
+      I:
+        layer:
+        - M3
+        - pin
+        name: I
+        netname: I
+        xy:
+        - - 705
+          - 360
+        - - 735
+          - 648
+      O:
+        layer:
+        - M3
+        - pin
+        name: O
+        netname: O
+        xy:
+        - - 3009
+          - 216
+        - - 3039
+          - 792
+      VDD:
+        layer:
+        - M2
+        - pin
+        name: VDD
+        netname: VDD
+        xy:
+        - - 0
+          - 978
+        - - 3168
+          - 1038
+      VSS:
+        layer:
+        - M2
+        - pin
+        name: VSS
+        netname: VSS
+        xy:
+        - - 0
+          - -30
+        - - 3168
+          - 30
+  dff_4x:
+    bbox:
+    - - 0
+      - 0
+    - - 4320
+      - 1008
+    cellname: dff_4x
+    libname: logic_generated
+    pins:
+      CLK:
+        layer:
+        - M3
+        - pin
+        name: CLK
+        netname: CLK
+        xy:
+        - - 57
+          - 360
+        - - 87
+          - 648
+      I:
+        layer:
+        - M3
+        - pin
+        name: I
+        netname: I
+        xy:
+        - - 993
+          - 360
+        - - 1023
+          - 648
+      O:
+        layer:
+        - M3
+        - pin
+        name: O
+        netname: O
+        xy:
+        - - 4161
+          - 216
+        - - 4191
+          - 792
+      VDD:
+        layer:
+        - M2
+        - pin
+        name: VDD
+        netname: VDD
+        xy:
+        - - 0
+          - 978
+        - - 4320
+          - 1038
+      VSS:
+        layer:
+        - M2
+        - pin
+        name: VSS
+        netname: VSS
+        xy:
+        - - 0
+          - -30
+        - - 4320
+          - 30
+  inv_2x:
+    bbox:
+    - - 0
+      - 0
+    - - 288
+      - 1008
+    cellname: inv_2x
+    libname: logic_generated
+    pins:
+      I:
+        layer:
+        - M3
+        - pin
+        name: I
+        netname: I
+        xy:
+        - - 57
+          - 360
+        - - 87
+          - 648
+      O:
+        layer:
+        - M3
+        - pin
+        name: O
+        netname: O
+        xy:
+        - - 129
+          - 216
+        - - 159
+          - 792
+      VDD:
+        layer:
+        - M2
+        - pin
+        name: VDD
+        netname: VDD
+        xy:
+        - - 0
+          - 978
+        - - 288
+          - 1038
+      VSS:
+        layer:
+        - M2
+        - pin
+        name: VSS
+        netname: VSS
+        xy:
+        - - 0
+          - -30
+        - - 288
+          - 30
+  inv_4x:
+    bbox:
+    - - 0
+      - 0
+    - - 432
+      - 1008
+    cellname: inv_4x
+    libname: logic_generated
+    pins:
+      I:
+        layer:
+        - M3
+        - pin
+        name: I
+        netname: I
+        xy:
+        - - 57
+          - 360
+        - - 87
+          - 648
+      O:
+        layer:
+        - M3
+        - pin
+        name: O
+        netname: O
+        xy:
+        - - 273
+          - 216
+        - - 303
+          - 792
+      VDD:
+        layer:
+        - M2
+        - pin
+        name: VDD
+        netname: VDD
+        xy:
+        - - 0
+          - 978
+        - - 432
+          - 1038
+      VSS:
+        layer:
+        - M2
+        - pin
+        name: VSS
+        netname: VSS
+        xy:
+        - - 0
+          - -30
+        - - 432
+          - 30
+  inv_hs_2x:
+    bbox:
+    - - 0
+      - 0
+    - - 288
+      - 1008
+    cellname: inv_hs_2x
+    libname: logic_generated
+    pins:
+      I:
+        layer:
+        - M3
+        - pin
+        name: I
+        netname: I
+        xy:
+        - - 57
+          - 360
+        - - 87
+          - 648
+      O0:
+        layer:
+        - M3
+        - pin
+        name: O0
+        netname: 'O:'
+        xy:
+        - - 129
+          - 216
+        - - 159
+          - 792
+      VDD:
+        layer:
+        - M2
+        - pin
+        name: VDD
+        netname: VDD
+        xy:
+        - - 0
+          - 978
+        - - 288
+          - 1038
+      VSS:
+        layer:
+        - M2
+        - pin
+        name: VSS
+        netname: VSS
+        xy:
+        - - 0
+          - -30
+        - - 288
+          - 30
+  inv_hs_4x:
+    bbox:
+    - - 0
+      - 0
+    - - 432
+      - 1008
+    cellname: inv_hs_4x
+    libname: logic_generated
+    pins:
+      I:
+        layer:
+        - M3
+        - pin
+        name: I
+        netname: I
+        xy:
+        - - 57
+          - 360
+        - - 87
+          - 648
+      O0:
+        layer:
+        - M3
+        - pin
+        name: O0
+        netname: 'O:'
+        xy:
+        - - 129
+          - 216
+        - - 159
+          - 792
+      O1:
+        layer:
+        - M3
+        - pin
+        name: O1
+        netname: 'O:'
+        xy:
+        - - 273
+          - 216
+        - - 303
+          - 792
+      VDD:
+        layer:
+        - M2
+        - pin
+        name: VDD
+        netname: VDD
+        xy:
+        - - 0
+          - 978
+        - - 432
+          - 1038
+      VSS:
+        layer:
+        - M2
+        - pin
+        name: VSS
+        netname: VSS
+        xy:
+        - - 0
+          - -30
+        - - 432
+          - 30
+  tinv_2x:
+    bbox:
+    - - 0
+      - 0
+    - - 576
+      - 1008
+    cellname: tinv_2x
+    libname: logic_generated
+    pins:
+      EN:
+        layer:
+        - M3
+        - pin
+        name: EN
+        netname: EN
+        xy:
+        - - 489
+          - 360
+        - - 519
+          - 648
+      ENB:
+        layer:
+        - M3
+        - pin
+        name: ENB
+        netname: ENB
+        xy:
+        - - 345
+          - 360
+        - - 375
+          - 648
+      I:
+        layer:
+        - M3
+        - pin
+        name: I
+        netname: I
+        xy:
+        - - 129
+          - 360
+        - - 159
+          - 648
+      O:
+        layer:
+        - M3
+        - pin
+        name: O
+        netname: O
+        xy:
+        - - 417
+          - 144
+        - - 447
+          - 864
+      VDD:
+        layer:
+        - M2
+        - pin
+        name: VDD
+        netname: VDD
+        xy:
+        - - 0
+          - 978
+        - - 576
+          - 1038
+      VSS:
+        layer:
+        - M2
+        - pin
+        name: VSS
+        netname: VSS
+        xy:
+        - - 0
+          - -30
+        - - 576
+          - 30
+  tinv_4x:
+    bbox:
+    - - 0
+      - 0
+    - - 864
+      - 1008
+    cellname: tinv_4x
+    libname: logic_generated
+    pins:
+      EN:
+        layer:
+        - M3
+        - pin
+        name: EN
+        netname: EN
+        xy:
+        - - 777
+          - 360
+        - - 807
+          - 648
+      ENB:
+        layer:
+        - M3
+        - pin
+        name: ENB
+        netname: ENB
+        xy:
+        - - 633
+          - 360
+        - - 663
+          - 648
+      I:
+        layer:
+        - M3
+        - pin
+        name: I
+        netname: I
+        xy:
+        - - 129
+          - 360
+        - - 159
+          - 648
+      O:
+        layer:
+        - M3
+        - pin
+        name: O
+        netname: O
+        xy:
+        - - 705
+          - 144
+        - - 735
+          - 864
+      VDD:
+        layer:
+        - M2
+        - pin
+        name: VDD
+        netname: VDD
+        xy:
+        - - 0
+          - 978
+        - - 864
+          - 1038
+      VSS:
+        layer:
+        - M2
+        - pin
+        name: VSS
+        netname: VSS
+        xy:
+        - - 0
+          - -30
+        - - 864
+          - 30
+  tinv_hs_2x:
+    bbox:
+    - - 0
+      - 0
+    - - 576
+      - 1008
+    cellname: tinv_hs_2x
+    libname: logic_generated
+    pins:
+      EN:
+        layer:
+        - M3
+        - pin
+        name: EN
+        netname: EN
+        xy:
+        - - 489
+          - 360
+        - - 519
+          - 648
+      ENB:
+        layer:
+        - M3
+        - pin
+        name: ENB
+        netname: ENB
+        xy:
+        - - 345
+          - 360
+        - - 375
+          - 648
+      I:
+        layer:
+        - M3
+        - pin
+        name: I
+        netname: I
+        xy:
+        - - 129
+          - 360
+        - - 159
+          - 648
+      O0:
+        layer:
+        - M3
+        - pin
+        name: O0
+        netname: 'O:'
+        xy:
+        - - 417
+          - 144
+        - - 447
+          - 864
+      VDD:
+        layer:
+        - M2
+        - pin
+        name: VDD
+        netname: VDD
+        xy:
+        - - 0
+          - 978
+        - - 576
+          - 1038
+      VSS:
+        layer:
+        - M2
+        - pin
+        name: VSS
+        netname: VSS
+        xy:
+        - - 0
+          - -30
+        - - 576
+          - 30
+  tinv_hs_4x:
+    bbox:
+    - - 0
+      - 0
+    - - 864
+      - 1008
+    cellname: tinv_hs_4x
+    libname: logic_generated
+    pins:
+      EN:
+        layer:
+        - M3
+        - pin
+        name: EN
+        netname: EN
+        xy:
+        - - 777
+          - 360
+        - - 807
+          - 648
+      ENB:
+        layer:
+        - M3
+        - pin
+        name: ENB
+        netname: ENB
+        xy:
+        - - 633
+          - 360
+        - - 663
+          - 648
+      I:
+        layer:
+        - M3
+        - pin
+        name: I
+        netname: I
+        xy:
+        - - 129
+          - 360
+        - - 159
+          - 648
+      O0:
+        layer:
+        - M3
+        - pin
+        name: O0
+        netname: 'O:'
+        xy:
+        - - 561
+          - 144
+        - - 591
+          - 864
+      O1:
+        layer:
+        - M3
+        - pin
+        name: O1
+        netname: 'O:'
+        xy:
+        - - 705
+          - 144
+        - - 735
+          - 864
+      VDD:
+        layer:
+        - M2
+        - pin
+        name: VDD
+        netname: VDD
+        xy:
+        - - 0
+          - 978
+        - - 864
+          - 1038
+      VSS:
+        layer:
+        - M2
+        - pin
+        name: VSS
+        netname: VSS
+        xy:
+        - - 0
+          - -30
+        - - 864
+          - 30
+  tinv_small_1x:
+    bbox:
+    - - 0
+      - 0
+    - - 432
+      - 1008
+    cellname: tinv_small_1x
+    libname: logic_generated
+    pins:
+      EN:
+        layer:
+        - M3
+        - pin
+        name: EN
+        netname: EN
+        xy:
+        - - 273
+          - 360
+        - - 303
+          - 648
+      ENB:
+        layer:
+        - M3
+        - pin
+        name: ENB
+        netname: ENB
+        xy:
+        - - 129
+          - 360
+        - - 159
+          - 648
+      I:
+        layer:
+        - M3
+        - pin
+        name: I
+        netname: I
+        xy:
+        - - 57
+          - 360
+        - - 87
+          - 648
+      O:
+        layer:
+        - M3
+        - pin
+        name: O
+        netname: O
+        xy:
+        - - 201
+          - 144
+        - - 231
+          - 864
+      VDD:
+        layer:
+        - M2
+        - pin
+        name: VDD
+        netname: VDD
+        xy:
+        - - 0
+          - 978
+        - - 432
+          - 1038
+      VSS:
+        layer:
+        - M2
+        - pin
+        name: VSS
+        netname: VSS
+        xy:
+        - - 0
+          - -30
+        - - 432
+          - 30

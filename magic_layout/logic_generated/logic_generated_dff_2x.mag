@@ -1,0 +1,165 @@
+magic
+tech sky130A
+timestamp 1655884621
+<< checkpaint >>
+rect -650 -660 3818 1668
+<< metal2 >>
+rect -20 978 3188 1038
+rect -20 -30 3188 30
+<< metal3 >>
+rect 129 129 159 231
+rect 345 129 375 375
+rect 417 57 447 231
+rect 921 57 951 375
+rect 993 129 1023 231
+rect 1065 129 1095 375
+rect 1209 273 1239 375
+rect 1281 129 1311 375
+rect 1353 129 1383 231
+rect 1425 57 1455 375
+rect 1641 201 1671 375
+rect 1713 201 1743 303
+rect 2001 273 2031 375
+rect 2217 129 2247 375
+rect 2289 129 2319 231
+rect 2361 57 2391 375
+rect 2505 273 2535 375
+rect 2577 57 2607 375
+rect 2649 129 2679 231
+rect 2721 129 2751 375
+rect 2937 201 2967 375
+rect 3009 201 3039 303
+<< metal4 >>
+rect 1209 273 2031 303
+rect 2505 273 3039 303
+rect 993 201 1671 231
+rect 2289 201 2967 231
+rect 129 129 2751 159
+rect 417 57 2607 87
+use via_M3_M4_0  NoName_1 skywater130_microtemplates_dense
+timestamp 1647526059
+transform 1 0 432 0 1 72
+box -19 -19 19 19
+use via_M3_M4_0  NoName_3
+timestamp 1647526059
+transform 1 0 936 0 1 72
+box -19 -19 19 19
+use via_M3_M4_0  NoName_5
+timestamp 1647526059
+transform 1 0 2376 0 1 72
+box -19 -19 19 19
+use via_M3_M4_0  NoName_7
+timestamp 1647526059
+transform 1 0 1440 0 1 72
+box -19 -19 19 19
+use via_M3_M4_0  NoName_9
+timestamp 1647526059
+transform 1 0 2592 0 1 72
+box -19 -19 19 19
+use via_M3_M4_0  NoName_12
+timestamp 1647526059
+transform 1 0 144 0 1 144
+box -19 -19 19 19
+use via_M3_M4_0  NoName_14
+timestamp 1647526059
+transform 1 0 360 0 1 144
+box -19 -19 19 19
+use via_M3_M4_0  NoName_16
+timestamp 1647526059
+transform 1 0 1080 0 1 144
+box -19 -19 19 19
+use via_M3_M4_0  NoName_18
+timestamp 1647526059
+transform 1 0 2232 0 1 144
+box -19 -19 19 19
+use via_M3_M4_0  NoName_20
+timestamp 1647526059
+transform 1 0 1296 0 1 144
+box -19 -19 19 19
+use via_M3_M4_0  NoName_22
+timestamp 1647526059
+transform 1 0 2736 0 1 144
+box -19 -19 19 19
+use via_M3_M4_0  NoName_25
+timestamp 1647526059
+transform 1 0 1656 0 1 216
+box -19 -19 19 19
+use via_M3_M4_0  NoName_27
+timestamp 1647526059
+transform 1 0 1008 0 1 216
+box -19 -19 19 19
+use via_M3_M4_0  NoName_29
+timestamp 1647526059
+transform 1 0 1368 0 1 216
+box -19 -19 19 19
+use via_M3_M4_0  NoName_32
+timestamp 1647526059
+transform 1 0 2952 0 1 216
+box -19 -19 19 19
+use via_M3_M4_0  NoName_34
+timestamp 1647526059
+transform 1 0 2304 0 1 216
+box -19 -19 19 19
+use via_M3_M4_0  NoName_36
+timestamp 1647526059
+transform 1 0 2664 0 1 216
+box -19 -19 19 19
+use via_M3_M4_0  NoName_39
+timestamp 1647526059
+transform 1 0 1728 0 1 288
+box -19 -19 19 19
+use via_M3_M4_0  NoName_41
+timestamp 1647526059
+transform 1 0 2016 0 1 288
+box -19 -19 19 19
+use via_M3_M4_0  NoName_43
+timestamp 1647526059
+transform 1 0 1224 0 1 288
+box -19 -19 19 19
+use via_M3_M4_0  NoName_46
+timestamp 1647526059
+transform 1 0 3024 0 1 288
+box -19 -19 19 19
+use via_M3_M4_0  NoName_48
+timestamp 1647526059
+transform 1 0 2520 0 1 288
+box -19 -19 19 19
+use logic_generated_inv_2x  inv0
+timestamp 1655879713
+transform 1 0 0 0 1 0
+box -20 -30 308 1038
+use logic_generated_inv_2x  inv1
+timestamp 1655879713
+transform 1 0 288 0 1 0
+box -20 -30 308 1038
+use logic_generated_inv_2x  inv2
+timestamp 1655879713
+transform 1 0 1584 0 1 0
+box -20 -30 308 1038
+use logic_generated_inv_2x  inv3
+timestamp 1655879713
+transform 1 0 2880 0 1 0
+box -20 -30 308 1038
+use logic_generated_tinv_2x  tinv0
+timestamp 1655879854
+transform 1 0 576 0 1 0
+box -20 -30 596 1038
+use logic_generated_tinv_2x  tinv1
+timestamp 1655879854
+transform 1 0 1872 0 1 0
+box -20 -30 596 1038
+use logic_generated_tinv_small_1x  tinv_small0
+timestamp 1655879863
+transform 1 0 1152 0 1 0
+box -20 -30 452 1038
+use logic_generated_tinv_small_1x  tinv_small1
+timestamp 1655879863
+transform 1 0 2448 0 1 0
+box -20 -30 452 1038
+<< labels >>
+flabel metal3 720 504 720 504 0 FreeSans 240 90 0 0 I
+flabel metal3 72 504 72 504 0 FreeSans 240 90 0 0 CLK
+flabel metal3 3024 504 3024 504 0 FreeSans 240 90 0 0 O
+flabel metal2 1584 0 1584 0 0 FreeSans 480 0 0 0 VSS
+flabel metal2 1584 1008 1584 1008 0 FreeSans 480 0 0 0 VDD
+<< end >>
