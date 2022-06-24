@@ -1,6 +1,6 @@
 magic
 tech sky130A
-timestamp 1655884621
+timestamp 1655971425
 << checkpaint >>
 rect -650 -660 3818 1668
 << metal2 >>
@@ -125,35 +125,35 @@ timestamp 1647526059
 transform 1 0 2520 0 1 288
 box -19 -19 19 19
 use logic_generated_inv_2x  inv0
-timestamp 1655879713
+timestamp 1655971227
 transform 1 0 0 0 1 0
 box -20 -30 308 1038
 use logic_generated_inv_2x  inv1
-timestamp 1655879713
+timestamp 1655971227
 transform 1 0 288 0 1 0
 box -20 -30 308 1038
 use logic_generated_inv_2x  inv2
-timestamp 1655879713
+timestamp 1655971227
 transform 1 0 1584 0 1 0
 box -20 -30 308 1038
 use logic_generated_inv_2x  inv3
-timestamp 1655879713
+timestamp 1655971227
 transform 1 0 2880 0 1 0
 box -20 -30 308 1038
 use logic_generated_tinv_2x  tinv0
-timestamp 1655879854
+timestamp 1655971092
 transform 1 0 576 0 1 0
 box -20 -30 596 1038
 use logic_generated_tinv_2x  tinv1
-timestamp 1655879854
+timestamp 1655971092
 transform 1 0 1872 0 1 0
 box -20 -30 596 1038
 use logic_generated_tinv_small_1x  tinv_small0
-timestamp 1655879863
+timestamp 1655971095
 transform 1 0 1152 0 1 0
 box -20 -30 452 1038
 use logic_generated_tinv_small_1x  tinv_small1
-timestamp 1655879863
+timestamp 1655971095
 transform 1 0 2448 0 1 0
 box -20 -30 452 1038
 << labels >>

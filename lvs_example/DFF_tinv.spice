@@ -90,12 +90,4 @@ XM4 Y EN net2 VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2
 + sa=0 sb=0 sd=0 mult=1 m=1
 .ends
 
-.subckt sky130_fd_pr__pfet_01v8 drain gate source bulk
-M0 drain gate source bulk pfet 
-.ends
-
-.subckt sky130_fd_pr__nfet_01v8_lvt drain gate source subs
-M0 drain gate source subs nfet 
-.ends
-
 .end

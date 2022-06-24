@@ -1,0 +1,45 @@
+* NGSPICE file created from dff_tap.ext - technology: sky130A
+
+.subckt dff_tap
+X0 tinv_small1/pstack/G1 tinv_small1/nstack/G1 inv3/MP0_IM0/BODY inv3/MP0_IM0/BODY sky130_fd_pr__pfet_01v8 ad=1.368e+12p pd=5.94e+06u as=1.896e+13p ps=8.3e+07u w=2.4e+06u l=150000u
+X1 inv3/MN0_IM0/BODY tinv1/MP0_IM0/G0 tinv1/MN1_IM0/S1 inv3/MN0_IM0/BODY sky130_fd_pr__nfet_01v8_lvt ad=9.48e+12p pd=4.94e+07u as=2.04e+12p ps=1.06e+07u w=1.2e+06u l=150000u
+X2 tinv1/MN1_IM0/S1 tinv_small1/pstack/G1 inv3/MP0_IM0/G0 inv3/MN0_IM0/BODY sky130_fd_pr__nfet_01v8_lvt ad=0p pd=0u as=1.368e+12p ps=7.08e+06u w=1.2e+06u l=150000u
+X3 inv2/MP0_IM0/G0 tinv_small1/pstack/G1 tinv0/MP1_IM0/S1 inv3/MP0_IM0/BODY sky130_fd_pr__pfet_01v8 ad=2.736e+12p pd=1.188e+07u as=4.08e+12p ps=1.78e+07u w=2.4e+06u l=150000u
+X4 inv2/MP0_IM0/G0 tinv_small1/nstack/G1 a_2534_1368# inv3/MP0_IM0/BODY sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=1.368e+12p ps=5.94e+06u w=2.4e+06u l=150000u
+X5 inv3/MN0_IM0/BODY inv0/MP0_IM0/G0 tinv_small1/nstack/G1 inv3/MN0_IM0/BODY sky130_fd_pr__nfet_01v8_lvt ad=0p pd=0u as=6.84e+11p ps=3.54e+06u w=1.2e+06u l=150000u
+X6 inv3/MN0_IM0/BODY tinv_small1/nstack/G1 tinv_small1/pstack/G1 inv3/MN0_IM0/BODY sky130_fd_pr__nfet_01v8_lvt ad=0p pd=0u as=6.84e+11p ps=3.54e+06u w=1.2e+06u l=150000u
+X7 tinv0/MP1_IM0/S1 tinv0/MP0_IM0/G0 inv3/MP0_IM0/BODY inv3/MP0_IM0/BODY sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2.4e+06u l=150000u
+X8 tinv1/MP0_IM0/G0 inv2/MP0_IM0/G0 inv3/MP0_IM0/BODY inv3/MP0_IM0/BODY sky130_fd_pr__pfet_01v8 ad=1.368e+12p pd=5.94e+06u as=0p ps=0u w=2.4e+06u l=150000u
+X9 tinv0/MP1_IM0/S1 tinv_small1/pstack/G1 inv2/MP0_IM0/G0 inv3/MP0_IM0/BODY sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2.4e+06u l=150000u
+X10 inv3/MP0_IM0/BODY tinv1/MP0_IM0/G0 tinv1/MP1_IM0/S1 inv3/MP0_IM0/BODY sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=4.08e+12p ps=1.78e+07u w=2.4e+06u l=150000u
+X11 inv3/MP0_IM0/BODY inv3/MP0_IM0/G0 inv3/MP0_IM0/D0 inv3/MP0_IM0/BODY sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=1.368e+12p ps=5.94e+06u w=2.4e+06u l=150000u
+X12 a_5126_408# inv3/MP0_IM0/D0 inv3/MN0_IM0/BODY inv3/MN0_IM0/BODY sky130_fd_pr__nfet_01v8_lvt ad=6.84e+11p pd=3.54e+06u as=0p ps=0u w=1.2e+06u l=150000u
+X13 inv3/MP0_IM0/D0 inv3/MP0_IM0/G0 inv3/MN0_IM0/BODY inv3/MN0_IM0/BODY sky130_fd_pr__nfet_01v8_lvt ad=6.84e+11p pd=3.54e+06u as=0p ps=0u w=1.2e+06u l=150000u
+X14 tinv1/MP1_IM0/S1 tinv1/MP0_IM0/G0 inv3/MP0_IM0/BODY inv3/MP0_IM0/BODY sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2.4e+06u l=150000u
+X15 a_5126_1368# inv3/MP0_IM0/D0 inv3/MP0_IM0/BODY inv3/MP0_IM0/BODY sky130_fd_pr__pfet_01v8 ad=1.368e+12p pd=5.94e+06u as=0p ps=0u w=2.4e+06u l=150000u
+X16 tinv1/MP1_IM0/S1 tinv_small1/nstack/G1 inv3/MP0_IM0/G0 inv3/MP0_IM0/BODY sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=2.736e+12p ps=1.188e+07u w=2.4e+06u l=150000u
+X17 a_2534_408# tinv1/MP0_IM0/G0 inv3/MN0_IM0/BODY inv3/MN0_IM0/BODY sky130_fd_pr__nfet_01v8_lvt ad=6.84e+11p pd=3.54e+06u as=0p ps=0u w=1.2e+06u l=150000u
+X18 inv3/MP0_IM0/BODY inv0/MP0_IM0/G0 tinv_small1/nstack/G1 inv3/MP0_IM0/BODY sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=1.368e+12p ps=5.94e+06u w=2.4e+06u l=150000u
+X19 tinv_small1/pstack/G1 tinv_small1/nstack/G1 inv3/MN0_IM0/BODY inv3/MN0_IM0/BODY sky130_fd_pr__nfet_01v8_lvt ad=0p pd=0u as=0p ps=0u w=1.2e+06u l=150000u
+X20 inv3/MN0_IM0/BODY inv2/MP0_IM0/G0 tinv1/MP0_IM0/G0 inv3/MN0_IM0/BODY sky130_fd_pr__nfet_01v8_lvt ad=0p pd=0u as=6.84e+11p ps=3.54e+06u w=1.2e+06u l=150000u
+X21 inv3/MP0_IM0/BODY tinv_small1/nstack/G1 tinv_small1/pstack/G1 inv3/MP0_IM0/BODY sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2.4e+06u l=150000u
+X22 a_2534_1368# tinv1/MP0_IM0/G0 inv3/MP0_IM0/BODY inv3/MP0_IM0/BODY sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2.4e+06u l=150000u
+X23 inv3/MP0_IM0/D0 inv3/MP0_IM0/G0 inv3/MP0_IM0/BODY inv3/MP0_IM0/BODY sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2.4e+06u l=150000u
+X24 tinv0/MN1_IM0/S1 tinv0/MP0_IM0/G0 inv3/MN0_IM0/BODY inv3/MN0_IM0/BODY sky130_fd_pr__nfet_01v8_lvt ad=2.04e+12p pd=1.06e+07u as=0p ps=0u w=1.2e+06u l=150000u
+X25 inv2/MP0_IM0/G0 tinv_small1/nstack/G1 tinv0/MN1_IM0/S1 inv3/MN0_IM0/BODY sky130_fd_pr__nfet_01v8_lvt ad=1.368e+12p pd=7.08e+06u as=0p ps=0u w=1.2e+06u l=150000u
+X26 inv3/MN0_IM0/BODY inv3/MP0_IM0/G0 inv3/MP0_IM0/D0 inv3/MN0_IM0/BODY sky130_fd_pr__nfet_01v8_lvt ad=0p pd=0u as=0p ps=0u w=1.2e+06u l=150000u
+X27 inv3/MP0_IM0/G0 tinv_small1/pstack/G1 tinv1/MN1_IM0/S1 inv3/MN0_IM0/BODY sky130_fd_pr__nfet_01v8_lvt ad=0p pd=0u as=0p ps=0u w=1.2e+06u l=150000u
+X28 inv3/MP0_IM0/BODY tinv0/MP0_IM0/G0 tinv0/MP1_IM0/S1 inv3/MP0_IM0/BODY sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2.4e+06u l=150000u
+X29 inv3/MP0_IM0/BODY inv2/MP0_IM0/G0 tinv1/MP0_IM0/G0 inv3/MP0_IM0/BODY sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2.4e+06u l=150000u
+X30 tinv_small1/nstack/G1 inv0/MP0_IM0/G0 inv3/MN0_IM0/BODY inv3/MN0_IM0/BODY sky130_fd_pr__nfet_01v8_lvt ad=0p pd=0u as=0p ps=0u w=1.2e+06u l=150000u
+X31 tinv0/MN1_IM0/S1 tinv_small1/nstack/G1 inv2/MP0_IM0/G0 inv3/MN0_IM0/BODY sky130_fd_pr__nfet_01v8_lvt ad=0p pd=0u as=0p ps=0u w=1.2e+06u l=150000u
+X32 inv2/MP0_IM0/G0 tinv_small1/pstack/G1 a_2534_408# inv3/MN0_IM0/BODY sky130_fd_pr__nfet_01v8_lvt ad=0p pd=0u as=0p ps=0u w=1.2e+06u l=150000u
+X33 inv3/MP0_IM0/G0 tinv_small1/nstack/G1 a_5126_408# inv3/MN0_IM0/BODY sky130_fd_pr__nfet_01v8_lvt ad=0p pd=0u as=0p ps=0u w=1.2e+06u l=150000u
+X34 inv3/MP0_IM0/G0 tinv_small1/nstack/G1 tinv1/MP1_IM0/S1 inv3/MP0_IM0/BODY sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2.4e+06u l=150000u
+X35 inv3/MP0_IM0/G0 tinv_small1/pstack/G1 a_5126_1368# inv3/MP0_IM0/BODY sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2.4e+06u l=150000u
+X36 tinv_small1/nstack/G1 inv0/MP0_IM0/G0 inv3/MP0_IM0/BODY inv3/MP0_IM0/BODY sky130_fd_pr__pfet_01v8 ad=0p pd=0u as=0p ps=0u w=2.4e+06u l=150000u
+X37 tinv1/MP0_IM0/G0 inv2/MP0_IM0/G0 inv3/MN0_IM0/BODY inv3/MN0_IM0/BODY sky130_fd_pr__nfet_01v8_lvt ad=0p pd=0u as=0p ps=0u w=1.2e+06u l=150000u
+X38 tinv1/MN1_IM0/S1 tinv1/MP0_IM0/G0 inv3/MN0_IM0/BODY inv3/MN0_IM0/BODY sky130_fd_pr__nfet_01v8_lvt ad=0p pd=0u as=0p ps=0u w=1.2e+06u l=150000u
+X39 inv3/MN0_IM0/BODY tinv0/MP0_IM0/G0 tinv0/MN1_IM0/S1 inv3/MN0_IM0/BODY sky130_fd_pr__nfet_01v8_lvt ad=0p pd=0u as=0p ps=0u w=1.2e+06u l=150000u
+.ends
+

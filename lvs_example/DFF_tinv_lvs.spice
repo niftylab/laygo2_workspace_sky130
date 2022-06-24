@@ -1,0 +1,81 @@
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/schem/DFF_tinv.sch
+**.subckt DFF_tinv IN VDD VSS CLK OUT
+*.ipin IN
+*.iopin VDD
+*.iopin VSS
+*.ipin CLK
+*.opin OUT
+X_latch1 IN ICLKB ICLK VSS VDD net1 latch
+X_latch2 net1 ICLK ICLKB VSS VDD OUT latch
+X_INV1 CLK ICLKB VDD VSS inv
+X_INV2 ICLKB ICLK VDD VSS inv
+**.ends
+
+* expanding   symbol:  latch.sym # of pins=6
+** sym_path: /WORK/hjpark/laygo2_workspace_sky130/schem/latch.sym
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/schem/latch.sch
+.subckt latch  IN CLK CLKB VSS VDD OUT
+*.ipin IN
+*.opin OUT
+*.ipin CLK
+*.iopin VDD
+*.iopin VSS
+*.ipin CLKB
+X_INV1 net1 OUT VDD VSS inv
+X_tinv1 IN net1 VSS VDD CLK CLKB tinv
+X_tinv_small1 OUT net1 VSS VDD CLKB CLK tinv_small
+.ends
+
+
+* expanding   symbol:  inv.sym # of pins=4
+** sym_path: /WORK/hjpark/laygo2_workspace_sky130/schem/inv.sym
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/schem/inv.sch
+.subckt inv  X Y VDD VSS
+*.ipin X
+*.opin Y
+*.iopin VDD
+*.iopin VSS
+XM1 Y X VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=2
+XM2 Y X VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1.6 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=2
+.ends
+
+
+* expanding   symbol:  tinv.sym # of pins=6
+** sym_path: /WORK/hjpark/laygo2_workspace_sky130/schem/tinv.sym
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/schem/tinv.sch
+.subckt tinv  X Y VSS VDD EN ENB
+*.ipin X
+*.opin Y
+*.iopin VDD
+*.iopin VSS
+*.iopin EN
+*.iopin ENB
+XM1 net2 X VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=2
+XM2 net1 X VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1.6 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=2
+XM3 Y ENB net1 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1.6 nf=1
+XM4 Y EN net2 VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=2
+.ends
+
+** not really implemented in real schematic I just make sudo subckt with tinv
+.subckt tinv_small  X Y VSS VDD EN ENB
+*.ipin X
+*.opin Y
+*.iopin VDD
+*.iopin VSS
+*.iopin EN
+*.iopin ENB
+XM1 net2 X VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 net1 X VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1.6 nf=1
+XM3 Y ENB net1 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1.6 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM4 Y EN net2 VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+.end
