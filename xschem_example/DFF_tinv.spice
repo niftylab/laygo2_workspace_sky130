@@ -1,0 +1,96 @@
+** sch_path: /WORK/hjpark/temp/laygo2_workspace_sky130/xschem_example/DFF_tinv.sch
+**.subckt DFF_tinv D CLK VSS VDD Q
+*.ipin D
+*.ipin CLK
+*.iopin VSS
+*.iopin VDD
+*.opin Q
+X_latch1 D ICLKB ICLK VSS VDD net1 latch
+X_latch2 net1 ICLK ICLKB VSS VDD Q latch
+X_inv1 CLK VDD VSS ICLKB inv
+X_inv2 ICLKB VDD VSS ICLK inv
+**.ends
+
+* expanding   symbol:  xschem_example/latch.sym # of pins=6
+** sym_path: /WORK/hjpark/temp/laygo2_workspace_sky130/xschem_example/latch.sym
+** sch_path: /WORK/hjpark/temp/laygo2_workspace_sky130/xschem_example/latch.sch
+.subckt latch  IN CLK CLKB VSS VDD OUT
+*.ipin CLKB
+*.ipin IN
+*.ipin CLK
+*.iopin VDD
+*.iopin VSS
+*.opin OUT
+X_inv1 net1 VDD VSS OUT inv
+X_tinv1 IN CLK CLKB VDD VSS net1 tinv
+X_tinv_small1 OUT CLKB CLK VDD VSS net1 tinv_small
+.ends
+
+
+* expanding   symbol:  xschem_example/inv.sym # of pins=4
+** sym_path: /WORK/hjpark/temp/laygo2_workspace_sky130/xschem_example/inv.sym
+** sch_path: /WORK/hjpark/temp/laygo2_workspace_sky130/xschem_example/inv.sch
+.subckt inv  X VDD VSS Y
+*.iopin VSS
+*.ipin X
+*.opin Y
+*.iopin VDD
+XM1 Y X VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=8 m=8
+XM2 Y X VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1.6 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=8 m=8
+.ends
+
+
+* expanding   symbol:  xschem_example/tinv.sym # of pins=6
+** sym_path: /WORK/hjpark/temp/laygo2_workspace_sky130/xschem_example/tinv.sym
+** sch_path: /WORK/hjpark/temp/laygo2_workspace_sky130/xschem_example/tinv.sch
+.subckt tinv  X EN ENB VDD VSS Y
+*.ipin X
+*.ipin ENB
+*.ipin EN
+*.opin Y
+*.iopin VDD
+*.iopin VSS
+XM1 net2 X VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1.6 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=4 m=4
+XM2 Y ENB net2 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1.6 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=4 m=4
+XM3 Y EN net1 VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=4 m=4
+XM4 net1 X VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=4 m=4
+.ends
+
+
+* expanding   symbol:  xschem_example/tinv_small.sym # of pins=6
+** sym_path: /WORK/hjpark/temp/laygo2_workspace_sky130/xschem_example/tinv_small.sym
+** sch_path: /WORK/hjpark/temp/laygo2_workspace_sky130/xschem_example/tinv_small.sch
+.subckt tinv_small  X EN ENB VDD VSS Y
+*.ipin X
+*.ipin ENB
+*.ipin EN
+*.opin Y
+*.iopin VDD
+*.iopin VSS
+XM1 net2 X VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1.6 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 Y ENB net2 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=1.6 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM3 Y EN net1 VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM4 net1 X VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+.end
