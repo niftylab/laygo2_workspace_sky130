@@ -176,6 +176,7 @@ calibreview.setup
 # laygo files
 adc_sar*
 *logic_templates*
+*logic_generated*
 laygo_working
 *.gds
 serdes_generated*
