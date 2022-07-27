@@ -102,7 +102,7 @@ for celltype in cell_type:
       print("")
       
       # Uncomment for BAG export
-      laygo2.interface.magic.export(lib, filename=ref_dir_MAG_exported +libname+'_'+cellname+'.tcl', cellname=None, libpath='/WORK/hjpark/temp/laygo2_workspace_sky130/magic_layout', scale=1, reset_library=False, tech_library='sky130A')
+      laygo2.interface.magic.export(lib, filename=ref_dir_MAG_exported +libname+'_'+cellname+'.tcl', cellname=None, libpath=ref_dir_template+'magic_layout', scale=1, reset_library=False, tech_library='sky130A')
       # 8. Export to a template database file.
       nat_temp = dsn.export_to_template()
       laygo2.interface.yaml.export_template(nat_temp, filename=ref_dir_template+libname+'_templates.yaml', mode='append')
