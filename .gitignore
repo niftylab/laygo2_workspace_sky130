@@ -181,6 +181,10 @@ laygo_working
 *.gds
 serdes_generated*
 
+# magic setupfile_personal
+.maginit_personal
+.magicrc_personal
+
 # magic/netgen extraction file
 *.ext
 *.out
