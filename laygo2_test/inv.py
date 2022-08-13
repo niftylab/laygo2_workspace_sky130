@@ -10,7 +10,7 @@ import pprint
 import laygo2
 import laygo2.interface
 import laygo2_tech as tech
-
+import netMap_hor as nMap
 # Parameter definitions #############
 # Variables
 cell_type = ['inv', 'inv_hs']
@@ -24,6 +24,7 @@ tnmos_name = 'nmos_sky'
 pg_name = 'placement_basic'
 r12_name = 'routing_12_cmos'
 r23_name = 'routing_23_cmos'
+r23_basic_name = 'routing_23_basic'
 # Design hierarchy
 libname = 'logic_generated'
 # cellname in for loop
@@ -41,7 +42,7 @@ print(templates[tpmos_name], templates[tnmos_name], sep="\n")
 
 print("Load grids")
 grids = tech.load_grids(templates=templates)
-pg, r12, r23 = grids[pg_name], grids[r12_name], grids[r23_name]
+pg, r12, r23, r23_basic = grids[pg_name], grids[r12_name], grids[r23_name], grids[r23_basic_name]
 print(grids[pg_name], grids[r12_name], grids[r23_name], sep="\n")
 
 lib = laygo2.object.database.Library(name=libname)
@@ -72,37 +73,37 @@ for celltype in cell_type:
       # IN
       _mn = [r23.mn(in0.pins['G'])[0], r23.mn(ip0.pins['G'])[0]]
       _track = [r23.mn(in0.pins['G'])[0,0]-1, None]
-      rin0 = dsn.route_via_track(grid=r23, mn=_mn, track=_track, netname= "input")
-      for routeObj in rin0:
-         if type(routeObj) is list:
-            print(routeObj[0])
-         else:
-            print(routeObj)
+      rin0 = dsn.route_via_track(grid=r23, mn=_mn, track=_track, netname= "I")
+#      for routeObj in rin0:
+#         if type(routeObj) is list:
+#            print(routeObj[0])
+#         else:
+#            print(routeObj)
       # OUT
       if celltype == 'inv':
          _mn = [r23.mn(in0.pins['D'])[1], r23.mn(ip0.pins['D'])[1]]
-         vout0, rout0, vout1 = dsn.route(grid=r23, mn=_mn, via_tag=[True, True], netname= "output")
-         print(rout0)
+         vout0, rout0, vout1 = dsn.route(grid=r23, mn=_mn, via_tag=[True, True], netname= "O")
+#         print(rout0)
       elif celltype == 'inv_hs':
          for i in range(int(nf/2)):
             _mn = [r23.mn(in0.pins['D'])[0]+[2*i,0], r23.mn(ip0.pins['D'])[0]+[2*i,0]]
-            vout0, rout0, vout1 = dsn.route(grid=r23, mn=_mn, via_tag=[True, True])
-            print("metal :", rout0)
+            vout0, rout0, vout1 = dsn.route(grid=r23, mn=_mn, via_tag=[True, True], netname='O:')
+#            print("metal :", rout0)
             pout0 = dsn.pin(name='O'+str(i), grid=r23, mn=r23.mn.bbox(rout0), netname='O:')
-            print("pin :",pout0)
+#            print("pin :",pout0)
       # VSS
       rvss0 = dsn.route(grid=r12, mn=[r12.mn(in0.pins['RAIL'])[0], r12.mn(in0.pins['RAIL'])[1]], netname= "VSS")
-      print(rvss0)
+#      print(rvss0)
       # VDD
       rvdd0 = dsn.route(grid=r12, mn=[r12.mn(ip0.pins['RAIL'])[0], r12.mn(ip0.pins['RAIL'])[1]], netname= "VDD")
-      print(rvdd0)
+#      print(rvdd0)
       # 6. Create pins.
-      pin0 = dsn.pin(name='I', grid=r23, mn=r23.mn.bbox(rin0[2]))
+      pin0 = dsn.pin(name='I', grid=r23, mn=r23.mn.bbox(rin0[2]), netname="I")
       if celltype == 'inv':
-         pout0 = dsn.pin(name='O', grid=r23, mn=r23.mn.bbox(rout0))
-      pvss0 = dsn.pin(name='VSS', grid=r12, mn=r12.mn.bbox(rvss0))
-      pvdd0 = dsn.pin(name='VDD', grid=r12, mn=r12.mn.bbox(rvdd0))
-      
+         pout0 = dsn.pin(name='O', grid=r23, mn=r23.mn.bbox(rout0), netname="O")
+      pvss0 = dsn.pin(name='VSS', grid=r12, mn=r12.mn.bbox(rvss0), netname="VSS")
+      pvdd0 = dsn.pin(name='VDD', grid=r12, mn=r12.mn.bbox(rvdd0), netname="VDD")
+   """   
       # 7. Export to physical database.
       print("Export design")
       print("")
@@ -112,3 +113,30 @@ for celltype in cell_type:
       # 8. Export to a template database file.
       nat_temp = dsn.export_to_template()
       laygo2.interface.yaml.export_template(nat_temp, filename=ref_dir_template+libname+'_templates.yaml', mode='append')
+"""
+# Export to netlist
+map = nMap.netMap_hor()
+cn_list = lib.keys()
+cn_list = [cn_list] if isinstance(cn_list, str) else cn_list  # convert to a list for iteration.
+for cn in cn_list:
+      print('Export_to_NET: Cellname:' + cn)
+   #     print(lib[cn].pins)
+        # export objects
+      # nodes = list()
+      # for pin_name, pin in lib[cn].pins.items():
+      #    print(pg.bbox(pin))
+      #    nodes.append(nMap.metalNode(point1 = r23_basic.bbox(pin)[0],point2 = r23_basic.bbox(pin)[1],vias = None, netName = pin.netname, isPin = True))
+      # for metal in nodes:
+      #    print(metal.xy1, metal.xy2, metal.netName)
+# for pin_name, pin in lib['inv_hs_4x'].pins.items():
+#    map.insertPin(r23_basic.bbox(pin),netName=pin.netname)
+
+for metal_name, metal in lib['inv_hs_4x'].rects.items():
+   print(r23_basic.bbox(metal))
+   map.insertPin(r23_basic.bbox(metal),netName=metal.netname)
+
+for row in map.rows:
+   print(row.rowNum)
+   for rect in row.metalList:
+      print(rect.netName,rect.xy1,rect.xy2, end=' ')
+   print()

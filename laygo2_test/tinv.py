@@ -1,9 +1,9 @@
-##########################################
-#                                        #
-#       Inverter Layout Gernerator       #
-#         Created by Taeho Shin          #
-#                                        #
-##########################################
+################################################
+#                                              #
+#     Tri-State Inverter Layout Generator      #
+#           Created by Taeho Shin              #
+#                                              #
+################################################
 
 import numpy as np
 import pprint
@@ -13,9 +13,7 @@ import laygo2_tech as tech
 
 # Parameter definitions #############
 # Variables
-cell_type = ['inv', 'inv_hs']
-#nf_list = [2, 4, 6, 8, 10, 12, 16, 24, 32, 36, 40, 50, 64, 72, 100]
-#nf_list = [2, 4, 6, 8, 10, 12, 16, 24, 32]
+cell_type = ['tinv', 'tinv_hs']
 nf_list = [2,4]
 # Templates
 tpmos_name = 'pmos_sky'
@@ -26,9 +24,8 @@ r12_name = 'routing_12_cmos'
 r23_name = 'routing_23_cmos'
 # Design hierarchy
 libname = 'logic_generated'
-# cellname in for loop
-ref_dir_template = './'#'./laygo2_generators_private/magic/logic/'
-ref_dir_MAG_exported = './'#'./laygo2_generators_private/magic/logic/tcl/'
+ref_dir_template = './'#laygo2_generators_private/magic/logic/'
+ref_dir_MAG_exported = './'#laygo2_generators_private/magic/logic/tcl/'
 # End of parameter definitions ######
 
 # Generation start ##################
@@ -36,7 +33,7 @@ ref_dir_MAG_exported = './'#'./laygo2_generators_private/magic/logic/tcl/'
 print("Load templates")
 templates = tech.load_templates()
 tpmos, tnmos = templates[tpmos_name], templates[tnmos_name]
-#tlib = laygo2.interface.yaml.import_template(filename=ref_dir_template+'logic_generated_templates.yaml')
+tlib = laygo2.interface.yaml.import_template(filename=ref_dir_template+'logic_generated_templates.yaml')
 print(templates[tpmos_name], templates[tnmos_name], sep="\n")
 
 print("Load grids")
@@ -56,59 +53,73 @@ for celltype in cell_type:
       dsn = laygo2.object.database.Design(name=cellname, libname=libname)
       lib.append(dsn)
       
-      # 3. Create instances.
+      # 3. Create istances.
       print("Create instances")
       in0 = tnmos.generate(name='MN0', params={'nf': nf, 'tie': 'S'})
-      ip0 = tpmos.generate(name='MP0', transform='MX', params={'nf': nf,'tie': 'S'})
+      ip0 = tpmos.generate(name='MP0', transform='MX', params={'nf': nf, 'tie': 'S'})
+      in1 = tnmos.generate(name='MN1', params={'nf': nf, 'trackswap': True})
+      ip1 = tpmos.generate(name='MP1', transform='MX', params={'nf': nf,'trackswap': True})
       
       # 4. Place instances.
-      #   dsn.place(grid=pg, inst=[[in0], [ip0]], mn=[0,0])
-      #   dsn.place(grid=pg, inst=[[in0 ,in1], [ip0, ip1]], mn=[0,0])
       dsn.place(grid=pg, inst=in0, mn=[0,0])
       dsn.place(grid=pg, inst=ip0, mn=pg.mn.top_left(in0) + pg.mn.height_vec(ip0))
+      dsn.place(grid=pg, inst=in1, mn=pg.mn.bottom_right(in0))
+      dsn.place(grid=pg, inst=ip1, mn=pg.mn.top_right(ip0))
       
       # 5. Create and place wires.
       print("Create wires")
       # IN
       _mn = [r23.mn(in0.pins['G'])[0], r23.mn(ip0.pins['G'])[0]]
-      _track = [r23.mn(in0.pins['G'])[0,0]-1, None]
-      rin0 = dsn.route_via_track(grid=r23, mn=_mn, track=_track, netname= "input")
-      for routeObj in rin0:
-         if type(routeObj) is list:
-            print(routeObj[0])
-         else:
-            print(routeObj)
+      #_track = [r23.mn(in0.pins['G'])[0,0]-1, None]
+      v0, rin0, v1 = dsn.route(grid=r23, mn=_mn, via_tag=[True, True])
+   
       # OUT
-      if celltype == 'inv':
-         _mn = [r23.mn(in0.pins['D'])[1], r23.mn(ip0.pins['D'])[1]]
-         vout0, rout0, vout1 = dsn.route(grid=r23, mn=_mn, via_tag=[True, True], netname= "output")
-         print(rout0)
-      elif celltype == 'inv_hs':
+      if celltype == 'tinv':      
+         _mn = [r23.mn(in1.pins['D'])[1], r23.mn(ip1.pins['D'])[1]]
+         vout0, rout0, vout1 = dsn.route(grid=r23, mn=_mn, via_tag=[True, True])
+      elif celltype == 'tinv_hs':
          for i in range(int(nf/2)):
-            _mn = [r23.mn(in0.pins['D'])[0]+[2*i,0], r23.mn(ip0.pins['D'])[0]+[2*i,0]]
+            _mn = [r23.mn(in1.pins['D'])[0]+[2*i,0], r23.mn(ip1.pins['D'])[0]+[2*i,0]]
             vout0, rout0, vout1 = dsn.route(grid=r23, mn=_mn, via_tag=[True, True])
-            print("metal :", rout0)
             pout0 = dsn.pin(name='O'+str(i), grid=r23, mn=r23.mn.bbox(rout0), netname='O:')
-            print("pin :",pout0)
+      
+      # EN
+      _mn = [r23.mn(in1.pins['G'])[1]+[1,0], r23.mn(ip1.pins['G'])[1]+[1,0]]
+      ven0, ren0 = dsn.route(grid=r23, mn=_mn, via_tag=[True, False])
+      _mn = [r23.mn(in1.pins['G'])[1], r23.mn(in1.pins['G'])[1]+[1,0]]
+      renint = dsn.route(grid=r23, mn=_mn)
+      
+      # ENB
+      _mn = [r23.mn(in1.pins['G'])[1]+[-1,0], r23.mn(ip1.pins['G'])[1]+[-1,0]]
+      renb0, venb0 = dsn.route(grid=r23, mn=_mn, via_tag=[False, True])
+      
+      # Internal
+      _mn = [r23.mn(ip0.pins['D'])[0], r23.mn(ip1.pins['S'])[0]]
+      rintp0 = dsn.route(grid=r23, mn=_mn)
+      _mn = [r23.mn(in0.pins['D'])[0], r23.mn(in1.pins['S'])[0]]
+      rintn0 = dsn.route(grid=r23, mn=_mn)
+      
       # VSS
-      rvss0 = dsn.route(grid=r12, mn=[r12.mn(in0.pins['RAIL'])[0], r12.mn(in0.pins['RAIL'])[1]], netname= "VSS")
-      print(rvss0)
+      rvss0 = dsn.route(grid=r12, mn=[r12.mn(in0.pins['RAIL'])[0], r12.mn(in1.pins['RAIL'])[1]])
+      
       # VDD
-      rvdd0 = dsn.route(grid=r12, mn=[r12.mn(ip0.pins['RAIL'])[0], r12.mn(ip0.pins['RAIL'])[1]], netname= "VDD")
-      print(rvdd0)
+      rvdd0 = dsn.route(grid=r12, mn=[r12.mn(ip0.pins['RAIL'])[0], r12.mn(ip1.pins['RAIL'])[1]])
+      
       # 6. Create pins.
-      pin0 = dsn.pin(name='I', grid=r23, mn=r23.mn.bbox(rin0[2]))
-      if celltype == 'inv':
+      pin0 = dsn.pin(name='I', grid=r23, mn=r23.mn.bbox(rin0))
+      pen0 = dsn.pin(name='EN', grid=r23, mn=r23.mn.bbox(ren0))
+      penb0 = dsn.pin(name='ENB', grid=r23, mn=r23.mn.bbox(renb0))
+      if celltype == 'tinv':
          pout0 = dsn.pin(name='O', grid=r23, mn=r23.mn.bbox(rout0))
       pvss0 = dsn.pin(name='VSS', grid=r12, mn=r12.mn.bbox(rvss0))
       pvdd0 = dsn.pin(name='VDD', grid=r12, mn=r12.mn.bbox(rvdd0))
       
       # 7. Export to physical database.
       print("Export design")
-      print("")
       
       # Uncomment for BAG export
       laygo2.interface.magic.export(lib, filename=ref_dir_MAG_exported +libname+'_'+cellname+'.tcl', cellname=None, libpath=ref_dir_template+'magic_layout', scale=1, reset_library=False, tech_library='sky130A')
+      
       # 8. Export to a template database file.
       nat_temp = dsn.export_to_template()
       laygo2.interface.yaml.export_template(nat_temp, filename=ref_dir_template+libname+'_templates.yaml', mode='append')
