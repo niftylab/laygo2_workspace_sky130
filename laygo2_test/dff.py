@@ -55,10 +55,10 @@ for nf in nf_list:
 
 # 3. Create istances.
    print("Create instances")
-   inv0 = tlib['inv_'+str(nf)+'x'].generate(name='inv0')
-   inv1 = tlib['inv_'+str(nf)+'x'].generate(name='inv1')
-   inv2 = tlib['inv_'+str(nf)+'x'].generate(name='inv2')
-   inv3 = tlib['inv_'+str(nf)+'x'].generate(name='inv3') 
+   inv0 = tlib['inv_'+str(nf)+'x'].generate(name='inv0', netname = {'I':"input0"})
+   inv1 = tlib['inv_'+str(nf)+'x'].generate(name='inv1', netname = {'I':"input1"})
+   inv2 = tlib['inv_'+str(nf)+'x'].generate(name='inv2', netname = {'I':"input2"})
+   inv3 = tlib['inv_'+str(nf)+'x'].generate(name='inv3', netname = {'I':"input3"}) 
 
    tinv0 = tlib['tinv_'+str(nf)+'x'].generate(name='tinv0')
    tinv1 = tlib['tinv_'+str(nf)+'x'].generate(name='tinv1')

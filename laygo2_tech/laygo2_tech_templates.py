@@ -173,7 +173,7 @@ def _mos_route(devtype, params):
         rlayer=grids['routing_12_cmos']['horizontal']['layer'][_yidx]
         # metal routing
         color = grids['routing_12_cmos']['horizontal']['ycolor'][_yidx]
-        rg = laygo2.object.Rect(xy=rxy, layer=rlayer, name='R' + _name + '0', 
+        rg = laygo2.object.Rect(xy=rxy, layer=rlayer, name='R' + _name + '0', netname=_name,
                                 hextension=hextension, vextension=vextension, color=color)
         nelements['R' + _name + '0'] = rg
         # via
@@ -204,7 +204,7 @@ def _mos_route(devtype, params):
     rlayer=grids['routing_12_cmos']['horizontal']['layer'][0]
     color = grids['routing_12_cmos']['horizontal']['ycolor'][0]
     # metal routing
-    rg = laygo2.object.Rect(xy=rxy, layer=rlayer, name='RRAIL0', 
+    rg = laygo2.object.Rect(xy=rxy, layer=rlayer, name='RRAIL0', netname="RAIL",
                             hextension=hextension, vextension=vextension, color=color)
     nelements['RRAIL0'] = rg
     # Tie to rail
@@ -234,7 +234,7 @@ def _mos_route(devtype, params):
             rxy = [[_x, y0], [_x, y1]]
             rlayer=grids['routing_12_cmos']['vertical']['layer'][0]
             color = grids['routing_12_cmos']['vertical']['xcolor'][0] 
-            rg = laygo2.object.Rect(xy=rxy, layer=rlayer, name='RTIE' + str(i), 
+            rg = laygo2.object.Rect(xy=rxy, layer=rlayer, name='RTIE' + str(i), netname="RAIL",
                                     hextension=hextension, vextension=vextension, color=color)
             nelements['RTIE' + str(i)] = rg
             _x += params['unit_size_core'][0]
@@ -273,7 +273,7 @@ def _mos_route(devtype, params):
             rxy = [[_x, y0], [_x, y1]]
             rlayer=grids['routing_12_cmos']['vertical']['layer'][0]
             color = grids['routing_12_cmos']['vertical']['xcolor'][0]
-            rg = laygo2.object.Rect(xy=rxy, layer=rlayer, name='RTIEDMYL' + str(i), 
+            rg = laygo2.object.Rect(xy=rxy, layer=rlayer, name='RTIEDMYL' + str(i), netname="RAIL",
                                     hextension=hextension, vextension=vextension, color=color)
             nelements['RTIEDMYL' + str(i)] = rg
             _x = _x + round(params['unit_size_dmy'][0]/2)
@@ -312,7 +312,7 @@ def _mos_route(devtype, params):
             rxy = [[_x, y0], [_x, y1]]
             rlayer=grids['routing_12_cmos']['vertical']['layer'][0]
             color = grids['routing_12_cmos']['vertical']['xcolor'][0]
-            rg = laygo2.object.Rect(xy=rxy, layer=rlayer, name='RTIEDMYR' + str(i), hextension=hextension, vextension=vextension, color=color)
+            rg = laygo2.object.Rect(xy=rxy, layer=rlayer, name='RTIEDMYR' + str(i), netname="RAIL", hextension=hextension, vextension=vextension, color=color)
             nelements['RTIEDMYR' + str(i)] = rg
             _x = _x + round(params['unit_size_dmy'][0]/2)
         # via
@@ -362,7 +362,7 @@ def ntap_pins_func(params):
 
 # gener func for skywater pdk
 #====================================
-def mos_generate_func_skywater(devtype, name=None, shape=None, pitch=None, transform='R0', params=None):
+def mos_generate_func_skywater(devtype, name=None, shape=None, pitch=None, transform='R0', params=None, netname=None):
     """Generates an instance from the input parameters."""
     # Compute parameters
     params = _mos_update_params(params)
@@ -478,6 +478,46 @@ def mos_generate_func_skywater(devtype, name=None, shape=None, pitch=None, trans
     pins = mos_pins_func(devtype=devtype, params=params)
     #nelements.update(pins)  # Add physical pin structures to the virtual object.
 
+    #assign netname to pin of mosfet network
+    if type(netname) is dict:
+        if 'G' in netname: #'G' is in pins unconditionaly
+            nelements['RG0'].netname = netname['G']
+            pins['G'].netname = netname['G']
+        else:
+            nelements['RG0'].netname = name + '/' + pins['G'].netname
+            pins['G'].netname = name + '/' + pins['G'].netname
+
+        if 'RAIL' in netname: #'RAIL' is in pins unconditionaly
+            new_netname = netname['RAIL'] 
+        else:
+            new_netname = name + '/' + pins['RAIL'].netname
+        nelements['RRAIL0'].netname = new_netname
+        pins['RAIL'].netname = new_netname
+        idx = 0
+        while "RTIE"+str(idx) in nelements:
+            nelements["RTIE"+str(idx)].netname = new_netname
+            idx+=1
+        
+        if 'D' in pins:
+            if 'D' in netname:
+                new_netname = netname['D']
+            else:
+                new_netname = name + '/' + pins['D'].netname
+            nelements['RD0'].netname = new_netname
+            pins['D'].netname = new_netname
+
+        if 'S' in pins: # TIE -> D
+            if 'S' in netname:
+                new_netname = netname['S']
+            else:
+                new_netname = name + '/' + pins['S'].netname
+            nelements['RS0'].netname = new_netname
+            pins['S'].netname = new_netname
+
+    else:
+        for pinName in pins.keys():
+            pins[pinName].netname = name + '/' + pins[pinName].netname
+
     # Unit size
     inst_xy = mos_bbox_func(params=params)
     inst_unit_size = [inst_xy[1, 0] - inst_xy[0, 0], inst_xy[1, 1] - inst_xy[0, 1]]
@@ -495,20 +535,20 @@ def mos_generate_func_skywater(devtype, name=None, shape=None, pitch=None, trans
 
 # generate func for skywaterpdk 
 #=============================================================================
-def nmos_generate_func_skywater(name=None, shape=None, pitch=None, transform='R0', params=None):
-    return mos_generate_func_skywater(devtype='nmos', name=name, shape=shape, pitch=pitch, transform=transform, params=params)
+def nmos_generate_func_skywater(name=None, shape=None, pitch=None, transform='R0', params=None, netname=None):
+    return mos_generate_func_skywater(devtype='nmos', name=name, shape=shape, pitch=pitch, transform=transform, params=params, netname=netname)
 
 
-def pmos_generate_func_skywater(name=None, shape=None, pitch=None, transform='R0', params=None):
-    return mos_generate_func_skywater(devtype='pmos', name=name, shape=shape, pitch=pitch, transform=transform, params=params)
+def pmos_generate_func_skywater(name=None, shape=None, pitch=None, transform='R0', params=None, netname=None):
+    return mos_generate_func_skywater(devtype='pmos', name=name, shape=shape, pitch=pitch, transform=transform, params=params, netname=netname)
 
 
-def ptap_generate_func_skywater(name=None, shape=None, pitch=None, transform='R0', params=None):
-    return mos_generate_func_skywater(devtype='ptap', name=name, shape=shape, pitch=pitch, transform=transform, params=params)
+def ptap_generate_func_skywater(name=None, shape=None, pitch=None, transform='R0', params=None, netname=None):
+    return mos_generate_func_skywater(devtype='ptap', name=name, shape=shape, pitch=pitch, transform=transform, params=params, netname=netname)
 
 
-def ntap_generate_func_skywater(name=None, shape=None, pitch=None, transform='R0', params=None):
-    return mos_generate_func_skywater(devtype='ntap', name=name, shape=shape, pitch=pitch, transform=transform, params=params)
+def ntap_generate_func_skywater(name=None, shape=None, pitch=None, transform='R0', params=None, netname=None):
+    return mos_generate_func_skywater(devtype='ntap', name=name, shape=shape, pitch=pitch, transform=transform, params=params, netname=netname)
 #=============================================================================
 
 # Create template library
