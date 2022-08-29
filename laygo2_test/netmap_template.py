@@ -1,12 +1,8 @@
-class rowNode:
-    def __init__(self, row_num):
-        self.row_num = row_num
+class rcNode:
+    def __init__(self, rc_num):
+        self.rc_num = rc_num
         self.metal_list = list()
 
-class colNode:
-    def __init__(self, col_num):
-        self.col_num = col_num
-        self.metal_list = list()
 
 class metalNode:
     def __init__(self, mn, pin=None):
@@ -17,23 +13,52 @@ class metalNode:
         self.pin = pin
         self.visited = False
 
-class netMap_vert:
-    def __init__(self):
-        self.cols = list()
-    # TODO: make them become member functions
-    def search_col(self, col_num): #cols -> self.cols
+
+class netMap_basic:
+    def __init__(self, rc):
+        self.rc = rc
+
+    def search_rc(self, rc_num):
         start=0
-        end=len(self.cols)-1
+        end=len(self.rc)-1
         while start <= end:
             mid = (start+end)//2
-            if self.cols[mid].col_num == col_num:
+            if self.rc[mid].rc_num == rc_num:
                 return mid
-            elif self.cols[mid].col_num > col_num:
+            elif self.rc[mid].rc_num > rc_num:
                 end = mid-1
             else:
                 start = mid+1
         return None
     
+    def get_rc_index(self, new_rc_num):
+        start = 0
+        end = len(self.rc)-1
+        if len(self.rc) == 0:
+            return 0
+        
+        while start+1 < end:
+            mid = (start+end)//2
+            if self.rc[mid].rc_num > new_rc_num:
+                end = mid
+            elif self.rc[mid].rc_num < new_rc_num:
+                start = mid
+            else:
+                return mid
+            
+        if self.rc[start].rc_num > new_rc_num:
+            return start
+        elif self.rc[end].rc_num < new_rc_num:
+            return end+1
+        else:
+            return end
+
+
+class netMap_vert(netMap_basic):
+    def __init__(self):
+        self.cols = list()
+        self.rc = self.cols
+
     def search_metal_index(self, col_index, obj_y1): #col -> self.col 
         col = self.cols[col_index]
         start = 0
@@ -57,28 +82,6 @@ class netMap_vert:
             return end+1
         else:
             return end
-    
-    def get_col_index(self, new_col_num):
-        start = 0
-        end = len(self.cols)-1
-        if len(self.cols) == 0:
-            return 0
-        
-        while start+1 < end:
-            mid = (start+end)//2
-            if self.cols[mid].col_num > new_col_num:
-                end = mid
-            elif self.cols[mid].col_num < new_col_num:
-                start = mid
-            else:
-                return mid
-            
-        if self.cols[start].col_num > new_col_num:
-            return start
-        elif self.cols[end].col_num < new_col_num:
-            return end+1
-        else:
-            return end
 
     def insert_metal(self, mn, net_name=None):
         if mn[0][0] < mn[1][0]:
@@ -95,13 +98,12 @@ class netMap_vert:
             y1=mn[1][1]
             y2=mn[0][1]
 
-
         for i in range (x1, x2+1):
-            col_index = self.search_col(i)
+            col_index = self.search_rc(i)
             if col_index is None:
-                #self.cols에 colNode(i)를 순서에 맞춰 삽입
-                new_col_index = self.get_col_index(i)
-                self.cols.insert(new_col_index, colNode(i))
+                #self.cols에 rcNode(i)를 순서에 맞춰 삽입
+                new_col_index = self.get_rc_index(i)
+                self.cols.insert(new_col_index, rcNode(i))
                 new_node = metalNode([[i, y1], [i, y2]])
                 new_node.net_name.append(net_name)
                 new_node.metal_seg.append(new_node)
@@ -113,7 +115,6 @@ class netMap_vert:
                 new_node.metal_seg.append(new_node)
                 self.merge(new_node, col_index)
                 
-
     def merge(self, new_metal, col_index):
         new_metal_index = self.search_metal_index(col_index, new_metal.mn[0][1])
 
@@ -186,24 +187,11 @@ class netMap_vert:
         self.cols[col_index].metal_list.insert(new_metal_index, new_metal)
 
 
-class netMap_hor:
+class netMap_hor(netMap_basic):
     def __init__(self):
         self.rows = list()
-    
-    # TODO: make them become member functions
-    def search_row(self, row_num): #rows -> self.rows
-        start=0
-        end=len(self.rows)-1
-        while start <= end:
-            mid = (start+end)//2
-            if self.rows[mid].row_num == row_num:
-                return mid
-            elif self.rows[mid].row_num > row_num:
-                end = mid-1
-            else:
-                start = mid+1
-        return None
-    
+        self.rc = self.rows
+
     def search_metal_index(self, row_index, obj_x1): #row -> self.row
         row = self.rows[row_index]
         start = 0
@@ -228,28 +216,6 @@ class netMap_hor:
         else:
             return end
 
-    def get_row_index(self, new_row_num):
-        start = 0
-        end = len(self.rows)-1
-        if len(self.rows) == 0:
-            return 0
-        
-        while start+1 < end:
-            mid = (start+end)//2
-            if self.rows[mid].row_num > new_row_num:
-                end = mid
-            elif self.rows[mid].row_num < new_row_num:
-                start = mid
-            else:
-                return mid
-            
-        if self.rows[start].row_num > new_row_num:
-            return start
-        elif self.rows[end].row_num < new_row_num:
-            return end+1
-        else:
-            return end
-
     def insert_metal(self, mn, net_name=None):
         if mn[0][0] < mn[1][0]:
             x1=mn[0][0]
@@ -266,11 +232,11 @@ class netMap_hor:
             y2=mn[0][1]
 
         for i in range (y1, y2+1):
-            row_index = self.search_row(i)
+            row_index = self.search_rc(i)
             if row_index is None:
                 #self.rows에 rowNode(i)를 순서에 맞춰 삽입
-                new_row_index = self.get_row_index(i)
-                self.rows.insert(new_row_index, rowNode(i))
+                new_row_index = self.get_rc_index(i)
+                self.rows.insert(new_row_index, rcNode(i))
                 new_node = metalNode([[x1, i], [x2, i]])
                 new_node.net_name.append(net_name)
                 new_node.metal_seg.append(new_node)
