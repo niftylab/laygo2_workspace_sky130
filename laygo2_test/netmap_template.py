@@ -1,39 +1,61 @@
-class rowNode:
-    def __init__(self, row_num):
-        self.row_num = row_num
-        self.metal_list = list()
-
-class colNode:
-    def __init__(self, col_num):
-        self.col_num = col_num
+class rcNode:
+    def __init__(self, rc_num):
+        self.rc_num = rc_num
         self.metal_list = list()
 
 class metalNode:
-    def __init__(self, mn, pin=None):
+    def __init__(self, mn):
         self.mn = mn
-        self.net_name = list()
+        self.net_name = set()
         self.metal_seg = list()
         self.via_list = list()
-        self.pin = pin
         self.visited = False
 
-class netMap_vert:
-    def __init__(self):
-        self.cols = list()
-    # TODO: make them become member functions
-    def search_col(self, col_num): #cols -> self.cols
+class netMap_basic:
+    def __init__(self, rc):
+        self.rc = rc
+
+    def search_rc(self, rc_num):
         start=0
-        end=len(self.cols)-1
+        end=len(self.rc)-1
         while start <= end:
             mid = (start+end)//2
-            if self.cols[mid].col_num == col_num:
+            if self.rc[mid].rc_num == rc_num:
                 return mid
-            elif self.cols[mid].col_num > col_num:
+            elif self.rc[mid].rc_num > rc_num:
                 end = mid-1
             else:
                 start = mid+1
         return None
     
+    def get_rc_index(self, new_rc_num):
+        start = 0
+        end = len(self.rc)-1
+        if len(self.rc) == 0:
+            return 0
+        
+        while start+1 < end:
+            mid = (start+end)//2
+            if self.rc[mid].rc_num > new_rc_num:
+                end = mid
+            elif self.rc[mid].rc_num < new_rc_num:
+                start = mid
+            else:
+                return mid
+            
+        if self.rc[start].rc_num > new_rc_num:
+            return start
+        elif self.rc[end].rc_num < new_rc_num:
+            return end+1
+        else:
+            return end
+
+
+class netMap_vert(netMap_basic):
+    def __init__(self):
+        self.cols = list()
+        self.rc = self.cols
+
     def search_metal_index(self, col_index, obj_y1): #col -> self.col 
         col = self.cols[col_index]
         start = 0
@@ -44,9 +66,9 @@ class netMap_vert:
         
         while start+1 < end:
             mid = (start+end)//2
-            if col.metal_list[mid].mn[0][0] > obj_y1:       
+            if col.metal_list[mid].mn[0][1] > obj_y1:       
                 end = mid
-            elif col.metal_list[mid].mn[0][0] < obj_y1:      
+            elif col.metal_list[mid].mn[0][1] < obj_y1:      
                 start = mid
             else:
                 return mid+1
@@ -54,28 +76,6 @@ class netMap_vert:
         if col.metal_list[start].mn[0][1] > obj_y1:       
             return start
         elif col.metal_list[end].mn[0][1] <= obj_y1:      
-            return end+1
-        else:
-            return end
-    
-    def get_col_index(self, new_col_num):
-        start = 0
-        end = len(self.cols)-1
-        if len(self.cols) == 0:
-            return 0
-        
-        while start+1 < end:
-            mid = (start+end)//2
-            if self.cols[mid].col_num > new_col_num:
-                end = mid
-            elif self.cols[mid].col_num < new_col_num:
-                start = mid
-            else:
-                return mid
-            
-        if self.cols[start].col_num > new_col_num:
-            return start
-        elif self.cols[end].col_num < new_col_num:
             return end+1
         else:
             return end
@@ -97,19 +97,19 @@ class netMap_vert:
 
 
         for i in range (x1, x2+1):
-            col_index = self.search_col(i)
+            col_index = self.search_rc(i)
             if col_index is None:
-                #self.cols에 colNode(i)를 순서에 맞춰 삽입
-                new_col_index = self.get_col_index(i)
-                self.cols.insert(new_col_index, colNode(i))
+                #self.cols에 rcNode(i)를 순서에 맞춰 삽입
+                new_col_index = self.get_rc_index(i)
+                self.cols.insert(new_col_index, rcNode(i))
                 new_node = metalNode([[i, y1], [i, y2]])
-                new_node.net_name.append(net_name)
+                new_node.net_name.add(net_name)
                 new_node.metal_seg.append(new_node)
                 self.cols[new_col_index].metal_list.append(new_node)
                 
             else:
                 new_node = metalNode([[i, y1], [i, y2]])
-                new_node.net_name.append(net_name)
+                new_node.net_name.add(net_name)
                 new_node.metal_seg.append(new_node)
                 self.merge(new_node, col_index)
                 
@@ -122,21 +122,9 @@ class netMap_vert:
             if new_metal.mn[0][1]<=self.cols[col_index].metal_list[new_metal_index-1].mn[0][1]:      #앞 metal이랑 겹치면
                 metal_prev = self.cols[col_index].metal_list.pop(new_metal_index-1)
                 new_name = new_metal.net_name
-                for name in metal_prev.net_name:
-                    if name not in new_name:
-                        new_name.append(name)
+                new_name = new_name|metal_prev.net_name
 
                 new_metal.metal_seg.extend(metal_prev.metal_seg)
-
-                if new_metal.pin is None and metal_prev.pin is not None:
-                    new_pin = metal_prev.pin
-                elif new_metal.pin is not None and metal_prev.pin is None:
-                    new_pin = new_metal.pin
-                elif new_metal.pin is not None and metal_prev.pin is not None:
-                    print("Warning: pin name overlap")
-                    new_pin = new_metal.pin+'/'+metal_prev.pin
-                else:
-                    new_pin = None
                 
                 #metal_prev 끝이 newMetal 끝보다 앞에 있을 경우
                 if metal_prev.mn[1][1] < new_metal.mn[1][1]:               
@@ -144,8 +132,8 @@ class netMap_vert:
                 else:
                     xy2 = metal_prev.mn[1]
                 
-                new_metal_tmp = metalNode([metal_prev.mn[0], xy2], pin=new_pin)
-                new_metal_tmp.net_name.extend(new_name)
+                new_metal_tmp = metalNode([metal_prev.mn[0], xy2])
+                new_metal_tmp.net_name = new_name.copy()
                 new_metal_tmp.metal_seg.extend(new_metal.metal_seg)
                 new_metal = new_metal_tmp
                 new_metal_index=new_metal_index-1
@@ -157,53 +145,28 @@ class netMap_vert:
             
             metal_next = self.cols[col_index].metal_list.pop(new_metal_index)
             new_name = new_metal.net_name
-            for name in metal_next.net_name:
-                if name not in new_name:
-                    new_name.append(name)
+            new_name = new_name|metal_prev.net_name
 
             new_metal.metal_seg.extend(metal_next.metal_seg)
 
-            if new_metal.pin is None and metal_next.pin is not None:
-                new_pin = metal_next.pin
-            elif new_metal.pin is not None and metal_next.pin is None:
-                new_pin = new_metal.pin
-            elif new_metal.pin is not None and metal_next.pin is not None:
-                print("Warning: pin name overlap")
-                new_pin = new_metal.pin+'/'+metal_next.pin
-            else:
-                new_pin = None
-
             if new_metal.mn[1][1] < metal_next.mn[1][1]:          #newMetal 끝이 뒤 metal 끝보다 앞에 있을 경우
-                new_metal_tmp = metalNode([new_metal.mn[0], metal_next.mn[1]], pin=new_pin)
-                new_metal_tmp.net_name.extend(new_name)
+                new_metal_tmp = metalNode([new_metal.mn[0], metal_next.mn[1]])
+                new_metal_tmp.net_name = new_name.copy()
                 new_metal_tmp.metal_seg.extend(new_metal.metal_seg)
             else:
-                new_metal_tmp = metalNode([new_metal.mn[0], new_metal.mn[1]], pin=new_pin)
-                new_metal_tmp.net_name.extend(new_name)
+                new_metal_tmp = metalNode([new_metal.mn[0], new_metal.mn[1]])
+                new_metal_tmp.net_name = new_name.copy()
                 new_metal_tmp.metal_seg.extend(new_metal.metal_seg)
             new_metal = new_metal_tmp
         
         self.cols[col_index].metal_list.insert(new_metal_index, new_metal)
 
 
-class netMap_hor:
+class netMap_hor(netMap_basic):
     def __init__(self):
         self.rows = list()
-    
-    # TODO: make them become member functions
-    def search_row(self, row_num): #rows -> self.rows
-        start=0
-        end=len(self.rows)-1
-        while start <= end:
-            mid = (start+end)//2
-            if self.rows[mid].row_num == row_num:
-                return mid
-            elif self.rows[mid].row_num > row_num:
-                end = mid-1
-            else:
-                start = mid+1
-        return None
-    
+        self.rc = self.rows
+
     def search_metal_index(self, row_index, obj_x1): #row -> self.row
         row = self.rows[row_index]
         start = 0
@@ -228,28 +191,6 @@ class netMap_hor:
         else:
             return end
 
-    def get_row_index(self, new_row_num):
-        start = 0
-        end = len(self.rows)-1
-        if len(self.rows) == 0:
-            return 0
-        
-        while start+1 < end:
-            mid = (start+end)//2
-            if self.rows[mid].row_num > new_row_num:
-                end = mid
-            elif self.rows[mid].row_num < new_row_num:
-                start = mid
-            else:
-                return mid
-            
-        if self.rows[start].row_num > new_row_num:
-            return start
-        elif self.rows[end].row_num < new_row_num:
-            return end+1
-        else:
-            return end
-
     def insert_metal(self, mn, net_name=None):
         if mn[0][0] < mn[1][0]:
             x1=mn[0][0]
@@ -266,18 +207,18 @@ class netMap_hor:
             y2=mn[0][1]
 
         for i in range (y1, y2+1):
-            row_index = self.search_row(i)
+            row_index = self.search_rc(i)
             if row_index is None:
                 #self.rows에 rowNode(i)를 순서에 맞춰 삽입
-                new_row_index = self.get_row_index(i)
-                self.rows.insert(new_row_index, rowNode(i))
+                new_row_index = self.get_rc_index(i)
+                self.rows.insert(new_row_index, rcNode(i))
                 new_node = metalNode([[x1, i], [x2, i]])
-                new_node.net_name.append(net_name)
+                new_node.net_name.add(net_name)
                 new_node.metal_seg.append(new_node)
                 self.rows[new_row_index].metal_list.append(new_node)
             else:
                 new_node = metalNode([[x1, i], [x2, i]])
-                new_node.net_name.append(net_name)
+                new_node.net_name.add(net_name)
                 new_node.metal_seg.append(new_node)
                 self.merge(new_node, row_index)
 
@@ -289,21 +230,9 @@ class netMap_hor:
             if new_metal.mn[0][0]<=self.rows[row_index].metal_list[new_metal_index-1].mn[1][0]:      #앞 metal이랑 겹치면
                 metal_prev = self.rows[row_index].metal_list.pop(new_metal_index-1)
                 new_name = new_metal.net_name
-                for name in metal_prev.net_name:
-                    if name not in new_name:
-                        new_name.append(name)
+                new_name = new_name|metal_prev.net_name
 
                 new_metal.metal_seg.extend(metal_prev.metal_seg)
-
-                if new_metal.pin is None and metal_prev.pin is not None:
-                    new_pin = metal_prev.pin
-                elif new_metal.pin is not None and metal_prev.pin is None:
-                    new_pin = new_metal.pin
-                elif new_metal.pin is not None and metal_prev.pin is not None:
-                    print("Warning: pin name overlap")
-                    new_pin = new_metal.pin+'/'+metal_prev.pin
-                else:
-                    new_pin = None
                 
                 #metal_prev 끝이 newMetal 끝보다 앞에 있을 경우
                 if metal_prev.mn[1][0] < new_metal.mn[1][0]:               
@@ -311,8 +240,8 @@ class netMap_hor:
                 else:
                     xy2 = metal_prev.mn[1]
                 
-                new_metal_tmp = metalNode([metal_prev.mn[0], xy2], pin=new_pin)
-                new_metal_tmp.net_name.extend(new_name)
+                new_metal_tmp = metalNode([metal_prev.mn[0], xy2])
+                new_metal_tmp.net_name = new_name.copy()
                 new_metal_tmp.metal_seg.extend(new_metal.metal_seg)
                 new_metal = new_metal_tmp
                 new_metal_index=new_metal_index-1
@@ -324,29 +253,17 @@ class netMap_hor:
             
             metal_next = self.rows[row_index].metal_list.pop(new_metal_index)
             new_name = new_metal.net_name
-            for name in metal_next.net_name:
-                if name not in new_name:
-                    new_name.append(name)
+            new_name = new_name|metal_prev.net_name
 
             new_metal.metal_seg.extend(metal_next.metal_seg)
 
-            if new_metal.pin is None and metal_next.pin is not None:
-                new_pin = metal_next.pin
-            elif new_metal.pin is not None and metal_next.pin is None:
-                new_pin = new_metal.pin
-            elif new_metal.pin is not None and metal_next.pin is not None:
-                print("Warning: pin name overlap")
-                new_pin = new_metal.pin+'/'+metal_next.pin
-            else:
-                new_pin = None
-
             if new_metal.mn[1][0] < metal_next.mn[1][0]:          #newMetal 끝이 뒤 metal 끝보다 앞에 있을 경우
-                new_metal_tmp = metalNode([new_metal.mn[0], metal_next.mn[1]], pin=new_pin)
-                new_metal_tmp.net_name.extend(new_name)
+                new_metal_tmp = metalNode([new_metal.mn[0], metal_next.mn[1]])
+                new_metal_tmp.net_name.extend = new_name.copy()
                 new_metal_tmp.metal_seg.extend(new_metal.metal_seg)
             else:
-                new_metal_tmp = metalNode([new_metal.mn[0], new_metal.mn[1]], pin=new_pin)
-                new_metal_tmp.net_name.extend(new_name)
+                new_metal_tmp = metalNode([new_metal.mn[0], new_metal.mn[1]])
+                new_metal_tmp.net_name = new_name.copy()
                 new_metal_tmp.metal_seg.extend(new_metal.metal_seg)
             new_metal = new_metal_tmp
         
