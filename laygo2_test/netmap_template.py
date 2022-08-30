@@ -66,9 +66,9 @@ class netMap_vert(netMap_basic):
         
         while start+1 < end:
             mid = (start+end)//2
-            if col.metal_list[mid].mn[0][0] > obj_y1:       
+            if col.metal_list[mid].mn[0][1] > obj_y1:       
                 end = mid
-            elif col.metal_list[mid].mn[0][0] < obj_y1:      
+            elif col.metal_list[mid].mn[0][1] < obj_y1:      
                 start = mid
             else:
                 return mid+1
