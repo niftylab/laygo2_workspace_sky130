@@ -788,12 +788,12 @@ templates:
           - - 96
             - 288 #220
       unit_size:
-      - 86
+      - 144
       - 504
       xy:
       - - 0
         - 0
-      - - 86
+      - - 144
         - 504
     ptap_fast_center_nf2_v2:
       pins:
@@ -803,37 +803,37 @@ templates:
           - pin
           netname: TAP0
           xy:
-          - - -10
-            - 216 #122
-          - - 10
-            - 288 #206
+          - - -15
+            - 144 #122
+          - - 15
+            - 252 #206
         TAP1:
           layer:
           - M1
           - pin
           netname: TAP1
           xy:
-          - - 33
-            - 216 #122
-          - - 53
-            - 288 #206
+          - - 57
+            - 144 #122
+          - - 87
+            - 252 #206
         TAP2:
           layer:
           - M1
           - pin
           netname: TAP2
           xy:
-          - - 76
-            - 216 #122
-          - - 96
-            - 288 #206
+          - - 129
+            - 144 #122
+          - - 159
+            - 252 #206
       unit_size:
-      - 86
+      - 144
       - 504
       xy:
       - - 0
         - 0
-      - - 86
+      - - 144
         - 504
     ntap_fast_boundary:
       pins: {}
