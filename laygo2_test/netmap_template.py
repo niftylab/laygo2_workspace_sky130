@@ -1,4 +1,5 @@
 from collections import deque
+from pickle import FALSE
 import laygo2
 import numpy as np
 import laygo2.util.transform as tf
@@ -315,7 +316,12 @@ class netMap:
     def insert_instance_blackbox(self, inst):
         pin_list = list()
         for pin in inst.pins.values():
-            self.layers[pin.layer[0]].insert_metal(self.grid.mn(pin.xy), net_name=pin.netname)
+            # _mn = [[-9999,-9999],[9999,9999]]
+            # _mn[0][0] = round(pin.xy[0][0]/72)
+            # _mn[0][1] = round(pin.xy[0][1]/72)
+            # _mn[1][0] = round(pin.xy[1][0]/72)
+            # _mn[1][1] = round(pin.xy[1][1]/72)
+            self.layers[pin.layer[0]].insert_metal(self.grid.mn(pin), net_name=pin.netname)
             pin_list.append(pin)
         return pin_list
 
@@ -335,11 +341,12 @@ class netMap:
         _layer_name = pin.layer[0]
         _layer = self.layers[_layer_name]
         # somehow grid.mn(pin.xy) dosen't work (it returns 'None' for numbers those are not multiple of 72)
-        _mn = [[-9999,-9999],[9999,9999]]
-        _mn[0][0] = round(pin.xy[0][0]/72)
-        _mn[0][1] = round(pin.xy[0][1]/72)
-        _mn[1][0] = round(pin.xy[1][0]/72)
-        _mn[1][1] = round(pin.xy[1][1]/72)
+        # _mn = [[-9999,-9999],[9999,9999]]
+        # _mn[0][0] = round(pin.xy[0][0]/72)
+        # _mn[0][1] = round(pin.xy[0][1]/72)
+        # _mn[1][0] = round(pin.xy[1][0]/72)
+        # _mn[1][1] = round(pin.xy[1][1]/72)
+        _mn = self.grid.mn(pin)
     #    print(_layer_name, _mn, pin.netname, pin.name)
         if _mn[0][0] > _mn[1][0]:
             _mn[0][0], _mn[1][0]=_mn[1][0], _mn[0][0]       
@@ -420,9 +427,18 @@ class netMap:
         layer1_metal.via_list.append([layer2_metal, layer2, via_mn])
         layer2_metal.via_list.append([layer1_metal, layer1, via_mn])
     
-    def net_traverse(self, pin, pin_net_name): # travel net graph in BFS order. Source node is pin
+    def net_traverse(self, pin, pin_net_name,pin_set): # travel net graph in BFS order. Source node is pin
         # if pin.visited == True: # pin nodes also could be visited by previous traverse
         #     return
+        if pin_net_name in pin_set:
+            if pin.visited == False:
+                print("open error: %s [(%d %d),(%d %d)] is not connected to same named net" %(pin_net_name,pin.mn[0][0],pin.mn[0][1],pin.mn[1][0],pin.mn[1][1]))
+            else:
+                pass
+            #    print("Warning: %s is repeated but connected to same named net"%(pin_net_name))
+            return
+        else:
+            pin_set.add(pin_net_name)
         queue = deque([pin])
         ref_net = set()
         ref_net.add(pin_net_name)
@@ -458,6 +474,7 @@ class netMap:
     def lvs_check(cls, dsn, grid, via_table, orient_first="vertical", layer_names=['M1','M2','M3','M4','M5']):
         nMap = cls(grid=grid, via_table=via_table, orient_first=orient_first, layer_names=layer_names)
         pin_list = list()
+        pin_set = set()
         via_list = list()
         for pin in dsn.pins.values():
             pin_list.append(pin)
@@ -475,5 +492,5 @@ class netMap:
         for pin in pin_list:
             nMap.insert_pin(pin)
         for pin, pin_node in nMap.pins:
-            print("pin name: %s, netname: %s, layer: %s, xy: [[%d %d][%d %d]]" % (pin.name, pin.netname,pin.layer[0],round(pin.xy[0][0]/72),round(pin.xy[0][1]/72),round(pin.xy[1][0]/72),round(pin.xy[1][1]/72)))
-            nMap.net_traverse(pin_node,pin.netname)
+            print("pin name: %s, netname: %s, layer: %s, xy: [[%d %d][%d %d]]" % (pin.name, pin.netname,pin.layer[0],nMap.grid.mn(pin)[0][0],nMap.grid.mn(pin)[0][1],nMap.grid.mn(pin)[1][0],nMap.grid.mn(pin)[1][1]))
+            nMap.net_traverse(pin_node,pin.netname,pin_set)

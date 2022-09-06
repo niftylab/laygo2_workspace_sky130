@@ -10,13 +10,13 @@ import pprint
 import laygo2
 import laygo2.interface
 import laygo2_tech as tech
-import netMap_hor as nMap
+import netmap_template as nMap
 # Parameter definitions #############
 # Variables
 cell_type = ['inv', 'inv_hs']
 #nf_list = [2, 4, 6, 8, 10, 12, 16, 24, 32, 36, 40, 50, 64, 72, 100]
 #nf_list = [2, 4, 6, 8, 10, 12, 16, 24, 32]
-nf_list = [2,4]
+nf_list = [2,4,6]
 # Templates
 tpmos_name = 'pmos_sky'
 tnmos_name = 'nmos_sky'
@@ -59,8 +59,8 @@ for celltype in cell_type:
       
       # 3. Create instances.
       print("Create instances")
-      in0 = tnmos.generate(name='MN0', params={'nf': nf, 'tie': 'S'})
-      ip0 = tpmos.generate(name='MP0', transform='MX', params={'nf': nf,'tie': 'S'})
+      in0 = tnmos.generate(name='MN0', params={'nf': nf, 'tie': 'S'},netname={'G':'I','D':'O','RAIL':'VDD'})
+      ip0 = tpmos.generate(name='MP0', transform='MX', params={'nf': nf,'tie': 'S'},netname={'D':'O','RAIL':'VDD'})
       
       # 4. Place instances.
       #   dsn.place(grid=pg, inst=[[in0], [ip0]], mn=[0,0])
@@ -87,9 +87,9 @@ for celltype in cell_type:
       elif celltype == 'inv_hs':
          for i in range(int(nf/2)):
             _mn = [r23.mn(in0.pins['D'])[0]+[2*i,0], r23.mn(ip0.pins['D'])[0]+[2*i,0]]
-            vout0, rout0, vout1 = dsn.route(grid=r23, mn=_mn, via_tag=[True, True], netname='O:')
+            vout0, rout0, vout1 = dsn.route(grid=r23, mn=_mn, via_tag=[True, True], netname='O')
 #            print("metal :", rout0)
-            pout0 = dsn.pin(name='O'+str(i), grid=r23, mn=r23.mn.bbox(rout0), netname='O:')
+            pout0 = dsn.pin(name='O'+str(i), grid=r23, mn=r23.mn.bbox(rout0), netname='O')
 #            print("pin :",pout0)
       # VSS
       rvss0 = dsn.route(grid=r12, mn=[r12.mn(in0.pins['RAIL'])[0], r12.mn(in0.pins['RAIL'])[1]], netname= "VSS")
@@ -115,11 +115,12 @@ for celltype in cell_type:
       laygo2.interface.yaml.export_template(nat_temp, filename=ref_dir_template+libname+'_templates.yaml', mode='append')
 """
 # Export to netlist
-map = nMap.netMap_hor()
-cn_list = lib.keys()
-cn_list = [cn_list] if isinstance(cn_list, str) else cn_list  # convert to a list for iteration.
-for cn in cn_list:
-      print('Export_to_NET: Cellname:' + cn)
+nMap.netMap.lvs_check(lib['inv_hs_6x'], r23_basic, {"via_M2_M3_0":('M2','M3'),"via_M3_M4_0":('M3','M4')})
+# map = nMap.netMap_hor()
+# cn_list = lib.keys()
+# cn_list = [cn_list] if isinstance(cn_list, str) else cn_list  # convert to a list for iteration.
+# for cn in cn_list:
+#       print('Export_to_NET: Cellname:' + cn)
    #     print(lib[cn].pins)
         # export objects
       # nodes = list()
@@ -131,12 +132,12 @@ for cn in cn_list:
 # for pin_name, pin in lib['inv_hs_4x'].pins.items():
 #    map.insertPin(r23_basic.bbox(pin),netName=pin.netname)
 
-for metal_name, metal in lib['inv_hs_4x'].rects.items():
-   print(r23_basic.bbox(metal))
-   map.insertPin(r23_basic.bbox(metal),netName=metal.netname)
+# for metal_name, metal in lib['inv_hs_4x'].rects.items():
+#    print(r23_basic.bbox(metal))
+#    map.insert_metal(r23_basic.bbox(metal),net_name=metal.netname)
 
-for row in map.rows:
-   print(row.rowNum)
-   for rect in row.metalList:
-      print(rect.netName,rect.xy1,rect.xy2, end=' ')
-   print()
+# for row in reversed(map.rows):
+#    print(row.rc_num)
+#    for rect in row.metal_list:
+#       print(rect.net_name,rect.mn[0],rect.mn[1], end=' ')
+#    print()
