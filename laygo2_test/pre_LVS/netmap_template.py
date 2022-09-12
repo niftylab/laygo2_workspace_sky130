@@ -17,6 +17,10 @@ class metalNode:
         self.metal_seg = list()
         self.via_list = list()
         self.visited = False
+class viaNode:
+    def __init__(self, layer_pair, mn):
+        self.mn = mn
+        self.layer_pair=layer_pair
 
 class netMap_basic:
     def __init__(self, rc):
@@ -117,22 +121,25 @@ class netMap_vert(netMap_basic):
                 return new_node
             else:
                 new_node = metalNode(self.layer, [[i, y1], [i, y2]])
+                new_node_seg = metalNode(self.layer, [[i, y1], [i, y2]])
                 new_node.net_name.add(net_name)
-                new_node.metal_seg.append(new_node)
+                new_node_seg.net_name.add(net_name)
+                new_node.metal_seg.append(new_node_seg)
                 return self.merge(new_node, col_index)
                 
 
     def merge(self, new_metal, col_index):
         new_metal_index = self.search_metal_index(col_index, new_metal.mn[0][1])
 
-        if new_metal_index > 0:         #row의 맨 앞이 아닌 곳에 새로운 metal을 삽입하는 경우
-            #먼저 바로 앞 metal과 겹치는지를 확인해 처리한다.=>겹치더라도 하나의 metal과만 겹침
-            if new_metal.mn[0][1]<=self.cols[col_index].metal_list[new_metal_index-1].mn[0][1]:      #앞 metal이랑 겹치면
+        if new_metal_index > 0:         #col의 맨 아래가 아닌 곳에 새로운 metal을 삽입하는 경우
+            #먼저 바로 아래 metal과 겹치는지를 확인해 처리한다.=>겹치더라도 하나의 metal과만 겹침
+            # if new_metal.mn[0][1]<=self.cols[col_index].metal_list[new_metal_index-1].mn[0][1]:      #앞 metal이랑 겹치면
+            if new_metal.mn[0][1]<=self.cols[col_index].metal_list[new_metal_index-1].mn[1][1]: #error fix: mn[0][1] -> mn[1][1]
                 metal_prev = self.cols[col_index].metal_list.pop(new_metal_index-1)
                 new_name = new_metal.net_name
                 new_name = new_name|metal_prev.net_name
                 
-                #metal_prev 끝이 newMetal 끝보다 앞에 있을 경우
+                #metal_prev 위쪽끝이 newMetal 위쪽끝보다 아래에 있을 경우
                 if metal_prev.mn[1][1] < new_metal.mn[1][1]:               
                     xy2 = new_metal.mn[1]
                 else:
@@ -276,6 +283,7 @@ class netMap:
         self.layers=dict()
         self.layers_orient=dict()
         self.pins=list()
+        self.vias=list()
         self._via_table=via_table
         self.grid=grid
         if orient_first=="vertical":
@@ -326,16 +334,19 @@ class netMap:
         return pin_list
 
     def insert_virtual_instance(self, vinst): 
+        via_list=list()
+        pin_list=list()
         for velem in vinst.native_elements.values():
             if velem.__class__ == laygo2.object.Rect: #insert metals of a virtual instance
                 _mn = self.translate_rect(velem, vinst)
                 self.layers[velem.layer[0]].insert_metal(_mn, net_name=velem.netname)
-            # vias of instance & virtual instance are not inserted
+            # vias of instance & virtual instance are not inserted -> changed. vias are inerted
+            elif self.is_via(velem):
+                via_list.append(viaNode(self._via_table[velem.cellname], self.grid.mn(velem.xy)))
         #TODO: implement insert instance code
-        pin_list=list()
         for vpin in vinst.pins.values():
             pin_list.append(vpin)
-        return pin_list
+        return pin_list, via_list
 
     def insert_pin(self, pin):
         _layer_name = pin.layer[0]
@@ -388,15 +399,15 @@ class netMap:
         else: 
             return False
 
-    def insert_via(self, inst):
-        if not self.is_via(inst):
-            print("error:"+inst+"is not_via")
+    def insert_via(self, via):
+        # if not self.is_via(inst):
+        #     print("error:"+inst+"is not_via")
         #via_mn, layer1(vertical), layer2(horizontal) mapping
-        via_mn = self.grid.mn(inst.xy)
-        if self.layers_orient[self._via_table[inst.cellname][0]] == "vertical":
-            layer1_name, layer2_name = self._via_table[inst.cellname]
+        via_mn = via.mn
+        if self.layers_orient[via.layer_pair[0]] == "vertical":
+            layer1_name, layer2_name = via.layer_pair
         else:
-            layer2_name, layer1_name = self._via_table[inst.cellname]
+            layer2_name, layer1_name = via.layer_pair
         layer1, layer2 = self.layers[layer1_name], self.layers[layer2_name]
         col_index = layer1.search_rc(via_mn[0])
         if col_index is None:
@@ -427,44 +438,64 @@ class netMap:
         layer1_metal.via_list.append([layer2_metal, layer2, via_mn])
         layer2_metal.via_list.append([layer1_metal, layer1, via_mn])
     
+    def check_node(self, ref_net_name, metal):
+        _netname = metal.net_name
+        if len(_netname) == 1 and ref_net_name not in _netname:
+            if _netname == {None}:
+                metal.net_name.remove(None)
+                metal.net_name.add(ref_net_name)
+            else:    
+                print(_netname,end='')
+                print(' is connected to',end=' ')
+                print(set([ref_net_name]))
+                print(metal.layer, metal.mn)
+        elif len(_netname) == 2:
+            if None in _netname and _netname - {None} == {ref_net_name}:
+                metal.net_name.remove(None)
+            else:
+                print(_netname,end='')
+                print(' are connected to',end=' ')
+                print(set([ref_net_name]))
+                print(metal.layer, metal.mn)
+        else:
+            pass
+
     def net_traverse(self, pin, pin_net_name,pin_set): # travel net graph in BFS order. Source node is pin
         # if pin.visited == True: # pin nodes also could be visited by previous traverse
         #     return
         if pin_net_name in pin_set:
             if pin.visited == False:
                 print("open error: %s [(%d %d),(%d %d)] is not connected to same named net" %(pin_net_name,pin.mn[0][0],pin.mn[0][1],pin.mn[1][0],pin.mn[1][1]))
+            #     pin.visited = True
             else:
-                pass
-            #    print("Warning: %s is repeated but connected to same named net"%(pin_net_name))
-            return
+            #     pass
+            # #    print("Warning: %s is repeated but connected to same named net"%(pin_net_name))
+                return
         else:
             pin_set.add(pin_net_name)
         queue = deque([pin])
-        ref_net = set()
-        ref_net.add(pin_net_name)
+        # ref_net = set()
+        # ref_net.add(pin_net_name)
         # set the pin node visited
         pin.visited = True
         # repeat until the queue is empty
         while queue:
             # pop v and check netname of v
             v = queue.popleft()
-            if len(v.net_name) > 1:
-                # print('{',end='')
-                # for name in v.net_name:
-                #     print(name,end=', ')
-                # print("\b\b",end='')
-                # print('}',end='')
-                print(v.net_name,end='')
-                print(' are connected to',end=' ')
-                print(pin_net_name)
-                print(v.layer, v.mn)
-            elif not v.net_name == ref_net:
-                print(v.net_name,end='')
-                print(" is connected to ",end='')
-                print(pin_net_name)
-                print(v.layer, v.mn)
-            else: 
-                pass
+            self.check_node(pin_net_name, v)
+            # if len(v.net_name) > 1:
+                
+            #     print(v.net_name,end='')
+            #     print(' are connected to',end=' ')
+            #     print(pin_net_name)
+            #     print(v.layer, v.mn)
+            # elif not v.net_name == ref_net:
+            #     print(v.net_name,end='')
+            #     print(" is connected to ",end='')
+            #     print(pin_net_name)
+            #     print(v.layer, v.mn)
+            # else: 
+            #     pass
             # insert nodes that connected to v and not visited 
             for node, layer, via_mn in v.via_list:
                 if not node.visited:
@@ -475,22 +506,31 @@ class netMap:
         nMap = cls(grid=grid, via_table=via_table, orient_first=orient_first, layer_names=layer_names)
         pin_list = list()
         pin_set = set()
-        via_list = list()
         for pin in dsn.pins.values():
             pin_list.append(pin)
         for vinst in dsn.virtual_instances.values():
-            pin_list.extend(nMap.insert_virtual_instance(vinst))
+            _pin_list, _via_list = nMap.insert_virtual_instance(vinst)
+            pin_list.extend(_pin_list)
+            nMap.vias.extend(_via_list)
         for inst in dsn.instances.values():
             if nMap.is_via(inst):
-                via_list.append(inst)
+                nMap.vias.append(viaNode(nMap._via_table[inst.cellname], nMap.grid.mn(inst.xy)))
             else:
                 pin_list.extend(nMap.insert_instance_blackbox(inst))
         for rect in dsn.rects.values():
             _metal = nMap.insert_metal(rect)
-        for via in via_list:
+        for via in nMap.vias:
             nMap.insert_via(via)
         for pin in pin_list:
             nMap.insert_pin(pin)
+        #lvs test by bfs
         for pin, pin_node in nMap.pins:
-            print("pin name: %s, netname: %s, layer: %s, xy: [[%d %d][%d %d]]" % (pin.name, pin.netname,pin.layer[0],nMap.grid.mn(pin)[0][0],nMap.grid.mn(pin)[0][1],nMap.grid.mn(pin)[1][0],nMap.grid.mn(pin)[1][1]))
+            print("pin name: %s, netname: %s, layer: %s, xy:[[%d %d][%d %d]], pin_node.xy:"\
+                % (pin.name, pin.netname,pin.layer[0],nMap.grid.mn(pin)[0][0],nMap.grid.mn(pin)[0][1],nMap.grid.mn(pin)[1][0],nMap.grid.mn(pin)[1][1]),end='')
+            print(pin_node.mn)
             nMap.net_traverse(pin_node,pin.netname,pin_set)
+        for layer in nMap.layers.values():
+            for mlist in layer.rc:
+                for metal in mlist.metal_list:
+                    if metal.visited is not True:
+                        print(metal.layer, metal.mn, metal.net_name)

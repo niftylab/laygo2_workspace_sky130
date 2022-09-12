@@ -180,7 +180,7 @@ adc_sar*
 laygo_working
 *.gds
 serdes_generated*
-
+laygo2_generators_private/
 # magic/netgen extraction file
 *.ext
 *.out

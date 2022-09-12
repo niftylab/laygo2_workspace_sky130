@@ -10,13 +10,11 @@ import pprint
 import laygo2
 import laygo2.interface
 import laygo2_tech as tech
-import netmap_template as nMap
 # Parameter definitions #############
 # Variables
 cell_type = ['inv', 'inv_hs']
 #nf_list = [2, 4, 6, 8, 10, 12, 16, 24, 32, 36, 40, 50, 64, 72, 100]
-#nf_list = [2, 4, 6, 8, 10, 12, 16, 24, 32]
-nf_list = [2,4,6]
+nf_list = [2, 4, 6, 8, 10, 12, 16, 24, 32]
 # Templates
 tpmos_name = 'pmos_sky'
 tnmos_name = 'nmos_sky'
@@ -28,8 +26,9 @@ r23_basic_name = 'routing_23_basic'
 # Design hierarchy
 libname = 'logic_generated'
 # cellname in for loop
-ref_dir_template = './'#'./laygo2_generators_private/magic/logic/'
-ref_dir_MAG_exported = './'#'./laygo2_generators_private/magic/logic/tcl/'
+ref_dir_template = './laygo2_test/logic/' #export this layout's information into the yaml in this dir 
+ref_dir_MAG_exported = './laygo2_test/logic/TCL/'
+yaml_import_path = './'
 # End of parameter definitions ######
 
 # Generation start ##################
@@ -103,41 +102,13 @@ for celltype in cell_type:
          pout0 = dsn.pin(name='O', grid=r23, mn=r23.mn.bbox(rout0), netname="O")
       pvss0 = dsn.pin(name='VSS', grid=r12, mn=r12.mn.bbox(rvss0), netname="VSS")
       pvdd0 = dsn.pin(name='VDD', grid=r12, mn=r12.mn.bbox(rvdd0), netname="VDD")
-   """   
+
       # 7. Export to physical database.
       print("Export design")
       print("")
       
       # Uncomment for BAG export
-      laygo2.interface.magic.export(lib, filename=ref_dir_MAG_exported +libname+'_'+cellname+'.tcl', cellname=None, libpath=ref_dir_template+'magic_layout', scale=1, reset_library=False, tech_library='sky130A')
+      laygo2.interface.magic.export(lib, filename=ref_dir_MAG_exported +libname+'_'+cellname+'.tcl', cellname=None, libpath='./magic_layout', scale=1, reset_library=False, tech_library='sky130A')
       # 8. Export to a template database file.
       nat_temp = dsn.export_to_template()
       laygo2.interface.yaml.export_template(nat_temp, filename=ref_dir_template+libname+'_templates.yaml', mode='append')
-"""
-# Export to netlist
-nMap.netMap.lvs_check(lib['inv_hs_6x'], r23_basic, {"via_M2_M3_0":('M2','M3'),"via_M3_M4_0":('M3','M4')})
-# map = nMap.netMap_hor()
-# cn_list = lib.keys()
-# cn_list = [cn_list] if isinstance(cn_list, str) else cn_list  # convert to a list for iteration.
-# for cn in cn_list:
-#       print('Export_to_NET: Cellname:' + cn)
-   #     print(lib[cn].pins)
-        # export objects
-      # nodes = list()
-      # for pin_name, pin in lib[cn].pins.items():
-      #    print(pg.bbox(pin))
-      #    nodes.append(nMap.metalNode(point1 = r23_basic.bbox(pin)[0],point2 = r23_basic.bbox(pin)[1],vias = None, netName = pin.netname, isPin = True))
-      # for metal in nodes:
-      #    print(metal.xy1, metal.xy2, metal.netName)
-# for pin_name, pin in lib['inv_hs_4x'].pins.items():
-#    map.insertPin(r23_basic.bbox(pin),netName=pin.netname)
-
-# for metal_name, metal in lib['inv_hs_4x'].rects.items():
-#    print(r23_basic.bbox(metal))
-#    map.insert_metal(r23_basic.bbox(metal),net_name=metal.netname)
-
-# for row in reversed(map.rows):
-#    print(row.rc_num)
-#    for rect in row.metal_list:
-#       print(rect.net_name,rect.mn[0],rect.mn[1], end=' ')
-#    print()

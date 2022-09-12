@@ -1,117 +1,114 @@
 magic
 tech sky130A
-magscale 1 2
-timestamp 1655971095
-<< checkpaint >>
-rect -1300 -1325 2164 3337
+timestamp 1662803510
 << metal1 >>
-rect 114 1708 174 2036
-rect 114 700 174 1316
-rect 114 -20 174 308
+rect 57 854 87 1018
+rect 57 350 87 658
+rect 57 -10 87 154
 << metal2 >>
-rect -40 1956 904 2076
-rect 268 1266 452 1326
-rect 124 978 452 1038
-rect 412 690 596 750
-rect -40 -60 904 60
+rect -20 978 452 1038
+rect 134 633 226 663
+rect 62 489 226 519
+rect 206 345 298 375
+rect -20 -30 452 30
 << metal3 >>
-rect 114 690 174 1326
-rect 258 690 318 1326
-rect 402 258 462 1758
-rect 546 690 606 1326
-use via_M2_M3_0  NoName_2 skywater130_microtemplates_dense
+rect 57 345 87 663
+rect 129 345 159 663
+rect 201 129 231 879
+rect 273 345 303 663
+use via_M2_M3_0  NoName_2 /WORK/hjpark/temp/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
 timestamp 1647525786
-transform 1 0 144 0 1 1008
-box -38 -38 38 38
-use via_M1_M2_0  NoName_4 skywater130_microtemplates_dense
+transform 1 0 72 0 1 504
+box -19 -19 19 19
+use via_M1_M2_0  NoName_4 /WORK/hjpark/temp/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
 timestamp 1647525606
-transform 1 0 144 0 1 1008
-box -32 -32 32 32
+transform 1 0 72 0 1 504
+box -16 -16 16 16
 use via_M2_M3_0  NoName_5
 timestamp 1647525786
-transform 1 0 432 0 1 288
-box -38 -38 38 38
+transform 1 0 216 0 1 144
+box -19 -19 19 19
 use via_M2_M3_0  NoName_7
 timestamp 1647525786
-transform 1 0 432 0 1 1728
-box -38 -38 38 38
+transform 1 0 216 0 1 864
+box -19 -19 19 19
 use via_M1_M2_0  NoName_8
 timestamp 1647525606
-transform 1 0 432 0 1 288
-box -32 -32 32 32
+transform 1 0 216 0 1 144
+box -16 -16 16 16
 use via_M1_M2_0  NoName_9
 timestamp 1647525606
-transform 1 0 432 0 1 1728
-box -32 -32 32 32
+transform 1 0 216 0 1 864
+box -16 -16 16 16
 use via_M2_M3_0  NoName_11
 timestamp 1647525786
-transform 1 0 576 0 1 720
-box -38 -38 38 38
+transform 1 0 288 0 1 360
+box -19 -19 19 19
 use via_M1_M2_0  NoName_12
 timestamp 1647525606
-transform 1 0 432 0 1 720
-box -32 -32 32 32
+transform 1 0 216 0 1 360
+box -16 -16 16 16
 use via_M2_M3_0  NoName_15
 timestamp 1647525786
-transform 1 0 288 0 1 1296
-box -38 -38 38 38
+transform 1 0 144 0 1 648
+box -19 -19 19 19
 use via_M1_M2_0  NoName_16
 timestamp 1647525606
-transform 1 0 432 0 1 1296
-box -32 -32 32 32
-use via_M1_M2_1  NoName_20 skywater130_microtemplates_dense
+transform 1 0 216 0 1 648
+box -16 -16 16 16
+use via_M1_M2_1  NoName_20 /WORK/hjpark/temp/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
 timestamp 1647525606
-transform 1 0 144 0 1 0
-box -32 -32 32 32
+transform 1 0 72 0 1 0
+box -16 -16 16 16
 use via_M1_M2_1  NoName_23
 timestamp 1647525606
-transform 1 0 144 0 1 2016
-box -32 -32 32 32
-use nmos13_fast_boundary  nbndl skywater130_microtemplates_dense
+transform 1 0 72 0 1 1008
+box -16 -16 16 16
+use nmos13_fast_boundary  nbndl /WORK/hjpark/temp/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
 timestamp 1655824928
 transform 1 0 0 0 1 0
-box 0 0 144 1008
+box 0 0 72 504
 use nmos13_fast_boundary  nbndr
 timestamp 1655824928
-transform 1 0 432 0 1 0
-box 0 0 144 1008
-use nmos13_fast_space  nspace0 skywater130_microtemplates_dense
+transform 1 0 216 0 1 0
+box 0 0 72 504
+use nmos13_fast_space  nspace0 /WORK/hjpark/temp/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
 timestamp 1655825004
-transform 1 0 576 0 1 0
-box 0 0 144 1008
+transform 1 0 288 0 1 0
+box 0 0 72 504
 use nmos13_fast_space  nspace1
 timestamp 1655825004
-transform 1 0 720 0 1 0
-box 0 0 144 1008
-use nmos13_fast_center_2stack  nstack skywater130_microtemplates_dense
+transform 1 0 360 0 1 0
+box 0 0 72 504
+use nmos13_fast_center_2stack  nstack /WORK/hjpark/temp/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
 timestamp 1654176054
-transform 1 0 144 0 1 0
-box -92 288 380 756
-use pmos13_fast_boundary  pbndl skywater130_microtemplates_dense
+transform 1 0 72 0 1 0
+box -46 144 190 378
+use pmos13_fast_boundary  pbndl /WORK/hjpark/temp/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
 timestamp 1655825313
-transform 1 0 0 0 -1 2016
-box 0 0 144 1008
+transform 1 0 0 0 -1 1008
+box 0 0 72 504
 use pmos13_fast_boundary  pbndr
 timestamp 1655825313
-transform 1 0 432 0 -1 2016
-box 0 0 144 1008
-use pmos13_fast_space  pspace0 skywater130_microtemplates_dense
+transform 1 0 216 0 -1 1008
+box 0 0 72 504
+use pmos13_fast_space  pspace0 /WORK/hjpark/temp/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
 timestamp 1655825368
-transform 1 0 576 0 -1 2016
-box 0 0 144 1008
+transform 1 0 288 0 -1 1008
+box 0 0 72 504
 use pmos13_fast_space  pspace1
 timestamp 1655825368
-transform 1 0 720 0 -1 2016
-box 0 0 144 1008
-use pmos13_fast_center_2stack  pstack skywater130_microtemplates_dense
+transform 1 0 360 0 -1 1008
+box 0 0 72 504
+use pmos13_fast_center_2stack  pstack /WORK/hjpark/temp/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
 timestamp 1654176175
-transform 1 0 144 0 -1 2016
-box -92 132 380 756
+transform 1 0 72 0 -1 1008
+box -46 66 190 378
 << labels >>
-flabel metal3 144 1008 144 1008 0 FreeSans 480 90 0 0 I
-flabel metal3 432 1008 432 1008 0 FreeSans 480 90 0 0 O
-flabel metal3 576 1008 576 1008 0 FreeSans 480 90 0 0 EN
-flabel metal3 288 1008 288 1008 0 FreeSans 480 90 0 0 ENB
-flabel metal2 432 0 432 0 0 FreeSans 960 0 0 0 VSS
-flabel metal2 432 2016 432 2016 0 FreeSans 960 0 0 0 VDD
+flabel metal3 72 504 72 504 0 FreeSans 240 90 0 0 I
+flabel metal3 216 504 216 504 0 FreeSans 240 90 0 0 O
+flabel metal3 288 504 288 504 0 FreeSans 240 90 0 0 EN
+flabel metal3 144 504 144 504 0 FreeSans 240 90 0 0 ENB
+flabel metal2 216 0 216 0 0 FreeSans 480 0 0 0 VSS
+flabel metal2 216 1008 216 1008 0 FreeSans 480 0 0 0 VDD
 << end >>

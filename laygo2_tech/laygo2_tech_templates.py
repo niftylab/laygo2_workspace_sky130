@@ -373,9 +373,9 @@ def mos_generate_func_skywater(devtype, name=None, shape=None, pitch=None, trans
     # Left global boundary
     if params['gbndl']:
         if devtype == 'nmos':
-            cellname = 'nmos4_fast_left'
+            cellname = 'nmos13_fast_left'
         elif devtype == 'pmos':
-            cellname = 'pmos4_fast_left'
+            cellname = 'pmos13_fast_left'
         elif devtype == 'ptap':
             cellname = 'ptap_fast_left'
         elif devtype == 'ntap':
@@ -401,9 +401,9 @@ def mos_generate_func_skywater(devtype, name=None, shape=None, pitch=None, trans
     # Left dummy
     if params['nfdmyl'] > 0:
         if devtype == 'nmos':
-            cellname = 'nmos4_fast_dmy_nf2'
+            cellname = 'nmos13_fast_dmy_nf2'
         elif devtype == 'pmos':
-            cellname = 'pmos4_fast_dmy_nf2'
+            cellname = 'pmos13_fast_dmy_nf2'
         elif devtype == 'ptap':
             cellname = 'ptap_fast_center_nf2_v2'
         elif devtype == 'ntap':
@@ -431,9 +431,9 @@ def mos_generate_func_skywater(devtype, name=None, shape=None, pitch=None, trans
     # Right dummy
     if params['nfdmyr'] > 0:
         if devtype == 'nmos':
-            cellname = 'nmos4_fast_dmy_nf2'
+            cellname = 'nmos13_fast_dmy_nf2'
         elif devtype == 'pmos':
-            cellname = 'pmos4_fast_dmy_nf2'
+            cellname = 'pmos13_fast_dmy_nf2'
         elif devtype == 'ptap':
             cellname = 'ptap_fast_center_nf2_v2'
         elif devtype == 'ntap':
@@ -460,9 +460,9 @@ def mos_generate_func_skywater(devtype, name=None, shape=None, pitch=None, trans
     # Right global boundary
     if params['gbndr']:
         if devtype == 'nmos':
-            cellname = 'nmos4_fast_right'
+            cellname = 'nmos13_fast_right'
         elif devtype == 'pmos':
-            cellname = 'pmos4_fast_right'
+            cellname = 'pmos13_fast_right'
         elif devtype == 'ptap':
             cellname = 'ptap_fast_right'
         elif devtype == 'ntap':

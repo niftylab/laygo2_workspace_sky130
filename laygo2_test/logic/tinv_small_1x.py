@@ -25,10 +25,11 @@ r12_name = 'routing_12_cmos'
 r23_name = 'routing_23_cmos'
 r34_name = 'routing_34_basic'
 # Design hierarchy
-libname = 'logic_train'
+libname = 'logic_generated'
 cellname = cell_type+'_'+str(nf)+'x'
-ref_dir_template = './'#laygo2_generators_private/magic/logic/'
-ref_dir_MAG_exported = './'#laygo2_generators_private/magic/logic/tcl/'
+ref_dir_template = './laygo2_test/logic/' #export this layout's information into the yaml in this dir 
+ref_dir_MAG_exported = './laygo2_test/logic/TCL/'
+yaml_import_path = './'
 # End of parameter definitions ######
 
 # Generation start ##################
@@ -82,9 +83,9 @@ _mn = [r12.mn(nstack.pins['G0'])[0], r12.mn(pstack.pins['G0'])[0]]
 rin0 = dsn.route(grid=r23, mn=_mn)
 _mn = [r12.mn(nstack.pins['G0'])[0], r12.mn(pstack.pins['G0'])[0]]
 dsn.route(grid=r12, mn=_mn)
-_mn = [np.mean(r23.mn.bbox(rin0), axis=0, dtype=np.int), np.mean(r23.mn.bbox(rin0), axis=0, dtype=np.int)+[2,0]]
+_mn = [np.mean(r23.mn.bbox(rin0), axis=0, dtype=int), np.mean(r23.mn.bbox(rin0), axis=0, dtype=int)+[2,0]]
 dsn.route(grid=r23, mn=_mn, via_tag=[True, False])
-dsn.via(grid=r12, mn=np.mean(r23.mn.bbox(rin0), axis=0, dtype=np.int))
+dsn.via(grid=r12, mn=np.mean(r23.mn.bbox(rin0), axis=0, dtype=int))
 
 # OUT
 _mn = [r23.mn(nstack.pins['D0'])[0], r23.mn(pstack.pins['D0'])[1]]
@@ -146,7 +147,7 @@ pvdd0 = dsn.pin(name='VDD', grid=r12, mn=r12.bbox(rvdd0))
 print("Export design")
 
 # Uncomment for BAG export
-laygo2.interface.magic.export(lib, filename=ref_dir_MAG_exported +libname+'_'+cellname+'.tcl', cellname=None, libpath='/WORK/magic_layout', scale=1, reset_library=False, tech_library='sky130A')
+laygo2.interface.magic.export(lib, filename=ref_dir_MAG_exported +libname+'_'+cellname+'.tcl', cellname=None, libpath='./magic_layout', scale=1, reset_library=False, tech_library='sky130A')
 
 # 8. Export to a template database file.
 nat_temp = dsn.export_to_template()

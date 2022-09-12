@@ -89,8 +89,8 @@ for nf in nf_list:
    mn_list.append(r34.mn(tinv1.pins['EN'])[0])
    mn_list.append(r34.mn(tinv_small0.pins['EN'])[0])
    mn_list.append(r34.mn(tinv_small1.pins['ENB'])[0])
-   dsn.route_via_track(grid=r34, mn=mn_list, track=_track,netname='Net2')
-   
+   #dsn.route_via_track(grid=r34, mn=mn_list, track=_track,netname='Net2')
+   dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
    # 2nd M4
    _track[1] += 1
    mn_list=[]
@@ -151,4 +151,11 @@ for nf in nf_list:
    # # 8. Export to a template database file.
    # nat_temp = dsn.export_to_template()
    # laygo2.interface.yaml.export_template(nat_temp, filename=ref_dir_template+libname+'_templates.yaml', mode='append')
-nMap.netMap.lvs_check(lib['dff_4x'], r34, {"via_M2_M3_0":('M2','M3'),"via_M3_M4_0":('M3','M4')})
+via_table = dict()
+via_table["via_M1_M2_0"] = ('M1','M2')
+via_table["via_M1_M2_1"] = ('M1','M2')
+via_table["via_M2_M3_0"] = ('M2','M3')
+via_table["via_M2_M3_1"] = ('M2','M3')
+via_table["via_M3_M4_0"] = ('M3','M4')
+via_table["via_M4_M5_0"] = ('M4','M5')
+nMap.netMap.lvs_check(lib['dff_4x'], r34, via_table)
