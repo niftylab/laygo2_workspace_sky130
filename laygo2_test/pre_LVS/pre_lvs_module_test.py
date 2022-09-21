@@ -465,7 +465,8 @@ class netMap:
         #     return
         if pin_net_name in pin_set:
             if pin.visited == False:
-                print("open error: %s [(%d %d),(%d %d)] is not connected to same named net" %(pin_net_name,pin.mn[0][0],pin.mn[0][1],pin.mn[1][0],pin.mn[1][1]))
+                #print("open error: %s [(%d %d),(%d %d)] is not connected to same named net" %(pin_net_name,pin.mn[0][0],pin.mn[0][1],pin.mn[1][0],pin.mn[1][1]))
+                pass
             #     pin.visited = True
             else:
             #     pass
@@ -534,7 +535,7 @@ class netMap:
             for mlist in layer.rc:
                 for metal in mlist.metal_list:
                     if metal.visited is not True:
-                        print(metal.layer, metal.mn, metal.net_name)
+                        #print(metal.layer, metal.mn, metal.net_name)
                         pass
         end = time.time()
         print(f"{end - start:.5f} sec")
