@@ -124,6 +124,52 @@ grids:
           - via_M1_M2_0
           - via_M1_M2_0
           - via_M1_M2_0
+    routing_23_basic:
+      horizontal:
+        elements:
+        - 0
+        extension:
+        - 15
+        extension0:
+        - 15
+        layer:
+        - - M2
+          - drawing
+        pin_layer:
+        - - M2
+          - pin
+        scope:
+        - 0
+        - 72
+        width:
+        - 30
+        ycolor:
+        - not MPT
+      primary_grid: horizontal
+      type: routing
+      vertical:
+        elements:
+        - 0
+        extension:
+        - 15
+        extension0:
+        - 30
+        layer:
+        - - M3
+          - drawing
+        pin_layer:
+        - - M3
+          - pin
+        scope:
+        - 0
+        - 72
+        width:
+        - 30
+        xcolor:
+        - not MPT
+      via:
+        map:
+        - - via_M2_M3_0
     routing_23_cmos:
       horizontal:
         elements:
