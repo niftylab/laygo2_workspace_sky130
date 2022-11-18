@@ -23,6 +23,7 @@ with open(spec, 'r') as stream:
 bit = specdict['bit']
 row = specdict['row']
 col = math.ceil(bit/row)
+rename = specdict['scan_data_out_rename']
 if rename == None:
    rename = []
    for i in range(bit):
