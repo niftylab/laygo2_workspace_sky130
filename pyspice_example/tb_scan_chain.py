@@ -57,19 +57,19 @@ circuit.V('reset_val', 'reset_val', circuit.gnd, 1.8)
 circuit.PulseVoltageSource('ser', 'shift_in', circuit.gnd,
                            initial_value=0@u_V, pulsed_value=1.8@u_V,
                            rise_time=0.01@u_ns, fall_time=0.01@u_ns,
-                           pulse_width=1@u_ns, period=2@u_ns, delay_time=0@u_ns)
+                           pulse_width=2@u_ns, period=4@u_ns, delay_time=0@u_ns)
 circuit.PulseVoltageSource('clk', 'clk', circuit.gnd,
                            initial_value=0@u_V, pulsed_value=1.8@u_V,
                            rise_time=0.01@u_ns, fall_time=0.01@u_ns,
-                           pulse_width=0.5@u_ns, period=1@u_ns, delay_time=0.5@u_ns)
+                           pulse_width=1@u_ns, period=2@u_ns, delay_time=1@u_ns)
 circuit.PulseVoltageSource('en', 'enable', circuit.gnd,
                            initial_value=0@u_V, pulsed_value=1.8@u_V,
                            rise_time=0.01@u_ns, fall_time=0.01@u_ns,
-                           pulse_width=13@u_ns, period=16@u_ns, delay_time=0@u_ns)
+                           pulse_width=20@u_ns, period=22@u_ns, delay_time=0@u_ns)
 print(circuit)
 print('simulation start')
 simulator = circuit.simulator()
-analysis = simulator.transient(step_time=100@u_ps, end_time=16@u_ns)
+analysis = simulator.transient(step_time=100@u_ps, end_time=22@u_ns)
 print('done')
 subplotNum = int(bit/2)+ + bit%2
 rows = int(subplotNum/2)+1
