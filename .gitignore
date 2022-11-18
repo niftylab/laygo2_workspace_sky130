@@ -175,10 +175,12 @@ calibreview.setup
 
 # laygo files
 adc_sar*
-*logic_templates*
-*logic_generated*
 laygo_working
 *.gds
+*.tcl
+!TCL_scripts/*.tcl
+*.yaml
+!laygo2_tech/*.yaml
 serdes_generated*
 
 # magic setupfile_personal
@@ -188,3 +190,6 @@ serdes_generated*
 # magic/netgen extraction file
 *.ext
 *.out
+*.spice
+# save .spice file in lvs_example
+!lvs_example/*.spice

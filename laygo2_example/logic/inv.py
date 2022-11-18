@@ -15,8 +15,8 @@ import laygo2_tech as tech
 # Variables
 cell_type = ['inv', 'inv_hs']
 #nf_list = [2, 4, 6, 8, 10, 12, 16, 24, 32, 36, 40, 50, 64, 72, 100]
-#nf_list = [2, 4, 6, 8, 10, 12, 16, 24, 32]
-nf_list = [2,4]
+nf_list = [2, 4, 6, 8, 10, 12, 16, 24, 32]
+#nf_list = [2,4]
 # Templates
 tpmos_name = 'pmos_sky'
 tnmos_name = 'nmos_sky'
@@ -27,8 +27,8 @@ r23_name = 'routing_23_cmos'
 # Design hierarchy
 libname = 'logic_generated'
 # cellname in for loop
-ref_dir_template = './'#'./laygo2_generators_private/magic/logic/'
-ref_dir_MAG_exported = './'#'./laygo2_generators_private/magic/logic/tcl/'
+ref_dir_template = './' #export this layout's information into the yaml in this dir 
+ref_dir_MAG_exported = './laygo2_example/logic/TCL/'
 # End of parameter definitions ######
 
 # Generation start ##################

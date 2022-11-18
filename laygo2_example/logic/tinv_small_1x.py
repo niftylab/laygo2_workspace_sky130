@@ -27,8 +27,8 @@ r34_name = 'routing_34_basic'
 # Design hierarchy
 libname = 'logic_generated'
 cellname = cell_type+'_'+str(nf)+'x'
-ref_dir_template = './'#laygo2_generators_private/magic/logic/'
-ref_dir_MAG_exported = './'#laygo2_generators_private/magic/logic/tcl/'
+ref_dir_template = './laygo2_example/logic/' #export this layout's information into the yaml in this dir 
+ref_dir_MAG_exported = './laygo2_example/logic/TCL/'
 # End of parameter definitions ######
 
 # Generation start ##################

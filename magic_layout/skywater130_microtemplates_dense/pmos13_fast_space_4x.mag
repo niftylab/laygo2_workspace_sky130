@@ -1,0 +1,8 @@
+magic
+tech sky130A
+timestamp 1655825501
+<< nwell >>
+rect 0 66 288 342
+<< labels >>
+flabel space 0 0 288 504 0 FreeSans 160 90 0 0 PMOS_SPACE_4X
+<< end >>

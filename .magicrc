@@ -1,2 +1,0 @@
-source $CAD_ROOT/magic/sys/sky130A.magicrc
-source .magicrc_personal
