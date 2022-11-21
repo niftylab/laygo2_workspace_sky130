@@ -1,15 +1,15 @@
 ** sch_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_example/scan_template/scan_chain_10bit.sch
 
-XSC0 clk0 clk1 data_in[9] data[9] parallel_en gate gate_val[9] ser0 scan_load ser1 VDD 0 scan_cell
-XSC1 clk1 clk2 data_in[8] data[8] parallel_en gate gate_val[8] ser1 scan_load ser2 VDD 0 scan_cell
-XSC2 clk2 clk3 data_in[7] data[7] parallel_en gate gate_val[7] ser2 scan_load ser3 VDD 0 scan_cell
-XSC3 clk3 clk4 data_in[6] data[6] parallel_en gate gate_val[6] ser3 scan_load ser4 VDD 0 scan_cell
-XSC4 clk4 clk5 data_in[5] data[5] parallel_en gate gate_val[5] ser4 scan_load ser5 VDD 0 scan_cell
-XSC5 clk5 clk6 data_in[4] data[4] parallel_en gate gate_val[4] ser5 scan_load ser6 VDD 0 scan_cell
-XSC6 clk6 clk7 data_in[3] data[3] parallel_en gate gate_val[3] ser6 scan_load ser7 VDD 0 scan_cell
-XSC7 clk7 clk8 data_in[2] data[2] parallel_en gate gate_val[2] ser7 scan_load ser8 VDD 0 scan_cell
-XSC8 clk8 clk9 data_in[1] data[1] parallel_en gate gate_val[1] ser8 scan_load ser9 VDD 0 scan_cell
-XSC9 clk9 clk10 data_in[0] data[0] parallel_en gate gate_val[0] ser9 scan_load ser10 VDD 0 scan_cell
+XSC0 clk9 clk10 data_in[0] data[0] parallel_en gate gate_val[0] ser0 scan_load ser1 VDD 0 scan_cell
+XSC1 clk8 clk9 data_in[1] data[1] parallel_en gate gate_val[1] ser1 scan_load ser2 VDD 0 scan_cell
+XSC2 clk7 clk8 data_in[2] data[2] parallel_en gate gate_val[2] ser2 scan_load ser3 VDD 0 scan_cell
+XSC3 clk6 clk7 data_in[3] data[3] parallel_en gate gate_val[3] ser3 scan_load ser4 VDD 0 scan_cell
+XSC4 clk5 clk6 data_in[4] data[4] parallel_en gate gate_val[4] ser4 scan_load ser5 VDD 0 scan_cell
+XSC5 clk4 clk5 data_in[5] data[5] parallel_en gate gate_val[5] ser5 scan_load ser6 VDD 0 scan_cell
+XSC6 clk3 clk4 data_in[6] data[6] parallel_en gate gate_val[6] ser6 scan_load ser7 VDD 0 scan_cell
+XSC7 clk2 clk3 data_in[7] data[7] parallel_en gate gate_val[7] ser7 scan_load ser8 VDD 0 scan_cell
+XSC8 clk1 clk2 data_in[8] data[8] parallel_en gate gate_val[8] ser8 scan_load ser9 VDD 0 scan_cell
+XSC9 clk0 clk1 data_in[9] data[9] parallel_en gate gate_val[9] ser9 scan_load ser10 VDD 0 scan_cell
 
 .subckt scan_cell SCAN_CLK SCAN_CLK_OUT SCAN_DATA_IN SCAN_DATA_OUT SCAN_EN SCAN_GATE
 + SCAN_GATE_VALUE SCAN_IN SCAN_LOAD SCAN_OUT VDD VSS

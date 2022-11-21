@@ -134,10 +134,6 @@ for row_idx in range(full_row):
    _mn = [r23.mn(I0[row_idx,0].pins['SCAN_EN'  ])[0], r23.mn(I0[row_idx,-1].pins['SCAN_EN'  ])[0]]
    dsn.route(grid=r23, mn=_mn)
 
-   # _mn = [r45.mn(I0[row_idx,0].pins['SCAN_GATE'])[1], r45.mn(I0[row_idx,-1].pins['SCAN_GATE'])[1]]
-   # dsn.route(grid=r45, mn=_mn)
-   # for col_idx in range(col):
-   #    dsn.via(grid=r45, mn=r45.mn(I0[row_idx,col_idx].pins['SCAN_GATE'])[1])
    _mn = []
    for col_idx in range(col):
       _mn.append( r34.mn(I0[row_idx,col_idx].pins['SCAN_GATE'])[1] )
@@ -153,10 +149,6 @@ for row_idx in range(full_row, row):
    _mn = [r23.mn(I0[row_idx,0].pins['SCAN_EN'  ])[0], r23.mn(I0[row_idx,cells_in_rest_col-1].pins['SCAN_EN'  ])[0]]
    dsn.route(grid=r23, mn=_mn)
 
-   # _mn = [r45.mn(I0[row_idx,0].pins['SCAN_GATE'])[1], r45.mn(I0[row_idx,cells_in_rest_col-1].pins['SCAN_GATE'])[1]]
-   # dsn.route(grid=r45, mn=_mn)
-   # for col_idx in range(cells_in_rest_col):
-   #    dsn.via(grid=r45, mn=r45.mn(I0[row_idx,col_idx].pins['SCAN_GATE'])[1])
    _mn = []
    for col_idx in range(col):
       _mn.append( r34.mn(I0[row_idx,col_idx].pins['SCAN_GATE'])[1] )
@@ -173,9 +165,6 @@ for row_idx in range(row-1): # iteration : row-1 times
    dsn.route_via_track(grid=r34, mn=_mn, track=_track)
 
    _mn = [r34.mn(I0[row_idx,0].pins['SCAN_GATE'])[1], r34.mn(I0[row_idx+1,0].pins['SCAN_GATE'])[1]]
-#  _scan_gate_ptr = [ r34.mn(I0[row_idx,0].pins['SCAN_DATA_OUT'])[0,0]+10, r34.mn(I0[row_idx,0].pins['SCAN_GATE'])[1,1] ]
-#  _mn = [_scan_gate_ptr, r34.mn(I0[row_idx+1,0].pins['SCAN_GATE'])[1]]
-#  _track = [None, np.mean(r34.mn(I0[0,0].pins['SCAN_GATE'])[:,1], dtype=int)+5]
    _track = [None, r34.mn(I0[row_idx,0].pins['SCAN_GATE'])[1,1]+4]
    dsn.route_via_track(grid=r34, mn=_mn, track=_track)
 
@@ -230,39 +219,28 @@ else:
 # full rows
 for row_idx in range(full_row):
    for col_idx in range(col-1):
-      _start = r34.mn(I0[row_idx,col_idx].pins['SCAN_IN'])[1]
-      _end = r34.mn(I0[row_idx, col_idx+1].pins['SCAN_OUT'])[0]
-      p1 = _start + [0,6]
-      p2 = p1 + [16,0]
-      p3 = [p2[0],_end[1]]
-      _mn = [_start,p1,p2,p3,_end]
-      SCAN_OUT_chain = dsn.route(grid=r34, mn=_mn, via_tag=[False,True,True,True,True])
-      # dsn.via(grid=r34, mn=_mn[0])
-      # dsn.via(grid=r34, mn=_mn[1])
+      _mn = [r34.mn(I0[row_idx,col_idx].pins['SCAN_OUT'])[1], r34.mn(I0[row_idx, col_idx+1].pins['SCAN_IN'])[0]]
+      _track = [r34.mn(I0[row_idx,col_idx].pins['SCAN_OUT'])[1,0]-6, None]
+      SCAN_OUT_chain = dsn.route_via_track(grid=r34, mn=_mn, track=_track)      
+      dsn.via(grid=r34, mn=_mn[0])
+      dsn.via(grid=r34, mn=_mn[1])
 
 # unfilled rows
 for row_idx in range(full_row, row):
    for col_idx in range(col-2): # reversed index & one time less iteration
-      _start = r34.mn(I0[row_idx,col_idx].pins['SCAN_IN'])[1]
-      _end = r34.mn(I0[row_idx, col_idx+1].pins['SCAN_OUT'])[0]
-      p1 = _start + [0,6]
-      p2 = p1 + [16,0]
-      p3 = [p2[0],_end[1]]
-      _mn = [_start,p1,p2,p3,_end]
-      SCAN_OUT_chain = dsn.route(grid=r34, mn=_mn, via_tag=[False,True,True,True,True])
-      # _mn = [r34.mn(I0[row_idx, col_idx].pins['SCAN_OUT'])[1], r34.mn(I0[row_idx, col_idx+1].pins['SCAN_IN'])[0]]
-      # _track = [r34.mn(I0[row_idx, col_idx].pins['SCAN_OUT'])[1,0]-2, None]
-      # SCAN_OUT_chain = dsn.route_via_track(grid=r34, mn=_mn, track=_track)
-      # dsn.via(grid=r34, mn=_mn[0])
-      # dsn.via(grid=r34, mn=_mn[1])
+      _mn = [r34.mn(I0[row_idx, col_idx].pins['SCAN_OUT'])[1], r34.mn(I0[row_idx, col_idx+1].pins['SCAN_IN'])[0]]
+      _track = [r34.mn(I0[row_idx, col_idx].pins['SCAN_OUT'])[1,0]-6, None]
+      SCAN_OUT_chain = dsn.route_via_track(grid=r34, mn=_mn, track=_track)
+      dsn.via(grid=r34, mn=_mn[0])
+      dsn.via(grid=r34, mn=_mn[1])
 
 
 # row to row connection
 iter_total = row-1
 if row * col == bit:
    for i in range(full_row-1): # one time less iteration
-      _mn = [r34.mn(cell_list[col-1 + col*i].pins['SCAN_IN'])[0], r34.mn(cell_list[col*(1+i)].pins['SCAN_OUT'])[1]]
-      _track = [r34.mn(cell_list[col * (i+1)].pins['SCAN_CLK_OUT'])[1,0]-3, None]
+      _mn = [r34.mn(cell_list[col-1 + col*i].pins['SCAN_OUT'])[0], r34.mn(cell_list[col + col*i].pins['SCAN_IN'])[0]]
+      _track = [r34.mn(cell_list[col + col*i].pins['SCAN_IN'])[1,0]-2, None]
       dsn.route_via_track(grid=r34, mn=_mn, track=_track)
       dsn.via(grid=r34, mn=_mn[0])
       dsn.via(grid=r34, mn=_mn[1])
@@ -270,18 +248,16 @@ if row * col == bit:
 else:
 #    # full rows
    for i in range(full_row):
-      _mn = [r34.mn(cell_list[col-1 + col*i].pins['SCAN_IN'])[0], r34.mn(cell_list[col*(1+i)].pins['SCAN_OUT'])[1]]
-      _track = [r34.mn(cell_list[col * (i+1)].pins['SCAN_CLK_OUT'])[1,0]-3, None]
+      _mn = [r34.mn(cell_list[col-1 + col*i].pins['SCAN_OUT'])[0], r34.mn(cell_list[col + col*i].pins['SCAN_IN'])[0]]
+      _track = [r34.mn(cell_list[col + col*i].pins['SCAN_IN'])[1,0]-2, None]
       dsn.route_via_track(grid=r34, mn=_mn, track=_track)
       dsn.via(grid=r34, mn=_mn[0])
       dsn.via(grid=r34, mn=_mn[1])
 
 #    # unfilled rows
    for i in range(iter_total - full_row):
-#       _mn = [r34.mn(cell_list[col-2 + full_row*col + (col-1)*i].pins['SCAN_OUT'])[0], r34.mn(cell_list[col-1 + full_row*col + (col-1)*i].pins['SCAN_IN'])[1]]
-#       _track = [r34.mn(cell_list[col-1 + full_row*col + (col-1)*i].pins['SCAN_IN'])[1,0]-2, None]
-      _mn = [r34.mn(cell_list[col-2 + full_row*col + (col-1)*i].pins['SCAN_IN'])[0], r34.mn(cell_list[col-1 + full_row*col + (col-1)*i].pins['SCAN_OUT'])[1]]
-      _track = [r34.mn(cell_list[col-1 + full_row*col + (col-1)*i].pins['SCAN_CLK_OUT'])[1,0]-3, None]
+      _mn = [r34.mn(cell_list[col-2 + full_row*col + (col-1)*i].pins['SCAN_OUT'])[0], r34.mn(cell_list[col-1 + full_row*col + (col-1)*i].pins['SCAN_IN'])[0]]
+      _track = [r34.mn(cell_list[col-1 + full_row*col + (col-1)*i].pins['SCAN_IN'])[1,0]-2, None]
       dsn.route_via_track(grid=r34, mn=_mn, track=_track)
       dsn.via(grid=r34, mn=_mn[0])
       dsn.via(grid=r34, mn=_mn[1])
@@ -291,15 +267,6 @@ else:
 idx=0
 for row_idx in range(full_row):
    for col_idx in range(col):
-      # end_pt_x = r45.mn(I0[row_idx, col_idx].pins['SCAN_DATA_OUT'])[0,0]+(2+col_idx)
-      # end_pt_y = r45.mn.top_right(I0[row_idx,-1])[1]
-      # end_pt = np.asarray([end_pt_x, end_pt_y])
-      # _mn = np.asarray([r45.mn(I0[row_idx, col_idx].pins['SCAN_DATA_OUT'])[1]+[2+col_idx,0], end_pt])
-      # vertical = dsn.route(grid=r45, mn=_mn, via_tag=[True, False])
-      # _mn = [r34.mn(I0[row_idx, col_idx].pins['SCAN_DATA_OUT'])[1], r34.mn(vertical[0])[0]]
-      # dsn.route(grid=r34, mn=_mn, via_tag=[True, False]) 
-      # dsn.pin(name=rename[idx], grid=r45, mn=[end_pt-[0,3], end_pt]) # pin position to the tail of M5
-
       end_pt = r34.mn.top_right(I0[row_idx,col-1])+[(col+1)*2+col_idx, 0]
       _mn = [ r34.mn(I0[row_idx,col_idx].pins['SCAN_DATA_OUT'])[0], end_pt ]
       _track = [None, r34.mn(I0[row_idx,col_idx].pins['SCAN_DATA_OUT'])[0,1]-2]
@@ -310,15 +277,6 @@ for row_idx in range(full_row):
 # unfilled rows
 for row_idx in range(full_row, row):
    for col_idx in range(col-1):
-      # end_pt_x = r45.mn(I0[row_idx, col_idx].pins['SCAN_DATA_OUT'])[0,0]+(2+col_idx)
-      # end_pt_y = r45.mn.top_right(I0[row_idx,-1])[1]
-      # end_pt = np.asarray([end_pt_x, end_pt_y])
-      # _mn = np.asarray([r45.mn(I0[row_idx, col_idx].pins['SCAN_DATA_OUT'])[1]+[2+col_idx,0], end_pt])
-      # vertical = dsn.route(grid=r45, mn=_mn, via_tag=[True, False])
-      # _mn = np.asarray([r34.mn(I0[row_idx, col_idx].pins['SCAN_DATA_OUT'])[1], r34.mn(vertical[0])[0]])
-      # dsn.route(grid=r34, mn=_mn, via_tag=[True, False]) 
-      # dsn.pin(name=rename[idx], grid=r45, mn=[end_pt-[0,3], end_pt]) # pin position to the tail of M5
-
       end_pt = r34.mn.top_right(I0[row_idx,col-1])+[(col+1)*2+col_idx, 0]
       _mn = [ r34.mn(I0[row_idx,col_idx].pins['SCAN_DATA_OUT'])[0], r34.mn.top_right(I0[row_idx,col-1])+[(col+1)*2+col_idx, 0] ]
       _track = [None, r34.mn(I0[row_idx,col_idx].pins['SCAN_DATA_OUT'])[0,1]-2]
@@ -331,15 +289,6 @@ for row_idx in range(full_row, row):
 idx=0
 for row_idx in range(full_row):
    for col_idx in range(col):
-      # end_pt_x = r45.mn(I0[row_idx, col_idx].pins['SCAN_DATA_IN'])[0,0]+(2+col_idx)
-      # end_pt_y = r45.mn.top_right(I0[row_idx,-1])[1]
-      # end_pt = np.asarray([end_pt_x, end_pt_y])
-      # _mn = np.asarray([r45.mn(I0[row_idx, col_idx].pins['SCAN_DATA_IN'])[1]+[2+col_idx,0], end_pt])
-      # vertical = dsn.route(grid=r45, mn=_mn, via_tag=[True, False])
-      # _mn = np.asarray([r34.mn(I0[row_idx, col_idx].pins['SCAN_DATA_IN'])[1], r34.mn(vertical[0])[0]])
-      # dsn.route(grid=r34, mn=_mn, via_tag=[True, False])
-      # dsn.pin(name='SCAN_DATA_IN<'+str(idx)+'>', grid=r45, mn=[end_pt-[0,3], end_pt]) # pin position to the tail of M5
-
       end_pt = r34.mn.top_right(I0[row_idx,col-1])+[col_idx, 0]
       _mn = [ r34.mn(I0[row_idx,col_idx].pins['SCAN_DATA_IN'])[1], end_pt ]
       _track = [None, r34.mn(I0[row_idx,col_idx].pins['SCAN_DATA_IN'])[1,1]+3]
@@ -350,15 +299,6 @@ for row_idx in range(full_row):
 # unfilled rows
 for row_idx in range(full_row, row):
    for col_idx in range(col-1):
-      # end_pt_x = r45.mn(I0[row_idx, col_idx].pins['SCAN_DATA_IN'])[0,0]+(2+col_idx)
-      # end_pt_y = r45.mn.top_right(I0[row_idx,-1])[1]
-      # end_pt = np.asarray([end_pt_x, end_pt_y])
-      # _mn = np.asarray([r45.mn(I0[row_idx, col_idx].pins['SCAN_DATA_IN'])[1]+[2+col_idx,0], end_pt])
-      # vertical = dsn.route(grid=r45, mn=_mn, via_tag=[True, False])
-      # _mn = np.asarray([r34.mn(I0[row_idx, col_idx].pins['SCAN_DATA_IN'])[1], r34.mn(vertical[0])[0]])
-      # dsn.route(grid=r34, mn=_mn, via_tag=[True, False]) 
-      # dsn.pin(name='SCAN_DATA_IN<'+str(idx)+'>', grid=r45, mn=[end_pt-[0,3], end_pt]) # pin position to the tail of M5
-
       end_pt = r34.mn.top_right(I0[row_idx,col-1])+[col_idx, 0]
       _mn = [ r34.mn(I0[row_idx,col_idx].pins['SCAN_DATA_IN'])[1], end_pt ]
       _track = [None, r34.mn(I0[row_idx,col_idx].pins['SCAN_DATA_IN'])[1,1]+3]
@@ -371,19 +311,6 @@ for row_idx in range(full_row, row):
 idx=0
 for row_idx in range(full_row):
    for col_idx in range(col):
-      # end_pt_x = r45.mn(I0[row_idx, col_idx].pins['SCAN_GATE_VALUE'])[0,0]+(-2-col_idx)
-      # end_pt_y = r45.mn.top_right(I0[row_idx,-1])[1]
-      # end_pt = np.asarray([end_pt_x, end_pt_y])
-      # _mn = np.asarray([np.mean(r45.mn(I0[row_idx, col_idx].pins['SCAN_GATE_VALUE']), axis=0, dtype=int)+[0,3]+[-2-col_idx,0], end_pt]) 
-      # vertical = dsn.route(grid=r45, mn=_mn, via_tag=[True, False])
-
-      # _mn = r34.mn(I0[row_idx, col_idx].pins['SCAN_GATE_VALUE'])
-      # _mn[1,1] = np.mean(_mn[:,1], dtype=int)+3 
-      # dsn.route(grid=r34, mn=_mn, via_tag=[False, True])
-
-      # _mn = [r34.mn(vertical[0])[0], _mn[1]]
-      # dsn.route(grid=r34, mn=_mn)
-
       end_pt = r34.mn.top_right(I0[row_idx,col-1])+[(col+1)+col_idx, 0]
       _mn = [ r34.mn(I0[row_idx,col_idx].pins['SCAN_GATE_VALUE'])[0], r34.mn.top_right(I0[row_idx,col-1])+[(col+1)+col_idx, 0] ]
       _track = [None, r34.mn(I0[row_idx,col_idx].pins['SCAN_GATE_VALUE'])[0,1]-2]
@@ -414,15 +341,12 @@ for col_idx in range(col-1):
 
 ### GENERATE PINS
 # SCAN_CLK_OUT, SCAN_IN, SCAN_EN
-pin_list = ['SCAN_CLK_OUT', 'SCAN_OUT', 'SCAN_EN']
+pin_list = ['SCAN_CLK_OUT', 'SCAN_EN']
 for pin in pin_list:
    _mn = np.asarray([r34.mn.bbox(cell_eff[0].pins[pin])[0], r34.mn.bbox(cell_eff[0].pins[pin])[0]+[3,0]])
    _mn[:,1] = np.mean(r34.mn.bbox(cell_eff[0].pins[pin])[:,1], dtype=int)
    rpin0 = dsn.route(grid=r34, mn=_mn, via_tag=[True, False])
-   # _mn = np.asarray([r45.mn.bbox(rpin0[1])[1], r45.mn.bottom_left(cell_eff[0])])
-   # _mn[:,0] = r45.mn.bbox(rpin0[1])[1,0]
-   # rpin1 = dsn.route(grid=r45, mn=_mn, via_tag=[True, False])
-   # dsn.pin(name=pin, grid=r45, mn=[r45.mn.bbox(rpin1[1])[0], r45.mn.bbox(rpin1[1])[0]+[0,3]])
+
    _mn = np.asarray([r34.mn.bbox(rpin0[1])[1], r34.mn.bottom_left(cell_eff[0])])
    _mn[:,0] = r34.mn.bbox(rpin0[1])[1,0]
    rpin1 = dsn.route(grid=r34, mn=_mn, via_tag=[True, False])
@@ -437,30 +361,21 @@ dsn.pin(name='SCAN_GATE', grid=r34, mn=[r34.mn.bbox(rpin0)[0], r34.mn.bbox(rpin0
 
 
 # SCAN_CLK, SCAN_OUT
-# pin_list = ['SCAN_CLK', 'SCAN_OUT']
-# for pin in pin_list:
-#    _mn = np.asarray([r34.mn.bbox(cell_eff[-1].pins[pin])[1], r34.mn.bbox(cell_eff[-1].pins[pin])[1]+[3,0]])
-#    rpin0 = dsn.route(grid=r34, mn=_mn, via_tag=[True, False])
-#    _mn = np.asarray([r45.mn.bbox(rpin0[1])[1], r45.mn.bottom_left(cell_eff[-1])])
-#    _mn[:,0] = r45.mn.bbox(rpin0[1])[1,0]
-#    _mn[1,1] = r45.mn.bottom_left(I0[0,0])[1]
-#    rpin1 = dsn.route(grid=r45, mn=_mn, via_tag=[True, False])
-#    dsn.pin(name=pin, grid=r45, mn=[r45.mn.bbox(rpin1[1])[0], r45.mn.bbox(rpin1[1])[0]+[0,3]])
 _mn = [ r34.mn(cell_eff[-1].pins['SCAN_CLK'])[1], r34.mn(cell_eff[-1].pins['SCAN_CLK'])[1] - [6,0], r34.mn.top_left(I0[row-1,col-1])]
 _mn[2][0] = _mn[1][0]
 dsn.route(grid=r34, mn = _mn, via_tag=[True, True, False])
 dsn.pin(name='SCAN_CLK', grid=r34, mn=[ _mn[2]-[0,3], _mn[2]])
 
-_mn = [r34.mn(cell_eff[-1].pins['SCAN_IN'])[0], r34.mn(cell_eff[-1].pins['SCAN_DATA_IN'])[0] - [2,0], r34.mn.top_left(I0[row-1,col-1])]
+_mn = [r34.mn(cell_eff[0].pins['SCAN_IN'])[1], r34.mn(cell_eff[0].pins['SCAN_IN'])[0] - [0,5]]
+dsn.route(grid=r34, mn = _mn, via_tag=[False,False])
+dsn.pin(name='SCAN_IN', grid=r34, mn=[ _mn[1], _mn[1]+[0,3] ])
+
+_mn = [r34.mn(cell_eff[-1].pins['SCAN_OUT'])[1]-[1,0], r34.mn(cell_eff[-1].pins['SCAN_OUT'])[1]+[2,0], r34.mn.top_right(I0[row-1,col-1])]
 _mn[2][0] = _mn[1][0]
-dsn.route(grid=r34, mn = _mn, via_tag=[True, True, False])
-dsn.pin(name='SCAN_IN', grid=r34, mn=[ _mn[2]-[0,3], _mn[2] ])
-# dsn.pin(name='SCAN_OUT', grid=r34, mn=[ _mn[2]-[0,3], _mn[2] ])
+dsn.route(grid=r34, mn = _mn, via_tag=[False,True,False])
+dsn.via(grid=r34, mn=r34.mn(cell_eff[-1].pins['SCAN_OUT'])[1])
+dsn.pin(name='SCAN_OUT', grid=r34, mn=[ _mn[2]-[0,3], _mn[2] ])
 # SCAN_LOAD
-# _mn = [r45.mn.bottom_left(cell_eff[0]), r45.mn(cell_eff[0].pins['SCAN_LOAD'])[0]]
-# _mn[0][0] = _mn[1][0]
-# dsn.route(grid=r45, mn=_mn, via_tag=[False, True])
-# dsn.pin(name='SCAN_LOAD', grid=r45, mn=_mn)
 _mn = [r34.mn.bottom_left(cell_eff[0]), r34.mn(cell_eff[0].pins['SCAN_LOAD'])[0]]
 _mn[0][0] = _mn[1][0]
 dsn.route(grid=r34, mn=_mn, via_tag=[False, False])
@@ -468,10 +383,6 @@ dsn.pin(name='SCAN_LOAD', grid=r34, mn=_mn)
 
 print('%dbit %d X %d scan chain generated'%(bit,row,col))
 ################################### CHAIN GENERATION END ##########################################
-
-### PROCESSES FOR LVS OR DRC. OPTIONAL.
-# tech.generate_pwrail(dsn, grids, vss_name='VDD', vdd_name='VSS', vertical=False) # VDD is the bottom rail.
-# tech.generate_gbnd(dsn, grids, templates)
 
 ### EXPORT TO BAG
 # SKILL script for load in Virtuoso
