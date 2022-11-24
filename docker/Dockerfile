@@ -95,35 +95,22 @@ RUN mkdir /root/.xschem && touch /root/.xschem/xschemrc \
 
 
 # ==============================================================================
-# Install Miniconda
-# ==============================================================================
-# WORKDIR /root
-# RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.12.0-Linux-x86_64.sh -O /root/miniconda.sh
-# RUN bash /root/miniconda.sh -b -p /root/miniconda
-# RUN eval "$(/root/miniconda/bin/conda shell.bash hook)"
-# ENV PATH=/root/miniconda/bin:$PATH
-
-# conda messes up the local Python environment, so we need to reinstall
-# some packages manually
-# RUN python -m pip install greenlet gevent 
-
-
-# ==============================================================================
 # Install Laygo2 and Sky130 support
 # ==============================================================================
 # RUN git clone https://github.com/niftylab/laygo2_workspace_sky130.git
+USER root
+RUN apt install -y python3-pip vim eog
 COPY . /laygo2_workspace_sky130
 WORKDIR /laygo2_workspace_sky130
 RUN git submodule init && git submodule update \
     && cd laygo2 && git fetch --all && git pull origin master
-RUN apt install -y python3-pip vim eog
+RUN python -m pip install pipenv
 # for pipenv to recognize the Pipfile
 ENV WORKON_HOME=/laygo2_workspace_sky130
-RUN python -m pip install pipenv \
-    && pipenv run pip install -r laygo2/requirements.txt \ 
+RUN pipenv run pip install -r laygo2/requirements.txt \ 
     && pipenv run pip install matplotlib gdspy cairosvg ipython ipykernel \
-    && pipenv run pip install -e laygo2 \
-    && pipenv lock
+    && pipenv run pip install -e laygo2
+    # && pipenv lock
 RUN pipenv run ipython profile create --profile-dir=/laygo2_profile \
     && cp ipython_config_init.py /laygo2_profile/ipython_config.py 
 RUN ./mag_set_path.sh
@@ -145,4 +132,3 @@ RUN pipenv run ipython laygo2_example/logic/inv.py \
 COPY docker/shortcuts/* /root/Desktop/
 COPY docker/lxterminal.conf /root/.config/lxterminal/lxterminal.conf
 ENV PDK_ROOT=/usr/local/share/pdk
-USER root
