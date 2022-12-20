@@ -27,7 +27,7 @@ r23_name = 'routing_23_cmos'
 # Design hierarchy
 libname = 'logic_generated'
 # cellname in for loop
-ref_dir_template = './' #export this layout's information into the yaml in this dir 
+ref_dir_template = './laygo2_example/logic/' #export this layout's information into the yaml in this dir 
 ref_dir_MAG_exported = './laygo2_example/logic/TCL/'
 # End of parameter definitions ######
 
