@@ -3,10 +3,11 @@ from pickle import FALSE
 import laygo2
 import numpy as np
 import laygo2.util.transform as tf
-import time
+
 class rcNode:
     def __init__(self, rc_num):
         self.rc_num = rc_num
+        self.dot_list = list()
         self.metal_list = list()
 
 class metalNode:
@@ -65,6 +66,7 @@ class netMap_basic:
 class netMap_vert(netMap_basic):
     def __init__(self, layer_name):
         self.cols = list()
+        self.cols_unmerged = list()
         self.rc = self.cols
         self.layer = layer_name
 
@@ -114,65 +116,65 @@ class netMap_vert(netMap_basic):
                 #self.cols에 rcNode(i)를 순서에 맞춰 삽입
                 new_col_index = self.get_rc_index(i)
                 self.cols.insert(new_col_index, rcNode(i))
+                self.cols_unmerged.insert(new_col_index, rcNode(i))
+
+                #red, blue list 추가
+                self.cols[new_col_index].dot_list.append((y1, 'b'))
+                self.cols[new_col_index].dot_list.append((y2, 'r'))
+
                 new_node = metalNode(self.layer, [[i, y1], [i, y2]])
                 new_node.net_name.add(net_name)
-                new_node.metal_seg.append(new_node)
-                self.cols[new_col_index].metal_list.append(new_node)
-                return new_node
+                #새로운 metalnode를 unmerged list에 추가
+                self.cols_unmerged[new_col_index].metal_list.append(new_node)
+
             else:
+                #red, blue list 추가
+                self.cols[col_index].dot_list.append((y1, 'b'))
+                self.cols[col_index].dot_list.append((y2, 'r'))
+
                 new_node = metalNode(self.layer, [[i, y1], [i, y2]])
-                new_node_seg = metalNode(self.layer, [[i, y1], [i, y2]])
                 new_node.net_name.add(net_name)
-                new_node_seg.net_name.add(net_name)
-                new_node.metal_seg.append(new_node_seg)
-                return self.merge(new_node, col_index)
-                
+                #새로운 metalnode를 unmerged list에 추가
+                self.cols_unmerged[col_index].metal_list.append(new_node)
 
-    def merge(self, new_metal, col_index):
-        new_metal_index = self.search_metal_index(col_index, new_metal.mn[0][1])
-
-        if new_metal_index > 0:         #col의 맨 아래가 아닌 곳에 새로운 metal을 삽입하는 경우
-            #먼저 바로 아래 metal과 겹치는지를 확인해 처리한다.=>겹치더라도 하나의 metal과만 겹침
-            # if new_metal.mn[0][1]<=self.cols[col_index].metal_list[new_metal_index-1].mn[0][1]:      #앞 metal이랑 겹치면
-            if new_metal.mn[0][1]<=self.cols[col_index].metal_list[new_metal_index-1].mn[1][1]: #error fix: mn[0][1] -> mn[1][1]
-                metal_prev = self.cols[col_index].metal_list.pop(new_metal_index-1)
-                new_name = new_metal.net_name
-                new_name = new_name|metal_prev.net_name
                 
-                #metal_prev 위쪽끝이 newMetal 위쪽끝보다 아래에 있을 경우
-                if metal_prev.mn[1][1] < new_metal.mn[1][1]:               
-                    xy2 = new_metal.mn[1]
+    #insert가 끝난 뒤 마지막에 호출해주면 된다.
+    def merge(self):
+        #blue랑 red 비교/병합
+        for col in self.cols:
+            #dot들 정렬
+            col.dot_list = sorted(col.dot_list, key = lambda x : x[0] + ord(x[1])/128)
+            br_diff = 0
+            start = 0
+            end = 0
+            for dot in col.dot_list:
+                if br_diff == 0:
+                    start = dot[0]
+                if dot[1] == 'b':
+                    br_diff = br_diff + 1
                 else:
-                    xy2 = metal_prev.mn[1]
-                
-                new_metal.mn = [metal_prev.mn[0], xy2]
-                new_metal.net_name = new_name.copy()
-                new_metal.metal_seg.extend(metal_prev.metal_seg)
-                new_metal_index=new_metal_index-1
+                    br_diff = br_diff - 1
 
-        #뒤쪽 metal들과 겹치는지 확인해 처리
-        while new_metal_index<len(self.cols[col_index].metal_list):
-            if new_metal.mn[1][1]<self.cols[col_index].metal_list[new_metal_index].mn[0][1]:
-                break
-            
-            metal_next = self.cols[col_index].metal_list.pop(new_metal_index)
-            new_name = new_metal.net_name
-            new_name = new_name|metal_next.net_name
+                if br_diff < 0:
+                    print("error")
+                    break
+                if br_diff == 0:
+                    end = dot[0]
+                    col.metal_list.append(metalNode(self.layer, [[col.rc_num, start], [col.rc_num, end]]))
+        col_index = 0
+        #unmerged list와 병합해 기타 데이터 추가
+        for col_unmerged in self.cols_unmerged:
+            for unmerged_metal in col_unmerged.metal_list:
+                metal_index = self.search_metal_index(col_index, unmerged_metal.mn[0][1])-1
+                self.cols[col_index].metal_list[metal_index].metal_seg.append(unmerged_metal)
+                self.cols[col_index].metal_list[metal_index].net_name|unmerged_metal.net_name
+            col_index = col_index + 1
 
-            new_metal.net_name = new_name.copy()
-            new_metal.metal_seg.extend(metal_next.metal_seg)
-
-            if new_metal.mn[1][1] < metal_next.mn[1][1]:          #newMetal 끝이 뒤 metal 끝보다 앞에 있을 경우
-                new_metal.mn = [new_metal.mn[0], metal_next.mn[1]]
-            else:
-                new_metal.mn = [new_metal.mn[0], new_metal.mn[1]]
-        
-        self.cols[col_index].metal_list.insert(new_metal_index, new_metal)
-        return new_metal
 
 class netMap_hor(netMap_basic):
     def __init__(self, layer_name):
         self.rows = list()
+        self.rows_unmerged = list()
         self.rc = self.rows
         self.layer=layer_name
     def search_metal_index(self, row_index, obj_x1): #row -> self.row
@@ -220,56 +222,60 @@ class netMap_hor(netMap_basic):
                 #self.rows에 rowNode(i)를 순서에 맞춰 삽입
                 new_row_index = self.get_rc_index(i)
                 self.rows.insert(new_row_index, rcNode(i))
+                self.rows_unmerged.insert(new_row_index, rcNode(i))
+
+                #red, blue list 추가
+                self.rows[new_row_index].dot_list.append((x1, 'b'))
+                self.rows[new_row_index].dot_list.append((x2, 'r'))
+
                 new_node = metalNode(self.layer, [[x1, i], [x2, i]])
                 new_node.net_name.add(net_name)
-                new_node.metal_seg.append(new_node)
-                self.rows[new_row_index].metal_list.append(new_node)
-                return new_node
+                #새로운 metalnode를 unmerged list에 추가
+                self.rows_unmerged[new_row_index].metal_list.append(new_node)
+
             else:
+                #red, blue list 추가
+                self.rows[row_index].dot_list.append((x1, 'b'))
+                self.rows[row_index].dot_list.append((x2, 'r'))
+
                 new_node = metalNode(self.layer, [[x1, i], [x2, i]])
                 new_node.net_name.add(net_name)
-                new_node.metal_seg.append(new_node)
-                return self.merge(new_node, row_index)
+                #새로운 metalnode를 unmerged list에 추가
+                self.rows_unmerged[row_index].metal_list.append(new_node)
 
-    def merge(self, new_metal, row_index):
-        new_metal_index = self.search_metal_index(row_index, new_metal.mn[0][0])
-        if new_metal_index > 0:         #row의 맨 앞이 아닌 곳에 새로운 metal을 삽입하는 경우
-            #먼저 바로 앞 metal과 겹치는지를 확인해 처리한다.=>겹치더라도 하나의 metal과만 겹침
-            if new_metal.mn[0][0]<=self.rows[row_index].metal_list[new_metal_index-1].mn[1][0]:      #앞 metal이랑 겹치면
-                metal_prev = self.rows[row_index].metal_list.pop(new_metal_index-1)
-                new_name = new_metal.net_name
-                new_name = new_name|metal_prev.net_name
 
-                #metal_prev 끝이 newMetal 끝보다 앞에 있을 경우
-                if metal_prev.mn[1][0] < new_metal.mn[1][0]:               
-                    xy2 = new_metal.mn[1]
+    def merge(self):
+        #blue랑 red 비교/병합
+        for row in self.rows:
+            #dot들 정렬
+            row.dot_list = sorted(row.dot_list, key = lambda x : x[0] + ord(x[1])/128)
+            br_diff = 0
+            start = 0
+            end = 0
+            for dot in row.dot_list:
+                if br_diff == 0:
+                    start = dot[0]
+                if dot[1] == 'b':
+                    br_diff = br_diff + 1
                 else:
-                    xy2 = metal_prev.mn[1]
+                    br_diff = br_diff - 1
 
-                new_metal.mn = [metal_prev.mn[0], xy2]
-                new_metal.net_name = new_name.copy()
-                new_metal.metal_seg.extend(metal_prev.metal_seg)
-                new_metal_index=new_metal_index-1
+                if br_diff < 0:
+                    print("error")
+                    break
+                if br_diff == 0:
+                    end = dot[0]
+                    row.metal_list.append(metalNode(self.layer, [[start, row.rc_num], [end, row.rc_num]]))
 
-        #뒤쪽 metal들과 겹치는지 확인해 처리
-        while new_metal_index<len(self.rows[row_index].metal_list):
-            if new_metal.mn[1][0]<self.rows[row_index].metal_list[new_metal_index].mn[0][0]:
-                break
-            
-            metal_next = self.rows[row_index].metal_list.pop(new_metal_index)
-            new_name = new_metal.net_name
-            new_name = new_name|metal_next.net_name
+        row_index = 0
+        #unmerged list와 병합해 기타 데이터 추가
+        for row_unmerged in self.rows_unmerged:
+            for unmerged_metal in row_unmerged.metal_list:
+                metal_index = self.search_metal_index(row_index, unmerged_metal.mn[0][0])-1
+                self.rows[row_index].metal_list[metal_index].metal_seg.append(unmerged_metal)
+                self.rows[row_index].metal_list[metal_index].net_name|unmerged_metal.net_name
+            row_index = row_index+1
 
-            new_metal.net_name = new_name.copy()
-            new_metal.metal_seg.extend(metal_next.metal_seg)
-
-            if new_metal.mn[1][0] < metal_next.mn[1][0]:          #newMetal 끝이 뒤 metal 끝보다 앞에 있을 경우
-                new_metal.mn = [new_metal.mn[0], metal_next.mn[1]]
-            else:
-                new_metal.mn = [new_metal.mn[0], new_metal.mn[1]]
-        
-        self.rows[row_index].metal_list.insert(new_metal_index, new_metal)
-        return new_metal
 
 class netMap:
 #member : type
@@ -320,6 +326,10 @@ class netMap:
     
     def insert_metal(self, metal):
         return self.layers[metal.layer[0]].insert_metal(self.grid.mn(metal.xy), net_name=metal.netname)
+
+    def merge(self):
+        for layer in self.layers.values():
+            layer.merge()
     
     def insert_instance_blackbox(self, inst):
         pin_list = list()
@@ -503,7 +513,6 @@ class netMap:
                     node.visited = True
     @classmethod
     def lvs_check(cls, dsn, grid, via_table, orient_first="vertical", layer_names=['M1','M2','M3','M4','M5']):
-        start = time.time()
         nMap = cls(grid=grid, via_table=via_table, orient_first=orient_first, layer_names=layer_names)
         pin_list = list()
         pin_set = set()
@@ -520,21 +529,20 @@ class netMap:
                 pin_list.extend(nMap.insert_instance_blackbox(inst))
         for rect in dsn.rects.values():
             _metal = nMap.insert_metal(rect)
+        #unmerged->merge
+        nMap.merge()
         for via in nMap.vias:
             nMap.insert_via(via)
         for pin in pin_list:
             nMap.insert_pin(pin)
         #lvs test by bfs
         for pin, pin_node in nMap.pins:
-            # print("pin name: %s, netname: %s, layer: %s, xy:[[%d %d][%d %d]], pin_node.xy:"\
-            #     % (pin.name, pin.netname,pin.layer[0],nMap.grid.mn(pin)[0][0],nMap.grid.mn(pin)[0][1],nMap.grid.mn(pin)[1][0],nMap.grid.mn(pin)[1][1]),end='')
-            # print(pin_node.mn)
+            print("pin name: %s, netname: %s, layer: %s, xy:[[%d %d][%d %d]], pin_node.xy:"\
+                % (pin.name, pin.netname,pin.layer[0],nMap.grid.mn(pin)[0][0],nMap.grid.mn(pin)[0][1],nMap.grid.mn(pin)[1][0],nMap.grid.mn(pin)[1][1]),end='')
+            print(pin_node.mn)
             nMap.net_traverse(pin_node,pin.netname,pin_set)
         for layer in nMap.layers.values():
             for mlist in layer.rc:
                 for metal in mlist.metal_list:
                     if metal.visited is not True:
                         print(metal.layer, metal.mn, metal.net_name)
-                        pass
-        end = time.time()
-        print(f"{end - start:.5f} sec")
