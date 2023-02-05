@@ -1,0 +1,29 @@
+## M: metal  P: pin   N: netname mask V: via
+## Via 정의 부분에서 M1, M2가 아닌 M1만 있는 이유는 M1, M3이 불가능하고 M1 M2만 가능하기 때문.
+## 즉 Via가 M2-M3 을 연결하는 경우 M2만 표기함
+#LIBNAME_CELLNAME(회로 구분용)->주석처리하도록 하자
+#M, Mn, [x1 y1], [x2 y2], NETNAME(or None)
+#P, Mn, [x1 y1], [x2 y2], NETNAME(필수)
+#N, Mn, [x1 y1], [x2 y2], NETNAME(필수)
+#V, Mn, [x1 y1]
+#
+#정상 연결
+M, M1, [0 0], [0 3], NET1
+V, M1, [0 3]
+M, M2, [0 3], [3 3]
+P, M2, [1 3], [3 3], NET1
+#close error
+M, M1, [5 0], [5 3], NET2
+V, M1, [5 3]
+N, M2, [5 3], [8 3], NET3
+P, M2, [5 3], [6 3], NET3
+#open error
+M, M1, [10 0], [10 3], NET5
+N, M2, [10 3], [13 3], NET5
+P, M1, [10 0], [10 3], NET5
+P, M2, [10 3], [11 3], NET5
+
+
+#pinname 추가 필요할듯?
+#layer의 orient 지정이 불가능함
+#M1~M5이외의 layer name 사용하는 경우에 대응이 불가능. 
