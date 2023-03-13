@@ -1,7 +1,7 @@
 ######################################
 #                                    #
-#       NAND Layout Gernerator       #
-#       Created by Taeho Shin        #
+#   3 input NAND Layout Gernerator   #
+#      Created by Hyungjoo Park      #
 #                                    #
 ######################################
 
@@ -12,7 +12,7 @@ import laygo2.interface
 import laygo2_tech as tech
 # Parameter definitions #############
 # Variables
-cell_type = 'nand'
+cell_type = 'nand3'
 nf_list = [2,4]
 # Templates
 tpmos_name = 'pmos_sky'
@@ -58,45 +58,53 @@ for nf in nf_list:
    ip0 = tpmos.generate(name='MP0', transform='MX', params={'nf': nf, 'tie': 'S'})
    in1 = tnmos.generate(name='MN1', params={'nf': nf, 'trackswap': True})
    ip1 = tpmos.generate(name='MP1', transform='MX', params={'nf': nf, 'tie': 'S'})
-
+   in2 = tnmos.generate(name='MN2', params={'nf': nf})
+   ip2 = tpmos.generate(name='MP2', transform='MX', params={'nf': nf, 'tie': 'S'})
 # 4. Place instances.
    dsn.place(grid=pg, inst=in0, mn=[0,0])
    dsn.place(grid=pg, inst=ip0, mn=pg.mn.top_left(in0) + pg.mn.height_vec(ip0))
    dsn.place(grid=pg, inst=in1, mn=pg.mn.bottom_right(in0))
    dsn.place(grid=pg, inst=ip1, mn=pg.mn.top_right(ip0))
+   dsn.place(grid=pg, inst=in2, mn=pg.mn.bottom_right(in1))
+   dsn.place(grid=pg, inst=ip2, mn=pg.mn.top_right(ip1))
 
 # 5. Create and place wires.
    print("Create wires")
    # A
    if nf == 2:
-      _mn = [r23.mn(in1.pins['G'])[0], r23.mn(ip1.pins['G'])[0]]
-      _track = [r23.mn(in1.pins['G'])[0,0]-1, None]
+      _mn = [r23.mn(in2.pins['G'])[0], r23.mn(ip2.pins['G'])[0]]
+      _track = [r23.mn(in2.pins['G'])[0,0]-1, None]
       rA_t0 = dsn.route_via_track(grid=r23, mn=_mn, track=_track)
    else:
-      _mn = [r23.mn(in1.pins['G'])[0], r23.mn(ip1.pins['G'])[0]]
+      _mn = [r23.mn(in2.pins['G'])[0], r23.mn(ip2.pins['G'])[0]]
       vA0, rA0, vA1 = dsn.route(grid=r23, mn=_mn, via_tag=[True, True])
 
    # B
-   _mn = [r23.mn(in0.pins['G'])[0], r23.mn(ip0.pins['G'])[0]]
+   _mn = [r23.mn(in1.pins['G'])[0], r23.mn(ip1.pins['G'])[0]]
    vB0, rB0, vB1 = dsn.route(grid=r23, mn=_mn, via_tag=[True, True])
 
+   # C
+   _mn = [r23.mn(in0.pins['G'])[0], r23.mn(ip0.pins['G'])[0]]
+   vC0, rC0, vC1 = dsn.route(grid=r23, mn=_mn, via_tag=[True, True])
    # Internal
    # _mn = [r12.mn(ip0.pins['D'])[1], r12.mn(ip1.pins['D'])[0]]
    # dsn.route(grid=r12, mn=_mn, netname='Internal')
    _mn = [r12.mn(in0.pins['D'])[1], r12.mn(in1.pins['S'])[0]]
    dsn.route(grid=r12, mn=_mn)
+   _mn = [r12.mn(in1.pins['D'])[1], r12.mn(in2.pins['S'])[0]]
+   dsn.route(grid=r12, mn=_mn)
 
    # OUT
-   _mn = [r12.mn(ip0.pins['D'])[1], r12.mn(ip1.pins['D'])[0]]
+   _mn = [r12.mn(ip0.pins['D'])[1], r12.mn(ip2.pins['D'])[0]]
    dsn.route(grid=r12, mn=_mn)
-   _mn = [r23.mn(in1.pins['D'])[1], r23.mn(ip1.pins['D'])[1]]
+   _mn = [r23.mn(in2.pins['D'])[1], r23.mn(ip2.pins['D'])[1]]
    vout0, rout0, vout1 = dsn.route(grid=r23, mn=_mn, via_tag=[True, True])
 
    # VSS
-   rvss0 = dsn.route(grid=r12, mn=[r12.mn(in0.pins['RAIL'])[0], r12.mn(in1.pins['RAIL'])[1]])
+   rvss0 = dsn.route(grid=r12, mn=[r12.mn(in0.pins['RAIL'])[0], r12.mn(in2.pins['RAIL'])[1]])
 
    # VDD
-   rvdd0 = dsn.route(grid=r12, mn=[r12.mn(ip0.pins['RAIL'])[0], r12.mn(ip1.pins['RAIL'])[1]])
+   rvdd0 = dsn.route(grid=r12, mn=[r12.mn(ip0.pins['RAIL'])[0], r12.mn(ip2.pins['RAIL'])[1]])
 
 # 6. Create pins.
    if nf==2:
@@ -104,7 +112,8 @@ for nf in nf_list:
    else:
       pinA = dsn.pin(name='A', grid=r23, mn=r23.mn.bbox(rA0))
    pinB = dsn.pin(name='B', grid=r23, mn=r23.mn.bbox(rB0))
-   pout0 = dsn.pin(name='OUT', grid=r23, mn=r23.mn.bbox(rout0))
+   pinC = dsn.pin(name='C', grid=r23, mn=r23.mn.bbox(rC0))
+   pout0 = dsn.pin(name='Y', grid=r23, mn=r23.mn.bbox(rout0))
    pvss0 = dsn.pin(name='VSS', grid=r12, mn=r12.mn.bbox(rvss0))
    pvdd0 = dsn.pin(name='VDD', grid=r12, mn=r12.mn.bbox(rvdd0))
 

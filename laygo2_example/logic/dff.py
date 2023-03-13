@@ -30,6 +30,7 @@ r34_name = 'routing_34_basic'
 libname = 'logic_generated'
 ref_dir_template = './laygo2_example/logic/' #export this layout's information into the yaml in this dir 
 ref_dir_MAG_exported = './laygo2_example/logic/TCL/'
+ref_dir_layout = './magic_layout'
 # End of parameter definitions ######
 
 # Generation start ##################
@@ -155,7 +156,7 @@ for nf in nf_list:
    print("Export design")
    
    # Uncomment for BAG export
-   laygo2.interface.magic.export(lib, filename=ref_dir_MAG_exported +libname+'_'+cellname+'.tcl', cellname=None, libpath='./magic_layout', scale=1, reset_library=False, tech_library='sky130A')
+   laygo2.interface.magic.export(lib, filename=ref_dir_MAG_exported +libname+'_'+cellname+'.tcl', cellname=None, libpath=ref_dir_layout, scale=1, reset_library=False, tech_library='sky130A')
    
    # 8. Export to a template database file.
    nat_temp = dsn.export_to_template()

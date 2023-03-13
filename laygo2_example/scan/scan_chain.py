@@ -44,6 +44,7 @@ cellname = 'scan_chain_' + str(bit) + 'bit' # Example: scan_chain_1024bit
 ref_dir_template = './laygo2_example/scan/'
 ref_dir_MAG_exported = './laygo2_example/scan/TCL/'
 yaml_import_path = './laygo2_example/logic/' #logic_generated.yaml path
+ref_dir_layout = './magic_layout'
 
 tlib = laygo2.interface.yaml.import_template(filename=ref_dir_template+libname+'_templates.yaml')
 tlogic = laygo2.interface.yaml.import_template(filename='./laygo2_example/logic/logic_generated_templates.yaml')
@@ -386,7 +387,7 @@ print('%dbit %d X %d scan chain generated'%(bit,row,col))
 
 ### EXPORT TO BAG
 # SKILL script for load in Virtuoso
-laygo2.interface.magic.export(lib, filename=ref_dir_MAG_exported+libname+'_'+cellname+'.tcl', libpath = './magic_layout', cellname=None, scale=1, reset_library=False, tech_library="sky130A")
+laygo2.interface.magic.export(lib, filename=ref_dir_MAG_exported+libname+'_'+cellname+'.tcl', libpath = ref_dir_layout, cellname=None, scale=1, reset_library=False, tech_library="sky130A")
 
 # 8. Export to a template database file.
 nat_temp = dsn.export_to_template()

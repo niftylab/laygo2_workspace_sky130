@@ -31,6 +31,7 @@ cellname = 'scan_cell'
 ref_dir_template = './laygo2_example/scan/'
 ref_dir_MAG_exported = './laygo2_example/scan/TCL/'
 yaml_import_path = './laygo2_example/logic/' #logic_generated.yaml path
+ref_dir_layout = './magic_layout'
 # End of parameter definitions ######
 
 ### GENERATION START
@@ -255,7 +256,7 @@ pvdd1            = dsn.pin(name='VDD1',            grid=r12, mn=r12.mn.bbox(rvdd
 print("Export design")
 ### EXPORT TO BAG
 # SKILL script for load in Virtuoso
-laygo2.interface.magic.export(lib, filename=ref_dir_MAG_exported+libname+'_'+cellname+'.tcl', libpath = './magic_layout', cellname=None, scale=1, reset_library=False, tech_library="sky130A")
+laygo2.interface.magic.export(lib, filename=ref_dir_MAG_exported+libname+'_'+cellname+'.tcl', libpath=ref_dir_layout, cellname=None, scale=1, reset_library=False, tech_library="sky130A")
 
 # 8. Export to a template database file.
 nat_temp = dsn.export_to_template()
