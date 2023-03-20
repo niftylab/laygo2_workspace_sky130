@@ -14,7 +14,7 @@ import laygo2_tech as tech
 # Parameter definitions #############
 # Variables
 cell_type = 'buffer'
-nf_list = [2,4]
+nf_list = [2,4,8,12,14,16,18,24]
 # Templates
 tpmos_name = 'pmos_sky'
 tnmos_name = 'nmos_sky'

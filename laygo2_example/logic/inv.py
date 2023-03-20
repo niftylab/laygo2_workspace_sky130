@@ -14,9 +14,7 @@ import laygo2_tech as tech
 # Parameter definitions #############
 # Variables
 cell_type = ['inv', 'inv_hs']
-#nf_list = [2, 4, 6, 8, 10, 12, 16, 24, 32, 36, 40, 50, 64, 72, 100]
-nf_list = [2, 4, 6, 8, 10, 12, 16, 24, 32]
-#nf_list = [2,4]
+nf_list = [2, 4, 6, 8, 10, 12, 14, 16, 18, 24, 32, 36]
 # Templates
 tpmos_name = 'pmos_sky'
 tnmos_name = 'nmos_sky'
@@ -63,8 +61,6 @@ for celltype in cell_type:
       ip0 = tpmos.generate(name='MP0', transform='MX', params={'nf': nf,'tie': 'S'})
       
       # 4. Place instances.
-      #   dsn.place(grid=pg, inst=[[in0], [ip0]], mn=[0,0])
-      #   dsn.place(grid=pg, inst=[[in0 ,in1], [ip0, ip1]], mn=[0,0])
       dsn.place(grid=pg, inst=in0, mn=[0,0])
       dsn.place(grid=pg, inst=ip0, mn=pg.mn.top_left(in0) + pg.mn.height_vec(ip0))
       
