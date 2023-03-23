@@ -1,0 +1,316 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1679560818
+<< checkpaint >>
+rect -1300 -1325 6732 3337
+<< metal1 >>
+rect 114 1688 174 2056
+rect 402 1688 462 2056
+rect 690 1688 750 2056
+rect 978 1688 1038 2056
+rect 1266 1688 1326 2056
+rect 1554 1688 1614 2056
+rect 1842 1688 1902 2056
+rect 2130 1688 2190 2056
+rect 2418 1688 2478 2056
+rect 2706 1688 2766 2056
+rect 2994 1688 3054 2056
+rect 3282 1688 3342 2056
+rect 3570 1688 3630 2056
+rect 114 -40 174 328
+rect 402 -40 462 328
+rect 690 -40 750 328
+rect 978 -40 1038 328
+rect 1266 -40 1326 328
+rect 1554 -40 1614 328
+rect 1842 -40 1902 328
+rect 2130 -40 2190 328
+rect 2418 -40 2478 328
+rect 2706 -40 2766 328
+rect 2994 -40 3054 328
+rect 3282 -40 3342 328
+rect 3570 -40 3630 328
+<< metal2 >>
+rect -40 1956 5472 2076
+rect 212 1554 3532 1614
+rect 124 1266 3532 1326
+rect 124 690 3532 750
+rect 212 402 3532 462
+rect -40 -60 5472 60
+<< metal3 >>
+rect 114 690 174 1326
+rect 258 402 318 1614
+rect 546 402 606 1614
+rect 834 402 894 1614
+rect 1122 402 1182 1614
+rect 1410 402 1470 1614
+rect 1698 402 1758 1614
+rect 1986 402 2046 1614
+rect 2274 402 2334 1614
+rect 2562 402 2622 1614
+rect 2850 402 2910 1614
+rect 3138 402 3198 1614
+rect 3426 402 3486 1614
+rect 4578 432 4638 1584
+rect 5154 432 5214 1584
+use nmos13_fast_boundary  MN0_IBNDL0 ~/WORK/sylee/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+timestamp 1655824928
+transform 1 0 0 0 1 0
+box 0 0 144 1008
+use nmos13_fast_boundary  MN0_IBNDR0
+timestamp 1655824928
+transform 1 0 3600 0 1 0
+box 0 0 144 1008
+use nmos13_fast_center_nf2  MN0_IM0 ~/WORK/sylee/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+array 0 11 288 0 0 1008
+timestamp 1654175211
+transform 1 0 144 0 1 0
+box -92 286 380 756
+use via_M1_M2_0  MN0_IVD0 ~/WORK/sylee/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+array 0 11 288 0 0 1008
+timestamp 1647525606
+transform 1 0 288 0 1 432
+box -32 -32 32 32
+use via_M1_M2_0  MN0_IVG0
+array 0 11 288 0 0 1008
+timestamp 1647525606
+transform 1 0 288 0 1 720
+box -32 -32 32 32
+use via_M1_M2_1  MN0_IVTIED0 ~/WORK/sylee/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+array 0 12 288 0 0 1008
+timestamp 1647525606
+transform 1 0 144 0 1 0
+box -32 -32 32 32
+use pmos13_fast_boundary  MP0_IBNDL0 ~/WORK/sylee/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+timestamp 1655825313
+transform 1 0 0 0 -1 2016
+box 0 0 144 1008
+use pmos13_fast_boundary  MP0_IBNDR0
+timestamp 1655825313
+transform 1 0 3600 0 -1 2016
+box 0 0 144 1008
+use pmos13_fast_center_nf2  MP0_IM0 ~/WORK/sylee/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+array 0 11 288 0 0 -1008
+timestamp 1654091791
+transform 1 0 144 0 -1 2016
+box -92 132 380 756
+use via_M1_M2_0  MP0_IVD0
+array 0 11 288 0 0 -1008
+timestamp 1647525606
+transform 1 0 288 0 -1 1584
+box -32 -32 32 32
+use via_M1_M2_0  MP0_IVG0
+array 0 11 288 0 0 -1008
+timestamp 1647525606
+transform 1 0 288 0 -1 1296
+box -32 -32 32 32
+use via_M1_M2_1  MP0_IVTIED0
+array 0 12 288 0 0 -1008
+timestamp 1647525606
+transform 1 0 144 0 -1 2016
+box -32 -32 32 32
+use via_M2_M3_0  NoName_1 ~/WORK/sylee/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+timestamp 1647525786
+transform 1 0 144 0 1 720
+box -38 -38 38 38
+use via_M2_M3_0  NoName_3
+timestamp 1647525786
+transform 1 0 144 0 1 1296
+box -38 -38 38 38
+use via_M2_M3_0  NoName_5
+timestamp 1647525786
+transform 1 0 288 0 1 432
+box -38 -38 38 38
+use via_M2_M3_0  NoName_7
+timestamp 1647525786
+transform 1 0 288 0 1 1584
+box -38 -38 38 38
+use via_M2_M3_0  NoName_8
+timestamp 1647525786
+transform 1 0 576 0 1 432
+box -38 -38 38 38
+use via_M2_M3_0  NoName_10
+timestamp 1647525786
+transform 1 0 576 0 1 1584
+box -38 -38 38 38
+use via_M2_M3_0  NoName_11
+timestamp 1647525786
+transform 1 0 864 0 1 432
+box -38 -38 38 38
+use via_M2_M3_0  NoName_13
+timestamp 1647525786
+transform 1 0 864 0 1 1584
+box -38 -38 38 38
+use via_M2_M3_0  NoName_14
+timestamp 1647525786
+transform 1 0 1152 0 1 432
+box -38 -38 38 38
+use via_M2_M3_0  NoName_16
+timestamp 1647525786
+transform 1 0 1152 0 1 1584
+box -38 -38 38 38
+use via_M2_M3_0  NoName_17
+timestamp 1647525786
+transform 1 0 1440 0 1 432
+box -38 -38 38 38
+use via_M2_M3_0  NoName_19
+timestamp 1647525786
+transform 1 0 1440 0 1 1584
+box -38 -38 38 38
+use via_M2_M3_0  NoName_20
+timestamp 1647525786
+transform 1 0 1728 0 1 432
+box -38 -38 38 38
+use via_M2_M3_0  NoName_22
+timestamp 1647525786
+transform 1 0 1728 0 1 1584
+box -38 -38 38 38
+use via_M2_M3_0  NoName_23
+timestamp 1647525786
+transform 1 0 2016 0 1 432
+box -38 -38 38 38
+use via_M2_M3_0  NoName_25
+timestamp 1647525786
+transform 1 0 2016 0 1 1584
+box -38 -38 38 38
+use via_M2_M3_0  NoName_26
+timestamp 1647525786
+transform 1 0 2304 0 1 432
+box -38 -38 38 38
+use via_M2_M3_0  NoName_28
+timestamp 1647525786
+transform 1 0 2304 0 1 1584
+box -38 -38 38 38
+use via_M2_M3_0  NoName_29
+timestamp 1647525786
+transform 1 0 2592 0 1 432
+box -38 -38 38 38
+use via_M2_M3_0  NoName_31
+timestamp 1647525786
+transform 1 0 2592 0 1 1584
+box -38 -38 38 38
+use via_M2_M3_0  NoName_32
+timestamp 1647525786
+transform 1 0 2880 0 1 432
+box -38 -38 38 38
+use via_M2_M3_0  NoName_34
+timestamp 1647525786
+transform 1 0 2880 0 1 1584
+box -38 -38 38 38
+use via_M2_M3_0  NoName_35
+timestamp 1647525786
+transform 1 0 3168 0 1 432
+box -38 -38 38 38
+use via_M2_M3_0  NoName_37
+timestamp 1647525786
+transform 1 0 3168 0 1 1584
+box -38 -38 38 38
+use via_M2_M3_0  NoName_38
+timestamp 1647525786
+transform 1 0 3456 0 1 432
+box -38 -38 38 38
+use via_M2_M3_0  NoName_40
+timestamp 1647525786
+transform 1 0 3456 0 1 1584
+box -38 -38 38 38
+<< labels >>
+flabel metal3 144 1008 144 1008 0 FreeSans 480 90 0 0 I
+port 22 nsew
+flabel metal3 288 1008 288 1008 0 FreeSans 480 90 0 0 O
+port 23 nsew
+flabel metal3 576 1008 576 1008 0 FreeSans 480 90 0 0 O
+port 24 nsew
+flabel metal3 864 1008 864 1008 0 FreeSans 480 90 0 0 O
+port 25 nsew
+flabel metal3 1152 1008 1152 1008 0 FreeSans 480 90 0 0 O
+port 26 nsew
+flabel metal3 1440 1008 1440 1008 0 FreeSans 480 90 0 0 O
+port 27 nsew
+flabel metal3 1728 1008 1728 1008 0 FreeSans 480 90 0 0 O
+port 28 nsew
+flabel metal3 2016 1008 2016 1008 0 FreeSans 480 90 0 0 O
+port 29 nsew
+flabel metal3 2304 1008 2304 1008 0 FreeSans 480 90 0 0 O
+port 30 nsew
+flabel metal3 2592 1008 2592 1008 0 FreeSans 480 90 0 0 O
+port 31 nsew
+flabel metal3 3456 1008 3456 1008 0 FreeSans 480 90 0 0 O
+port 32 nsew
+flabel metal3 4608 1008 4608 1008 0 FreeSans 480 90 0 0 O
+port 33 nsew
+flabel metal3 5184 1008 5184 1008 0 FreeSans 480 90 0 0 O
+port 34 nsew
+flabel metal3 288 1008 288 1008 0 FreeSans 480 90 0 0 O:
+port 80 nsew
+flabel metal3 576 1008 576 1008 0 FreeSans 480 90 0 0 O:
+port 81 nsew
+flabel metal3 864 1008 864 1008 0 FreeSans 480 90 0 0 O:
+port 82 nsew
+flabel metal3 1152 1008 1152 1008 0 FreeSans 480 90 0 0 O:
+port 83 nsew
+flabel metal3 1440 1008 1440 1008 0 FreeSans 480 90 0 0 O:
+port 84 nsew
+flabel metal3 1728 1008 1728 1008 0 FreeSans 480 90 0 0 O:
+port 85 nsew
+flabel metal3 2016 1008 2016 1008 0 FreeSans 480 90 0 0 O:
+port 86 nsew
+flabel metal3 2304 1008 2304 1008 0 FreeSans 480 90 0 0 O:
+port 87 nsew
+flabel metal3 2592 1008 2592 1008 0 FreeSans 480 90 0 0 O:
+port 88 nsew
+flabel metal3 2880 1008 2880 1008 0 FreeSans 480 90 0 0 O:
+port 89 nsew
+flabel metal3 3168 1008 3168 1008 0 FreeSans 480 90 0 0 O:
+port 90 nsew
+flabel metal3 3456 1008 3456 1008 0 FreeSans 480 90 0 0 O:
+port 91 nsew
+flabel metal2 2448 2016 2448 2016 0 FreeSans 960 0 0 0 VDD
+port 102 nsew
+flabel metal2 2736 2016 2736 2016 0 FreeSans 960 0 0 0 VDD
+port 103 nsew
+flabel metal2 288 2016 288 2016 0 FreeSans 960 0 0 0 VDD
+port 104 nsew
+flabel metal2 432 2016 432 2016 0 FreeSans 960 0 0 0 VDD
+port 105 nsew
+flabel metal2 576 2016 576 2016 0 FreeSans 960 0 0 0 VDD
+port 106 nsew
+flabel metal2 720 2016 720 2016 0 FreeSans 960 0 0 0 VDD
+port 107 nsew
+flabel metal2 864 2016 864 2016 0 FreeSans 960 0 0 0 VDD
+port 108 nsew
+flabel metal2 1008 2016 1008 2016 0 FreeSans 960 0 0 0 VDD
+port 109 nsew
+flabel metal2 1152 2016 1152 2016 0 FreeSans 960 0 0 0 VDD
+port 110 nsew
+flabel metal2 1296 2016 1296 2016 0 FreeSans 960 0 0 0 VDD
+port 111 nsew
+flabel metal2 1440 2016 1440 2016 0 FreeSans 960 0 0 0 VDD
+port 112 nsew
+flabel metal2 1872 2016 1872 2016 0 FreeSans 960 0 0 0 VDD
+port 113 nsew
+flabel metal2 2448 0 2448 0 0 FreeSans 960 0 0 0 VSS
+port 124 nsew
+flabel metal2 2736 0 2736 0 0 FreeSans 960 0 0 0 VSS
+port 125 nsew
+flabel metal2 288 0 288 0 0 FreeSans 960 0 0 0 VSS
+port 126 nsew
+flabel metal2 432 0 432 0 0 FreeSans 960 0 0 0 VSS
+port 127 nsew
+flabel metal2 576 0 576 0 0 FreeSans 960 0 0 0 VSS
+port 128 nsew
+flabel metal2 720 0 720 0 0 FreeSans 960 0 0 0 VSS
+port 129 nsew
+flabel metal2 864 0 864 0 0 FreeSans 960 0 0 0 VSS
+port 130 nsew
+flabel metal2 1008 0 1008 0 0 FreeSans 960 0 0 0 VSS
+port 131 nsew
+flabel metal2 1152 0 1152 0 0 FreeSans 960 0 0 0 VSS
+port 132 nsew
+flabel metal2 1296 0 1296 0 0 FreeSans 960 0 0 0 VSS
+port 133 nsew
+flabel metal2 1440 0 1440 0 0 FreeSans 960 0 0 0 VSS
+port 134 nsew
+flabel metal2 1872 0 1872 0 0 FreeSans 960 0 0 0 VSS
+port 135 nsew
+<< end >>

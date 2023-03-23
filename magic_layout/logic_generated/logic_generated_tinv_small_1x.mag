@@ -1,0 +1,122 @@
+magic
+tech sky130A
+timestamp 1679560910
+<< checkpaint >>
+rect -650 -660 1082 1668
+<< metal1 >>
+rect 57 854 87 1018
+rect 57 350 87 658
+rect 57 -10 87 154
+<< metal2 >>
+rect -20 978 452 1038
+rect 134 633 226 663
+rect 62 489 226 519
+rect 206 345 298 375
+rect -20 -30 452 30
+<< metal3 >>
+rect 57 345 87 663
+rect 129 345 159 663
+rect 201 129 231 879
+rect 273 345 303 663
+use nmos13_fast_boundary  nbndl ~/WORK/sylee/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+timestamp 1655824928
+transform 1 0 0 0 1 0
+box 0 0 72 504
+use nmos13_fast_boundary  nbndr
+timestamp 1655824928
+transform 1 0 216 0 1 0
+box 0 0 72 504
+use via_M2_M3_0  NoName_2 ~/WORK/sylee/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+timestamp 1647525786
+transform 1 0 72 0 1 504
+box -19 -19 19 19
+use via_M1_M2_0  NoName_4 ~/WORK/sylee/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+timestamp 1647525606
+transform 1 0 72 0 1 504
+box -16 -16 16 16
+use via_M2_M3_0  NoName_5
+timestamp 1647525786
+transform 1 0 216 0 1 144
+box -19 -19 19 19
+use via_M2_M3_0  NoName_7
+timestamp 1647525786
+transform 1 0 216 0 1 864
+box -19 -19 19 19
+use via_M1_M2_0  NoName_8
+timestamp 1647525606
+transform 1 0 216 0 1 144
+box -16 -16 16 16
+use via_M1_M2_0  NoName_9
+timestamp 1647525606
+transform 1 0 216 0 1 864
+box -16 -16 16 16
+use via_M2_M3_0  NoName_11
+timestamp 1647525786
+transform 1 0 288 0 1 360
+box -19 -19 19 19
+use via_M1_M2_0  NoName_12
+timestamp 1647525606
+transform 1 0 216 0 1 360
+box -16 -16 16 16
+use via_M2_M3_0  NoName_15
+timestamp 1647525786
+transform 1 0 144 0 1 648
+box -19 -19 19 19
+use via_M1_M2_0  NoName_16
+timestamp 1647525606
+transform 1 0 216 0 1 648
+box -16 -16 16 16
+use via_M1_M2_1  NoName_20 ~/WORK/sylee/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+timestamp 1647525606
+transform 1 0 72 0 1 0
+box -16 -16 16 16
+use via_M1_M2_1  NoName_23
+timestamp 1647525606
+transform 1 0 72 0 1 1008
+box -16 -16 16 16
+use nmos13_fast_space  nspace0 ~/WORK/sylee/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+timestamp 1655825004
+transform 1 0 288 0 1 0
+box 0 0 72 504
+use nmos13_fast_space  nspace1
+timestamp 1655825004
+transform 1 0 360 0 1 0
+box 0 0 72 504
+use nmos13_fast_center_2stack  nstack ~/WORK/sylee/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+timestamp 1654176054
+transform 1 0 72 0 1 0
+box -46 144 190 378
+use pmos13_fast_boundary  pbndl ~/WORK/sylee/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+timestamp 1655825313
+transform 1 0 0 0 -1 1008
+box 0 0 72 504
+use pmos13_fast_boundary  pbndr
+timestamp 1655825313
+transform 1 0 216 0 -1 1008
+box 0 0 72 504
+use pmos13_fast_space  pspace0 ~/WORK/sylee/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+timestamp 1655825368
+transform 1 0 288 0 -1 1008
+box 0 0 72 504
+use pmos13_fast_space  pspace1
+timestamp 1655825368
+transform 1 0 360 0 -1 1008
+box 0 0 72 504
+use pmos13_fast_center_2stack  pstack ~/WORK/sylee/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+timestamp 1654176175
+transform 1 0 72 0 -1 1008
+box -46 66 190 378
+<< labels >>
+flabel metal3 288 504 288 504 0 FreeSans 240 90 0 0 EN
+port 1 nsew
+flabel metal3 144 504 144 504 0 FreeSans 240 90 0 0 ENB
+port 2 nsew
+flabel metal3 72 504 72 504 0 FreeSans 240 90 0 0 I
+port 3 nsew
+flabel metal3 216 504 216 504 0 FreeSans 240 90 0 0 O
+port 4 nsew
+flabel metal2 216 1008 216 1008 0 FreeSans 480 0 0 0 VDD
+port 5 nsew
+flabel metal2 216 0 216 0 0 FreeSans 480 0 0 0 VSS
+port 6 nsew
+<< end >>

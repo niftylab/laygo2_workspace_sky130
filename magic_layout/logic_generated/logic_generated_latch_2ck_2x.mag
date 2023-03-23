@@ -1,0 +1,85 @@
+magic
+tech sky130A
+timestamp 1679560976
+<< checkpaint >>
+rect -650 -660 1946 1668
+<< metal2 >>
+rect -20 978 1316 1038
+rect 777 849 1095 879
+rect 489 561 735 591
+rect 633 489 1167 519
+rect 345 417 879 447
+rect 417 129 807 159
+rect -20 -30 1316 30
+<< metal3 >>
+rect 129 360 159 648
+rect 345 345 375 648
+rect 489 345 519 648
+rect 633 345 663 519
+rect 705 345 735 591
+rect 777 129 807 879
+rect 849 345 879 447
+rect 1065 345 1095 879
+rect 1137 201 1167 792
+use logic_generated_tinv_2x  I0 magic_layout/logic_generated
+timestamp 1679560906
+transform 1 0 0 0 1 0
+box -20 -30 596 1038
+use logic_generated_tinv_small_1x  I1 magic_layout/logic_generated
+timestamp 1679560910
+transform 1 0 576 0 1 0
+box -20 -30 452 1038
+use logic_generated_inv_2x  I2 magic_layout/logic_generated
+timestamp 1679560816
+transform 1 0 1008 0 1 0
+box -20 -30 308 1038
+use via_M2_M3_0  NoName_1 ~/WORK/sylee/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+timestamp 1647525786
+transform 1 0 360 0 1 432
+box -19 -19 19 19
+use via_M2_M3_0  NoName_3
+timestamp 1647525786
+transform 1 0 864 0 1 432
+box -19 -19 19 19
+use via_M2_M3_0  NoName_6
+timestamp 1647525786
+transform 1 0 504 0 1 576
+box -19 -19 19 19
+use via_M2_M3_0  NoName_8
+timestamp 1647525786
+transform 1 0 720 0 1 576
+box -19 -19 19 19
+use via_M2_M3_0  NoName_11
+timestamp 1647525786
+transform 1 0 792 0 1 144
+box -19 -19 19 19
+use via_M2_M3_0  NoName_13
+timestamp 1647525786
+transform 1 0 792 0 1 864
+box -19 -19 19 19
+use via_M2_M3_0  NoName_15
+timestamp 1647525786
+transform 1 0 1080 0 1 864
+box -19 -19 19 19
+use via_M2_M3_0  NoName_20
+timestamp 1647525786
+transform 1 0 1152 0 1 504
+box -19 -19 19 19
+use via_M2_M3_0  via_M2_M3_0_0
+timestamp 1647525786
+transform 1 0 648 0 1 504
+box -19 -19 19 19
+<< labels >>
+flabel metal3 504 504 504 504 0 FreeSans 240 90 0 0 CLK
+port 1 nsew
+flabel metal3 360 504 360 504 0 FreeSans 240 90 0 0 CLKB
+port 2 nsew
+flabel metal3 144 504 144 504 0 FreeSans 240 90 0 0 I
+port 3 nsew
+flabel metal3 1152 504 1152 504 0 FreeSans 240 90 0 0 O
+port 4 nsew
+flabel metal2 648 1008 648 1008 0 FreeSans 480 0 0 0 VDD
+port 5 nsew
+flabel metal2 648 0 648 0 0 FreeSans 480 0 0 0 VSS
+port 6 nsew
+<< end >>

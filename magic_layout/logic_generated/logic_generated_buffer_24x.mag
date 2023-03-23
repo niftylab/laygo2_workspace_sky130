@@ -1,0 +1,40 @@
+magic
+tech sky130A
+timestamp 1679560860
+<< checkpaint >>
+rect -650 -660 4394 1668
+<< metal2 >>
+rect -20 978 3764 1038
+rect 1713 489 1959 519
+rect -20 -30 3764 30
+<< metal3 >>
+rect 57 360 87 648
+rect 1713 201 1743 519
+rect 1929 345 1959 519
+rect 3585 216 3615 792
+use logic_generated_inv_24x  inv0 magic_layout/logic_generated
+timestamp 1679560816
+transform 1 0 0 0 1 0
+box -20 -30 1892 1038
+use logic_generated_inv_24x  inv1
+timestamp 1679560816
+transform 1 0 1872 0 1 0
+box -20 -30 1892 1038
+use via_M2_M3_0  NoName_1 ~/WORK/sylee/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+timestamp 1647525786
+transform 1 0 1728 0 1 504
+box -19 -19 19 19
+use via_M2_M3_0  NoName_3
+timestamp 1647525786
+transform 1 0 1944 0 1 504
+box -19 -19 19 19
+<< labels >>
+flabel metal3 72 504 72 504 0 FreeSans 240 90 0 0 I
+port 1 nsew
+flabel metal3 3600 504 3600 504 0 FreeSans 240 90 0 0 O
+port 2 nsew
+flabel metal2 1872 1008 1872 1008 0 FreeSans 480 0 0 0 VDD
+port 3 nsew
+flabel metal2 1872 0 1872 0 0 FreeSans 480 0 0 0 VSS
+port 4 nsew
+<< end >>

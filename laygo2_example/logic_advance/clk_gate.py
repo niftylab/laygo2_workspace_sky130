@@ -84,12 +84,12 @@ dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
 
 # clk_bar
 mn_list = [r34.mn(inv0.pins['O'])[1], r34.mn(latch0.pins['CLK'])[1]]
-_track = [None, r34.mn(inv0.pins['O'])[1,1]]
+_track = [None, r34.mn(inv0.pins['O'])[1,1] - 5]
 dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
 
 #latch out
 mn_list = [r34.mn(latch0.pins['O'])[1], r34.mn(nand0.pins['A'])[1]]
-_track = [None, r34.mn(latch0.pins['O'])[1,1]]
+_track = [None, r34.mn(latch0.pins['O'])[1,1] - 5]
 dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
 
 #internal
