@@ -1,7 +1,7 @@
 ###########################################
 #                                         #
 #       32bit WORD Layout Generator       #
-#        Created by HyungJoo Park         #   
+#        Created by Sungyoung Lee         #   
 #                                         #
 ###########################################
 
@@ -27,10 +27,10 @@ r23_basic_name = 'routing_23_basic'
 r23_cmos_name = 'routing_23_cmos'
 r34_name = 'routing_34_basic'
 # Design hierarchy
-libname = 'logic_advanced'
+libname = 'verilog_to_laygo'
 ref_dir_template = './laygo2_example/' #export this layout's information into the yaml in this dir 
-ref_dir_export = './laygo2_example/logic_advance/'
-ref_dir_MAG_exported = './laygo2_example/logic_advance/TCL/'
+ref_dir_export = './laygo2_example/verilog_to_laygo/'
+ref_dir_MAG_exported = './laygo2_example/verilog_to_laygo/TCL/'
 ref_dir_layout = './magic_layout'
 # End of parameter definitions ######
 
@@ -41,6 +41,7 @@ templates = tech.load_templates()
 tpmos, tnmos = templates[tpmos_name], templates[tnmos_name]
 tlogic_prim = laygo2.interface.yaml.import_template(filename=ref_dir_template+'logic/logic_generated_templates.yaml')
 tlogic_adv = laygo2.interface.yaml.import_template(filename=ref_dir_template+'logic_advance/logic_advanced_templates.yaml')
+tv2laygo = laygo2.interface.yaml.import_template(filename=ref_dir_template+'verilog_to_laygo/verilog_to_laygo_templates.yaml')
 
 print("Load grids")
 grids = tech.load_grids(templates=templates)
@@ -64,8 +65,8 @@ for i in range(4):
 buf_sel = list()
 buf_ck = list()
 for i in range(3):
-    buf_sel.append(tlogic_prim['buffer_'+str(nf)+'x'].generate(name='buf_sel'+str(i)))
-    buf_ck.append(tlogic_prim['buffer_'+str(nf)+'x'].generate(name='buf_ck'+str(i)))
+    buf_sel.append(tv2laygo['buffer_'+str(nf)+'x'].generate(name='buf_sel'+str(i)))
+    buf_ck.append(tv2laygo['buffer_'+str(nf)+'x'].generate(name='buf_ck'+str(i)))
 # NTAP0 = templates[tntap_name].generate(name='MNT0', params={'nf':2, 'tie':'TAP0'})
 # PTAP0 = templates[tptap_name].generate(name='MPT0', transform='MX',params={'nf':2, 'tie':'TAP0'})
 # NTAP1 = templates[tntap_name].generate(name='MNT1', params={'nf':2, 'tie':'TAP0'})

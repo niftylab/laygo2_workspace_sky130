@@ -183,11 +183,18 @@ laygo_working
 !laygo2_tech/*.yaml
 serdes_generated*
 
+# verilog_to_laygo
+parsetab.py
+
 # magic setupfile_personal
 .maginit_personal
 .magicrc_personal
 
 # magic/netgen extraction file
+magic_layout/logic_advanced/
+magic_layout/logic_generated/
+magic_layout/scan_generated/
+magic_layout/verilog_to_laygo/
 *.ext
 *.out
 *.spice
