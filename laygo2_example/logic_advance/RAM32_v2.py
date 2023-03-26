@@ -63,8 +63,7 @@ words=list()
 for i in range(words_num):
     words.append(tlogic_adv['word_2row_'+str(nf)+'x'].generate(name='word'+str(i)))
 
-buf_clk0 = tlogic_prim['buffer_'+str(24)+'x'].generate(name='buf_clk0')
-buf_clk1 = tlogic_prim['buffer_'+str(24)+'x'].generate(name='buf_clk1')
+buf_clk = tlogic_prim['buffer_'+str(24)+'x'].generate(name='buf_clk0')
 dec4 = tlogic_adv['dec2x4_'+str(nf)+'x'].generate(name='dec4', transform='MX')
 dec8 = []
 for i in range(4):
@@ -81,11 +80,21 @@ for i in range(words_num):
 for i in range(words_num):
     buf_in.append(tlogic_prim['buffer_'+str(14)+'x'].generate(name='buf_in'+str(i)))
     buf_out.append(tlogic_prim['buffer_'+str(14)+'x'].generate(name='buf_out'+str(i)))
-# NTAP0 = templates[tntap_name].generate(name='MNT0', params={'nf':2, 'tie':'TAP0'})
-# PTAP0 = templates[tptap_name].generate(name='MPT0', transform='MX',params={'nf':2, 'tie':'TAP0'})
-# NTAP1 = templates[tntap_name].generate(name='MNT1', params={'nf':2, 'tie':'TAP0'})
-# PTAP1 = templates[tptap_name].generate(name='MPT1', transform='MX',params={'nf':2, 'tie':'TAP0'})
+NTAP0 = templates[tntap_name].generate(name='MNT0', params={'nf':2, 'tie':'TAP0'})
+PTAP0 = templates[tptap_name].generate(name='MPT0', transform='MX',params={'nf':2, 'tie':'TAP0'})
+NTAP1 = templates[tntap_name].generate(name='MNT1', params={'nf':2, 'tie':'TAP0'})
+PTAP1 = templates[tptap_name].generate(name='MPT1', transform='MX',params={'nf':2, 'tie':'TAP0'})
+NTAP2 = templates[tntap_name].generate(name='MNT2', params={'nf':2, 'tie':'TAP0'})
+PTAP2 = templates[tptap_name].generate(name='MPT2', transform='MX',params={'nf':2, 'tie':'TAP0'})
+NTAP3 = templates[tntap_name].generate(name='MNT3', params={'nf':2, 'tie':'TAP0'})
+PTAP3 = templates[tptap_name].generate(name='MPT3', transform='MX',params={'nf':2, 'tie':'TAP0'})
 
+NTAP4 = templates[tntap_name].generate(name='MNT4', transform='MX', params={'nf':2, 'tie':'TAP0'})
+PTAP4 = templates[tptap_name].generate(name='MPT4',params={'nf':2, 'tie':'TAP0'})
+## experimental clock buffer(for fanout)
+buf_clk_big0 = tlogic_prim['inv_10x'].generate(name="buf_clk_big0")
+buf_clk_big1 = tlogic_prim['inv_32x'].generate(name='buf_clk_big1')
+buf_clk_big2 = tlogic_prim['inv_32x'].generate(name='buf_clk_big2', transform='MX')
 # 4. Place instances.
 
 # WORD lines
@@ -96,8 +105,8 @@ for i in range(words_num):
 # (SELECT & CLK & WE) BUFFERS
 dsn.place(grid=pg, inst=buf_we[3], mn=mn_ref)
 mn_ref=pg.mn.bottom_right(buf_we[3])
-dsn.place(grid=pg, inst=buf_clk0, mn=mn_ref)
-mn_ref = pg.mn.bottom_right(buf_clk0)
+dsn.place(grid=pg, inst=buf_clk, mn=mn_ref)
+mn_ref = pg.mn.bottom_right(buf_clk)
 for i in range(words_num):
     if i == int(words_num/2):
         mn_ref[0] = pg.mn(words[0].pins['WE<0>'])[1,0]-5  # align right WE buffer and right DFF_byte cell
@@ -105,6 +114,11 @@ for i in range(words_num):
         mn_ref = pg.mn.bottom_right(buf_we[1])
     dsn.place(grid=pg, inst=buf_sel[i], mn=mn_ref)
     mn_ref = pg.mn.bottom_right(buf_sel[i])
+dsn.place(grid=pg, inst=NTAP0, mn=pg.mn.bottom_right(buf_sel[int(words_num/2)-1]))
+dsn.place(grid=pg, inst=PTAP0, mn=pg.mn.top_left(NTAP0) + pg.mn.height_vec(PTAP0))
+dsn.place(grid=pg, inst=NTAP1, mn=pg.mn.bottom_left(buf_we[1]) - pg.mn.width_vec(NTAP1))
+dsn.place(grid=pg, inst=PTAP1, mn=pg.mn.top_left(NTAP1) + pg.mn.height_vec(PTAP1))
+
 # WE BUFFERs & DECODERs
 mn_ref = pg.mn.top_left(buf_we[3]) + pg.mn.height_vec(buf_we[2])
 dsn.place(grid=pg, inst=buf_we[2], mn=mn_ref)
@@ -115,8 +129,13 @@ mn_ref = pg.mn.top_right(dec4)
 dsn.place(grid=pg, inst=dec8[2], mn=mn_ref)
 mn_ref = pg.mn.top_right(dec8[2])
 dsn.place(grid=pg, inst=dec8[0], mn=mn_ref)
+mn_ref = pg.mn.bottom_right(dec8[0])
+dsn.place(grid=pg, inst=PTAP4, mn=mn_ref)
+dsn.place(grid=pg, inst=NTAP4, mn=pg.mn.top_left(PTAP4) + pg.mn.height_vec(NTAP4))
+# mn_ref = pg.mn.top_right(NTAP4)
+# dsn.place(grid=pg, inst=buf_clk_big2, mn=mn_ref)
 
-mn_ref = [pg.mn.top_left(buf_we[1])[0],mn_ref[1]]
+mn_ref = pg.mn.top_left(buf_we[1]) + pg.mn.height_vec(buf_we[0])
 dsn.place(grid=pg, inst=buf_we[0], mn=mn_ref)
 mn_ref = pg.mn.top_right(buf_we[0])  
 dsn.place(grid=pg, inst=dec8[1], mn=mn_ref)
@@ -133,8 +152,16 @@ mn_ref = pg.mn.top_left(buf_we[2])
 for i in range(int(words_num/2)):
     dsn.place(grid=pg, inst=buf_in[i], mn=mn_ref)
     mn_ref = pg.mn.bottom_right(buf_in[i])
+dsn.place(grid=pg, inst=NTAP2, mn=mn_ref)
+dsn.place(grid=pg, inst=PTAP2, mn=pg.mn.top_left(NTAP2) + pg.mn.height_vec(PTAP2))
+# mn_ref=pg.mn.bottom_right(NTAP2)
+# dsn.place(grid=pg, inst=buf_clk_big0, mn=mn_ref)
+# mn_ref=pg.mn.bottom_right(buf_clk_big0)
+# dsn.place(grid=pg, inst=buf_clk_big1, mn=mn_ref)
 
 mn_ref = pg.mn.top_left(buf_we[0])
+dsn.place(grid=pg, inst=NTAP3, mn=mn_ref - pg.mn.width_vec(NTAP3))
+dsn.place(grid=pg, inst=PTAP3, mn=pg.mn.top_left(NTAP3) + pg.mn.height_vec(PTAP3))
 for i in range(int(words_num/2), words_num):
     dsn.place(grid=pg, inst=buf_in[i], mn=mn_ref)
     mn_ref = pg.mn.bottom_right(buf_in[i])
@@ -201,10 +228,10 @@ _track = [r34.mn(dec4.pins['EN'])[0,0], None]
 rEN = dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
 # A4
 mn_list = [[r34.mn(buf_we[2].pins['I'])[1,0]-2, r34.mn(dec4.pins['A0'])[1,1]+1], r34.mn(dec4.pins['A1'])[1]+[0,1], r34.mn(dec4.pins['A1'])[0]]
-rA0, vA0, _rA0 = dsn.route(grid=r34, mn=mn_list, via_tag=[False, True, False])
+rA4, vA4, _rA4 = dsn.route(grid=r34, mn=mn_list, via_tag=[False, True, False])
 #A3
 mn_list = [r34.mn(buf_we[2].pins['I'])[1]-[2,0], r34.mn(dec4.pins['A0'])[1]]
-rA1, vA1 = dsn.route(grid=r34, mn=mn_list, via_tag=[False,True])
+rA3, vA3 = dsn.route(grid=r34, mn=mn_list, via_tag=[False,True])
 
 _track = [None, r34.mn(dec4.pins['A1'])[1,1]-1]
 # A2
@@ -314,6 +341,7 @@ _vec = [0,-4]
 for i in range(8):
     mn_list = [r34.mn(words[i].pins['SEL'])[1],r34.mn(buf_sel[15-i].pins['O'])[0]+_vec]
     dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
+    dsn.via(grid=r34, mn=mn_list[0])
     mn_list[0] = r34.mn(buf_sel[15-i].pins['O'])[0]
     dsn.route(grid=r34, mn=mn_list, via_tag=[False, True])
     _track[0] = _track[0] + 1
@@ -321,6 +349,7 @@ for i in range(8):
 for i in range(16,24):
     mn_list = [r34.mn(words[i].pins['SEL'])[1],r34.mn(buf_sel[23-i].pins['O'])[0]+_vec]
     dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
+    dsn.via(grid=r34, mn=mn_list[0])
     mn_list[0] = r34.mn(buf_sel[23-i].pins['O'])[0]
     dsn.route(grid=r34, mn=mn_list, via_tag=[False, True])
     _track[0] = _track[0] + 1
@@ -329,6 +358,7 @@ _vec[1] = _vec[1] - 1
 for i in range(8,16):
     mn_list = [r34.mn(words[i].pins['SEL'])[1],r34.mn(buf_sel[i+8].pins['O'])[0]+_vec]
     dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
+    dsn.via(grid=r34, mn=mn_list[0])
     mn_list[0] = r34.mn(buf_sel[i+8].pins['O'])[0]
     dsn.route(grid=r34, mn=mn_list, via_tag=[False, True])
     _track[0] = _track[0] + 1
@@ -336,15 +366,19 @@ for i in range(8,16):
 for i in range(24,32):
     mn_list = [r34.mn(words[i].pins['SEL'])[1],r34.mn(buf_sel[i].pins['O'])[0]+_vec]
     dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
+    dsn.via(grid=r34, mn=mn_list[0])
     mn_list[0] = r34.mn(buf_sel[i].pins['O'])[0]
     dsn.route(grid=r34, mn=mn_list, via_tag=[False, True])
     _track[0] = _track[0] + 1
     _vec[1] = _vec[1] - 1    
 # CLK
 mn_list=[r34.mn(words[0].pins['CLK'])[0], r34.mn(words[words_num-1].pins['CLK'])[0]]
-rclk0 = dsn.route(grid=r34, mn=mn_list, via_tag=[False,False])
-mn_list=[r34.mn(words[0].pins['CLK'])[1], r34.mn(words[words_num-1].pins['CLK'])[1]]
-rclk1 = dsn.route(grid=r34, mn=mn_list, via_tag=[False,False])
+rclk = dsn.route(grid=r34, mn=mn_list, via_tag=[False,False])
+mn_list = [r34.mn(rclk)[1], r34.mn(buf_clk.pins['O'])[0]]
+_track = [None, mn_list[1][1]-1]
+dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
+# mn_list=[r34.mn(words[0].pins['CLK'])[1], r34.mn(words[words_num-1].pins['CLK'])[1]]
+# rclk1 = dsn.route(grid=r34, mn=mn_list, via_tag=[False,False])
 
 # Di< >
 rDi = [0]*32
@@ -363,7 +397,8 @@ for i in range(24,32):
     _track = [mn_buf[0], None]
     dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
     dsn.via(grid=r34, mn = mn_list[0])
-buf_dist=[-10, -2, -2, -15, -7, -3, -10, -7]
+    dsn.via(grid=r34, mn = mn_list[1])
+buf_dist=[-10, -2, -2, -15, -7, -3, -10, -27]
 for i in range(8,16):
     mn_list = []
     for j in range(words_num):
@@ -376,6 +411,7 @@ for i in range(8,16):
     _track = [mn_buf[0], None]
     dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
     dsn.via(grid=r34, mn = mn_list[0])
+    dsn.via(grid=r34, mn = mn_list[1])
 #upper pin
 buf_dist = [-2, -6, -9, -5, -3, -6, -9, -11]
 for i in range(16,24):
@@ -390,6 +426,7 @@ for i in range(16,24):
     _track = [mn_buf[0], None]
     dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
     dsn.via(grid=r34, mn = mn_list[0])
+    dsn.via(grid=r34, mn = mn_list[1])
 buf_dist = [-2, -6, -5, -4, -3, -2, -9, -8]
 for i in range(8):
     mn_list = []
@@ -403,6 +440,7 @@ for i in range(8):
     _track = [mn_buf[0], None]
     dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
     dsn.via(grid=r34, mn = mn_list[0])
+    dsn.via(grid=r34, mn = mn_list[1])
 # Do< >
 rDo = [0]*32
 # lower pin
@@ -433,25 +471,40 @@ for i in range(8):
     rDo[i] = dsn.route_via_track(grid=r23, mn=mn_list, track=_track)
 
 
-# # VSS
-# rvss0 = dsn.route(grid=r12, mn=[r12.mn.bottom_left(cells[0]), r12.mn.bottom_right(cells[3])])
-# # VDD
-# rvdd0 = dsn.route(grid=r12, mn=[r12.mn.top_left(cells[0]), r12.mn.top_right(cells[3])])
+# VSS
+rvss0 = dsn.route(grid=r12, mn=[r12.mn.bottom_left(buf_in[0]), [r12.mn.bottom_right(words[0])[0],r12.mn.bottom_right(buf_in[31])[1]]])
+# VDD
+rvdd0 = dsn.route(grid=r12, mn=[r12.mn.top_left(buf_in[0]), [r12.mn.top_right(words[0])[0],r12.mn.top_right(buf_in[31])[1]]])
+rvdd1 = dsn.route(grid=r12, mn=[r12.mn.top_left(buf_we[3]), [r12.mn.top_right(words[0])[0],r12.mn.top_left(buf_we[3])[1]]])
+# for LVS (connect VDDs and VSSs)
+mn_vss = [r23.mn(rvss0)[0], r23.mn.bottom_left(buf_we[3])]
+mn_vdd = [r23.mn(rvdd0)[0], r23.mn(rvdd1)[0]]
+for i in range(32):
+    mn_vdd.append(r23.mn(words[31-i].pins['VDD'])[0])
+    mn_vss.append(r23.bottom_left(words[31-i]))
+rvdd = dsn.route_via_track(grid=r23, mn = mn_vdd, track=[mn_vdd[0][0]-3,None])
+rvss = dsn.route_via_track(grid=r23, mn = mn_vss, track=[mn_vss[0][0]-4,None])
 
 # # 6. Create pins.
 # psel_bar = dsn.pin(name='SelBar', grid=r23_cmos, mn=r23_cmos.mn.bbox(cells[0].pins['SelBar']))
 pwe = list()
 for i in range(4):
-    pwe.append(dsn.pin(name='WE<'+str(i)+'>', grid=r23, mn=r23.mn.bbox(rwe[i][-1])))
-# pclk = dsn.pin(name='CLK', grid=r23_cmos, mn=r23_cmos.mn.bbox(cells[0].pins['CLK']))
-# pDo = list()
-# pDi = list()
-# for i in range(4):
-#     for j in range(8):
-#         pDo.append(dsn.pin(name='Do<'+str(8*(3-i)+(7-j))+'>', grid=r23_cmos, mn=r23_cmos.mn.bbox(cells[i].pins['Do<'+str(j)+'>'])))
-#         pDi.append(dsn.pin(name='Di<'+str(8*(3-i)+(7-j))+'>', grid=r23_cmos, mn=r23_cmos.mn.bbox(cells[i].pins['Di<'+str(j)+'>'])))
-# pvss0 = dsn.pin(name='VSS', grid=r12, mn=r12.mn.bbox(rvss0))
-# pvdd0 = dsn.pin(name='VDD', grid=r12, mn=r12.mn.bbox(rvdd0))
+    pwe.append(dsn.pin(name='WE<'+str(i)+'>', grid=r23, mn=r23.mn.bbox(buf_we[i].pins['I'])))
+pA4 = dsn.pin(name='A4', grid=r34, mn=[r34.mn.bbox(rA4)[0], r34.mn.bbox(rA4)[0]+[2,0]])
+pA3 = dsn.pin(name='A3', grid=r34, mn=[r34.mn.bbox(rA3)[0], r34.mn.bbox(rA3)[0]+[2,0]])
+pA2 = dsn.pin(name='A2', grid=r34, mn=[r34.mn.bbox(rA2)[0], r34.mn.bbox(rA2)[0]+[2,0]])
+pA1 = dsn.pin(name='A1', grid=r34, mn=[r34.mn.bbox(rA1)[0], r34.mn.bbox(rA1)[0]+[2,0]])
+pA0 = dsn.pin(name='A0', grid=r34, mn=[r34.mn.bbox(rA0)[0], r34.mn.bbox(rA0)[0]+[2,0]])
+
+pclk = dsn.pin(name='CLK', grid=r23_cmos, mn=r23_cmos.mn.bbox(buf_clk.pins['I']))
+pDo = list()
+pDi = list()
+for i in range(32):
+    pDo.append(dsn.pin(name='Do<'+str(i)+'>', grid=r34, mn=[r34.mn.bbox(rDo[i][-1])[0], r34.mn.bbox(rDo[i][-1])[0]+[0,4]]))
+    pDi.append(dsn.pin(name='Di<'+str(i)+'>', grid=r34, mn=r34.mn.bbox(buf_in[31-i].pins['I'])))
+# for lvs
+pvss = dsn.pin(name='VSS', grid=r23, mn=r23.mn.bbox(rvss[-1]))
+pvdd = dsn.pin(name='VDD', grid=r23, mn=r23.mn.bbox(rvdd[-1]))
 
 # 7. Export to physical database.
 print("Export design")

@@ -1,0 +1,586 @@
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/RAM32bit.sch
+.subckt RAM32bit A3 A4 EN A2 A1 A0 Di<0> Do[0] Di<1> Do[1] Di<2> Do[2] Di<3> Do[3] Di<4> Do[4] Di<5>
++ Do[5] Di<6> Do[6] Di<7> Do[7] Di<8> Do[8] Di<9> Do[9] Di<10> Do[10] Di<11> Do[11] Di<12> Do[12] Di<13>
++ Do[13] Di<14> Do[14] Di<15> Do[15] Di<16> Do[16] Di<17> Do[17] Di<18> Do[18] Di<19> Do[19] Di<20> Do[20]
++ Di<21> Do[21] Di<22> Do[22] Di<23> Do[23] Di<24> Do[24] Di<25> Do[25] Di<26> Do[26] Di<27> Do[27] Di<28>
++ Do[28] Di<29> Do[29] Di<30> Do[30] Di<31> Do[31] VDD VSS WE0 WE1 WE2 WE3 CLK
+*.PININFO A3:I A4:I EN:I A2:I A1:I A0:I Di<0>:I Do[0]:O Di<1>:I Do[1]:O Di<2>:I Do[2]:O Di<3>:I
+*+ Do[3]:O Di<4>:I Do[4]:O Di<5>:I Do[5]:O Di<6>:I Do[6]:O Di<7>:I Do[7]:O Di<8>:I Do[8]:O Di<9>:I Do[9]:O
+*+ Di<10>:I Do[10]:O Di<11>:I Do[11]:O Di<12>:I Do[12]:O Di<13>:I Do[13]:O Di<14>:I Do[14]:O Di<15>:I Do[15]:O
+*+ Di<16>:I Do[16]:O Di<17>:I Do[17]:O Di<18>:I Do[18]:O Di<19>:I Do[19]:O Di<20>:I Do[20]:O Di<21>:I Do[21]:O
+*+ Di<22>:I Do[22]:O Di<23>:I Do[23]:O Di<24>:I Do[24]:O Di<25>:I Do[25]:O Di<26>:I Do[26]:O Di<27>:I Do[27]:O
+*+ Di<28>:I Do[28]:O Di<29>:I Do[29]:O Di<30>:I Do[30]:O Di<31>:I Do[31]:O VDD:B VSS:B WE0:I WE1:I WE2:I WE3:I
+*+ CLK:I
+xbyte1 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[0] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8] Di[10]
++ Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21] Di[22]
++ Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23] Do[28]
++ Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1] Do[7]
++ Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte2 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[1] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8] Di[10]
++ Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21] Di[22]
++ Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23] Do[28]
++ Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1] Do[7]
++ Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte3 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[2] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8] Di[10]
++ Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21] Di[22]
++ Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23] Do[28]
++ Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1] Do[7]
++ Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte4 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[3] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8] Di[10]
++ Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21] Di[22]
++ Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23] Do[28]
++ Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1] Do[7]
++ Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte5 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[4] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8] Di[10]
++ Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21] Di[22]
++ Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23] Do[28]
++ Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1] Do[7]
++ Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte6 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[5] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8] Di[10]
++ Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21] Di[22]
++ Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23] Do[28]
++ Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1] Do[7]
++ Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte7 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[6] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8] Di[10]
++ Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21] Di[22]
++ Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23] Do[28]
++ Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1] Do[7]
++ Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte8 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[7] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8] Di[10]
++ Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21] Di[22]
++ Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23] Do[28]
++ Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1] Do[7]
++ Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte9 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[8] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8] Di[10]
++ Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21] Di[22]
++ Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23] Do[28]
++ Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1] Do[7]
++ Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte10 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[9] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8] Di[10]
++ Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21] Di[22]
++ Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23] Do[28]
++ Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1] Do[7]
++ Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte11 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[10] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte12 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[11] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte13 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[12] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte14 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[13] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte15 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[14] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte16 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[15] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte17 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[16] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte18 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[17] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte19 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[18] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte20 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[19] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte21 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[20] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte22 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[21] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte23 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[22] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte24 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[23] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte25 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[24] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte26 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[25] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte27 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[26] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte28 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[27] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte29 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[28] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte30 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[29] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte31 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[30] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+xbyte32 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[31] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8]
++ Di[10] Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21]
++ Di[22] Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23]
++ Do[28] Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1]
++ Do[7] Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] word NF=2
+x1 A3 EN A4 VDD VSS net1 net2 net3 net4 dec_2to4 NF=2
+x_dec1 A1 net1 A2 A0 VDD VSS Y0 Y1 Y2 Y3 Y4 Y5 Y6 Y7 dec_3to8 NF=2
+x_dec2 A1 net2 A2 A0 VDD VSS Y8 Y9 Y10 Y11 Y12 Y13 Y14 Y15 dec_3to8 NF=2
+x_dec3 A1 net3 A2 A0 VDD VSS Y16 Y17 Y18 Y19 Y20 Y21 Y22 Y23 dec_3to8 NF=2
+x_dec4 A1 net4 A2 A0 VDD VSS Y24 Y25 Y26 Y27 Y28 Y29 Y30 Y31 dec_3to8 NF=2
+X_inv1 Y0 VDD VSS net5 inv NF=2
+X_inv2 net5 VDD VSS SEL[0] inv NF=2
+X_inv3 Y1 VDD VSS net6 inv NF=2
+X_inv4 net6 VDD VSS SEL[1] inv NF=2
+X_inv5 Y2 VDD VSS net7 inv NF=2
+X_inv6 net7 VDD VSS SEL[2] inv NF=2
+X_inv7 Y3 VDD VSS net8 inv NF=2
+X_inv8 net8 VDD VSS SEL[3] inv NF=2
+X_inv9 Y4 VDD VSS net9 inv NF=2
+X_inv10 net9 VDD VSS SEL[4] inv NF=2
+X_inv11 Y5 VDD VSS net10 inv NF=2
+X_inv12 net10 VDD VSS SEL[5] inv NF=2
+X_inv13 Y6 VDD VSS net11 inv NF=2
+X_inv14 net11 VDD VSS SEL[6] inv NF=2
+X_inv15 Y7 VDD VSS net12 inv NF=2
+X_inv16 net12 VDD VSS SEL[7] inv NF=2
+X_inv17 Y8 VDD VSS net13 inv NF=2
+X_inv18 net13 VDD VSS SEL[8] inv NF=2
+X_inv19 Y9 VDD VSS net14 inv NF=2
+X_inv20 net14 VDD VSS SEL[9] inv NF=2
+X_inv21 Y10 VDD VSS net15 inv NF=2
+X_inv22 net15 VDD VSS SEL[10] inv NF=2
+X_inv23 Y11 VDD VSS net16 inv NF=2
+X_inv24 net16 VDD VSS SEL[11] inv NF=2
+X_inv25 Y12 VDD VSS net17 inv NF=2
+X_inv26 net17 VDD VSS SEL[12] inv NF=2
+X_inv27 Y13 VDD VSS net18 inv NF=2
+X_inv28 net18 VDD VSS SEL[13] inv NF=2
+X_inv29 Y14 VDD VSS net19 inv NF=2
+X_inv30 net19 VDD VSS SEL[14] inv NF=2
+X_inv31 Y15 VDD VSS net20 inv NF=2
+X_inv32 net20 VDD VSS SEL[15] inv NF=2
+X_inv33 Y16 VDD VSS net21 inv NF=2
+X_inv34 net21 VDD VSS SEL[16] inv NF=2
+X_inv35 Y17 VDD VSS net22 inv NF=2
+X_inv36 net22 VDD VSS SEL[17] inv NF=2
+X_inv37 Y18 VDD VSS net23 inv NF=2
+X_inv38 net23 VDD VSS SEL[18] inv NF=2
+X_inv39 Y19 VDD VSS net24 inv NF=2
+X_inv40 net24 VDD VSS SEL[19] inv NF=2
+X_inv41 Y20 VDD VSS net25 inv NF=2
+X_inv42 net25 VDD VSS SEL[20] inv NF=2
+X_inv43 Y21 VDD VSS net26 inv NF=2
+X_inv44 net26 VDD VSS SEL[21] inv NF=2
+X_inv45 Y22 VDD VSS net27 inv NF=2
+X_inv46 net27 VDD VSS SEL[22] inv NF=2
+X_inv47 Y23 VDD VSS net28 inv NF=2
+X_inv48 net28 VDD VSS SEL[23] inv NF=2
+X_inv49 Y24 VDD VSS net29 inv NF=2
+X_inv50 net29 VDD VSS SEL[24] inv NF=2
+X_inv51 Y25 VDD VSS net30 inv NF=2
+X_inv52 net30 VDD VSS SEL[25] inv NF=2
+X_inv53 Y26 VDD VSS net31 inv NF=2
+X_inv54 net31 VDD VSS SEL[26] inv NF=2
+X_inv55 Y27 VDD VSS net32 inv NF=2
+X_inv56 net32 VDD VSS SEL[27] inv NF=2
+X_inv57 Y28 VDD VSS net33 inv NF=2
+X_inv58 net33 VDD VSS SEL[28] inv NF=2
+X_inv59 Y29 VDD VSS net34 inv NF=2
+X_inv60 net34 VDD VSS SEL[29] inv NF=2
+X_inv61 Y30 VDD VSS net35 inv NF=2
+X_inv62 net35 VDD VSS SEL[30] inv NF=2
+X_inv63 Y31 VDD VSS net36 inv NF=2
+X_inv64 net36 VDD VSS SEL[31] inv NF=2
+X_inv65 CLK VDD VSS net37 inv NF=24
+X_inv66 net37 VDD VSS CLK_buf inv NF=24
+X_inv67 WE3 VDD VSS net38 inv NF=12
+X_inv68 net38 VDD VSS WE[3] inv NF=12
+X_inv69 WE2 VDD VSS net39 inv NF=12
+X_inv70 net39 VDD VSS WE[2] inv NF=12
+X_inv71 WE1 VDD VSS net40 inv NF=12
+X_inv72 net40 VDD VSS WE[1] inv NF=12
+X_inv73 WE0 VDD VSS net41 inv NF=12
+X_inv74 net41 VDD VSS WE[0] inv NF=12
+X_inv75 Di<0> VDD VSS net42 inv NF=14
+X_inv76 net42 VDD VSS Di[0] inv NF=14
+X_inv77 Di<1> VDD VSS net43 inv NF=14
+X_inv78 net43 VDD VSS Di[1] inv NF=14
+X_inv79 Di<2> VDD VSS net45 inv NF=14
+X_inv80 net45 VDD VSS Di[2] inv NF=14
+X_inv81 Di<3> VDD VSS net46 inv NF=14
+X_inv82 net46 VDD VSS Di[3] inv NF=14
+X_inv83 Di<4> VDD VSS net44 inv NF=14
+X_inv84 net44 VDD VSS Di[4] inv NF=14
+X_inv85 Di<5> VDD VSS net49 inv NF=14
+X_inv86 net49 VDD VSS Di[5] inv NF=14
+X_inv87 Di<6> VDD VSS net48 inv NF=14
+X_inv88 net48 VDD VSS Di[6] inv NF=14
+X_inv89 Di<7> VDD VSS net47 inv NF=14
+X_inv90 net47 VDD VSS Di[7] inv NF=14
+X_inv91 Di<8> VDD VSS net50 inv NF=14
+X_inv92 net50 VDD VSS Di[8] inv NF=14
+X_inv93 Di<9> VDD VSS net51 inv NF=14
+X_inv94 net51 VDD VSS Di[9] inv NF=14
+X_inv95 Di<10> VDD VSS net52 inv NF=14
+X_inv96 net52 VDD VSS Di[10] inv NF=14
+X_inv97 Di<11> VDD VSS net53 inv NF=14
+X_inv98 net53 VDD VSS Di[11] inv NF=14
+X_inv99 Di<12> VDD VSS net57 inv NF=14
+X_inv100 net57 VDD VSS Di[12] inv NF=14
+X_inv101 Di<13> VDD VSS net56 inv NF=14
+X_inv102 net56 VDD VSS Di[13] inv NF=14
+X_inv103 Di<14> VDD VSS net55 inv NF=14
+X_inv104 net55 VDD VSS Di[14] inv NF=14
+X_inv105 Di<15> VDD VSS net54 inv NF=14
+X_inv106 net54 VDD VSS Di[15] inv NF=14
+X_inv107 Di<16> VDD VSS net58 inv NF=14
+X_inv108 net58 VDD VSS Di[16] inv NF=14
+X_inv109 Di<17> VDD VSS net65 inv NF=14
+X_inv110 net65 VDD VSS Di[17] inv NF=14
+X_inv111 Di<18> VDD VSS net66 inv NF=14
+X_inv112 net66 VDD VSS Di[18] inv NF=14
+X_inv113 Di<19> VDD VSS net73 inv NF=14
+X_inv114 net73 VDD VSS Di[19] inv NF=14
+X_inv115 Di<20> VDD VSS net59 inv NF=14
+X_inv116 net59 VDD VSS Di[20] inv NF=14
+X_inv117 Di<21> VDD VSS net64 inv NF=14
+X_inv118 net64 VDD VSS Di[21] inv NF=14
+X_inv119 Di<22> VDD VSS net67 inv NF=14
+X_inv120 net67 VDD VSS Di[22] inv NF=14
+X_inv121 Di<23> VDD VSS net72 inv NF=14
+X_inv122 net72 VDD VSS Di[23] inv NF=14
+X_inv123 Di<24> VDD VSS net60 inv NF=14
+X_inv124 net60 VDD VSS Di[24] inv NF=14
+X_inv125 Di<25> VDD VSS net63 inv NF=14
+X_inv126 net63 VDD VSS Di[25] inv NF=14
+X_inv127 Di<26> VDD VSS net68 inv NF=14
+X_inv128 net68 VDD VSS Di[26] inv NF=14
+X_inv129 Di<27> VDD VSS net71 inv NF=14
+X_inv130 net71 VDD VSS Di[27] inv NF=14
+X_inv131 Di<28> VDD VSS net61 inv NF=14
+X_inv132 net61 VDD VSS Di[28] inv NF=14
+X_inv133 Di<29> VDD VSS net62 inv NF=14
+X_inv134 net62 VDD VSS Di[29] inv NF=14
+X_inv135 Di<30> VDD VSS net69 inv NF=14
+X_inv136 net69 VDD VSS Di[30] inv NF=14
+X_inv137 Di<31> VDD VSS net70 inv NF=14
+X_inv138 net70 VDD VSS Di[31] inv NF=14
+.ends
+
+* expanding   symbol:  xschem_lib/word.sym # of pins=72
+** sym_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/word.sym
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/word.sch
+.subckt word  VDD VSS WE[3] WE[2] WE[1] WE[0] SEL CLK Di[9] Di[7] Di[19] Di[20] Di[30] Di[8] Di[10]
++ Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21] Di[22]
++ Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23] Do[28]
++ Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1] Do[7]
++ Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31]   NF=2
+*.PININFO SEL:I WE[0]:I Di[31]:I Di[30]:I Di[29]:I Di[28]:I Di[27]:I Di[26]:I Di[25]:I Di[24]:I
+*+ Do[31]:O Do[30]:O Do[29]:O Do[28]:O Do[27]:O Do[26]:O Do[25]:O Do[24]:O VDD:B VSS:B Di[23]:I Di[22]:I
+*+ Di[21]:I Di[20]:I Di[19]:I Di[18]:I Di[17]:I Di[16]:I Do[23]:O Do[22]:O Do[21]:O Do[20]:O Do[19]:O Do[18]:O
+*+ Do[17]:O Do[16]:O Di[15]:I Di[14]:I Di[13]:I Di[12]:I Di[11]:I Di[10]:I Di[9]:I Di[8]:I Do[15]:O Do[14]:O
+*+ Do[13]:O Do[12]:O Do[11]:O Do[10]:O Do[9]:O Do[8]:O Di[7]:I Di[6]:I Di[5]:I Di[4]:I Di[3]:I Di[2]:I Di[1]:I
+*+ Di[0]:I Do[7]:O Do[6]:O Do[5]:O Do[4]:O Do[3]:O Do[2]:O Do[1]:O Do[0]:O WE[1]:I WE[2]:I WE[3]:I CLK:I
+xByte_1 VDD VSS WE[3] Di[27] Di[31] Do[27] Do[31] CLK SEL_buf Di[26] Di[30] Do[26] Do[30] Di[29]
++ Di[25] Do[29] Do[25] Di[28] Do[28] Di[24] Do[24] byte_dff NF=2
+X_inv1 SEL VDD VSS net1 inv NF=2
+X_inv2 net1 VDD VSS SEL_buf inv NF=2
+xByte_2 VDD VSS WE[2] Di[19] Di[23] Do[19] Do[23] CLK SEL_buf Di[18] Di[22] Do[18] Do[22] Di[21]
++ Di[17] Do[21] Do[17] Di[20] Do[20] Di[16] Do[16] byte_dff NF=2
+xByte_3 VDD VSS WE[1] Di[11] Di[15] Do[11] Do[15] CLK SEL_buf Di[10] Di[14] Do[10] Do[14] Di[13]
++ Di[9] Do[13] Do[9] Di[12] Do[12] Di[8] Do[8] byte_dff NF=2
+xByte_4 VDD VSS WE[0] Di[3] Di[7] Do[3] Do[7] CLK SEL_buf Di[2] Di[6] Do[2] Do[6] Di[5] Di[1] Do[5]
++ Do[1] Di[4] Do[4] Di[0] Do[0] byte_dff NF=2
+.ends
+
+
+* expanding   symbol:  xschem_lib/dec_2to4.sym # of pins=9
+** sym_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/dec_2to4.sym
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/dec_2to4.sch
+.subckt dec_2to4  A0 EN A1 VDD VSS Y0 Y1 Y2 Y3   NF=2
+*.PININFO A0:I A1:I VDD:B VSS:B EN:I Y0:O Y1:O Y2:O Y3:O
+X_nand1 net5 net6 EN net1 VDD VSS nand_3in
+X_inv1 net1 VDD VSS Y0 inv NF=2
+X_nand2 A0 A1 EN net2 VDD VSS nand_3in
+X_inv3 net2 VDD VSS Y1 inv NF=2
+X_nand3 net5 net6 EN net3 VDD VSS nand_3in
+X_inv4 net3 VDD VSS Y2 inv NF=2
+X_nand5 A0 A1 EN net4 VDD VSS nand_3in
+X_inv6 net4 VDD VSS Y3 inv NF=2
+X_inv2 A0 VDD VSS net5 inv NF=2
+X_inv5 A1 VDD VSS net6 inv NF=2
+.ends
+
+
+* expanding   symbol:  xschem_lib/dec_3to8.sym # of pins=14
+** sym_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/dec_3to8.sym
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/dec_3to8.sch
+.subckt dec_3to8  A1 EN A2 A0 VDD VSS Y0 Y1 Y2 Y3 Y4 Y5 Y6 Y7   NF=2
+*.PININFO A2:I A1:I A0:I VDD:B VSS:B Y0:O Y1:O Y2:O Y3:O Y4:O Y5:O Y6:O Y7:O EN:I
+X_inv7 A2 VDD VSS net3 inv NF=4
+X_inv8 A1 VDD VSS net2 inv NF=4
+X_inv9 A0 VDD VSS net1 inv NF=4
+x_AndF1 net3 net2 Y0 VDD VSS net1 EN and_4in NF=2
+x_AndF2 net3 net2 Y1 VDD VSS A0 EN and_4in NF=2
+x_AndF3 net3 A1 Y2 VDD VSS net1 EN and_4in NF=2
+x_AndF4 net3 A1 Y3 VDD VSS A0 EN and_4in NF=2
+x_AndF5 A2 net2 Y4 VDD VSS net1 EN and_4in NF=2
+x_AndF6 A2 net2 Y5 VDD VSS A0 EN and_4in NF=2
+x_AndF7 A2 A1 Y6 VDD VSS net1 EN and_4in NF=2
+x_AndF8 A2 A1 Y7 VDD VSS A0 EN and_4in NF=2
+.ends
+
+
+* expanding   symbol:  xschem_lib/inv.sym # of pins=4
+** sym_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/inv.sym
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/inv.sch
+.subckt inv  X VDD VSS Y   NF=2
+*.PININFO VSS:B X:I Y:O VDD:B
+XM1 Y X VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+XM2 Y X VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+.ends
+
+
+* expanding   symbol:  xschem_lib/byte_dff.sym # of pins=21
+** sym_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/byte_dff.sym
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/byte_dff.sch
+.subckt byte_dff  VDD VSS WE Di<3> Di<7> Do<3> Do<7> CLK SEL Di<2> Di<6> Do<2> Do<6> Di<5> Di<1>
++ Do<5> Do<1> Di<4> Do<4> Di<0> Do<0>   NF=2
+*.PININFO Do<7>:O Di<7>:I Do<6>:O Di<6>:I Do<5>:O Di<5>:I Do<4>:O Di<4>:I Do<3>:O Di<3>:I Do<2>:O
+*+ Di<2>:I Do<1>:O Di<1>:I Do<0>:O Di<0>:I WE:I SEL:I CLK:I VDD:B VSS:B
+X_nand1 SEL WE net17 VDD VSS nand NF=2
+X_inv1 net17 VDD VSS net18 inv NF=2
+X_inv2 SEL VDD VSS SEL_bar inv NF=2
+x1 VDD net18 ck_o CLK VSS clk_gate NF=2
+xDFF1 VDD VSS Di<7> net2 ck_o DFF NF=2
+X_tinv1 net2 SEL SEL_bar VDD VSS net1 tinv NF=2
+X_inv3 net1 VDD VSS Do<7> inv NF=2
+xDFF2 VDD VSS Di<6> net4 ck_o DFF NF=2
+X_tinv2 net4 SEL SEL_bar VDD VSS net3 tinv NF=2
+X_inv4 net3 VDD VSS Do<6> inv NF=2
+xDFF3 VDD VSS Di<5> net6 ck_o DFF NF=2
+X_tinv3 net6 SEL SEL_bar VDD VSS net5 tinv NF=2
+X_inv5 net5 VDD VSS Do<5> inv NF=2
+xDFF4 VDD VSS Di<4> net8 ck_o DFF NF=2
+X_tinv4 net8 SEL SEL_bar VDD VSS net7 tinv NF=2
+X_inv6 net7 VDD VSS Do<4> inv NF=2
+xDFF5 VDD VSS Di<3> net10 ck_o DFF NF=2
+X_tinv5 net10 SEL SEL_bar VDD VSS net9 tinv NF=2
+X_inv7 net9 VDD VSS Do<3> inv NF=2
+xDFF6 VDD VSS Di<2> net12 ck_o DFF NF=2
+X_tinv6 net12 SEL SEL_bar VDD VSS net11 tinv NF=2
+X_inv8 net11 VDD VSS Do<2> inv NF=2
+xDFF7 VDD VSS Di<1> net14 ck_o DFF NF=2
+X_tinv7 net14 SEL SEL_bar VDD VSS net13 tinv NF=2
+X_inv9 net13 VDD VSS Do<1> inv NF=2
+xDFF8 VDD VSS Di<0> net16 ck_o DFF NF=2
+X_tinv10 net16 SEL SEL_bar VDD VSS net15 tinv NF=2
+X_inv11 net15 VDD VSS Do<0> inv NF=2
+.ends
+
+
+* expanding   symbol:  xschem_lib/nand_3in.sym # of pins=6
+** sym_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/nand_3in.sym
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/nand_3in.sch
+.subckt nand_3in  A B C Y VDD VSS
+*.PININFO VDD:B Y:O VSS:B A:I B:I C:I
+XM1 Y A net1 VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=2 m=2
+XM2 net1 B net2 VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=2 m=2
+XM3 net2 C VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=2 m=2
+XM4 Y B VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=2 m=2
+XM5 Y A VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=2 m=2
+XM6 Y C VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=2 m=2
+.ends
+
+
+* expanding   symbol:  xschem_lib/and_4in.sym # of pins=7
+** sym_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/and_4in.sym
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/and_4in.sch
+.subckt and_4in  A0 A1 OUT VDD VSS A2 A3   NF=2
+*.PININFO VDD:B VDD:B VSS:B VSS:B VSS:B VDD:B A0:I A1:I A2:I A3:I OUT:O
+X_nand1 A1 A0 net1 VDD VSS nand NF=2
+X_nand2 A3 A2 net2 VDD VSS nand NF=2
+X_nor1 OUT net1 net2 VDD VSS nor NF=2
+.ends
+
+
+* expanding   symbol:  xschem_lib/nand.sym # of pins=5
+** sym_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/nand.sym
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/nand.sch
+.subckt nand  B A Y VDD VSS   NF=2
+*.PININFO Y:O A:I VDD:B VSS:B B:I
+XM1 Y A net1 VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+XM2 net1 B VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+XM3 Y B VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+XM4 Y A VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+.ends
+
+
+* expanding   symbol:  xschem_lib/clk_gate.sym # of pins=5
+** sym_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/clk_gate.sym
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/clk_gate.sch
+.subckt clk_gate  VDD EN CK_O CK_I VSS   NF=2
+*.PININFO CK_I:I VDD:B VSS:B EN:I CK_O:O
+X_inv1 CK_I VDD VSS net1 inv NF=2
+X_latch1 EN net1 CK_I VSS VDD net2 latch NF=2
+X_nand1 CK_I net2 net3 VDD VSS nand NF=2
+X_inv2 net3 VDD VSS CK_O inv NF=12
+.ends
+
+
+* expanding   symbol:  xschem_lib/DFF.sym # of pins=5
+** sym_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/DFF.sym
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/DFF.sch
+.subckt DFF  VDD VSS I O CLK   NF=2
+*.PININFO VDD:B VSS:B I:I CLK:I O:O
+X_latch1 I clk_bar clk_buf VSS VDD net1 latch NF=2
+X_latch2 net1 clk_buf clk_bar VSS VDD O latch NF=2
+X_inv1 CLK VDD VSS clk_bar inv NF=2
+X_inv2 clk_bar VDD VSS clk_buf inv NF=2
+.ends
+
+
+* expanding   symbol:  xschem_lib/tinv.sym # of pins=6
+** sym_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/tinv.sym
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/tinv.sch
+.subckt tinv  X EN ENB VDD VSS Y   NF=2
+*.PININFO X:I ENB:I EN:I Y:O VDD:B VSS:B
+XM1 net2 X VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+XM2 Y ENB net2 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+XM3 Y EN net1 VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+XM4 net1 X VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+.ends
+
+
+* expanding   symbol:  xschem_lib/nor.sym # of pins=5
+** sym_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/nor.sym
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/nor.sch
+.subckt nor  Y A B VDD VSS   NF=2
+*.PININFO VDD:B VSS:B Y:O A:I B:I
+XM1 Y B VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+XM2 Y A VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+XM3 Y A net1 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+XM4 net1 B VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+.ends
+
+
+* expanding   symbol:  xschem_lib/latch.sym # of pins=6
+** sym_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/latch.sym
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/latch.sch
+.subckt latch  IN CLK CLKB VSS VDD OUT   NF=2
+*.PININFO CLKB:I IN:I CLK:I VDD:B VSS:B OUT:O
+X_tinv1 IN CLK CLKB VDD VSS net1 tinv NF=NF
+X_inv1 net1 VDD VSS OUT inv NF=NF
+X_tinv_small1 OUT CLKB CLK VDD VSS net1 tinv_small
+.ends
+
+
+* expanding   symbol:  xschem_lib/tinv_small.sym # of pins=6
+** sym_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/tinv_small.sym
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/tinv_small.sch
+.subckt tinv_small  X EN ENB VDD VSS Y
+*.PININFO X:I ENB:I EN:I Y:O VDD:B VSS:B
+XM1 net2 X VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 Y ENB net2 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM3 Y EN net1 VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM4 net1 X VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+.end
