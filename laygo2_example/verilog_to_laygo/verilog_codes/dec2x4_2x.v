@@ -13,8 +13,8 @@ module dec2x4_2x(A0, A1, EN, Y0, Y1, Y2, Y3);
     wire A1bar;
     wire w0, w1, w2, w3;
 
-    inv_2x inv0(.O(A1bar), .I(A1));
-    inv_2x inv1(.O(A0bar), .I(A0));
+    inv_2x inv0(.O(A0bar), .I(A0));
+    inv_2x inv1(.O(A1bar), .I(A1));
     
     nand3_2x nand3_0(.A(A0bar), .B(A1bar), .C(EN), .Y(w0));
     inv_2x inv_0(.I(w0), .O(Y0));
