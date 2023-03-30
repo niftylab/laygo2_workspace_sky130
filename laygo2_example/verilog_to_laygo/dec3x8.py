@@ -1,6 +1,6 @@
 ###########################################
 #                                         #
-#   dec3x8 Layout Generator from .v code  #
+#   dec2x4 Layout Generator from .v code  #
 #               Created by                #
 #     H.J. PARK, S.Y. Lee, J.Y. PARK      #
 #                                         #
@@ -12,10 +12,12 @@ import pprint
 import laygo2
 import laygo2.interface
 import laygo2_tech as tech
+
+from parse_from_v import info_from_verilog_code
+
 # Parameter definitions #############
 # Variables
 cell_type = 'dec3x8'
-nf_list = [2]
 # Templates
 tpmos_name = 'pmos_sky'
 tnmos_name = 'nmos_sky'
@@ -28,10 +30,10 @@ r23_basic_name = 'routing_23_basic'
 r23_cmos_name = 'routing_23_cmos'
 r34_name = 'routing_34_basic'
 # Design hierarchy
-libname = 'logic_advanced'
-ref_dir_template = './laygo2_example/' #export this layout's information into the yaml in this dir 
-ref_dir_export = './laygo2_example/logic_advance/'
-ref_dir_MAG_exported = './laygo2_example/logic_advance/TCL/'
+libname = 'verilog_to_laygo'
+ref_dir_template = f'./laygo2_example/{libname}'        # reference logic library
+ref_dir_export = f'./laygo2_example/{libname}'
+ref_dir_MAG_exported = f'./laygo2_example/{libname}/TCL'
 ref_dir_layout = './magic_layout'
 # End of parameter definitions ######
 
@@ -40,33 +42,55 @@ ref_dir_layout = './magic_layout'
 print("Load templates")
 templates = tech.load_templates()
 tpmos, tnmos = templates[tpmos_name], templates[tnmos_name]
-tlib = laygo2.interface.yaml.import_template(filename=ref_dir_template+'logic/logic_generated_templates.yaml')
-tlogic_adv = laygo2.interface.yaml.import_template(filename=ref_dir_template+'logic_advance/logic_advanced_templates.yaml')
-#print(templates[tpmos_name], templates[tnmos_name], sep="\n")
+tv2laygolib = laygo2.interface.yaml.import_template(filename=f"{ref_dir_template}/{libname}_templates.yaml")
+tlib = laygo2.interface.yaml.import_template(filename=f"./laygo2_example/logic/logic_generated_templates.yaml")
 
 print("Load grids")
 grids = tech.load_grids(templates=templates)
 pg, r12, r23_cmos, r23, r34 = grids[pg_name], grids[r12_name], grids[r23_cmos_name], grids[r23_basic_name], grids[r34_name]
-#print(grids[pg_name], grids[r12_name], grids[r23_basic_name], grids[r34_name], sep="\n")
 
 nf=2
-cellname = cell_type+'_'+str(nf)+'x'
+cellname = f"{cell_type}_{nf}x"
 print('--------------------')
 print('Now Creating '+cellname)
+
 
 # 2. Create a design hierarchy
 lib = laygo2.object.database.Library(name=libname)
 dsn = laygo2.object.database.Design(name=cellname, libname=libname)
 lib.append(dsn)
 
-# 3. Create istances.
+
+# 3. Create instances.
 print("Create instances")
-inv0 = tlib['inv_'+str(nf)+'x'].generate(name='inv0')
-inv1 = tlib['inv_'+str(nf)+'x'].generate(name='inv1')
-inv2 = tlib['inv_'+str(nf)+'x'].generate(name='inv2')
-ands=list()
-for i in range(8):
-    ands.append(tlogic_adv['and4_'+str(nf)+'x'].generate(name='and4_'+str(i)))
+# input verilog file
+verilog_filename = f"{cellname}.v"
+name, paramlist, decl_info, inst_info = info_from_verilog_code(f"./laygo2_example/{libname}/verilog_codes/{verilog_filename}")
+
+print()
+print(name)
+print(paramlist)
+print(decl_info)
+for i in inst_info :
+    print(i)
+
+PINS = dict()
+for portname in decl_info["Input"]+decl_info["Output"]+decl_info["Input"]:
+    PINS[portname] = portname
+WIRES = decl_info["Wire"]
+
+instances = []; instances_tlib = []
+for instance in inst_info:
+    instances_tlib.append(instance["Module"])
+    if instance["Module"] == "inv_2x":
+        instances.append(tlib[instance["Module"]].generate(name=instance["name"], netmap=instance["portlist"]))
+    else:
+        instances.append(tv2laygolib[instance["Module"]].generate(name=instance["name"], netmap=instance["portlist"]))
+
+
+# 4. Place instances.
+inv0, inv1, inv2 = instances[0], instances[1], instances[2]
+ands = instances[3:]
 
 NTAP0 = templates[tntap_name].generate(name='MNT0', params={'nf':2, 'tie':'TAP0'})
 PTAP0 = templates[tptap_name].generate(name='MPT0', transform='MX',params={'nf':2, 'tie':'TAP0'})
@@ -136,31 +160,36 @@ for i in range(8):
     mn_list.append(r34.mn(ands[i].pins['D'])[0])
 _track = [None, r34.mn(ands[0].pins['D'])[0,1]]
 rEN = dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
+
 # VSS
-rvss0 = dsn.route(grid=r12, mn=[r12.mn.bottom_left(inv0), r12.mn.bottom_right(ands[7])])
+rvss0 = dsn.route(grid=r12, mn=[r12.mn.bottom_left(instances[0]), r12.mn.bottom_right(instances[-1])])
 # VDD
-rvdd0 = dsn.route(grid=r12, mn=[r12.mn.top_left(inv0), r12.mn.top_right(ands[7])])
+rvdd0 = dsn.route(grid=r12, mn=[r12.mn.top_left(instances[0]), r12.mn.top_right(instances[-1])])
+
 
 # 6. Create pins.
-pA0 = dsn.pin(name='A0', grid=r23_cmos, mn=r23_cmos.mn.bbox(inv2.pins['I']))
-pA0bar = dsn.pin(name='A0bar', grid=r23_cmos, mn=r23_cmos.mn.bbox(inv2.pins['O']))
-pA1 = dsn.pin(name='A1', grid=r23_cmos, mn=r23_cmos.mn.bbox(inv1.pins['I']))
-pA1bar = dsn.pin(name='A1bar', grid=r23_cmos, mn=r23_cmos.mn.bbox(inv1.pins['O']))
-pA2 = dsn.pin(name='A2', grid=r23_cmos, mn=r23_cmos.mn.bbox(inv0.pins['I']))
-pA2bar = dsn.pin(name='A2bar', grid=r23_cmos, mn=r23_cmos.mn.bbox(inv0.pins['O']))
-pEN = dsn.pin(name='EN', grid=r34, mn=r34.mn.bbox(rEN[-1]))
-pout=list()
-for i in range(8):
-    pout.append(dsn.pin(name='Y'+str(i), grid=r23_cmos, mn=r23_cmos.mn.bbox(ands[i].pins['Y'])))
+cur_pins = []
+for p in PINS.keys(): # PINS.keys() : pin names
+    # current order
+    for n, i in enumerate(instances):
+        cur_netnames = [x.netname for x in i.pins.values()] # netnames in instance i
+        if PINS[p] in cur_netnames:   # p : pin names user defines, PINS[p] : netnames corresponding to pin name p
+            if p in [pin.netname for pin in cur_pins]: continue     # only save each pins once
+            cur_port_key = list(i.pins.keys())[cur_netnames.index(PINS[p])] # cur_netnames is from i.pins.values (converted to string)
+            cur_pins.append(dsn.pin(name=p, grid=r23_cmos, mn=r23_cmos.mn.bbox(i.pins[cur_port_key])))
+                                      # name as user defined pin name (p)       # need pin name of the instance i (cur_port_key)
+                                                                                # that is connected to the netname PINS[p]
 pvss0 = dsn.pin(name='VSS', grid=r12, mn=r12.mn.bbox(rvss0))
 pvdd0 = dsn.pin(name='VDD', grid=r12, mn=r12.mn.bbox(rvdd0))
+
 
 # 7. Export to physical database.
 print("Export design")
 
 # Uncomment for BAG export
-laygo2.interface.magic.export(lib, filename=ref_dir_MAG_exported +libname+'_'+cellname+'.tcl', cellname=None, libpath=ref_dir_layout, scale=1, reset_library=False, tech_library='sky130A')
+laygo2.interface.magic.export(lib, filename=f"{ref_dir_MAG_exported}/{libname}_{cellname}.tcl", cellname=None, libpath=ref_dir_layout, scale=1, reset_library=False, tech_library='sky130A')
+
 
 # 8. Export to a template database file.
 nat_temp = dsn.export_to_template()
-laygo2.interface.yaml.export_template(nat_temp, filename=ref_dir_export+libname+'_templates.yaml', mode='append')
+laygo2.interface.yaml.export_template(nat_temp, filename=f"{ref_dir_export}/{libname}_templates.yaml", mode='append')
