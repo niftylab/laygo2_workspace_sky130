@@ -15,7 +15,7 @@ import laygo2_tech as tech
 # Parameter definitions #############
 # Design Variables
 cell_type = 'space'
-nf_list = [1,2,4]
+nf_list = [1,2,4,8,14]
 
 # Templates
 tpmos_name = 'pmos_sky'

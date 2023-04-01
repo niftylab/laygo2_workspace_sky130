@@ -133,9 +133,7 @@ rvdd0 = dsn.route(grid=r12, mn=[r12.mn.top_left(inv0), r12.mn.top_right(ands[3][
 
 # 6. Create pins.
 pA0 = dsn.pin(name='A0', grid=r23_cmos, mn=r23_cmos.mn.bbox(inv1.pins['I']))
-pA0bar = dsn.pin(name='A0bar', grid=r23_cmos, mn=r23_cmos.mn.bbox(inv1.pins['O']))
 pA1 = dsn.pin(name='A1', grid=r23_cmos, mn=r23_cmos.mn.bbox(inv0.pins['I']))
-pA1bar = dsn.pin(name='A1bar', grid=r23_cmos, mn=r23_cmos.mn.bbox(inv0.pins['O']))
 pEN = dsn.pin(name='EN', grid=r34, mn=r34.mn.bbox(rEN[-1]))
 pout=list()
 for i in range(4):

@@ -10,16 +10,22 @@
 *+ Do[17]:O Do[16]:O Di[15]:I Di[14]:I Di[13]:I Di[12]:I Di[11]:I Di[10]:I Di[9]:I Di[8]:I Do[15]:O Do[14]:O
 *+ Do[13]:O Do[12]:O Do[11]:O Do[10]:O Do[9]:O Do[8]:O Di[7]:I Di[6]:I Di[5]:I Di[4]:I Di[3]:I Di[2]:I Di[1]:I
 *+ Di[0]:I Do[7]:O Do[6]:O Do[5]:O Do[4]:O Do[3]:O Do[2]:O Do[1]:O Do[0]:O WE[1]:I WE[2]:I WE[3]:I CLK:I
-xByte_1 VDD VSS WE[3] Di[27] Di[31] Do[27] Do[31] CLK SEL_buf Di[26] Di[30] Do[26] Do[30] Di[29]
-+ Di[25] Do[29] Do[25] Di[28] Do[28] Di[24] Do[24] byte_dff NF=2
-X_inv1 SEL VDD VSS net1 inv NF=2
-X_inv2 net1 VDD VSS SEL_buf inv NF=2
-xByte_2 VDD VSS WE[2] Di[19] Di[23] Do[19] Do[23] CLK SEL_buf Di[18] Di[22] Do[18] Do[22] Di[21]
-+ Di[17] Do[21] Do[17] Di[20] Do[20] Di[16] Do[16] byte_dff NF=2
-xByte_3 VDD VSS WE[1] Di[11] Di[15] Do[11] Do[15] CLK SEL_buf Di[10] Di[14] Do[10] Do[14] Di[13]
-+ Di[9] Do[13] Do[9] Di[12] Do[12] Di[8] Do[8] byte_dff NF=2
-xByte_4 VDD VSS WE[0] Di[3] Di[7] Do[3] Do[7] CLK SEL_buf Di[2] Di[6] Do[2] Do[6] Di[5] Di[1] Do[5]
-+ Do[1] Di[4] Do[4] Di[0] Do[0] byte_dff NF=2
+xByte_1 VDD VSS WE[0] Di[3] Di[7] Do[3] Do[7] CLK_gated SEL_buf Di[2] Di[6] Do[2] Do[6] Di[5] Di[1]
++ Do[5] Do[1] Di[4] Do[4] Di[0] Do[0] byte_dff NF=2
+X_inv1 SEL VDD VSS SEL_bar inv NF=12
+X_inv2 SEL_bar VDD VSS SEL_buf inv NF=24
+xByte_2 VDD VSS WE[1] Di[11] Di[15] Do[11] Do[15] CLK_gated SEL_buf Di[10] Di[14] Do[10] Do[14]
++ Di[13] Di[9] Do[13] Do[9] Di[12] Do[12] Di[8] Do[8] byte_dff NF=2
+xByte_3 VDD VSS WE[2] Di[19] Di[23] Do[19] Do[23] CLK_gated SEL_buf Di[18] Di[22] Do[18] Do[22]
++ Di[21] Di[17] Do[21] Do[17] Di[20] Do[20] Di[16] Do[16] byte_dff NF=2
+xByte_4 VDD VSS WE[3] Di[27] Di[31] Do[27] Do[31] CLK_gated SEL_buf Di[26] Di[30] Do[26] Do[30]
++ Di[29] Di[25] Do[29] Do[25] Di[28] Do[28] Di[24] Do[24] byte_dff NF=2
+XM1 CLK_gated SEL_bar CLK VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=2 m=2
+XM2 CLK_gated SEL_buf CLK VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=2 m=2
 .ends
 
 * expanding   symbol:  xschem_lib/byte_dff.sym # of pins=21
@@ -29,34 +35,34 @@ xByte_4 VDD VSS WE[0] Di[3] Di[7] Do[3] Do[7] CLK SEL_buf Di[2] Di[6] Do[2] Do[6
 + Do<5> Do<1> Di<4> Do<4> Di<0> Do<0>   NF=2
 *.PININFO Do<7>:O Di<7>:I Do<6>:O Di<6>:I Do<5>:O Di<5>:I Do<4>:O Di<4>:I Do<3>:O Di<3>:I Do<2>:O
 *+ Di<2>:I Do<1>:O Di<1>:I Do<0>:O Di<0>:I WE:I SEL:I CLK:I VDD:B VSS:B
-X_nand1 SEL WE net17 VDD VSS nand NF=2
-X_inv1 net17 VDD VSS net18 inv NF=2
+X_nand1 SEL WE net9 VDD VSS nand NF=2
+X_inv1 net9 VDD VSS net10 inv NF=2
 X_inv2 SEL VDD VSS SEL_bar inv NF=2
-x1 VDD net18 ck_o CLK VSS clk_gate NF=2
+x1 VDD net10 ck_o CLK VSS clk_gate NF=2
 xDFF1 VDD VSS Di<7> net2 ck_o DFF NF=2
-X_tinv1 net2 SEL SEL_bar VDD VSS net1 tinv NF=2
-X_inv3 net1 VDD VSS Do<7> inv NF=2
-xDFF2 VDD VSS Di<6> net4 ck_o DFF NF=2
-X_tinv2 net4 SEL SEL_bar VDD VSS net3 tinv NF=2
-X_inv4 net3 VDD VSS Do<6> inv NF=2
-xDFF3 VDD VSS Di<5> net6 ck_o DFF NF=2
-X_tinv3 net6 SEL SEL_bar VDD VSS net5 tinv NF=2
-X_inv5 net5 VDD VSS Do<5> inv NF=2
-xDFF4 VDD VSS Di<4> net8 ck_o DFF NF=2
-X_tinv4 net8 SEL SEL_bar VDD VSS net7 tinv NF=2
-X_inv6 net7 VDD VSS Do<4> inv NF=2
-xDFF5 VDD VSS Di<3> net10 ck_o DFF NF=2
-X_tinv5 net10 SEL SEL_bar VDD VSS net9 tinv NF=2
-X_inv7 net9 VDD VSS Do<3> inv NF=2
-xDFF6 VDD VSS Di<2> net12 ck_o DFF NF=2
-X_tinv6 net12 SEL SEL_bar VDD VSS net11 tinv NF=2
-X_inv8 net11 VDD VSS Do<2> inv NF=2
-xDFF7 VDD VSS Di<1> net14 ck_o DFF NF=2
-X_tinv7 net14 SEL SEL_bar VDD VSS net13 tinv NF=2
-X_inv9 net13 VDD VSS Do<1> inv NF=2
-xDFF8 VDD VSS Di<0> net16 ck_o DFF NF=2
-X_tinv10 net16 SEL SEL_bar VDD VSS net15 tinv NF=2
-X_inv11 net15 VDD VSS Do<0> inv NF=2
+X_tinv1 net1 SEL SEL_bar VDD VSS Do<7> tinv NF=2
+X_inv3 net2 VDD VSS net1 inv NF=2
+xDFF2 VDD VSS Di<6> net3 ck_o DFF NF=2
+xDFF3 VDD VSS Di<5> net4 ck_o DFF NF=2
+xDFF4 VDD VSS Di<4> net5 ck_o DFF NF=2
+xDFF5 VDD VSS Di<3> net18 ck_o DFF NF=2
+xDFF6 VDD VSS Di<2> net6 ck_o DFF NF=2
+xDFF7 VDD VSS Di<1> net7 ck_o DFF NF=2
+xDFF8 VDD VSS Di<0> net8 ck_o DFF NF=2
+X_tinv2 net11 SEL SEL_bar VDD VSS Do<6> tinv NF=2
+X_inv4 net3 VDD VSS net11 inv NF=2
+X_tinv3 net12 SEL SEL_bar VDD VSS Do<5> tinv NF=2
+X_inv5 net4 VDD VSS net12 inv NF=2
+X_tinv4 net13 SEL SEL_bar VDD VSS Do<4> tinv NF=2
+X_inv6 net5 VDD VSS net13 inv NF=2
+X_tinv5 net14 SEL SEL_bar VDD VSS Do<3> tinv NF=2
+X_inv7 net18 VDD VSS net14 inv NF=2
+X_tinv6 net15 SEL SEL_bar VDD VSS Do<2> tinv NF=2
+X_inv8 net6 VDD VSS net15 inv NF=2
+X_tinv7 net16 SEL SEL_bar VDD VSS Do<1> tinv NF=2
+X_inv9 net7 VDD VSS net16 inv NF=2
+X_tinv8 net17 SEL SEL_bar VDD VSS Do<0> tinv NF=2
+X_inv10 net8 VDD VSS net17 inv NF=2
 .ends
 
 

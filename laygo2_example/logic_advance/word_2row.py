@@ -65,16 +65,31 @@ for i in range(2):
 buf_sel=[]
 buf_sel.append(tlogic_prim['inv_'+str(36)+'x'].generate(name='inv_sel0', transform='MX'))
 buf_sel.append(tlogic_prim['inv_'+str(36)+'x'].generate(name='inv_sel1', transform='MY'))
-# NTAP0 = templates[tntap_name].generate(name='MNT0', params={'nf':2, 'tie':'TAP0'})
-# PTAP0 = templates[tptap_name].generate(name='MPT0', transform='MX',params={'nf':2, 'tie':'TAP0'})
-# NTAP1 = templates[tntap_name].generate(name='MNT1', params={'nf':2, 'tie':'TAP0'})
-# PTAP1 = templates[tptap_name].generate(name='MPT1', transform='MX',params={'nf':2, 'tie':'TAP0'})
+tgate0 = tlogic_prim['tgate_'+str(nf)+'x'].generate(name='gate_clk')
+NTAP1 = templates[tntap_name].generate(name='MNT1', transform='MX', params={'nf':4, 'tie':'TAP0'})
+PTAP1 = templates[tptap_name].generate(name='MPT1', params={'nf':4, 'tie':'TAP0'})
 
 # 4. Place instances.
-pg_list = [0]*2
-pg_list[1] = [cells[1], buf_sel[0], cells[3]]
-pg_list[0] = [cells[0], buf_sel[1], cells[2]]
-dsn.place(grid=pg, inst=pg_list, mn=[0,0])
+_TAP = [0]*2
+_TAP[1] = [NTAP1]
+_TAP[0] = [PTAP1]
+
+mn_ref = [0,0]
+dsn.place(grid=pg, inst=cells[0], mn=mn_ref)
+mn_ref = pg.mn.top_left(cells[0]) + pg.mn.height_vec(cells[1])
+dsn.place(grid=pg, inst=cells[1], mn=mn_ref)
+mn_ref = pg.mn.bottom_right(cells[0]) + pg.mn.width_vec(buf_sel[1])
+dsn.place(grid=pg, inst=buf_sel[1], mn=mn_ref)
+mn_ref = pg.mn.top_left(buf_sel[1]) + pg.mn.height_vec(buf_sel[0])
+dsn.place(grid=pg, inst=buf_sel[0], mn=mn_ref)
+mn_ref = pg.mn.bottom_right(buf_sel[1])
+dsn.place(grid=pg, inst=tgate0, mn=mn_ref)
+mn_ref = pg.mn.top_left(tgate0)
+dsn.place(grid=pg, inst=_TAP, mn=mn_ref)
+mn_ref = pg.mn.bottom_right(tgate0)
+dsn.place(grid=pg, inst=cells[2], mn=mn_ref)
+mn_ref = pg.mn.top_left(cells[2]) + pg.mn.height_vec(cells[3])
+dsn.place(grid=pg, inst=cells[3], mn=mn_ref)
 # 5. Create and place wires.
 print("Create wires")
 ## input sig == sel_bar(dec outputs are inverted) -> inv_sel out == sel
@@ -89,6 +104,12 @@ rsel = dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
 mn_list = [r34.mn(cells[1].pins['SEL'])[1], r34.mn(buf_sel[1].pins['O'])[1], r34.mn(cells[3].pins['SEL'])[0]]
 _track = [None, r34.mn(cells[1].pins['SEL'])[1,1]]
 dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
+mn_list = [r23.mn(buf_sel[1].pins['I'])[1], r23.mn(tgate0.pins['ENB'])[1]]
+dsn.route(grid=r23, mn=mn_list, via_tag=[False, False])
+mn_list = [r23.mn(buf_sel[1].pins['O'])[1], r23.mn(tgate0.pins['EN'])[0]]
+_track = [None, r23.mn(buf_sel[1].pins['O'])[1,1]]
+dsn.route_via_track(grid=r23, mn=mn_list, track=_track)
+
 # clk
 mn_list = [r34.mn(cells[0].pins['CLK'])[0],r34.mn(cells[1].pins['CLK'])[1]]
 rclk0 = dsn.route(grid=r34, mn=mn_list, via_tag=[False, False])
@@ -97,6 +118,8 @@ rclk1 = dsn.route(grid=r34, mn=mn_list, via_tag=[False, False])
 _mid = int((r34.mn(rclk0)[0,1]+r34.mn(rclk0)[1,1])/2)
 mn_list = [ [r34.mn(rclk0)[0,0],_mid],[r34.mn(rclk1)[0,0],_mid] ]
 vclk0, rclk2, vclk1 = dsn.route(grid=r34, mn=mn_list, via_tag=[True, True])
+mn_list = [r34.mn(tgate0.pins['O'])[1], [ r34.mn(tgate0.pins['O'])[1,0], _mid] ]
+dsn.route(grid=r34, mn=mn_list, via_tag=[False, True])
 # VSS
 rvss0 = dsn.route(grid=r12, mn=[r12.mn.top_left(cells[1]), r12.mn.top_right(cells[3])])
 rvss1 = dsn.route(grid=r12, mn=[r12.mn.bottom_left(cells[0]), r12.mn.bottom_right(cells[2])])
@@ -109,7 +132,7 @@ psel = dsn.pin(name='SEL', grid=r34, mn=r34.mn.bbox(buf_sel[0].pins['I']))
 pwe = list()
 for i in range(4):
     pwe.append(dsn.pin(name='WE<'+str(3-i)+'>', grid=r23_cmos, mn=r23_cmos.mn.bbox(cells[i].pins['WE'])))
-pclk = dsn.pin(name='CLK', grid=r34, mn=r34.mn.bbox(rclk2))
+pclk = dsn.pin(name='CLK', grid=r34, mn=r34.mn.bbox(tgate0.pins['I']))
 pDo = list()
 pDi = list()
 for i in range(4):

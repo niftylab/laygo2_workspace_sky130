@@ -1,0 +1,55 @@
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/dec_2to4.sch
+.subckt dec_2to4 A0 A1 VDD VSS EN Y0 Y1 Y2 Y3
+*.PININFO A0:I A1:I VDD:B VSS:B EN:I Y0:O Y1:O Y2:O Y3:O
+X_nand1 net5 net6 EN net1 VDD VSS nand_3in
+X_inv1 net1 VDD VSS Y0 inv NF=2
+X_nand2 A0 net6 EN net2 VDD VSS nand_3in
+X_inv3 net2 VDD VSS Y1 inv NF=2
+X_nand3 net5 A1 EN net3 VDD VSS nand_3in
+X_inv4 net3 VDD VSS Y2 inv NF=2
+X_nand5 A0 A1 EN net4 VDD VSS nand_3in
+X_inv6 net4 VDD VSS Y3 inv NF=2
+X_inv2 A0 VDD VSS net5 inv NF=2
+X_inv5 A1 VDD VSS net6 inv NF=2
+.ends
+
+* expanding   symbol:  xschem_lib/nand_3in.sym # of pins=6
+** sym_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/nand_3in.sym
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/nand_3in.sch
+.subckt nand_3in  A B C Y VDD VSS
+*.PININFO VDD:B Y:O VSS:B A:I B:I C:I
+XM1 Y A net1 VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=2 m=2
+XM2 net1 B net2 VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=2 m=2
+XM3 net2 C VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=2 m=2
+XM4 Y B VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=2 m=2
+XM5 Y A VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=2 m=2
+XM6 Y C VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=2 m=2
+.ends
+
+
+* expanding   symbol:  xschem_lib/inv.sym # of pins=4
+** sym_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/inv.sym
+** sch_path: /WORK/hjpark/laygo2_workspace_sky130/xschem_lib/inv.sch
+.subckt inv  X VDD VSS Y   NF=2
+*.PININFO VSS:B X:I Y:O VDD:B
+XM1 Y X VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+XM2 Y X VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+.ends
+
+.end
