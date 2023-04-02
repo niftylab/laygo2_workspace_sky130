@@ -15,6 +15,7 @@ import laygo2_tech as tech
 # Variables
 cell_type = ['inv', 'inv_hs']
 nf_list = [2, 4, 6, 8, 10, 12, 14, 16, 18, 24, 32, 36]
+# nf_list = [12]
 # Templates
 tpmos_name = 'pmos_sky'
 tnmos_name = 'nmos_sky'
@@ -44,6 +45,7 @@ pg, r12, r23 = grids[pg_name], grids[r12_name], grids[r23_name]
 print(grids[pg_name], grids[r12_name], grids[r23_name], sep="\n")
 
 lib = laygo2.object.database.Library(name=libname)
+
 
 for celltype in cell_type:
    for nf in nf_list:

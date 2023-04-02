@@ -121,15 +121,15 @@ for i in range(5,8):
 print("Create wires")
 
 # A0bar
-mn_list = [r23.mn(inv2.pins['O'])[0], r23.mn(ands[0].pins['A'])[0], r23.mn(ands[2].pins['A'])[0],
+mn_list = [r23.mn(inv0.pins['O'])[0], r23.mn(ands[0].pins['A'])[0], r23.mn(ands[2].pins['A'])[0],
     r23.mn(ands[4].pins['A'])[0], r23.mn(ands[6].pins['A'])[0]]
-_track = [None, r23.mn(inv2.pins['O'])[0,1]-2]
+_track = [None, r23.mn(inv0.pins['O'])[0,1]-2]
 dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
 
 # A0
-mn_list = [r23.mn(inv2.pins['I'])[0], r23.mn(ands[1].pins['A'])[0], r23.mn(ands[3].pins['A'])[0],
+mn_list = [r23.mn(inv0.pins['I'])[0], r23.mn(ands[1].pins['A'])[0], r23.mn(ands[3].pins['A'])[0],
     r23.mn(ands[5].pins['A'])[0], r23.mn(ands[7].pins['A'])[0]]
-_track = [None, r23.mn(inv2.pins['I'])[0,1]+1]
+_track = [None, r23.mn(inv0.pins['I'])[0,1]+1]
 dsn.route_via_track(grid=r23, mn=mn_list, track=_track)
 
 # A1bar
@@ -137,7 +137,7 @@ mn_list = [r23.mn(inv1.pins['O'])[1], r23.mn(ands[0].pins['B'])[1], r23.mn(ands[
     r23.mn(ands[4].pins['B'])[1], r23.mn(ands[5].pins['B'])[1]]
 _track = [None, r23.mn(inv1.pins['O'])[1,1]-1]
 dsn.route_via_track(grid=r23, mn=mn_list, track=_track)
-
+net
 # A1
 mn_list = [r23.mn(inv1.pins['I'])[0], r23.mn(ands[2].pins['B'])[0], r23.mn(ands[3].pins['B'])[0],
     r23.mn(ands[6].pins['B'])[0], r23.mn(ands[7].pins['B'])[0]]
@@ -145,14 +145,14 @@ _track = [None, r23.mn(inv1.pins['I'])[0,1]+2]
 dsn.route_via_track(grid=r23, mn=mn_list, track=_track)
 
 # A2bar
-mn_list = [r23.mn(inv0.pins['O'])[1], r23.mn(ands[0].pins['C'])[1], r23.mn(ands[1].pins['C'])[1],
+mn_list = [r23.mn(inv2.pins['O'])[1], r23.mn(ands[0].pins['C'])[1], r23.mn(ands[1].pins['C'])[1],
     r23.mn(ands[2].pins['C'])[1], r23.mn(ands[3].pins['C'])[1]]
-_track = [None, r23.mn(inv0.pins['O'])[0,1]-1]
+_track = [None, r23.mn(inv2.pins['O'])[0,1]-1]
 dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
 # A2
-mn_list = [r23.mn(inv0.pins['I'])[0], r23.mn(ands[4].pins['C'])[0], r23.mn(ands[5].pins['C'])[0],
+mn_list = [r23.mn(inv2.pins['I'])[0], r23.mn(ands[4].pins['C'])[0], r23.mn(ands[5].pins['C'])[0],
     r23.mn(ands[6].pins['C'])[0], r23.mn(ands[7].pins['C'])[0]]
-_track = [None, r23.mn(inv0.pins['I'])[0,1]+3]
+_track = [None, r23.mn(inv2.pins['I'])[0,1]+3]
 dsn.route_via_track(grid=r23, mn=mn_list, track=_track)
 #Enable
 mn_list=[]

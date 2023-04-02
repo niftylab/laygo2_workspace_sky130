@@ -83,10 +83,10 @@ rsel = [0]*3
 rclk = [0]*3
 for i in range(3):
     mn_list = [r34.mn(cells[i].pins['SEL'])[0],r34.mn(buf_sel[i].pins['I'])[0]]
-    _track = [None, r34.mn(cells[i].pins['SEL'])[0,1] - 1]
+    _track = [None, r34.mn(cells[i].pins['SEL'])[0,1]]
     rsel[i] = dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
     mn_list = [r34.mn(buf_sel[i].pins['O'])[0], r34.mn(cells[i+1].pins['SEL'])[0]]
-    _track = [None, r34.mn(cells[i+1].pins['SEL'])[0,1] - 1]
+    _track = [None, r34.mn(cells[i+1].pins['SEL'])[0,1]]
     dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
 # clk
 for i in range(3):
@@ -108,8 +108,8 @@ psel = dsn.pin(name='SEL', grid=r34, mn=r34.mn.bbox(rsel[0][-1]))
 pwe = list()
 for i in range(4):
     pwe.append(dsn.pin(name='WE<'+str(3-i)+'>', grid=r23_cmos, mn=r23_cmos.mn.bbox(cells[i].pins['WE'])))
-# pclk = dsn.pin(name='CLK', grid=r23_cmos, mn=r23_cmos.mn.bbox(cells[0].pins['CLK']))
-pclk = dsn.pin(name='CLK', grid=r34, mn=r34.mn.bbox(rclk[0][-1]))
+pclk = dsn.pin(name='CLK', grid=r23_cmos, mn=r23_cmos.mn.bbox(cells[0].pins['CLK']))
+# pclk = dsn.pin(name='CLK', grid=r34, mn=r34.mn.bbox(rclk[0][-1]))
 pDo = list()
 pDi = list()
 for i in range(4):
