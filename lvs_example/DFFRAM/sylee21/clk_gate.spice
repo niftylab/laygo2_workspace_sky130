@@ -1,0 +1,94 @@
+** sch_path: /home/sylee21/WORK/sylee/laygo2_workspace_sky130/xschem_lib/sylee21/clk_gate.sch
+.subckt clk_gate CK_I VDD VSS EN CK_O
+*.PININFO CK_I:I VDD:B VSS:B EN:I CK_O:O
+X_inv1 CK_I VDD VSS net1 inv NF=2
+X_latch1 EN net1 CK_I VSS VDD net2 latch NF=2
+X_nand1 CK_I net2 net3 VDD VSS nand NF=2
+X_inv2 net3 VDD VSS CK_O inv NF=12
+.ends
+
+* expanding   symbol:  xschem_lib/sylee21/inv.sym # of pins=4
+** sym_path: /home/sylee21/WORK/sylee/laygo2_workspace_sky130/xschem_lib/sylee21/inv.sym
+** sch_path: /home/sylee21/WORK/sylee/laygo2_workspace_sky130/xschem_lib/sylee21/inv.sch
+.subckt inv  X VDD VSS Y   NF=2
+*.PININFO VSS:B X:I Y:O VDD:B
+XM1 Y X VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+XM2 Y X VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+.ends
+
+
+* expanding   symbol:  xschem_lib/sylee21/latch.sym # of pins=6
+** sym_path: /home/sylee21/WORK/sylee/laygo2_workspace_sky130/xschem_lib/sylee21/latch.sym
+** sch_path: /home/sylee21/WORK/sylee/laygo2_workspace_sky130/xschem_lib/sylee21/latch.sch
+.subckt latch  IN CLK CLKB VSS VDD OUT   NF=2
+*.PININFO CLKB:I IN:I CLK:I VDD:B VSS:B OUT:O
+X_tinv1 IN CLK CLKB VDD VSS net1 tinv NF=NF
+X_inv1 net1 VDD VSS OUT inv NF=NF
+X_tinv_small1 OUT CLKB CLK VDD VSS net1 tinv_small
+.ends
+
+
+* expanding   symbol:  xschem_lib/sylee21/nand.sym # of pins=5
+** sym_path: /home/sylee21/WORK/sylee/laygo2_workspace_sky130/xschem_lib/sylee21/nand.sym
+** sch_path: /home/sylee21/WORK/sylee/laygo2_workspace_sky130/xschem_lib/sylee21/nand.sch
+.subckt nand  B A Y VDD VSS   NF=2
+*.PININFO Y:O A:I VDD:B VSS:B B:I
+XM1 Y A net1 VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+XM2 net1 B VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+XM3 Y B VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+XM4 Y A VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+.ends
+
+
+* expanding   symbol:  xschem_lib/tinv.sym # of pins=6
+** sym_path: /home/sylee21/WORK/sylee/laygo2_workspace_sky130/xschem_lib/tinv.sym
+** sch_path: /home/sylee21/WORK/sylee/laygo2_workspace_sky130/xschem_lib/tinv.sch
+.subckt tinv  X EN ENB VDD VSS Y   NF=2
+*.PININFO X:I ENB:I EN:I Y:O VDD:B VSS:B
+XM1 net2 X VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+XM2 Y ENB net2 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+XM3 Y EN net1 VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+XM4 net1 X VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=NF m=NF
+.ends
+
+
+* expanding   symbol:  xschem_lib/tinv_small.sym # of pins=6
+** sym_path: /home/sylee21/WORK/sylee/laygo2_workspace_sky130/xschem_lib/tinv_small.sym
+** sch_path: /home/sylee21/WORK/sylee/laygo2_workspace_sky130/xschem_lib/tinv_small.sch
+.subckt tinv_small  X EN ENB VDD VSS Y
+*.PININFO X:I ENB:I EN:I Y:O VDD:B VSS:B
+XM1 net2 X VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 Y ENB net2 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM3 Y EN net1 VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM4 net1 X VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+.end

@@ -1,8 +1,8 @@
 ###########################################
 #                                         #
-#   dec2x4 Layout Generator from .v code  #
+#   dec3x8 Layout Generator from .v code  #
 #               Created by                #
-#     H.J. PARK, S.Y. Lee, J.Y. PARK      #
+#           H.J. PARK, S.Y. Lee           #
 #                                         #
 ###########################################
 
