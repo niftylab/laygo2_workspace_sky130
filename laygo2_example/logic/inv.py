@@ -14,8 +14,7 @@ import laygo2_tech as tech
 # Parameter definitions #############
 # Variables
 cell_type = ['inv', 'inv_hs']
-nf_list = [2, 4, 6, 8, 10, 12, 14, 16, 18, 24, 32, 36]
-# nf_list = [12]
+nf_list = [2, 4, 6, 8, 10, 12, 14, 16, 18, 24, 32, 36, 64]
 # Templates
 tpmos_name = 'pmos_sky'
 tnmos_name = 'nmos_sky'
