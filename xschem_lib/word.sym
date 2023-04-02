@@ -2,7 +2,7 @@ v {xschem version=3.0.0 file_version=1.2 }
 G {}
 K {type=subcircuit
 format="@name @pinlist @symname NF=@NF"
-template="name=xbyte1 NF=2"
+template="name=xWORD1 NF=2"
 }
 V {}
 S {}
@@ -159,8 +159,8 @@ B 5 147.5 147.5 152.5 152.5 {name=Do[20] dir=out }
 B 5 147.5 247.5 152.5 252.5 {name=Do[25] dir=out }
 B 5 147.5 267.5 152.5 272.5 {name=Do[26] dir=out }
 B 5 147.5 367.5 152.5 372.5 {name=Do[31] dir=out }
-T {@symname} -36 -6 0 0 0.2 0.2 {}
-T {@name} -35 -22 0 0 0.2 0.2 {}
+T {@symname} -66 34 0 0 0.5 0.5 {}
+T {@name} -45 -32 0 0 0.5 0.5 {}
 T {VDD} 46 -265 3 1 0.2 0.2 {}
 T {VSS} 66 -265 3 1 0.2 0.2 {}
 T {WE[3]} 24 -265 1 0 0.2 0.2 {}

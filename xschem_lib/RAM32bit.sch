@@ -4,6 +4,14 @@ K {}
 V {}
 S {}
 E {}
+T {WORD x 32} 1290 -2310 0 0 5 5 {}
+T {BUF_SEL} -2810 -220 0 0 4 4 {}
+T {BUF_IN} -2670 910 0 0 4 4 {}
+T {BUF_CLK} -1990 -2360 0 0 3 3 {}
+T {BUF_WE} -890 -1740 0 0 2 2 {}
+T {PINS} -760 -2870 0 0 3 3 {}
+T {DEC2to4 x1
+DEC3to8 x4} -2850 -1420 0 0 3 3 {}
 N -1780 -1300 -1760 -1300 {
 lab=A3}
 N -1780 -1280 -1760 -1280 {
@@ -496,15 +504,11 @@ N -360 550 -340 550 {
 lab=SEL[31]}
 N -670 550 -660 550 {
 lab=Y31}
-N -790 -850 -770 -850 {
+N -1630 -1990 -1610 -1990 {
 lab=#net37}
-N -870 -890 -710 -890 {
-lab=VDD}
-N -870 -810 -710 -810 {
-lab=VSS}
-N -630 -850 -610 -850 {
+N -1470 -1990 -1450 -1990 {
 lab=CLK_buf}
-N -940 -850 -930 -850 {
+N -1780 -1990 -1770 -1990 {
 lab=CLK}
 N -800 -1100 -780 -1100 {
 lab=#net38}
@@ -5494,6 +5498,29 @@ N 190 930 190 950 {
 lab=VDD}
 N 210 930 210 950 {
 lab=VSS}
+N -1710 -2040 -1710 -2030 {}
+N -1710 -1950 -1710 -1940 {}
+N -1550 -2040 -1550 -2030 {}
+N -1550 -1950 -1550 -1940 {}
+N -1300 -1990 -1280 -1990 {
+lab=#net37}
+N -1450 -1990 -1440 -1990 {
+lab=CLK}
+N -1380 -2040 -1380 -2030 {}
+N -1380 -1950 -1380 -1940 {}
+N -1220 -2040 -1220 -2030 {}
+N -1220 -1950 -1220 -1940 {}
+N -1960 -1990 -1940 -1990 {
+lab=#net37}
+N -1800 -1990 -1780 -1990 {
+lab=CLK_buf}
+N -2110 -1990 -2100 -1990 {
+lab=CLK}
+N -2040 -2040 -2040 -2030 {}
+N -2040 -1950 -2040 -1940 {}
+N -1880 -2040 -1880 -2030 {}
+N -1880 -1950 -1880 -1940 {}
+N -1140 -1990 -1120 -1990 {lab=CLK_buf}
 C {xschem_lib/word.sym} 130 -1510 0 0 {name=xbyte1 NF=2}
 C {lab_wire.sym} -40 -1760 0 0 {name=l1 sig_type=std_logic lab=Di[0]}
 C {lab_wire.sym} -40 -1740 0 0 {name=l2 sig_type=std_logic lab=Di[1]}
@@ -7819,8 +7846,8 @@ C {lab_wire.sym} -1350 -1240 0 0 {name=l2279 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -1350 -1220 0 0 {name=l2280 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1350 -980 0 0 {name=l2281 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -1350 -960 0 0 {name=l2282 sig_type=std_logic lab=VSS}
-C {xschem_lib/inv.sym} -1760 -600 0 0 {name=X_inv1 NF=2}
-C {xschem_lib/inv.sym} -1600 -600 0 0 {name=X_inv2 NF=2}
+C {xschem_lib/inv.sym} -1760 -600 0 0 {name=X_inv1 NF=12}
+C {xschem_lib/inv.sym} -1600 -600 0 0 {name=X_inv2 NF=12}
 C {lab_wire.sym} -1620 -680 0 0 {name=l2283 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -1620 -600 0 0 {name=l2284 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1150 -1750 2 0 {name=l2285 sig_type=std_logic lab=Y0}
@@ -7857,188 +7884,188 @@ C {lab_wire.sym} -1150 -870 2 0 {name=l2315 sig_type=std_logic lab=Y30}
 C {lab_wire.sym} -1150 -850 2 0 {name=l2316 sig_type=std_logic lab=Y31}
 C {lab_wire.sym} -1770 -640 0 0 {name=l2317 sig_type=std_logic lab=Y0}
 C {lab_wire.sym} -1440 -640 0 0 {name=l2318 sig_type=std_logic lab=SEL[0]}
-C {xschem_lib/inv.sym} -1400 -600 0 0 {name=X_inv3 NF=2}
-C {xschem_lib/inv.sym} -1240 -600 0 0 {name=X_inv4 NF=2}
+C {xschem_lib/inv.sym} -1400 -600 0 0 {name=X_inv3 NF=12}
+C {xschem_lib/inv.sym} -1240 -600 0 0 {name=X_inv4 NF=12}
 C {lab_wire.sym} -1260 -680 0 0 {name=l2319 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -1260 -600 0 0 {name=l2320 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1410 -640 0 0 {name=l2321 sig_type=std_logic lab=Y1}
 C {lab_wire.sym} -1080 -640 0 0 {name=l2322 sig_type=std_logic lab=SEL[1]}
-C {xschem_lib/inv.sym} -1020 -600 0 0 {name=X_inv5 NF=2}
-C {xschem_lib/inv.sym} -860 -600 0 0 {name=X_inv6 NF=2}
+C {xschem_lib/inv.sym} -1020 -600 0 0 {name=X_inv5 NF=12}
+C {xschem_lib/inv.sym} -860 -600 0 0 {name=X_inv6 NF=12}
 C {lab_wire.sym} -880 -680 0 0 {name=l2323 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -880 -600 0 0 {name=l2324 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1030 -640 0 0 {name=l2325 sig_type=std_logic lab=Y2}
 C {lab_wire.sym} -700 -640 0 0 {name=l2326 sig_type=std_logic lab=SEL[2]}
-C {xschem_lib/inv.sym} -660 -600 0 0 {name=X_inv7 NF=2}
-C {xschem_lib/inv.sym} -500 -600 0 0 {name=X_inv8 NF=2}
+C {xschem_lib/inv.sym} -660 -600 0 0 {name=X_inv7 NF=12}
+C {xschem_lib/inv.sym} -500 -600 0 0 {name=X_inv8 NF=12}
 C {lab_wire.sym} -520 -680 0 0 {name=l2327 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -520 -600 0 0 {name=l2328 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -670 -640 0 0 {name=l2329 sig_type=std_logic lab=Y3}
 C {lab_wire.sym} -340 -640 0 0 {name=l2330 sig_type=std_logic lab=SEL[3]}
-C {xschem_lib/inv.sym} -1760 -430 0 0 {name=X_inv9 NF=2}
-C {xschem_lib/inv.sym} -1600 -430 0 0 {name=X_inv10 NF=2}
+C {xschem_lib/inv.sym} -1760 -430 0 0 {name=X_inv9 NF=12}
+C {xschem_lib/inv.sym} -1600 -430 0 0 {name=X_inv10 NF=12}
 C {lab_wire.sym} -1620 -510 0 0 {name=l2331 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -1620 -430 0 0 {name=l2332 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1770 -470 0 0 {name=l2333 sig_type=std_logic lab=Y4}
 C {lab_wire.sym} -1440 -470 0 0 {name=l2334 sig_type=std_logic lab=SEL[4]}
-C {xschem_lib/inv.sym} -1400 -430 0 0 {name=X_inv11 NF=2}
-C {xschem_lib/inv.sym} -1240 -430 0 0 {name=X_inv12 NF=2}
+C {xschem_lib/inv.sym} -1400 -430 0 0 {name=X_inv11 NF=12}
+C {xschem_lib/inv.sym} -1240 -430 0 0 {name=X_inv12 NF=12}
 C {lab_wire.sym} -1260 -510 0 0 {name=l2335 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -1260 -430 0 0 {name=l2336 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1410 -470 0 0 {name=l2337 sig_type=std_logic lab=Y5}
 C {lab_wire.sym} -1080 -470 0 0 {name=l2338 sig_type=std_logic lab=SEL[5]}
-C {xschem_lib/inv.sym} -1020 -430 0 0 {name=X_inv13 NF=2}
-C {xschem_lib/inv.sym} -860 -430 0 0 {name=X_inv14 NF=2}
+C {xschem_lib/inv.sym} -1020 -430 0 0 {name=X_inv13 NF=12}
+C {xschem_lib/inv.sym} -860 -430 0 0 {name=X_inv14 NF=12}
 C {lab_wire.sym} -880 -510 0 0 {name=l2339 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -880 -430 0 0 {name=l2340 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1030 -470 0 0 {name=l2341 sig_type=std_logic lab=Y6}
 C {lab_wire.sym} -700 -470 0 0 {name=l2342 sig_type=std_logic lab=SEL[6]}
-C {xschem_lib/inv.sym} -660 -430 0 0 {name=X_inv15 NF=2}
-C {xschem_lib/inv.sym} -500 -430 0 0 {name=X_inv16 NF=2}
+C {xschem_lib/inv.sym} -660 -430 0 0 {name=X_inv15 NF=12}
+C {xschem_lib/inv.sym} -500 -430 0 0 {name=X_inv16 NF=12}
 C {lab_wire.sym} -520 -510 0 0 {name=l2343 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -520 -430 0 0 {name=l2344 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -670 -470 0 0 {name=l2345 sig_type=std_logic lab=Y7}
 C {lab_wire.sym} -340 -470 0 0 {name=l2346 sig_type=std_logic lab=SEL[7]}
-C {xschem_lib/inv.sym} -1770 -260 0 0 {name=X_inv17 NF=2}
-C {xschem_lib/inv.sym} -1610 -260 0 0 {name=X_inv18 NF=2}
+C {xschem_lib/inv.sym} -1770 -260 0 0 {name=X_inv17 NF=12}
+C {xschem_lib/inv.sym} -1610 -260 0 0 {name=X_inv18 NF=12}
 C {lab_wire.sym} -1630 -340 0 0 {name=l2347 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -1630 -260 0 0 {name=l2348 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1780 -300 0 0 {name=l2349 sig_type=std_logic lab=Y8}
 C {lab_wire.sym} -1450 -300 0 0 {name=l2350 sig_type=std_logic lab=SEL[8]}
-C {xschem_lib/inv.sym} -1410 -260 0 0 {name=X_inv19 NF=2}
-C {xschem_lib/inv.sym} -1250 -260 0 0 {name=X_inv20 NF=2}
+C {xschem_lib/inv.sym} -1410 -260 0 0 {name=X_inv19 NF=12}
+C {xschem_lib/inv.sym} -1250 -260 0 0 {name=X_inv20 NF=12}
 C {lab_wire.sym} -1270 -340 0 0 {name=l2351 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -1270 -260 0 0 {name=l2352 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1420 -300 0 0 {name=l2353 sig_type=std_logic lab=Y9}
 C {lab_wire.sym} -1090 -300 0 0 {name=l2354 sig_type=std_logic lab=SEL[9]}
-C {xschem_lib/inv.sym} -1030 -260 0 0 {name=X_inv21 NF=2}
-C {xschem_lib/inv.sym} -870 -260 0 0 {name=X_inv22 NF=2}
+C {xschem_lib/inv.sym} -1030 -260 0 0 {name=X_inv21 NF=12}
+C {xschem_lib/inv.sym} -870 -260 0 0 {name=X_inv22 NF=12}
 C {lab_wire.sym} -890 -340 0 0 {name=l2355 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -890 -260 0 0 {name=l2356 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1040 -300 0 0 {name=l2357 sig_type=std_logic lab=Y10}
 C {lab_wire.sym} -710 -300 0 0 {name=l2358 sig_type=std_logic lab=SEL[10]}
-C {xschem_lib/inv.sym} -670 -260 0 0 {name=X_inv23 NF=2}
-C {xschem_lib/inv.sym} -510 -260 0 0 {name=X_inv24 NF=2}
+C {xschem_lib/inv.sym} -670 -260 0 0 {name=X_inv23 NF=12}
+C {xschem_lib/inv.sym} -510 -260 0 0 {name=X_inv24 NF=12}
 C {lab_wire.sym} -530 -340 0 0 {name=l2359 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -530 -260 0 0 {name=l2360 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -680 -300 0 0 {name=l2361 sig_type=std_logic lab=Y11}
 C {lab_wire.sym} -350 -300 0 0 {name=l2362 sig_type=std_logic lab=SEL[11]}
-C {xschem_lib/inv.sym} -1770 -90 0 0 {name=X_inv25 NF=2}
-C {xschem_lib/inv.sym} -1610 -90 0 0 {name=X_inv26 NF=2}
+C {xschem_lib/inv.sym} -1770 -90 0 0 {name=X_inv25 NF=12}
+C {xschem_lib/inv.sym} -1610 -90 0 0 {name=X_inv26 NF=12}
 C {lab_wire.sym} -1630 -170 0 0 {name=l2363 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -1630 -90 0 0 {name=l2364 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1780 -130 0 0 {name=l2365 sig_type=std_logic lab=Y12}
 C {lab_wire.sym} -1450 -130 0 0 {name=l2366 sig_type=std_logic lab=SEL[12]}
-C {xschem_lib/inv.sym} -1410 -90 0 0 {name=X_inv27 NF=2}
-C {xschem_lib/inv.sym} -1250 -90 0 0 {name=X_inv28 NF=2}
+C {xschem_lib/inv.sym} -1410 -90 0 0 {name=X_inv27 NF=12}
+C {xschem_lib/inv.sym} -1250 -90 0 0 {name=X_inv28 NF=12}
 C {lab_wire.sym} -1270 -170 0 0 {name=l2367 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -1270 -90 0 0 {name=l2368 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1420 -130 0 0 {name=l2369 sig_type=std_logic lab=Y13}
 C {lab_wire.sym} -1090 -130 0 0 {name=l2370 sig_type=std_logic lab=SEL[13]}
-C {xschem_lib/inv.sym} -1030 -90 0 0 {name=X_inv29 NF=2}
-C {xschem_lib/inv.sym} -870 -90 0 0 {name=X_inv30 NF=2}
+C {xschem_lib/inv.sym} -1030 -90 0 0 {name=X_inv29 NF=12}
+C {xschem_lib/inv.sym} -870 -90 0 0 {name=X_inv30 NF=12}
 C {lab_wire.sym} -890 -170 0 0 {name=l2371 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -890 -90 0 0 {name=l2372 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1040 -130 0 0 {name=l2373 sig_type=std_logic lab=Y14}
 C {lab_wire.sym} -710 -130 0 0 {name=l2374 sig_type=std_logic lab=SEL[14]}
-C {xschem_lib/inv.sym} -670 -90 0 0 {name=X_inv31 NF=2}
-C {xschem_lib/inv.sym} -510 -90 0 0 {name=X_inv32 NF=2}
+C {xschem_lib/inv.sym} -670 -90 0 0 {name=X_inv31 NF=12}
+C {xschem_lib/inv.sym} -510 -90 0 0 {name=X_inv32 NF=12}
 C {lab_wire.sym} -530 -170 0 0 {name=l2375 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -530 -90 0 0 {name=l2376 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -680 -130 0 0 {name=l2377 sig_type=std_logic lab=Y15}
 C {lab_wire.sym} -350 -130 0 0 {name=l2378 sig_type=std_logic lab=SEL[15]}
-C {xschem_lib/inv.sym} -1760 80 0 0 {name=X_inv33 NF=2}
-C {xschem_lib/inv.sym} -1600 80 0 0 {name=X_inv34 NF=2}
+C {xschem_lib/inv.sym} -1760 80 0 0 {name=X_inv33 NF=12}
+C {xschem_lib/inv.sym} -1600 80 0 0 {name=X_inv34 NF=12}
 C {lab_wire.sym} -1620 0 0 0 {name=l2379 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -1620 80 0 0 {name=l2380 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1770 40 0 0 {name=l2381 sig_type=std_logic lab=Y16}
 C {lab_wire.sym} -1440 40 0 0 {name=l2382 sig_type=std_logic lab=SEL[16]}
-C {xschem_lib/inv.sym} -1400 80 0 0 {name=X_inv35 NF=2}
-C {xschem_lib/inv.sym} -1240 80 0 0 {name=X_inv36 NF=2}
+C {xschem_lib/inv.sym} -1400 80 0 0 {name=X_inv35 NF=12}
+C {xschem_lib/inv.sym} -1240 80 0 0 {name=X_inv36 NF=12}
 C {lab_wire.sym} -1260 0 0 0 {name=l2383 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -1260 80 0 0 {name=l2384 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1410 40 0 0 {name=l2385 sig_type=std_logic lab=Y17}
 C {lab_wire.sym} -1080 40 0 0 {name=l2386 sig_type=std_logic lab=SEL[17]}
-C {xschem_lib/inv.sym} -1020 80 0 0 {name=X_inv37 NF=2}
-C {xschem_lib/inv.sym} -860 80 0 0 {name=X_inv38 NF=2}
+C {xschem_lib/inv.sym} -1020 80 0 0 {name=X_inv37 NF=12}
+C {xschem_lib/inv.sym} -860 80 0 0 {name=X_inv38 NF=12}
 C {lab_wire.sym} -880 0 0 0 {name=l2387 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -880 80 0 0 {name=l2388 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1030 40 0 0 {name=l2389 sig_type=std_logic lab=Y18}
 C {lab_wire.sym} -700 40 0 0 {name=l2390 sig_type=std_logic lab=SEL[18]}
-C {xschem_lib/inv.sym} -660 80 0 0 {name=X_inv39 NF=2}
-C {xschem_lib/inv.sym} -500 80 0 0 {name=X_inv40 NF=2}
+C {xschem_lib/inv.sym} -660 80 0 0 {name=X_inv39 NF=12}
+C {xschem_lib/inv.sym} -500 80 0 0 {name=X_inv40 NF=12}
 C {lab_wire.sym} -520 0 0 0 {name=l2391 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -520 80 0 0 {name=l2392 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -670 40 0 0 {name=l2393 sig_type=std_logic lab=Y19}
 C {lab_wire.sym} -340 40 0 0 {name=l2394 sig_type=std_logic lab=SEL[19]}
-C {xschem_lib/inv.sym} -1760 250 0 0 {name=X_inv41 NF=2}
-C {xschem_lib/inv.sym} -1600 250 0 0 {name=X_inv42 NF=2}
+C {xschem_lib/inv.sym} -1760 250 0 0 {name=X_inv41 NF=12}
+C {xschem_lib/inv.sym} -1600 250 0 0 {name=X_inv42 NF=12}
 C {lab_wire.sym} -1620 170 0 0 {name=l2395 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -1620 250 0 0 {name=l2396 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1770 210 0 0 {name=l2397 sig_type=std_logic lab=Y20}
 C {lab_wire.sym} -1440 210 0 0 {name=l2398 sig_type=std_logic lab=SEL[20]}
-C {xschem_lib/inv.sym} -1400 250 0 0 {name=X_inv43 NF=2}
-C {xschem_lib/inv.sym} -1240 250 0 0 {name=X_inv44 NF=2}
+C {xschem_lib/inv.sym} -1400 250 0 0 {name=X_inv43 NF=12}
+C {xschem_lib/inv.sym} -1240 250 0 0 {name=X_inv44 NF=12}
 C {lab_wire.sym} -1260 170 0 0 {name=l2399 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -1260 250 0 0 {name=l2400 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1410 210 0 0 {name=l2401 sig_type=std_logic lab=Y21}
 C {lab_wire.sym} -1080 210 0 0 {name=l2402 sig_type=std_logic lab=SEL[21]}
-C {xschem_lib/inv.sym} -1020 250 0 0 {name=X_inv45 NF=2}
-C {xschem_lib/inv.sym} -860 250 0 0 {name=X_inv46 NF=2}
+C {xschem_lib/inv.sym} -1020 250 0 0 {name=X_inv45 NF=12}
+C {xschem_lib/inv.sym} -860 250 0 0 {name=X_inv46 NF=12}
 C {lab_wire.sym} -880 170 0 0 {name=l2403 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -880 250 0 0 {name=l2404 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1030 210 0 0 {name=l2405 sig_type=std_logic lab=Y22}
 C {lab_wire.sym} -700 210 0 0 {name=l2406 sig_type=std_logic lab=SEL[22]}
-C {xschem_lib/inv.sym} -660 250 0 0 {name=X_inv47 NF=2}
-C {xschem_lib/inv.sym} -500 250 0 0 {name=X_inv48 NF=2}
+C {xschem_lib/inv.sym} -660 250 0 0 {name=X_inv47 NF=12}
+C {xschem_lib/inv.sym} -500 250 0 0 {name=X_inv48 NF=12}
 C {lab_wire.sym} -520 170 0 0 {name=l2407 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -520 250 0 0 {name=l2408 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -670 210 0 0 {name=l2409 sig_type=std_logic lab=Y23}
 C {lab_wire.sym} -340 210 0 0 {name=l2410 sig_type=std_logic lab=SEL[23]}
-C {xschem_lib/inv.sym} -1760 420 0 0 {name=X_inv49 NF=2}
-C {xschem_lib/inv.sym} -1600 420 0 0 {name=X_inv50 NF=2}
+C {xschem_lib/inv.sym} -1760 420 0 0 {name=X_inv49 NF=12}
+C {xschem_lib/inv.sym} -1600 420 0 0 {name=X_inv50 NF=12}
 C {lab_wire.sym} -1620 340 0 0 {name=l2411 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -1620 420 0 0 {name=l2412 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1770 380 0 0 {name=l2413 sig_type=std_logic lab=Y24}
 C {lab_wire.sym} -1440 380 0 0 {name=l2414 sig_type=std_logic lab=SEL[24]}
-C {xschem_lib/inv.sym} -1400 420 0 0 {name=X_inv51 NF=2}
-C {xschem_lib/inv.sym} -1240 420 0 0 {name=X_inv52 NF=2}
+C {xschem_lib/inv.sym} -1400 420 0 0 {name=X_inv51 NF=12}
+C {xschem_lib/inv.sym} -1240 420 0 0 {name=X_inv52 NF=12}
 C {lab_wire.sym} -1260 340 0 0 {name=l2415 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -1260 420 0 0 {name=l2416 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1410 380 0 0 {name=l2417 sig_type=std_logic lab=Y25}
 C {lab_wire.sym} -1080 380 0 0 {name=l2418 sig_type=std_logic lab=SEL[25]}
-C {xschem_lib/inv.sym} -1020 420 0 0 {name=X_inv53 NF=2}
-C {xschem_lib/inv.sym} -860 420 0 0 {name=X_inv54 NF=2}
+C {xschem_lib/inv.sym} -1020 420 0 0 {name=X_inv53 NF=12}
+C {xschem_lib/inv.sym} -860 420 0 0 {name=X_inv54 NF=12}
 C {lab_wire.sym} -880 340 0 0 {name=l2419 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -880 420 0 0 {name=l2420 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1030 380 0 0 {name=l2421 sig_type=std_logic lab=Y26}
 C {lab_wire.sym} -700 380 0 0 {name=l2422 sig_type=std_logic lab=SEL[26]}
-C {xschem_lib/inv.sym} -660 420 0 0 {name=X_inv55 NF=2}
-C {xschem_lib/inv.sym} -500 420 0 0 {name=X_inv56 NF=2}
+C {xschem_lib/inv.sym} -660 420 0 0 {name=X_inv55 NF=12}
+C {xschem_lib/inv.sym} -500 420 0 0 {name=X_inv56 NF=12}
 C {lab_wire.sym} -520 340 0 0 {name=l2423 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -520 420 0 0 {name=l2424 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -670 380 0 0 {name=l2425 sig_type=std_logic lab=Y27}
 C {lab_wire.sym} -340 380 0 0 {name=l2426 sig_type=std_logic lab=SEL[27]}
-C {xschem_lib/inv.sym} -1760 590 0 0 {name=X_inv57 NF=2}
-C {xschem_lib/inv.sym} -1600 590 0 0 {name=X_inv58 NF=2}
+C {xschem_lib/inv.sym} -1760 590 0 0 {name=X_inv57 NF=12}
+C {xschem_lib/inv.sym} -1600 590 0 0 {name=X_inv58 NF=12}
 C {lab_wire.sym} -1620 510 0 0 {name=l2427 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -1620 590 0 0 {name=l2428 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1770 550 0 0 {name=l2429 sig_type=std_logic lab=Y28}
 C {lab_wire.sym} -1440 550 0 0 {name=l2430 sig_type=std_logic lab=SEL[28]}
-C {xschem_lib/inv.sym} -1400 590 0 0 {name=X_inv59 NF=2}
-C {xschem_lib/inv.sym} -1240 590 0 0 {name=X_inv60 NF=2}
+C {xschem_lib/inv.sym} -1400 590 0 0 {name=X_inv59 NF=12}
+C {xschem_lib/inv.sym} -1240 590 0 0 {name=X_inv60 NF=12}
 C {lab_wire.sym} -1260 510 0 0 {name=l2431 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -1260 590 0 0 {name=l2432 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1410 550 0 0 {name=l2433 sig_type=std_logic lab=Y29}
 C {lab_wire.sym} -1080 550 0 0 {name=l2434 sig_type=std_logic lab=SEL[29]}
-C {xschem_lib/inv.sym} -1020 590 0 0 {name=X_inv61 NF=2}
-C {xschem_lib/inv.sym} -860 590 0 0 {name=X_inv62 NF=2}
+C {xschem_lib/inv.sym} -1020 590 0 0 {name=X_inv61 NF=12}
+C {xschem_lib/inv.sym} -860 590 0 0 {name=X_inv62 NF=12}
 C {lab_wire.sym} -880 510 0 0 {name=l2435 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -880 590 0 0 {name=l2436 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -1030 550 0 0 {name=l2437 sig_type=std_logic lab=Y30}
 C {lab_wire.sym} -700 550 0 0 {name=l2438 sig_type=std_logic lab=SEL[30]}
-C {xschem_lib/inv.sym} -660 590 0 0 {name=X_inv63 NF=2}
-C {xschem_lib/inv.sym} -500 590 0 0 {name=X_inv64 NF=2}
+C {xschem_lib/inv.sym} -660 590 0 0 {name=X_inv63 NF=12}
+C {xschem_lib/inv.sym} -500 590 0 0 {name=X_inv64 NF=12}
 C {lab_wire.sym} -520 510 0 0 {name=l2439 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -520 590 0 0 {name=l2440 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -670 550 0 0 {name=l2441 sig_type=std_logic lab=Y31}
@@ -8089,12 +8116,12 @@ C {lab_wire.sym} 3750 -920 1 0 {name=l2485 sig_type=std_logic lab=SEL[15]}
 C {lab_wire.sym} 3750 -1820 1 0 {name=l2486 sig_type=std_logic lab=SEL[7]}
 C {lab_wire.sym} 3760 30 1 0 {name=l2487 sig_type=std_logic lab=SEL[23]}
 C {lab_wire.sym} 3760 930 1 0 {name=l2488 sig_type=std_logic lab=SEL[31]}
-C {xschem_lib/inv.sym} -930 -810 0 0 {name=X_inv65 NF=24}
-C {xschem_lib/inv.sym} -770 -810 0 0 {name=X_inv66 NF=24}
-C {lab_wire.sym} -790 -890 0 0 {name=l2489 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} -790 -810 0 0 {name=l2490 sig_type=std_logic lab=VSS}
-C {lab_wire.sym} -940 -850 0 0 {name=l2491 sig_type=std_logic lab=CLK}
-C {lab_wire.sym} -610 -850 0 0 {name=l2492 sig_type=std_logic lab=CLK_buf}
+C {xschem_lib/inv.sym} -1770 -1950 0 0 {name=X_inv65 NF=8}
+C {xschem_lib/inv.sym} -1610 -1950 0 0 {name=X_inv66 NF=16}
+C {lab_wire.sym} -1710 -2040 0 0 {name=l2489 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} -1710 -1940 2 0 {name=l2490 sig_type=std_logic lab=VSS}
+C {lab_wire.sym} -2110 -1990 0 0 {name=l2491 sig_type=std_logic lab=CLK}
+C {lab_wire.sym} -1120 -1990 2 0 {name=l2492 sig_type=std_logic lab=CLK_buf}
 C {xschem_lib/inv.sym} -940 -1060 0 0 {name=X_inv67 NF=12}
 C {xschem_lib/inv.sym} -780 -1060 0 0 {name=X_inv68 NF=12}
 C {lab_wire.sym} -800 -1140 0 0 {name=l2493 sig_type=std_logic lab=VDD}
@@ -8311,74 +8338,88 @@ C {lab_wire.sym} -420 1710 0 0 {name=l2633 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -420 1790 0 0 {name=l2634 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -570 1750 0 0 {name=l2635 sig_type=std_logic lab=Di<31>}
 C {lab_wire.sym} -240 1750 0 0 {name=l2636 sig_type=std_logic lab=Di[31]}
-C {devices/ipin.sym} -2350 -1620 0 0 {name=p7 lab=Di<0>}
-C {devices/opin.sym} -2430 -1310 0 0 {name=p39 lab=Do[0]}
-C {devices/ipin.sym} -2260 -1620 0 0 {name=p8 lab=Di<1>}
-C {devices/opin.sym} -2340 -1310 0 0 {name=p40 lab=Do[1]}
-C {devices/ipin.sym} -2170 -1620 0 0 {name=p9 lab=Di<2>}
-C {devices/opin.sym} -2250 -1310 0 0 {name=p41 lab=Do[2]}
-C {devices/ipin.sym} -2080 -1620 0 0 {name=p10 lab=Di<3>}
-C {devices/opin.sym} -2160 -1310 0 0 {name=p42 lab=Do[3]}
-C {devices/ipin.sym} -2350 -1590 0 0 {name=p11 lab=Di<4>}
-C {devices/opin.sym} -2430 -1280 0 0 {name=p43 lab=Do[4]}
-C {devices/ipin.sym} -2260 -1590 0 0 {name=p12 lab=Di<5>}
-C {devices/opin.sym} -2340 -1280 0 0 {name=p44 lab=Do[5]}
-C {devices/ipin.sym} -2170 -1590 0 0 {name=p13 lab=Di<6>}
-C {devices/opin.sym} -2250 -1280 0 0 {name=p45 lab=Do[6]}
-C {devices/ipin.sym} -2080 -1590 0 0 {name=p14 lab=Di<7>}
-C {devices/opin.sym} -2160 -1280 0 0 {name=p46 lab=Do[7]}
-C {devices/ipin.sym} -2350 -1560 0 0 {name=p15 lab=Di<8>}
-C {devices/opin.sym} -2430 -1250 0 0 {name=p47 lab=Do[8]}
-C {devices/ipin.sym} -2260 -1560 0 0 {name=p16 lab=Di<9>}
-C {devices/opin.sym} -2340 -1250 0 0 {name=p48 lab=Do[9]}
-C {devices/ipin.sym} -2170 -1560 0 0 {name=p17 lab=Di<10>}
-C {devices/opin.sym} -2250 -1250 0 0 {name=p49 lab=Do[10]}
-C {devices/ipin.sym} -2080 -1560 0 0 {name=p18 lab=Di<11>}
-C {devices/opin.sym} -2160 -1250 0 0 {name=p50 lab=Do[11]}
-C {devices/ipin.sym} -2350 -1530 0 0 {name=p19 lab=Di<12>}
-C {devices/opin.sym} -2430 -1220 0 0 {name=p51 lab=Do[12]}
-C {devices/ipin.sym} -2260 -1530 0 0 {name=p20 lab=Di<13>}
-C {devices/opin.sym} -2340 -1220 0 0 {name=p52 lab=Do[13]}
-C {devices/ipin.sym} -2170 -1530 0 0 {name=p21 lab=Di<14>}
-C {devices/opin.sym} -2250 -1220 0 0 {name=p53 lab=Do[14]}
-C {devices/ipin.sym} -2080 -1530 0 0 {name=p22 lab=Di<15>}
-C {devices/opin.sym} -2160 -1220 0 0 {name=p54 lab=Do[15]}
-C {devices/ipin.sym} -2350 -1500 0 0 {name=p23 lab=Di<16>}
-C {devices/opin.sym} -2430 -1190 0 0 {name=p55 lab=Do[16]}
-C {devices/ipin.sym} -2260 -1500 0 0 {name=p24 lab=Di<17>}
-C {devices/opin.sym} -2340 -1190 0 0 {name=p56 lab=Do[17]}
-C {devices/ipin.sym} -2170 -1500 0 0 {name=p25 lab=Di<18>}
-C {devices/opin.sym} -2250 -1190 0 0 {name=p57 lab=Do[18]}
-C {devices/ipin.sym} -2080 -1500 0 0 {name=p26 lab=Di<19>}
-C {devices/opin.sym} -2160 -1190 0 0 {name=p58 lab=Do[19]}
-C {devices/ipin.sym} -2350 -1470 0 0 {name=p27 lab=Di<20>}
-C {devices/opin.sym} -2430 -1160 0 0 {name=p59 lab=Do[20]}
-C {devices/ipin.sym} -2260 -1470 0 0 {name=p28 lab=Di<21>}
-C {devices/opin.sym} -2340 -1160 0 0 {name=p60 lab=Do[21]}
-C {devices/ipin.sym} -2170 -1470 0 0 {name=p29 lab=Di<22>}
-C {devices/opin.sym} -2250 -1160 0 0 {name=p61 lab=Do[22]}
-C {devices/ipin.sym} -2080 -1470 0 0 {name=p30 lab=Di<23>}
-C {devices/opin.sym} -2160 -1160 0 0 {name=p62 lab=Do[23]}
-C {devices/ipin.sym} -2350 -1440 0 0 {name=p31 lab=Di<24>}
-C {devices/opin.sym} -2430 -1130 0 0 {name=p63 lab=Do[24]}
-C {devices/ipin.sym} -2260 -1440 0 0 {name=p32 lab=Di<25>}
-C {devices/opin.sym} -2340 -1130 0 0 {name=p64 lab=Do[25]}
-C {devices/ipin.sym} -2170 -1440 0 0 {name=p33 lab=Di<26>}
-C {devices/opin.sym} -2250 -1130 0 0 {name=p65 lab=Do[26]}
-C {devices/ipin.sym} -2080 -1440 0 0 {name=p34 lab=Di<27>}
-C {devices/opin.sym} -2160 -1130 0 0 {name=p66 lab=Do[27]}
-C {devices/ipin.sym} -2350 -1410 0 0 {name=p35 lab=Di<28>}
-C {devices/opin.sym} -2430 -1100 0 0 {name=p67 lab=Do[28]}
-C {devices/ipin.sym} -2260 -1410 0 0 {name=p36 lab=Di<29>}
-C {devices/opin.sym} -2340 -1100 0 0 {name=p68 lab=Do[29]}
-C {devices/ipin.sym} -2170 -1410 0 0 {name=p37 lab=Di<30>}
-C {devices/opin.sym} -2250 -1100 0 0 {name=p69 lab=Do[30]}
-C {devices/ipin.sym} -2080 -1410 0 0 {name=p38 lab=Di<31>}
-C {devices/opin.sym} -2160 -1100 0 0 {name=p70 lab=Do[31]}
-C {iopin.sym} -1950 -1620 0 0 {name=p71 lab=VDD}
-C {iopin.sym} -1950 -1590 0 0 {name=p72 lab=VSS}
-C {ipin.sym} -1900 -1540 0 0 {name=p73 lab=WE0}
-C {ipin.sym} -1900 -1510 0 0 {name=p74 lab=WE1}
-C {ipin.sym} -1900 -1480 0 0 {name=p75 lab=WE2}
-C {ipin.sym} -1900 -1450 0 0 {name=p76 lab=WE3}
-C {ipin.sym} -1900 -1410 0 0 {name=p77 lab=CLK}
+C {devices/ipin.sym} -740 -2580 0 0 {name=p7 lab=Di<0>}
+C {devices/opin.sym} -820 -2270 0 0 {name=p39 lab=Do[0]}
+C {devices/ipin.sym} -650 -2580 0 0 {name=p8 lab=Di<1>}
+C {devices/opin.sym} -730 -2270 0 0 {name=p40 lab=Do[1]}
+C {devices/ipin.sym} -560 -2580 0 0 {name=p9 lab=Di<2>}
+C {devices/opin.sym} -640 -2270 0 0 {name=p41 lab=Do[2]}
+C {devices/ipin.sym} -470 -2580 0 0 {name=p10 lab=Di<3>}
+C {devices/opin.sym} -550 -2270 0 0 {name=p42 lab=Do[3]}
+C {devices/ipin.sym} -740 -2550 0 0 {name=p11 lab=Di<4>}
+C {devices/opin.sym} -820 -2240 0 0 {name=p43 lab=Do[4]}
+C {devices/ipin.sym} -650 -2550 0 0 {name=p12 lab=Di<5>}
+C {devices/opin.sym} -730 -2240 0 0 {name=p44 lab=Do[5]}
+C {devices/ipin.sym} -560 -2550 0 0 {name=p13 lab=Di<6>}
+C {devices/opin.sym} -640 -2240 0 0 {name=p45 lab=Do[6]}
+C {devices/ipin.sym} -470 -2550 0 0 {name=p14 lab=Di<7>}
+C {devices/opin.sym} -550 -2240 0 0 {name=p46 lab=Do[7]}
+C {devices/ipin.sym} -740 -2520 0 0 {name=p15 lab=Di<8>}
+C {devices/opin.sym} -820 -2210 0 0 {name=p47 lab=Do[8]}
+C {devices/ipin.sym} -650 -2520 0 0 {name=p16 lab=Di<9>}
+C {devices/opin.sym} -730 -2210 0 0 {name=p48 lab=Do[9]}
+C {devices/ipin.sym} -560 -2520 0 0 {name=p17 lab=Di<10>}
+C {devices/opin.sym} -640 -2210 0 0 {name=p49 lab=Do[10]}
+C {devices/ipin.sym} -470 -2520 0 0 {name=p18 lab=Di<11>}
+C {devices/opin.sym} -550 -2210 0 0 {name=p50 lab=Do[11]}
+C {devices/ipin.sym} -740 -2490 0 0 {name=p19 lab=Di<12>}
+C {devices/opin.sym} -820 -2180 0 0 {name=p51 lab=Do[12]}
+C {devices/ipin.sym} -650 -2490 0 0 {name=p20 lab=Di<13>}
+C {devices/opin.sym} -730 -2180 0 0 {name=p52 lab=Do[13]}
+C {devices/ipin.sym} -560 -2490 0 0 {name=p21 lab=Di<14>}
+C {devices/opin.sym} -640 -2180 0 0 {name=p53 lab=Do[14]}
+C {devices/ipin.sym} -470 -2490 0 0 {name=p22 lab=Di<15>}
+C {devices/opin.sym} -550 -2180 0 0 {name=p54 lab=Do[15]}
+C {devices/ipin.sym} -740 -2460 0 0 {name=p23 lab=Di<16>}
+C {devices/opin.sym} -820 -2150 0 0 {name=p55 lab=Do[16]}
+C {devices/ipin.sym} -650 -2460 0 0 {name=p24 lab=Di<17>}
+C {devices/opin.sym} -730 -2150 0 0 {name=p56 lab=Do[17]}
+C {devices/ipin.sym} -560 -2460 0 0 {name=p25 lab=Di<18>}
+C {devices/opin.sym} -640 -2150 0 0 {name=p57 lab=Do[18]}
+C {devices/ipin.sym} -470 -2460 0 0 {name=p26 lab=Di<19>}
+C {devices/opin.sym} -550 -2150 0 0 {name=p58 lab=Do[19]}
+C {devices/ipin.sym} -740 -2430 0 0 {name=p27 lab=Di<20>}
+C {devices/opin.sym} -820 -2120 0 0 {name=p59 lab=Do[20]}
+C {devices/ipin.sym} -650 -2430 0 0 {name=p28 lab=Di<21>}
+C {devices/opin.sym} -730 -2120 0 0 {name=p60 lab=Do[21]}
+C {devices/ipin.sym} -560 -2430 0 0 {name=p29 lab=Di<22>}
+C {devices/opin.sym} -640 -2120 0 0 {name=p61 lab=Do[22]}
+C {devices/ipin.sym} -470 -2430 0 0 {name=p30 lab=Di<23>}
+C {devices/opin.sym} -550 -2120 0 0 {name=p62 lab=Do[23]}
+C {devices/ipin.sym} -740 -2400 0 0 {name=p31 lab=Di<24>}
+C {devices/opin.sym} -820 -2090 0 0 {name=p63 lab=Do[24]}
+C {devices/ipin.sym} -650 -2400 0 0 {name=p32 lab=Di<25>}
+C {devices/opin.sym} -730 -2090 0 0 {name=p64 lab=Do[25]}
+C {devices/ipin.sym} -560 -2400 0 0 {name=p33 lab=Di<26>}
+C {devices/opin.sym} -640 -2090 0 0 {name=p65 lab=Do[26]}
+C {devices/ipin.sym} -470 -2400 0 0 {name=p34 lab=Di<27>}
+C {devices/opin.sym} -550 -2090 0 0 {name=p66 lab=Do[27]}
+C {devices/ipin.sym} -740 -2370 0 0 {name=p35 lab=Di<28>}
+C {devices/opin.sym} -820 -2060 0 0 {name=p67 lab=Do[28]}
+C {devices/ipin.sym} -650 -2370 0 0 {name=p36 lab=Di<29>}
+C {devices/opin.sym} -730 -2060 0 0 {name=p68 lab=Do[29]}
+C {devices/ipin.sym} -560 -2370 0 0 {name=p37 lab=Di<30>}
+C {devices/opin.sym} -640 -2060 0 0 {name=p69 lab=Do[30]}
+C {devices/ipin.sym} -470 -2370 0 0 {name=p38 lab=Di<31>}
+C {devices/opin.sym} -550 -2060 0 0 {name=p70 lab=Do[31]}
+C {iopin.sym} -340 -2580 0 0 {name=p71 lab=VDD}
+C {iopin.sym} -340 -2550 0 0 {name=p72 lab=VSS}
+C {ipin.sym} -290 -2500 0 0 {name=p73 lab=WE0}
+C {ipin.sym} -290 -2470 0 0 {name=p74 lab=WE1}
+C {ipin.sym} -290 -2440 0 0 {name=p75 lab=WE2}
+C {ipin.sym} -290 -2410 0 0 {name=p76 lab=WE3}
+C {ipin.sym} -290 -2370 0 0 {name=p77 lab=CLK}
+C {lab_wire.sym} -1550 -2040 0 0 {name=l2637 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} -1550 -1940 2 0 {name=l2638 sig_type=std_logic lab=VSS}
+C {xschem_lib/inv.sym} -1440 -1950 0 0 {name=X_inv139 NF=32}
+C {xschem_lib/inv.sym} -1280 -1950 0 0 {name=X_inv140 NF=64}
+C {lab_wire.sym} -1380 -2040 0 0 {name=l2639 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} -1380 -1940 2 0 {name=l2640 sig_type=std_logic lab=VSS}
+C {lab_wire.sym} -1220 -2040 0 0 {name=l2641 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} -1220 -1940 2 0 {name=l2642 sig_type=std_logic lab=VSS}
+C {xschem_lib/inv.sym} -2100 -1950 0 0 {name=X_inv143 NF=2}
+C {xschem_lib/inv.sym} -1940 -1950 0 0 {name=X_inv144 NF=4}
+C {lab_wire.sym} -2040 -2040 0 0 {name=l2647 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} -2040 -1940 2 0 {name=l2648 sig_type=std_logic lab=VSS}
+C {lab_wire.sym} -1880 -2040 0 0 {name=l2649 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} -1880 -1940 2 0 {name=l2650 sig_type=std_logic lab=VSS}
