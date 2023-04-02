@@ -81,9 +81,13 @@ for instance in inst_info:
     instances_tlib.append(instance["Module"])
     instances.append(tlib[instance["Module"]].generate(name=instance["name"], netmap=instance["portlist"]))
 
+# NTAP0 = templates[tntap_name].generate(name='MNT0', params={'nf':2, 'tie':'TAP0'})
+# PTAP0 = templates[tptap_name].generate(name='MPT0', transform='MX',params={'nf':2, 'tie':'TAP0'})
 
 # 4. Place instances.
 dsn.place(grid=pg, inst=instances, mn=[0,0])
+# dsn.place(grid=pg, inst=NTAP0, mn=pg.mn.bottom_right(instances[-1]))
+# dsn.place(grid=pg, inst=PTAP0, mn=pg.mn.top_right(instances[-1]))
 
 
 # 5. Create and place wires.
@@ -101,7 +105,7 @@ for node in rc.nodes:
             nets_for_count.append(net.netname)
 # ----------------------------------------------------------------------- #
 # *** define the starting track (parallel to x axis) *** #              #||
-_trk = r23.mn(instances[0].pins["OUT"])[0, 1] - 1                       #||
+_trk = r23.mn(instances[0].pins["OUT"])[0, 1] - 2                       #||
 # ****************************************************** #              #||
 for n, w in enumerate(WIRES):                                           #||
     if nets_for_count.count(w) != 1: # <<================================||

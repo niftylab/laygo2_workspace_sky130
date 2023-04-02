@@ -45,6 +45,7 @@ print(grids[pg_name], grids[r12_name], grids[r23_name], sep="\n")
 
 lib = laygo2.object.database.Library(name=libname)
 
+
 for celltype in cell_type:
    for nf in nf_list:
       cellname = celltype+'_'+str(nf)+'x'

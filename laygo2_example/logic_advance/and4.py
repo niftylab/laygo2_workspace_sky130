@@ -67,6 +67,8 @@ PTAP0 = templates[tptap_name].generate(name='MPT0', transform='MX',params={'nf':
 # 4. Place instances.
 dsn.place(grid=pg, inst=nand0, mn=[0,0])
 dsn.place(grid=pg, inst=nand1, mn=pg.mn.bottom_right(nand0))
+# dsn.place(grid=pg, inst=NTAP0, mn=pg.mn.bottom_right(nand1))
+# dsn.place(grid=pg, inst=PTAP0, mn=pg.mn.top_right(nand1))
 dsn.place(grid=pg, inst=nor0, mn=pg.mn.bottom_right(nand1))
 # 5. Create and place wires.
 print("Create wires")

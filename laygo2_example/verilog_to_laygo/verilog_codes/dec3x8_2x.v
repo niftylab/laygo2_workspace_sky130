@@ -5,7 +5,7 @@
 //                                        //
 ////////////////////////////////////////////
 
-module dec2x4_2x(A0, A1, A2, EN, Y0, Y1, Y2, Y3, Y4, Y5, Y6, Y7);
+module dec3x8_2x(A0, A1, A2, EN, Y0, Y1, Y2, Y3, Y4, Y5, Y6, Y7);
     input A0, A1, A2, EN;
     output Y0, Y1, Y2, Y3, Y4, Y5, Y6, Y7;
     

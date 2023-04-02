@@ -120,15 +120,16 @@ for i in range(8):
     _track = [None, r34.mn(buf_sel[i].pins['I'])[0][1] + 1 + i]
     rDECsel.append(dsn.route_via_track(grid=r34, mn=_mn, track=_track))
     # buf sel[:] -> each word sel
-    if i not in (0, 3, 5):  # metal 3 error
+    if i not in (0, 3, 4, 5):  # metal 3 error
         x = 0
     else :
         if i == 0: x = 2
         elif i == 3: x = 1
+        elif i == 4: x = -2
         elif i == 5: x = 5
-        _mn = [r34.mn(buf_sel[i].pins['O'])[0] + np.array([x, 2]), r34.mn(buf_sel[i].pins['O'])[0] + np.array([0, 2])]
+        _mn = [r34.mn(buf_sel[i].pins['O'])[0] + np.array([x, 3]), r34.mn(buf_sel[i].pins['O'])[0] + np.array([0, 3])]
         dsn.route(grid=r34, mn=_mn, via_tag=[True, True])
-    _mn = [r34.mn(buf_sel[i].pins['O'])[0] + np.array([x, 2]), r34.mn(words[i].pins['SEL'])[0]]
+    _mn = [r34.mn(buf_sel[i].pins['O'])[0] + np.array([x, 3]), r34.mn(words[i].pins['SEL'])[0]]
     _track = [r34.mn(buf_sel[i].pins['O'])[0][0] + x, r34.mn(words[i].pins['SEL'])[0][1]]
     rBUFword.append(dsn.route_via_track(grid=r34, mn=_mn, track=_track))
 # buf clk + word clk
@@ -136,7 +137,7 @@ rBUFclk = []
 for i in range(8):
     _mn = [(r34.mn(buf_clk.pins['O'])[0]+r34.mn(buf_clk.pins['O'])[1])/2, r34.mn(words[i].pins['CLK'])[0]]
     _track = [r34.mn(buf_clk.pins['O'])[0][0], None]
-    rBUFclk.append(dsn.route_via_track(grid=r34, mn=_mn, track = _track))
+    rBUFclk.append(dsn.route_via_track(grid=r34, mn=_mn, track = _track, via_tag=[True for _ in range(len(_mn))]))
 # Di & Do
 Di = []; Do = []
 for i in range(32):
@@ -147,7 +148,18 @@ for i in range(32):
 # VSS
 rvss0 = dsn.route(grid=r12, mn=[r12.mn.bottom_left(words[0]), r12.mn.bottom_right(words[0])])
 # VDD
-rvdd0 = dsn.route(grid=r12, mn=[r12.mn.top_left(dec8), r12.mn.top_right(buf_clk)])
+rvdd0 = dsn.route(grid=r12, mn=[r12.mn.top_left(buf_clk), r12.mn.top_right(words[-1]) + r12.mn.height_vec(dec8)])
+# route all vdd / vss
+_mn = []
+for word in words:
+    _mn += [r23.mn.bottom_right(word)]
+_mn += [r23.mn.top_right(words[-1])]
+_mn += [r23.mn.top_right(words[-1]) + r23.mn.height_vec(dec8)]
+rvdd = dsn.route(grid=r23, mn=[_mn[i] - r23.mn.width_vec(words[0]) for i in range(len(_mn))], via_tag=[False for _ in range(len(_mn))])
+rvss = dsn.route(grid=r23, mn=_mn, via_tag=[False for _ in range(len(_mn))])
+via_vdd = dsn.via(grid=r23, mn=[_mn[i] - r23.mn.width_vec(words[0]) for i in range(1, len(_mn), 2)])
+via_vss = dsn.via(grid=r23, mn=[_mn[i] for i in range(0, len(_mn), 2)])
+
 
 # 6. Create pins.
 dA = list()

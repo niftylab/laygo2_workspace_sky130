@@ -115,9 +115,9 @@ lab=VDD}
 N 960 -570 980 -570 {
 lab=VDD}
 N 860 -570 880 -570 {
-lab=#net4}
+lab=VSS}
 N 500 -570 520 -570 {
-lab=#net5}
+lab=VSS}
 N 150 -570 170 -570 {
 lab=VSS}
 N 1160 -360 1180 -360 {
@@ -166,9 +166,9 @@ N 920 -350 920 770 {
 lab=#net1}
 N -110 -340 1010 -340 {
 lab=EN}
-C {xschem_lib/inv.sym} 170 -630 1 0 {name=X_inv7 NF=4}
-C {xschem_lib/inv.sym} 520 -630 1 0 {name=X_inv8 NF=4}
-C {xschem_lib/inv.sym} 880 -630 1 0 {name=X_inv9 NF=4}
+C {xschem_lib/inv.sym} 170 -630 1 0 {name=X_inv7 NF=2}
+C {xschem_lib/inv.sym} 520 -630 1 0 {name=X_inv1 NF=2}
+C {xschem_lib/inv.sym} 880 -630 1 0 {name=X_inv2 NF=2}
 C {ipin.sym} 50 -660 1 0 {name=p1 lab=A2}
 C {ipin.sym} 390 -660 1 0 {name=p2 lab=A1}
 C {ipin.sym} 740 -660 1 0 {name=p3 lab=A0}
@@ -188,14 +188,14 @@ C {opin.sym} 1180 760 0 0 {name=p44 lab=Y6
 }
 C {opin.sym} 1180 940 0 0 {name=p45 lab=Y7
 }
-C {xschem_lib/and_4in.sym} 1090 -360 0 0 {name=x_AndF1 NF=2}
-C {xschem_lib/and_4in.sym} 1090 -170 0 0 {name=x_AndF2 NF=2}
-C {xschem_lib/and_4in.sym} 1090 30 0 0 {name=x_AndF3 NF=2}
-C {xschem_lib/and_4in.sym} 1090 220 0 0 {name=x_AndF4 NF=2}
-C {xschem_lib/and_4in.sym} 1090 410 0 0 {name=x_AndF5 NF=2}
-C {xschem_lib/and_4in.sym} 1090 580 0 0 {name=x_AndF6 NF=2}
-C {xschem_lib/and_4in.sym} 1090 760 0 0 {name=x_AndF7 NF=2}
-C {xschem_lib/and_4in.sym} 1090 940 0 0 {name=x_AndF8 NF=2}
+C {xschem_lib/sylee21/and_4in.sym} 1090 -360 0 0 {name=x_AndF1 NF=2}
+C {xschem_lib/sylee21/and_4in.sym} 1090 -170 0 0 {name=x_AndF2 NF=2}
+C {xschem_lib/sylee21/and_4in.sym} 1090 30 0 0 {name=x_AndF3 NF=2}
+C {xschem_lib/sylee21/and_4in.sym} 1090 220 0 0 {name=x_AndF4 NF=2}
+C {xschem_lib/sylee21/and_4in.sym} 1090 410 0 0 {name=x_AndF5 NF=2}
+C {xschem_lib/sylee21/and_4in.sym} 1090 580 0 0 {name=x_AndF6 NF=2}
+C {xschem_lib/sylee21/and_4in.sym} 1090 760 0 0 {name=x_AndF7 NF=2}
+C {xschem_lib/sylee21/and_4in.sym} 1090 940 0 0 {name=x_AndF8 NF=2}
 C {ipin.sym} -110 -660 1 0 {name=p20 lab=EN}
 C {lab_wire.sym} 1100 -410 0 0 {name=l1 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 1100 -220 0 0 {name=l2 sig_type=std_logic lab=VDD}

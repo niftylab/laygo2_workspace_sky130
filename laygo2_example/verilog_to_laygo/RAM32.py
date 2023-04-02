@@ -136,142 +136,137 @@ for i in range(32):
     mn_ref = pg.mn.bottom_left(outreg[i]) - pg.mn.width_vec(outreg[i])
 
 
-# 5. Create and place wires.
-print("Create wires")
-rA = []
-# A<4>, A<3>, EN  --->  dec2x4
-_mn = [r34.mn(buf_a[4].pins['O'])[1], r34.mn(dec4.pins['A1'])[1]]   # A4
-_track = [None, r34.mn(buf_a[4].pins['O'])[1][1] - 5]
-rA.append(dsn.route_via_track(grid = r34, mn = _mn, track = _track))
-_mn = [r34.mn(buf_a[3].pins['O'])[1], r34.mn(dec4.pins['A0'])[1]]   # A3
-_track = [None, r34.mn(buf_a[3].pins['O'])[1][1] - 4]
-rA.append(dsn.route_via_track(grid = r34, mn = _mn, track = _track))
-_mn = [r34.mn(buf_en.pins['O'])[1], r34.mn(dec4.pins['EN'])[0]]   # EN
-_track = [None, r34.mn(dec4.pins['EN'])[0][1]]
-rEN = dsn.route_via_track(grid = r34, mn = _mn, track = _track)
-# dec2x4  --->  RAM8 EN     X 4
-rEN_RAM8 = []; x = [-11, -7, -3, 0]
-for i in range(4):
-    _mn = [r34.mn(dec4.pins[f'Y{i}'])[0] + np.array([0, 1]),\
-            np.array([r34.mn(dec4.pins[f'Y{i}'])[0][0], r34.mn(dec4.pins[f'Y{i}'])[0][1] - i + 1]),\
-            np.array([r34.mn(ram8s[i].pins['EN'])[(i%2 + 1)%2][0] + x[i], r34.mn(dec4.pins[f'Y{i}'])[0][1] - i + 1]),\
-            np.array([r34.mn(ram8s[i].pins['EN'])[(i%2 + 1)%2][0] + x[i], r34.mn(ram8s[i].pins['EN'])[(i%2 + 1)%2][1]]),\
-            r34.mn(ram8s[i].pins['EN'])[(i%2 + 1)%2]]   # Y0 Y1 Y2 Y3
-    rEN_RAM8.append(dsn.route(grid = r34, mn = _mn))
-# A<2>, A<1>, A<0>  --->  RAM8 A[2:0]   X 4
-rA_RAM8 = []; y = [-7, -6, -5]
-for i in range(3):
-    _mn = [r34.mn(ram8s[j].pins[f'A<{i}>'])[1] for j in range(ram8s_num)]\
-        + [np.array([r34.mn(ram8s[-1].pins[f'A<{i}>'])[1][0], r34.mn(buf_a[i].pins['O'])[1][1] + y[i]])]\
-        + [r34.mn(buf_a[i].pins['O'])[1] + np.array([0, y[i]])]
-    rA_RAM8.append(dsn.route(grid = r34, mn = _mn, via_tag = [False]+[True for _ in range(len(_mn) - 1)]))
-# buf_clk   --->    RAM8 clk   X 4
-rbuf_clk = []
-    # buf clk14 -> buf clk 36
-_mn = [np.mean(r34.mn(buf_clk14.pins['O']), axis=0, dtype=int),\
-       np.mean(r34.mn(buf_clk36.pins['I']), axis=0, dtype=int)]
-rbuf_clk.append(dsn.route(grid = r34, mn = _mn, via_tag = [True, True]))
-    # buf clk36 -> buf clk 36 * 3
-for i in range(len(buf_clk72)):
-    _mn = [np.mean(r34.mn(buf_clk36.pins['O']), axis=0, dtype=int) + np.array([0, i - 1]),\
-        np.mean(r34.mn(buf_clk72[i].pins['I']), axis=0, dtype=int) + np.array([0, i - 1])]
-    rbuf_clk.append(dsn.route(grid = r34, mn = _mn, via_tag = [True, True]))
-    # buf clk 72[0] -> buf ram
-_mn = [r34.mn(buf_clk72[0].pins['O'])[1]]\
-    + [np.array([r34.mn(buf_clk72[0].pins['O'])[1][0], r34.mn(buf_clk72[0].pins['O'])[1][1] + 1])]\
-    + [np.array([r34.mn(ram8s[0].pins['CLK'])[0][0], r34.mn(buf_clk72[0].pins['O'])[1][1] + 1])]\
-    + [r34.mn(ram8s[i].pins['CLK'])[0] for i in range(ram8s_num)]
-rram_clk = dsn.route(grid = r34, mn = _mn, via_tag = [False, True, True] + [False for _ in range(4)])
-    # buf clk 72[1], clk 72[2] -> outreg * 32
-routreg_clk = []
-        # clk 72[1]
-_mn = [np.mean(r34.mn(buf_clk72[1].pins['O']), axis=0, dtype=int) + np.array([0, -1])]
-for i in range(0, 32, 2):
-    _mn += [np.mean(r34.mn(outreg[i].pins['CLK']), axis=0, dtype=int) + np.array([0, -1])]
-routreg_clk.append(dsn.route(grid=r34, mn=_mn, via_tag = [True for _ in range(len(_mn))]))
-        # clk 72[2]
-_mn = [np.mean(r34.mn(buf_clk72[2].pins['O']), axis=0, dtype=int) + np.array([0, 1])]
-for i in range(1, 32, 2):
-    _mn += [np.mean(r34.mn(outreg[i].pins['CLK']), axis=0, dtype=int) + np.array([0, 1])]
-routreg_clk.append(dsn.route(grid=r34, mn=_mn, via_tag = [True for _ in range(len(_mn))]))
+# # 5. Create and place wires.
+# print("Create wires")
+# rA = []
+# # A<4>, A<3>, EN  --->  dec2x4
+# _mn = [r34.mn(buf_a[4].pins['O'])[1], r34.mn(dec4.pins['A1'])[1]]   # A4
+# _track = [None, r34.mn(buf_a[4].pins['O'])[1][1] - 5]
+# rA.append(dsn.route_via_track(grid = r34, mn = _mn, track = _track))
+# _mn = [r34.mn(buf_a[3].pins['O'])[1], r34.mn(dec4.pins['A0'])[1]]   # A3
+# _track = [None, r34.mn(buf_a[3].pins['O'])[1][1] - 4]
+# rA.append(dsn.route_via_track(grid = r34, mn = _mn, track = _track))
+# _mn = [r34.mn(buf_en.pins['O'])[1], r34.mn(dec4.pins['EN'])[0]]   # EN
+# _track = [None, r34.mn(dec4.pins['EN'])[0][1]]
+# rEN = dsn.route_via_track(grid = r34, mn = _mn, track = _track)
+# # dec2x4  --->  RAM8 EN     X 4
+# rEN_RAM8 = []; x = [-11, -7, -3, 0]
+# for i in range(4):
+#     _mn = [r34.mn(dec4.pins[f'Y{i}'])[0] + np.array([0, 1]),\
+#             np.array([r34.mn(dec4.pins[f'Y{i}'])[0][0], r34.mn(dec4.pins[f'Y{i}'])[0][1] - i + 1]),\
+#             np.array([r34.mn(ram8s[i].pins['EN'])[(i%2 + 1)%2][0] + x[i], r34.mn(dec4.pins[f'Y{i}'])[0][1] - i + 1]),\
+#             np.array([r34.mn(ram8s[i].pins['EN'])[(i%2 + 1)%2][0] + x[i], r34.mn(ram8s[i].pins['EN'])[(i%2 + 1)%2][1]]),\
+#             r34.mn(ram8s[i].pins['EN'])[(i%2 + 1)%2]]   # Y0 Y1 Y2 Y3
+#     rEN_RAM8.append(dsn.route(grid = r34, mn = _mn))
+# # A<2>, A<1>, A<0>  --->  RAM8 A[2:0]   X 4
+# rA_RAM8 = []; y = [-7, -6, -5]
+# for i in range(3):
+#     _mn = [r34.mn(ram8s[j].pins[f'A<{i}>'])[1] for j in range(ram8s_num)]\
+#         + [np.array([r34.mn(ram8s[-1].pins[f'A<{i}>'])[1][0], r34.mn(buf_a[i].pins['O'])[1][1] + y[i]])]\
+#         + [r34.mn(buf_a[i].pins['O'])[1] + np.array([0, y[i]])]
+#     rA_RAM8.append(dsn.route(grid = r34, mn = _mn, via_tag = [False]+[True for _ in range(len(_mn) - 1)]))
+# # buf_clk   --->    RAM8 clk   X 4
+# rbuf_clk = []
+#     # buf clk14 -> buf clk 36
+# _mn = [np.mean(r34.mn(buf_clk14.pins['O']), axis=0, dtype=int),\
+#        np.mean(r34.mn(buf_clk36.pins['I']), axis=0, dtype=int)]
+# rbuf_clk.append(dsn.route(grid = r34, mn = _mn, via_tag = [True, True]))
+#     # buf clk36 -> buf clk 36 * 3
+# for i in range(len(buf_clk72)):
+#     _mn = [np.mean(r34.mn(buf_clk36.pins['O']), axis=0, dtype=int) + np.array([0, i - 1]),\
+#         np.mean(r34.mn(buf_clk72[i].pins['I']), axis=0, dtype=int) + np.array([0, i - 1])]
+#     rbuf_clk.append(dsn.route(grid = r34, mn = _mn, via_tag = [True, True]))
+#     # buf clk 72[0] -> buf ram
+# _mn = [r34.mn(buf_clk72[0].pins['O'])[1]]\
+#     + [np.array([r34.mn(buf_clk72[0].pins['O'])[1][0], r34.mn(buf_clk72[0].pins['O'])[1][1] + 1])]\
+#     + [np.array([r34.mn(ram8s[0].pins['CLK'])[0][0], r34.mn(buf_clk72[0].pins['O'])[1][1] + 1])]\
+#     + [r34.mn(ram8s[i].pins['CLK'])[0] for i in range(ram8s_num)]
+# rram_clk = dsn.route(grid = r34, mn = _mn, via_tag = [False, True, True] + [False for _ in range(4)])
+#     # buf clk 72[1], clk 72[2] -> outreg * 32
+# routreg_clk = []
+#         # clk 72[1]
+# _mn = [np.mean(r34.mn(buf_clk72[1].pins['O']), axis=0, dtype=int) + np.array([0, -1])]
+# for i in range(0, 32, 2):
+#     _mn += [np.mean(r34.mn(outreg[i].pins['CLK']), axis=0, dtype=int) + np.array([0, -1])]
+# routreg_clk.append(dsn.route(grid=r34, mn=_mn, via_tag = [True for _ in range(len(_mn))]))
+#         # clk 72[2]
+# _mn = [np.mean(r34.mn(buf_clk72[2].pins['O']), axis=0, dtype=int) + np.array([0, 1])]
+# for i in range(1, 32, 2):
+#     _mn += [np.mean(r34.mn(outreg[i].pins['CLK']), axis=0, dtype=int) + np.array([0, 1])]
+# routreg_clk.append(dsn.route(grid=r34, mn=_mn, via_tag = [True for _ in range(len(_mn))]))
 
 
-# buf WE    --->    RAM WE    X 4
-rWE = []; y = [1, -1, 1, 1]
-for i in range(4):
-    _mn = [r34.mn(buf_we[i].pins['O'])[1]]\
-        + [np.array([r34.mn(buf_we[i].pins['O'])[1][0], r34.mn(buf_we[i].pins['O'])[1][1] + y[i]])]\
-        + [np.array([r34.mn(ram8s[0].pins[f'WE<{i}>'])[1][0], r34.mn(buf_we[i].pins['O'])[1][1] + y[i]])]\
-        + [r34.mn(ram8s[j].pins[f'WE<{i}>'])[1] for j in range(ram8s_num)]
-    rWE.append(dsn.route(grid = r34, mn = _mn, via_tag = [False, True, True] + [False for _ in range(ram8s_num)]))
-# Di, Do    X 32
-# input_buf output  --->  ram8s[2, 3] vacant space use
-rDi = []; rDo = []
-x = [-2, 0, -2, 0, 0, 0, -2, 1,\
-    0, -1, 1, 0, -2, 1, 0, -2,\
-    0, -2, 0, -2, -2, -2, 0, 1,\
-    0, -2, -2, -2, 0, -1, -1, -1]
-y = [-27 + (4*((i%4)//2) - 2) - 2*(i%2) - 14*(i//2) for i in range(32)]
-for i in range(len(x)):  # 32
-    _mn = [r34.mn(buf_in[i].pins['O'])[1]]\
-        + [np.array([r34.mn(buf_in[i].pins['O'])[1][0], r34.mn(buf_in[i].pins['O'])[1][1] - 4])]\
-        + [np.array([r34.mn(buf_in[i].pins['O'])[1][0] + x[i], r34.mn(buf_in[i].pins['O'])[1][1] - 4])]\
-        + [np.array([r34.mn(buf_in[i].pins['O'])[1][0] + x[i], r34.mn(buf_in[i].pins['O'])[1][1] - 4 + y[i]])]\
-        + [np.array([r34.mn(ram8s[-1].pins[f'Di<{i}>'])[1][0], r34.mn(buf_in[i].pins['O'])[1][1] - 4 + y[i]])]
-    rDi.append(dsn.route(grid = r34, mn = _mn, via_tag = [False] + [True for _ in range(len(_mn) - 2)] + [True]))
-# internal Dins / Douts
-for i in range(32):
-    _mn = [r34.mn(ram8s[-1].pins[f'Di<{i}>'])[1], r34.mn(ram8s[0].pins[f'Di<{i}>'])[0]]
-    rDi.append(dsn.route(grid = r34, mn = _mn, via_tag = [False, False]))
-    _mn = [r34.mn(ram8s[-1].pins[f'Do<{i}>'])[1], r34.mn(ram8s[0].pins[f'Do<{i}>'])[0]]
-    rDo.append(dsn.route(grid = r34, mn = _mn, via_tag = [False, False]))
-# ram8s[0, 1] vacant space use --->  output_reg input
-x = [0, -2, 0, 0, 0, 0, 0, -2,\
-    -2, -2, 1, -2, -2, 1, -2,\
-    0, 0, 0, 0, 1, -2, 1 , 0, -2,\
-    2, -2, -2, 0, 0, 0, 0, 0]
-y = [25 - (4*((i%4)//2) - 2) + 2*(i%2) + 14*(i//2) for i in range(32)]
-for i in range(len(x)):
-    _mn = [r34.mn(outreg[i].pins['I'])[1]]\
-        + [r34.mn(outreg[i].pins['I'])[1] + np.array([0, -2])]\
-        + [r34.mn(outreg[i].pins['I'])[1] + np.array([x[i], -2])]\
-        + [r34.mn(outreg[i].pins['I'])[1] + np.array([x[i], y[i]])]\
-        + [np.array([r34.mn(ram8s[0].pins[f'Do<{i}>'])[0][0], r34.mn(outreg[i].pins['I'])[1][1]+ y[i]])]
-    rDo.append(dsn.route(grid= r34, mn = _mn, via_tag = [False] + [True for _ in range(len(_mn) - 2)] + [True]))
+# # buf WE    --->    RAM WE    X 4
+# rWE = []; y = [1, -1, 1, 1]
+# for i in range(4):
+#     _mn = [r34.mn(buf_we[i].pins['O'])[1]]\
+#         + [np.array([r34.mn(buf_we[i].pins['O'])[1][0], r34.mn(buf_we[i].pins['O'])[1][1] + y[i]])]\
+#         + [np.array([r34.mn(ram8s[0].pins[f'WE<{i}>'])[1][0], r34.mn(buf_we[i].pins['O'])[1][1] + y[i]])]\
+#         + [r34.mn(ram8s[j].pins[f'WE<{i}>'])[1] for j in range(ram8s_num)]
+#     rWE.append(dsn.route(grid = r34, mn = _mn, via_tag = [False, True, True] + [False for _ in range(ram8s_num)]))
+# # Di, Do    X 32
+# # input_buf output  --->  ram8s[2, 3] vacant space use
+# rDi = []; rDo = []
+# x = [-2, 0, -2, 0, 0, 0, -2, 1,\
+#     0, -1, 1, 0, -2, 1, 0, -2,\
+#     0, -2, 0, -2, -2, -2, 0, 1,\
+#     0, -2, -2, -2, 0, -1, -1, -1]
+# y = [-27 + (4*((i%4)//2) - 2) - 2*(i%2) - 14*(i//2) for i in range(32)]
+# for i in range(len(x)):  # 32
+#     _mn = [r34.mn(buf_in[i].pins['O'])[1]]\
+#         + [np.array([r34.mn(buf_in[i].pins['O'])[1][0], r34.mn(buf_in[i].pins['O'])[1][1] - 4])]\
+#         + [np.array([r34.mn(buf_in[i].pins['O'])[1][0] + x[i], r34.mn(buf_in[i].pins['O'])[1][1] - 4])]\
+#         + [np.array([r34.mn(buf_in[i].pins['O'])[1][0] + x[i], r34.mn(buf_in[i].pins['O'])[1][1] - 4 + y[i]])]\
+#         + [np.array([r34.mn(ram8s[-1].pins[f'Di<{i}>'])[1][0], r34.mn(buf_in[i].pins['O'])[1][1] - 4 + y[i]])]
+#     rDi.append(dsn.route(grid = r34, mn = _mn, via_tag = [False] + [True for _ in range(len(_mn) - 2)] + [True]))
+# # internal Dins / Douts
+# for i in range(32):
+#     _mn = [r34.mn(ram8s[-1].pins[f'Di<{i}>'])[1], r34.mn(ram8s[0].pins[f'Di<{i}>'])[0]]
+#     rDi.append(dsn.route(grid = r34, mn = _mn, via_tag = [False, False]))
+#     _mn = [r34.mn(ram8s[-1].pins[f'Do<{i}>'])[1], r34.mn(ram8s[0].pins[f'Do<{i}>'])[0]]
+#     rDo.append(dsn.route(grid = r34, mn = _mn, via_tag = [False, False]))
+# # ram8s[0, 1] vacant space use --->  output_reg input
+# x = [0, -2, 0, 0, 0, 0, 0, -2,\
+#     -2, -2, 1, -2, -2, 1, -2,\
+#     0, 0, 0, 0, 1, -2, 1 , 0, -2,\
+#     2, -2, -2, 0, 0, 0, 0, 0]
+# y = [25 - (4*((i%4)//2) - 2) + 2*(i%2) + 14*(i//2) for i in range(32)]
+# for i in range(len(x)):
+#     _mn = [r34.mn(outreg[i].pins['I'])[1]]\
+#         + [r34.mn(outreg[i].pins['I'])[1] + np.array([0, -2])]\
+#         + [r34.mn(outreg[i].pins['I'])[1] + np.array([x[i], -2])]\
+#         + [r34.mn(outreg[i].pins['I'])[1] + np.array([x[i], y[i]])]\
+#         + [np.array([r34.mn(ram8s[0].pins[f'Do<{i}>'])[0][0], r34.mn(outreg[i].pins['I'])[1][1]+ y[i]])]
+#     rDo.append(dsn.route(grid= r34, mn = _mn, via_tag = [False] + [True for _ in range(len(_mn) - 2)] + [True]))
 
 
 
-# VSS
-rvss = []; _mn = [r12.mn.bottom_left(buf_clk14), r12.mn.bottom_right(outreg[0])]
-rvss.append(dsn.route(grid=r12, mn=_mn))
+# # VSS
+# rvss = []; _mn = [r12.mn.bottom_left(buf_clk14), r12.mn.bottom_right(outreg[0])]
+# rvss.append(dsn.route(grid=r12, mn=_mn))
 
-# VDD
-rvdd = []; _mn = [r12.mn.top_left(ram8s[-1]), r12.mn.top_right(ram8s[-1])]
-rvdd.append(dsn.route(grid=r12, mn=_mn))
+# # VDD
+# rvdd = []; _mn = [r12.mn.top_left(ram8s[-1]), r12.mn.top_right(ram8s[-1])]
+# rvdd.append(dsn.route(grid=r12, mn=_mn))
 
 
 # # 6. Create pins.
-dA = list()
-for i in range(5):
-    dA.append(dsn.pin(name=f'A<{i}>', grid=r23_cmos, mn=r23_cmos.mn.bbox(buf_a[i].pins['I'])))
-pen = dsn.pin(name='EN', grid=r23_cmos, mn=r23_cmos.mn.bbox(buf_en.pins['I']))
-pwe = list()
-for i in range(4):
-    pwe.append(dsn.pin(name=f'WE<{i}>', grid=r23_cmos, mn=r23_cmos.mn.bbox(buf_we[i].pins['I'])))
-pclk = dsn.pin(name='CLK', grid=r23_cmos, mn=r23_cmos.mn.bbox(buf_clk14.pins['I']))
-pDi = list()
-pDo = list()
-for i in range(32):
-    pDi.append(dsn.pin(name=f'Di<{i}>', grid=r23_cmos, mn=r23_cmos.mn.bbox(buf_in[i].pins['I'])))
-    pDo.append(dsn.pin(name=f'Do<{i}>', grid=r23_cmos, mn=r23_cmos.mn.bbox(outreg[i].pins['O'])))
-# pvss = []
-# for i in range(len(rvss)):
-#     dsn.pin(name='VSS', grid=r12, mn=r12.mn.bbox(rvss[i]))
-# pvdd = []
-# for i in range(len(rvdd)):
-#     dsn.pin(name='VDD', grid=r12, mn=r12.mn.bbox(rvdd[i]))
-pvss0 = dsn.pin(name='VSS', grid=r12, mn=r12.mn.bbox(rvss[0]))
-pvdd0 = dsn.pin(name='VDD', grid=r12, mn=r12.mn.bbox(rvdd[-1]))
+# dA = list()
+# for i in range(5):
+#     dA.append(dsn.pin(name=f'A<{i}>', grid=r23_cmos, mn=r23_cmos.mn.bbox(buf_a[i].pins['I'])))
+# pen = dsn.pin(name='EN', grid=r23_cmos, mn=r23_cmos.mn.bbox(buf_en.pins['I']))
+# pwe = list()
+# for i in range(4):
+#     pwe.append(dsn.pin(name=f'WE<{i}>', grid=r23_cmos, mn=r23_cmos.mn.bbox(buf_we[i].pins['I'])))
+# pclk = dsn.pin(name='CLK', grid=r23_cmos, mn=r23_cmos.mn.bbox(buf_clk14.pins['I']))
+# pDi = list()
+# pDo = list()
+# for i in range(32):
+#     pDi.append(dsn.pin(name=f'Di<{i}>', grid=r23_cmos, mn=r23_cmos.mn.bbox(buf_in[i].pins['I'])))
+#     pDo.append(dsn.pin(name=f'Do<{i}>', grid=r23_cmos, mn=r23_cmos.mn.bbox(outreg[i].pins['O'])))
+
+# pvss0 = dsn.pin(name='VSS', grid=r12, mn=r12.mn.bbox(rvss[0]))
+# pvdd0 = dsn.pin(name='VDD', grid=r12, mn=r12.mn.bbox(rvdd[-1]))
 
 # 7. Export to physical database.
 print("Export design")
