@@ -41,12 +41,10 @@ templates = tech.load_templates()
 tpmos, tnmos = templates[tpmos_name], templates[tnmos_name]
 tlogic_prim = laygo2.interface.yaml.import_template(filename=ref_dir_template+'logic/logic_generated_templates.yaml')
 tlogic_adv = laygo2.interface.yaml.import_template(filename=ref_dir_template+'logic_advance/logic_advanced_templates.yaml')
-#print(templates[tpmos_name], templates[tnmos_name], sep="\n")
 
 print("Load grids")
 grids = tech.load_grids(templates=templates)
 pg, r12, r23_cmos, r23, r34 = grids[pg_name], grids[r12_name], grids[r23_cmos_name], grids[r23_basic_name], grids[r34_name]
-#print(grids[pg_name], grids[r12_name], grids[r23_basic_name], grids[r34_name], sep="\n")
 
 cellname = cell_type+'_'+str(nf)+'x'
 print('--------------------')
@@ -66,12 +64,8 @@ cgate = tlogic_adv['cgate_'+str(nf)+'x'].generate(name='cgate0')
 cells=list()
 for i in range(8):
     cells.append(tlogic_prim['dff_'+str(nf)+'x'].generate(name='dff_'+str(i)))
-    cells.append(tlogic_prim['tinv_'+str(nf)+'x'].generate(name='tinv'+str(i)))
     cells.append(tlogic_prim['inv_'+str(nf)+'x'].generate(name='inv'+str(i)))
-# NTAP0 = templates[tntap_name].generate(name='MNT0', params={'nf':2, 'tie':'TAP0'})
-# PTAP0 = templates[tptap_name].generate(name='MPT0', transform='MX',params={'nf':2, 'tie':'TAP0'})
-# NTAP1 = templates[tntap_name].generate(name='MNT1', params={'nf':2, 'tie':'TAP0'})
-# PTAP1 = templates[tptap_name].generate(name='MPT1', transform='MX',params={'nf':2, 'tie':'TAP0'})
+    cells.append(tlogic_prim['tinv_'+str(nf)+'x'].generate(name='tinv'+str(i)))
 
 # 4. Place instances.
 dsn.place(grid=pg, inst=nand, mn=[0,0])
@@ -85,14 +79,14 @@ print("Create wires")
 # sel
 mn_list = [r34.mn(nand.pins['B'])[0], r34.mn(inv_sel.pins['I'])[0]]
 for i in range(8):
-    mn_list.append(r34.mn(cells[3*i+1].pins['EN'])[0]) # ~= cells[i].tinv.pins[EN]
+    mn_list.append(r34.mn(cells[3*i+2].pins['EN'])[0]) # ~= cells[i].tinv.pins[EN]
 _track = [None, r34.mn(inv_sel.pins['O'])[0,1]-1]
 rsel = dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
 
 # sel_bar
 mn_list = [r34.mn(inv_sel.pins['O'])[0]]
 for i in range(8):
-    mn_list.append(r34.mn(cells[3*i+1].pins['ENB'])[0]) # ~= cells[i].tinv.pins[ENB]
+    mn_list.append(r34.mn(cells[3*i+2].pins['ENB'])[0]) # ~= cells[i].tinv.pins[ENB]
 _track = [None, r34.mn(inv_sel.pins['O'])[0,1]+1]
 dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
 
@@ -115,11 +109,11 @@ dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
 
 # cell internal
 for i in range(8):
-    # dff_out <--> tinv_in
+    # dff_out <--> inv_in
     mn_list = [r23.mn(cells[3*i].pins['O'])[0], r23.mn(cells[3*i+1].pins['I'])[0]]
     _track = [None, (r23.mn(cells[3*i+1].pins['I'])[0,1] + r23.mn(cells[3*i+1].pins['I'])[1,1])/2]
     dsn.route_via_track(grid=r23, mn=mn_list, track=_track)
-    # tinv_out <--> inv_in
+    # inv_out <--> tinv_in
     mn_list = [r23.mn(cells[3*i+1].pins['O'])[0], r23.mn(cells[3*i+2].pins['I'])[0]]
     _track = [None, (r23.mn(cells[3*i+2].pins['I'])[0,1] + r23.mn(cells[3*i+2].pins['I'])[1,1])/2]
     dsn.route_via_track(grid=r23, mn=mn_list, track=_track)

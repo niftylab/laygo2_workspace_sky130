@@ -44,7 +44,6 @@ tlib = laygo2.interface.yaml.import_template(filename=ref_dir_template+'logic_ge
 print("Load grids")
 grids = tech.load_grids(templates=templates)
 pg, r12, r23_cmos, r23, r34 = grids[pg_name], grids[r12_name], grids[r23_cmos_name], grids[r23_basic_name], grids[r34_name]
-#print(grids[pg_name], grids[r12_name], grids[r23_basic_name], grids[r34_name], sep="\n")
 
 nf=2
 cellname = cell_type+'_'+str(nf)+'x'

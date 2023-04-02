@@ -1,7 +1,7 @@
 ##########################################
 #                                        #
 #       Inverter Layout Gernerator       #
-#         Created by Taeho Shin          #
+#        Created by Hyungjoo Park        #
 #                                        #
 ##########################################
 
