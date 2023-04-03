@@ -64,7 +64,8 @@ lib.append(dsn)
 # 3. Create instances.
 print("Create instances")
 # input verilog file
-verilog_filename = f"{cellname}.v"
+# verilog_filename = f"{cellname}.v"
+verilog_filename = f"{cellname}_post_synth.v"
 name, paramlist, decl_info, inst_info = info_from_verilog_code(f"./laygo2_example/{libname}/verilog_codes/{verilog_filename}")
 
 print()
