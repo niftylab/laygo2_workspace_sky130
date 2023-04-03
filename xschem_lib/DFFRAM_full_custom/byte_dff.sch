@@ -37,7 +37,7 @@ lab=ck_o}
 N 420 -80 430 -80 {
 lab=ck_o}
 N 600 50 620 50 {
-lab=#net3}
+lab=dffout6}
 N 950 50 970 50 {
 lab=Do<6>}
 N 420 40 440 40 {
@@ -53,7 +53,7 @@ lab=ck_o}
 N 940 220 950 220 {
 lab=Do<5>}
 N 600 220 620 220 {
-lab=#net4}
+lab=dffout5}
 N 950 220 970 220 {
 lab=Do<5>}
 N 420 210 440 210 {
@@ -67,7 +67,7 @@ lab=ck_o}
 N 420 250 430 250 {
 lab=ck_o}
 N 600 370 620 370 {
-lab=#net5}
+lab=dffout4}
 N 950 370 970 370 {
 lab=Do<4>}
 N 420 360 440 360 {
@@ -80,9 +80,9 @@ N 430 390 430 400 {
 lab=ck_o}
 N 420 400 430 400 {
 lab=ck_o}
-N 1680 -110 1690 -110 {
+N 1690 -110 1700 -110 {
 lab=Do<3>}
-N 1690 -110 1710 -110 {
+N 1700 -110 1720 -110 {
 lab=Do<3>}
 N 1160 -120 1180 -120 {
 lab=Di<3>}
@@ -97,7 +97,7 @@ lab=ck_o}
 N 1680 50 1690 50 {
 lab=Do<2>}
 N 1340 50 1360 50 {
-lab=#net6}
+lab=dffout2}
 N 1690 50 1710 50 {
 lab=Do<2>}
 N 1160 40 1180 40 {
@@ -111,7 +111,7 @@ lab=ck_o}
 N 1160 80 1170 80 {
 lab=ck_o}
 N 1340 220 1360 220 {
-lab=#net7}
+lab=dffout1}
 N 1690 220 1710 220 {
 lab=Do<1>}
 N 1160 210 1180 210 {
@@ -127,7 +127,7 @@ lab=ck_o}
 N 1680 380 1690 380 {
 lab=Do<0>}
 N 1340 380 1360 380 {
-lab=#net8}
+lab=dffout0}
 N 1690 380 1710 380 {
 lab=Do<0>}
 N 1160 370 1180 370 {
@@ -157,7 +157,7 @@ lab=VDD}
 N -40 -80 -40 -70 {
 lab=VSS}
 N -120 -120 -100 -120 {
-lab=#net9}
+lab=#net3}
 N -290 -140 -260 -140 {
 lab=WE}
 N -290 -100 -260 -100 {
@@ -167,7 +167,7 @@ lab=SEL}
 N -300 -30 -290 -30 {
 lab=SEL}
 N 40 -120 120 -120 {
-lab=#net10}
+lab=#net4}
 N 100 -100 120 -100 {
 lab=CLK}
 N 100 -100 100 -80 {
@@ -185,7 +185,7 @@ lab=Do<6>}
 N 770 90 780 90 {
 lab=SEL}
 N 770 50 780 50 {
-lab=#net11}
+lab=#net5}
 N 770 10 780 10 {
 lab=SEL_bar}
 N 680 90 680 100 {
@@ -193,7 +193,7 @@ lab=VSS}
 N 680 0 680 10 {
 lab=VDD}
 N 760 50 770 50 {
-lab=#net11}
+lab=#net5}
 N 850 0 850 10 {
 lab=VDD}
 N 850 90 850 100 {
@@ -201,7 +201,7 @@ lab=VSS}
 N 770 260 780 260 {
 lab=SEL}
 N 770 220 780 220 {
-lab=#net12}
+lab=#net6}
 N 770 180 780 180 {
 lab=SEL_bar}
 N 680 260 680 270 {
@@ -209,7 +209,7 @@ lab=VSS}
 N 680 170 680 180 {
 lab=VDD}
 N 760 220 770 220 {
-lab=#net12}
+lab=#net6}
 N 850 170 850 180 {
 lab=VDD}
 N 850 260 850 270 {
@@ -219,7 +219,7 @@ lab=Do<4>}
 N 770 410 780 410 {
 lab=SEL}
 N 770 370 780 370 {
-lab=#net13}
+lab=#net7}
 N 770 330 780 330 {
 lab=SEL_bar}
 N 680 410 680 420 {
@@ -227,33 +227,33 @@ lab=VSS}
 N 680 320 680 330 {
 lab=VDD}
 N 760 370 770 370 {
-lab=#net13}
+lab=#net7}
 N 850 320 850 330 {
 lab=VDD}
 N 850 410 850 420 {
 lab=VSS}
-N 1650 -110 1680 -110 {
+N 1660 -110 1690 -110 {
 lab=Do<3>}
-N 1500 -70 1510 -70 {
+N 1510 -70 1520 -70 {
 lab=SEL}
-N 1500 -110 1510 -110 {
-lab=#net14}
-N 1500 -150 1510 -150 {
+N 1510 -110 1520 -110 {
+lab=#net8}
+N 1510 -150 1520 -150 {
 lab=SEL_bar}
-N 1410 -70 1410 -60 {
+N 1420 -70 1420 -60 {
 lab=VSS}
-N 1410 -160 1410 -150 {
+N 1420 -160 1420 -150 {
 lab=VDD}
-N 1490 -110 1500 -110 {
-lab=#net14}
-N 1580 -160 1580 -150 {
+N 1500 -110 1510 -110 {
+lab=#net8}
+N 1590 -160 1590 -150 {
 lab=VDD}
-N 1580 -70 1580 -60 {
+N 1590 -70 1590 -60 {
 lab=VSS}
 N 1510 90 1520 90 {
 lab=SEL}
 N 1510 50 1520 50 {
-lab=#net15}
+lab=#net9}
 N 1510 10 1520 10 {
 lab=SEL_bar}
 N 1420 90 1420 100 {
@@ -261,7 +261,7 @@ lab=VSS}
 N 1420 0 1420 10 {
 lab=VDD}
 N 1500 50 1510 50 {
-lab=#net15}
+lab=#net9}
 N 1590 0 1590 10 {
 lab=VDD}
 N 1590 90 1590 100 {
@@ -271,7 +271,7 @@ lab=Do<1>}
 N 1510 260 1520 260 {
 lab=SEL}
 N 1510 220 1520 220 {
-lab=#net16}
+lab=#net10}
 N 1510 180 1520 180 {
 lab=SEL_bar}
 N 1420 260 1420 270 {
@@ -279,7 +279,7 @@ lab=VSS}
 N 1420 170 1420 180 {
 lab=VDD}
 N 1500 220 1510 220 {
-lab=#net16}
+lab=#net10}
 N 1590 170 1590 180 {
 lab=VDD}
 N 1590 260 1590 270 {
@@ -287,7 +287,7 @@ lab=VSS}
 N 1510 420 1520 420 {
 lab=SEL}
 N 1510 380 1520 380 {
-lab=#net17}
+lab=#net11}
 N 1510 340 1520 340 {
 lab=SEL_bar}
 N 1420 420 1420 430 {
@@ -295,7 +295,7 @@ lab=VSS}
 N 1420 330 1420 340 {
 lab=VDD}
 N 1500 380 1510 380 {
-lab=#net17}
+lab=#net11}
 N 1590 330 1590 340 {
 lab=VDD}
 N 1590 420 1590 430 {
@@ -306,8 +306,8 @@ N 1660 380 1680 380 {
 lab=Do<0>}
 N 1660 50 1680 50 {
 lab=Do<2>}
-N 1340 -110 1350 -110 {
-lab=#net18}
+N 1340 -110 1360 -110 {
+lab=dffout3}
 C {xschem_lib/DFFRAM_full_custom/nand.sym} -240 -90 0 0 {name=X_nand1 NF=2}
 C {xschem_lib/DFFRAM_full_custom/inv.sym} -100 -80 0 0 {name=X_inv1 NF=2}
 C {xschem_lib/DFFRAM_full_custom/inv.sym} -270 80 0 0 {name=X_inv2 NF=2}
@@ -347,7 +347,7 @@ C {lab_wire.sym} 420 400 0 0 {name=l36 sig_type=std_logic lab=ck_o}
 C {xschem_lib/DFFRAM_full_custom/DFF.sym} 1270 -110 0 0 {name=xDFF5 NF=2}
 C {lab_wire.sym} 1270 -160 0 0 {name=l39 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 1270 -60 2 0 {name=l40 sig_type=std_logic lab=VSS}
-C {opin.sym} 1710 -110 0 0 {name=p9 lab=Do<3>}
+C {opin.sym} 1720 -110 0 0 {name=p9 lab=Do<3>}
 C {ipin.sym} 1160 -120 0 0 {name=p10 lab=Di<3>}
 C {lab_wire.sym} 1160 -80 0 0 {name=l45 sig_type=std_logic lab=ck_o}
 C {xschem_lib/DFFRAM_full_custom/DFF.sym} 1270 50 0 0 {name=xDFF6 NF=2}
@@ -407,14 +407,14 @@ C {lab_wire.sym} 850 320 0 0 {name=l32 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 680 320 0 0 {name=l33 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 850 420 2 0 {name=l34 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} 680 420 2 0 {name=l35 sig_type=std_logic lab=VSS}
-C {xschem_lib/DFFRAM_full_custom/tinv.sym} 1510 -70 0 0 {name=X_tinv5 NF=2}
-C {xschem_lib/DFFRAM_full_custom/inv.sym} 1350 -70 0 0 {name=X_inv7 NF=2}
-C {lab_wire.sym} 1500 -70 0 0 {name=l37 sig_type=std_logic lab=SEL}
-C {lab_wire.sym} 1500 -150 0 0 {name=l38 sig_type=std_logic lab=SEL_bar}
-C {lab_wire.sym} 1580 -160 0 0 {name=l41 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 1410 -160 0 0 {name=l42 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 1580 -60 2 0 {name=l43 sig_type=std_logic lab=VSS}
-C {lab_wire.sym} 1410 -60 2 0 {name=l44 sig_type=std_logic lab=VSS}
+C {xschem_lib/DFFRAM_full_custom/tinv.sym} 1520 -70 0 0 {name=X_tinv5 NF=2}
+C {xschem_lib/DFFRAM_full_custom/inv.sym} 1360 -70 0 0 {name=X_inv7 NF=2}
+C {lab_wire.sym} 1510 -70 0 0 {name=l37 sig_type=std_logic lab=SEL}
+C {lab_wire.sym} 1510 -150 0 0 {name=l38 sig_type=std_logic lab=SEL_bar}
+C {lab_wire.sym} 1590 -160 0 0 {name=l41 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} 1420 -160 0 0 {name=l42 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} 1590 -60 2 0 {name=l43 sig_type=std_logic lab=VSS}
+C {lab_wire.sym} 1420 -60 2 0 {name=l44 sig_type=std_logic lab=VSS}
 C {xschem_lib/DFFRAM_full_custom/tinv.sym} 1520 90 0 0 {name=X_tinv6 NF=2}
 C {xschem_lib/DFFRAM_full_custom/inv.sym} 1360 90 0 0 {name=X_inv8 NF=2}
 C {lab_wire.sym} 1510 90 0 0 {name=l46 sig_type=std_logic lab=SEL}
@@ -439,3 +439,11 @@ C {lab_wire.sym} 1590 330 0 0 {name=l68 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 1420 330 0 0 {name=l69 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 1590 430 2 0 {name=l70 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} 1420 430 2 0 {name=l71 sig_type=std_logic lab=VSS}
+C {lab_pin.sym} 1350 380 1 0 {name=l83 sig_type=std_logic lab=dffout0}
+C {lab_pin.sym} 1350 220 1 0 {name=l84 sig_type=std_logic lab=dffout1}
+C {lab_pin.sym} 1350 50 1 0 {name=l85 sig_type=std_logic lab=dffout2}
+C {lab_pin.sym} 1350 -110 1 0 {name=l86 sig_type=std_logic lab=dffout3}
+C {lab_pin.sym} 610 370 1 0 {name=l87 sig_type=std_logic lab=dffout4}
+C {lab_pin.sym} 610 220 1 0 {name=l88 sig_type=std_logic lab=dffout5}
+C {lab_pin.sym} 610 50 1 0 {name=l89 sig_type=std_logic lab=dffout6}
+C {lab_pin.sym} 610 -110 1 0 {name=l90 sig_type=std_logic lab=dffout7}
