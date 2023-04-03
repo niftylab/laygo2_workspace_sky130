@@ -137,7 +137,6 @@ mn_list = [r23.mn(inv1.pins['O'])[1], r23.mn(ands[0].pins['B'])[1], r23.mn(ands[
     r23.mn(ands[4].pins['B'])[1], r23.mn(ands[5].pins['B'])[1]]
 _track = [None, r23.mn(inv1.pins['O'])[1,1]-1]
 dsn.route_via_track(grid=r23, mn=mn_list, track=_track)
-net
 # A1
 mn_list = [r23.mn(inv1.pins['I'])[0], r23.mn(ands[2].pins['B'])[0], r23.mn(ands[3].pins['B'])[0],
     r23.mn(ands[6].pins['B'])[0], r23.mn(ands[7].pins['B'])[0]]

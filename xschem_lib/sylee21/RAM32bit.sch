@@ -1627,6 +1627,156 @@ N 4330 -180 4360 -180 {
 lab=Do<29>}
 N 1480 -2390 1530 -2390 {
 lab=EN}
+N 1280 -1950 1300 -1950 {
+lab=Di[0]}
+N 1280 -1930 1300 -1930 {
+lab=Di[1]}
+N 1280 -1910 1300 -1910 {
+lab=Di[2]}
+N 1280 -1890 1300 -1890 {
+lab=Di[3]}
+N 1280 -1870 1300 -1870 {
+lab=Di[4]}
+N 1280 -1850 1300 -1850 {
+lab=Di[5]}
+N 1280 -1830 1300 -1830 {
+lab=Di[6]}
+N 1280 -1810 1300 -1810 {
+lab=Di[7]}
+N 1280 -1790 1300 -1790 {
+lab=Di[8]}
+N 1280 -1770 1300 -1770 {
+lab=Di[9]}
+N 1280 -1750 1300 -1750 {
+lab=Di[10]}
+N 1280 -1730 1300 -1730 {
+lab=Di[11]}
+N 1280 -1710 1300 -1710 {
+lab=Di[12]}
+N 1280 -1690 1300 -1690 {
+lab=Di[13]}
+N 1280 -1670 1300 -1670 {
+lab=Di[14]}
+N 1280 -1650 1300 -1650 {
+lab=Di[15]}
+N 1280 -1630 1300 -1630 {
+lab=Di[16]}
+N 1280 -1610 1300 -1610 {
+lab=Di[17]}
+N 1280 -1590 1300 -1590 {
+lab=Di[18]}
+N 1280 -1570 1300 -1570 {
+lab=Di[19]}
+N 1280 -1550 1300 -1550 {
+lab=Di[20]}
+N 1280 -1530 1300 -1530 {
+lab=Di[21]}
+N 1280 -1510 1300 -1510 {
+lab=Di[22]}
+N 1280 -1490 1300 -1490 {
+lab=Di[23]}
+N 1280 -1470 1300 -1470 {
+lab=Di[24]}
+N 1280 -1450 1300 -1450 {
+lab=Di[25]}
+N 1280 -1430 1300 -1430 {
+lab=Di[26]}
+N 1280 -1410 1300 -1410 {
+lab=Di[27]}
+N 1280 -1390 1300 -1390 {
+lab=Di[28]}
+N 1280 -1370 1300 -1370 {
+lab=Di[29]}
+N 1280 -1350 1300 -1350 {
+lab=Di[30]}
+N 1280 -1330 1300 -1330 {
+lab=Di[31]}
+N 1600 -1950 1620 -1950 {
+lab=Do[0]}
+N 1600 -1930 1620 -1930 {
+lab=Do[1]}
+N 1600 -1910 1620 -1910 {
+lab=Do[2]}
+N 1600 -1890 1620 -1890 {
+lab=Do[3]}
+N 1600 -1870 1620 -1870 {
+lab=Do[4]}
+N 1600 -1850 1620 -1850 {
+lab=Do[5]}
+N 1600 -1830 1620 -1830 {
+lab=Do[6]}
+N 1600 -1810 1620 -1810 {
+lab=Do[7]}
+N 1600 -1790 1620 -1790 {
+lab=Do[8]}
+N 1600 -1770 1620 -1770 {
+lab=Do[9]}
+N 1600 -1750 1620 -1750 {
+lab=Do[10]}
+N 1600 -1730 1620 -1730 {
+lab=Do[11]}
+N 1600 -1710 1620 -1710 {
+lab=Do[12]}
+N 1600 -1690 1620 -1690 {
+lab=Do[13]}
+N 1600 -1670 1620 -1670 {
+lab=Do[14]}
+N 1600 -1650 1620 -1650 {
+lab=Do[15]}
+N 1600 -1630 1620 -1630 {
+lab=Do[16]}
+N 1600 -1610 1620 -1610 {
+lab=Do[17]}
+N 1600 -1590 1620 -1590 {
+lab=Do[18]}
+N 1600 -1570 1620 -1570 {
+lab=Do[19]}
+N 1600 -1550 1620 -1550 {
+lab=Do[20]}
+N 1600 -1530 1620 -1530 {
+lab=Do[21]}
+N 1600 -1510 1620 -1510 {
+lab=Do[22]}
+N 1600 -1490 1620 -1490 {
+lab=Do[23]}
+N 1600 -1470 1620 -1470 {
+lab=Do[24]}
+N 1600 -1450 1620 -1450 {
+lab=Do[25]}
+N 1600 -1430 1620 -1430 {
+lab=Do[26]}
+N 1600 -1410 1620 -1410 {
+lab=Do[27]}
+N 1600 -1390 1620 -1390 {
+lab=Do[28]}
+N 1600 -1370 1620 -1370 {
+lab=Do[29]}
+N 1600 -1350 1620 -1350 {
+lab=Do[30]}
+N 1600 -1330 1620 -1330 {
+lab=Do[31]}
+N 1430 -1290 1430 -1250 {
+lab=A0}
+N 1450 -1290 1450 -1250 {
+lab=A1}
+N 1470 -1290 1470 -1250 {
+lab=A2}
+N 1370 -2060 1370 -1990 {
+lab=CLK_RAM}
+N 1410 -2010 1410 -1990 {
+lab=WE[0]}
+N 1430 -2010 1430 -1990 {
+lab=WE[1]}
+N 1450 -2010 1450 -1990 {
+lab=WE[2]}
+N 1470 -2010 1470 -1990 {
+lab=WE[3]}
+N 1500 -2010 1500 -1990 {
+lab=VDD}
+N 1520 -2010 1520 -1990 {
+lab=VSS}
+N 1390 -2010 1390 -1990 {
+lab=Y2}
 C {xschem_lib/sylee21/dec_2to4.sym} 2340 -2390 0 0 {name=x1 NF=2}
 C {ipin.sym} 800 -2630 0 0 {name=p4 lab=A<2>}
 C {ipin.sym} 800 -2510 0 0 {name=p5 lab=A<1>}
@@ -2411,3 +2561,79 @@ C {lab_wire.sym} 4230 -250 0 0 {name=l553 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 4130 -170 0 0 {name=l554 sig_type=std_logic lab=CLK_outreg1}
 C {lab_wire.sym} 4370 -180 0 0 {name=l555 sig_type=std_logic lab=Do<29>}
 C {ipin.sym} 1010 -680 0 0 {name=p68 lab=EN}
+C {xschem_lib/sylee21/RAM8bit.sym} 1450 -1680 0 0 {name=RAM1}
+C {lab_wire.sym} 1280 -1950 0 0 {name=l159 sig_type=std_logic lab=Di[0]}
+C {lab_wire.sym} 1280 -1930 0 0 {name=l165 sig_type=std_logic lab=Di[1]}
+C {lab_wire.sym} 1280 -1910 0 0 {name=l166 sig_type=std_logic lab=Di[2]}
+C {lab_wire.sym} 1280 -1890 0 0 {name=l167 sig_type=std_logic lab=Di[3]}
+C {lab_wire.sym} 1280 -1870 0 0 {name=l168 sig_type=std_logic lab=Di[4]}
+C {lab_wire.sym} 1280 -1850 0 0 {name=l169 sig_type=std_logic lab=Di[5]}
+C {lab_wire.sym} 1280 -1830 0 0 {name=l170 sig_type=std_logic lab=Di[6]}
+C {lab_wire.sym} 1280 -1810 0 0 {name=l171 sig_type=std_logic lab=Di[7]}
+C {lab_wire.sym} 1280 -1790 0 0 {name=l172 sig_type=std_logic lab=Di[8]}
+C {lab_wire.sym} 1280 -1770 0 0 {name=l173 sig_type=std_logic lab=Di[9]}
+C {lab_wire.sym} 1280 -1750 0 0 {name=l174 sig_type=std_logic lab=Di[10]}
+C {lab_wire.sym} 1280 -1730 0 0 {name=l175 sig_type=std_logic lab=Di[11]}
+C {lab_wire.sym} 1280 -1710 0 0 {name=l176 sig_type=std_logic lab=Di[12]}
+C {lab_wire.sym} 1280 -1690 0 0 {name=l177 sig_type=std_logic lab=Di[13]}
+C {lab_wire.sym} 1280 -1670 0 0 {name=l178 sig_type=std_logic lab=Di[14]}
+C {lab_wire.sym} 1280 -1650 0 0 {name=l179 sig_type=std_logic lab=Di[15]}
+C {lab_wire.sym} 1280 -1630 0 0 {name=l180 sig_type=std_logic lab=Di[16]}
+C {lab_wire.sym} 1280 -1610 0 0 {name=l181 sig_type=std_logic lab=Di[17]}
+C {lab_wire.sym} 1280 -1590 0 0 {name=l182 sig_type=std_logic lab=Di[18]}
+C {lab_wire.sym} 1280 -1570 0 0 {name=l183 sig_type=std_logic lab=Di[19]}
+C {lab_wire.sym} 1280 -1550 0 0 {name=l184 sig_type=std_logic lab=Di[20]}
+C {lab_wire.sym} 1280 -1530 0 0 {name=l185 sig_type=std_logic lab=Di[21]}
+C {lab_wire.sym} 1280 -1510 0 0 {name=l186 sig_type=std_logic lab=Di[22]}
+C {lab_wire.sym} 1280 -1490 0 0 {name=l187 sig_type=std_logic lab=Di[23]}
+C {lab_wire.sym} 1280 -1470 0 0 {name=l188 sig_type=std_logic lab=Di[24]}
+C {lab_wire.sym} 1280 -1450 0 0 {name=l189 sig_type=std_logic lab=Di[25]}
+C {lab_wire.sym} 1280 -1430 0 0 {name=l190 sig_type=std_logic lab=Di[26]}
+C {lab_wire.sym} 1280 -1410 0 0 {name=l191 sig_type=std_logic lab=Di[27]}
+C {lab_wire.sym} 1280 -1390 0 0 {name=l192 sig_type=std_logic lab=Di[28]}
+C {lab_wire.sym} 1280 -1370 0 0 {name=l193 sig_type=std_logic lab=Di[29]}
+C {lab_wire.sym} 1280 -1330 0 0 {name=l194 sig_type=std_logic lab=Di[31]}
+C {lab_wire.sym} 1280 -1350 0 0 {name=l195 sig_type=std_logic lab=Di[30]}
+C {lab_wire.sym} 1620 -1950 2 0 {name=l196 sig_type=std_logic lab=Do[0]}
+C {lab_wire.sym} 1620 -1930 2 0 {name=l197 sig_type=std_logic lab=Do[1]}
+C {lab_wire.sym} 1620 -1910 2 0 {name=l198 sig_type=std_logic lab=Do[2]}
+C {lab_wire.sym} 1620 -1890 2 0 {name=l199 sig_type=std_logic lab=Do[3]}
+C {lab_wire.sym} 1620 -1870 2 0 {name=l200 sig_type=std_logic lab=Do[4]}
+C {lab_wire.sym} 1620 -1850 2 0 {name=l201 sig_type=std_logic lab=Do[5]}
+C {lab_wire.sym} 1620 -1830 2 0 {name=l202 sig_type=std_logic lab=Do[6]}
+C {lab_wire.sym} 1620 -1810 2 0 {name=l203 sig_type=std_logic lab=Do[7]}
+C {lab_wire.sym} 1620 -1790 2 0 {name=l204 sig_type=std_logic lab=Do[8]}
+C {lab_wire.sym} 1620 -1770 2 0 {name=l205 sig_type=std_logic lab=Do[9]}
+C {lab_wire.sym} 1620 -1750 2 0 {name=l206 sig_type=std_logic lab=Do[10]}
+C {lab_wire.sym} 1620 -1730 2 0 {name=l207 sig_type=std_logic lab=Do[11]}
+C {lab_wire.sym} 1620 -1710 2 0 {name=l208 sig_type=std_logic lab=Do[12]}
+C {lab_wire.sym} 1620 -1690 2 0 {name=l209 sig_type=std_logic lab=Do[13]}
+C {lab_wire.sym} 1620 -1670 2 0 {name=l210 sig_type=std_logic lab=Do[14]}
+C {lab_wire.sym} 1620 -1650 2 0 {name=l211 sig_type=std_logic lab=Do[15]}
+C {lab_wire.sym} 1620 -1630 2 0 {name=l212 sig_type=std_logic lab=Do[16]}
+C {lab_wire.sym} 1620 -1610 2 0 {name=l213 sig_type=std_logic lab=Do[17]}
+C {lab_wire.sym} 1620 -1590 2 0 {name=l214 sig_type=std_logic lab=Do[18]}
+C {lab_wire.sym} 1620 -1570 2 0 {name=l215 sig_type=std_logic lab=Do[19]}
+C {lab_wire.sym} 1620 -1550 2 0 {name=l216 sig_type=std_logic lab=Do[20]}
+C {lab_wire.sym} 1620 -1530 2 0 {name=l217 sig_type=std_logic lab=Do[21]}
+C {lab_wire.sym} 1620 -1510 2 0 {name=l218 sig_type=std_logic lab=Do[22]}
+C {lab_wire.sym} 1620 -1490 2 0 {name=l219 sig_type=std_logic lab=Do[23]}
+C {lab_wire.sym} 1620 -1470 2 0 {name=l220 sig_type=std_logic lab=Do[24]}
+C {lab_wire.sym} 1620 -1450 2 0 {name=l221 sig_type=std_logic lab=Do[25]}
+C {lab_wire.sym} 1620 -1430 2 0 {name=l222 sig_type=std_logic lab=Do[26]}
+C {lab_wire.sym} 1620 -1410 2 0 {name=l223 sig_type=std_logic lab=Do[27]}
+C {lab_wire.sym} 1620 -1390 2 0 {name=l224 sig_type=std_logic lab=Do[28]}
+C {lab_wire.sym} 1620 -1370 2 0 {name=l225 sig_type=std_logic lab=Do[29]}
+C {lab_wire.sym} 1620 -1350 2 0 {name=l226 sig_type=std_logic lab=Do[30]}
+C {lab_wire.sym} 1620 -1330 2 0 {name=l227 sig_type=std_logic lab=Do[31]}
+C {lab_wire.sym} 1450 -1250 0 0 {name=l228 sig_type=std_logic lab=A1}
+C {lab_wire.sym} 1470 -1250 0 0 {name=l229 sig_type=std_logic lab=A2}
+C {lab_wire.sym} 1430 -1250 0 0 {name=l230 sig_type=std_logic lab=A0}
+C {lab_wire.sym} 1370 -2060 0 0 {name=l231 sig_type=std_logic lab=CLK_RAM}
+C {lab_wire.sym} 1410 -2010 1 0 {name=l232 sig_type=std_logic lab=WE[0]}
+C {lab_wire.sym} 1430 -2010 1 0 {name=l233 sig_type=std_logic lab=WE[1]}
+C {lab_wire.sym} 1450 -2010 1 0 {name=l234 sig_type=std_logic lab=WE[2]}
+C {lab_wire.sym} 1470 -2010 1 0 {name=l235 sig_type=std_logic lab=WE[3]}
+C {lab_wire.sym} 1500 -2010 1 0 {name=l236 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} 1520 -2010 1 0 {name=l237 sig_type=std_logic lab=VSS}
+C {lab_wire.sym} 1390 -2010 1 0 {name=l238 sig_type=std_logic lab=Y1}
