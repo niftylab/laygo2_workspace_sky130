@@ -1,0 +1,47 @@
+library(demo) {
+  cell(buf_2x) {
+    area: 6;
+    pin(I) { direction: input; }
+    pin(O) { direction: output;
+              function: "I"; }
+  }
+  cell(inv_2x) {
+    area: 3;
+    pin(I) { direction: input; }
+    pin(O) { direction: output;
+              function: "I'"; }
+  }
+  cell(nand2_2x) {
+    area: 4;
+    pin(A) { direction: input; }
+    pin(B) { direction: input; }
+    pin(O) { direction: output;
+             function: "(A*B)'"; }
+  }
+  cell(nor2_2x) {
+    area: 4;
+    pin(A) { direction: input; }
+    pin(B) { direction: input; }
+    pin(O) { direction: output;
+             function: "(A+B)'"; }
+  }
+  cell(and4_2x) {
+    area: 12;
+    pin(A) { direction: input; }
+    pin(B) { direction: input; }
+    pin(C) { direction: input; }
+    pin(D) { direction: input; }
+    pin(O) { direction: output;
+             function: "(A*B*C*D)"; }
+  }
+  cell(dff_4x) {
+    area: 18;
+    ff(IQ, IQN) { clocked_on: CLK;
+                  next_state: I; }
+    pin(CLK) { direction: input;
+                 clock: true; }
+    pin(I) { direction: input; }
+    pin(O) { direction: output;
+              function: "IQ"; }
+  }
+}
