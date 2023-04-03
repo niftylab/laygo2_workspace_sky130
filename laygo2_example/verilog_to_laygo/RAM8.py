@@ -1,7 +1,7 @@
 ###########################################
 #                                         #
 #       32bit WORD Layout Generator       #
-#        Created by HyungJoo Park         #   
+#        Created by Sungyoung Lee         #   
 #                                         #
 ###########################################
 

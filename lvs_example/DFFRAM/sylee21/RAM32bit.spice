@@ -111,11 +111,6 @@ X_inv91 A<0> VDD VSS net46 inv NF=24
 X_inv92 net46 VDD VSS A0 inv NF=24
 X_inv93 EN VDD VSS net47 inv NF=24
 X_inv94 net47 VDD VSS EN_buf inv NF=24
-RAM1 VDD VSS WE[3] WE[2] WE[1] WE[0] Y1 CLK_RAM Di[9] Di[7] Di[19] Di[20] Di[30] Di[8] Di[10] Di[4]
-+ Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21] Di[22] Di[0]
-+ Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23] Do[28] Do[8]
-+ Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1] Do[7] Do[6]
-+ Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] A2 A1 A0 RAM8bit
 RAM2 VDD VSS WE[3] WE[2] WE[1] WE[0] Y2 CLK_RAM Di[9] Di[7] Di[19] Di[20] Di[30] Di[8] Di[10] Di[4]
 + Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21] Di[22] Di[0]
 + Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23] Do[28] Do[8]
@@ -158,6 +153,11 @@ xDFF29 VDD VSS Do[27] Do<27> CLK_outreg1 DFF NF=2
 xDFF30 VDD VSS Do[25] Do<25> CLK_outreg1 DFF NF=2
 xDFF31 VDD VSS Do[31] Do<31> CLK_outreg1 DFF NF=2
 xDFF32 VDD VSS Do[29] Do<29> CLK_outreg1 DFF NF=2
+RAM1 VDD VSS WE[3] WE[2] WE[1] WE[0] Y1 CLK_RAM Di[9] Di[7] Di[19] Di[20] Di[30] Di[8] Di[10] Di[4]
++ Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21] Di[22] Di[0]
++ Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23] Do[28] Do[8]
++ Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1] Do[7] Do[6]
++ Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31] A2 A1 A0 RAM8bit
 .ends
 
 * expanding   symbol:  xschem_lib/sylee21/dec_2to4.sym # of pins=9

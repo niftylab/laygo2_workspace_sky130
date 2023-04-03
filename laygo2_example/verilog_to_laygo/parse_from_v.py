@@ -5,7 +5,14 @@
 #                                         #
 ###########################################
 
+from __future__ import absolute_import
+from __future__ import print_function
+import sys
 import os
+
+# the next line can be removed after installation
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import pyverilog
 from pyverilog.vparser.parser import parse
 
@@ -19,7 +26,7 @@ def info_from_verilog_code(filename):
     
     ast, directives = parse(filelist)
 
-    # ast.show()
+    ast.show()
 
     # =========== Extract Module info =========== #
     ModuleDef = ast.children()  # start from source object
@@ -104,4 +111,17 @@ def info_from_verilog_code(filename):
     decl_info["Integer"] = integers
     # =========================================== #
 
+    for lineno, directive in directives:
+        print('Line %d : %s' % (lineno, directive))
+
     return Name, Paramlist, decl_info, instance_info
+
+if __name__ == '__main__':
+    filename = "./verilog_to_laygo/yosys_test/counter_netlist.v"
+    name, paramlist, decl_info, inst_info = info_from_verilog_code(filename)
+    print()
+    print(name)
+    print(paramlist)
+    print(decl_info)
+    for i in inst_info :
+        print(i)
