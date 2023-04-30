@@ -83,9 +83,9 @@ _mn = [r12.mn(nstack.pins['G0'])[0], r12.mn(pstack.pins['G0'])[0]]
 rin0 = dsn.route(grid=r23, mn=_mn)
 _mn = [r12.mn(nstack.pins['G0'])[0], r12.mn(pstack.pins['G0'])[0]]
 dsn.route(grid=r12, mn=_mn)
-_mn = [np.mean(r23.mn.bbox(rin0), axis=0, dtype=np.int), np.mean(r23.mn.bbox(rin0), axis=0, dtype=np.int)+[2,0]]
+_mn = [np.mean(r23.mn.bbox(rin0), axis=0, dtype=int), np.mean(r23.mn.bbox(rin0), axis=0, dtype=int)+[2,0]]
 dsn.route(grid=r23, mn=_mn, via_tag=[True, False])
-dsn.via(grid=r12, mn=np.mean(r23.mn.bbox(rin0), axis=0, dtype=np.int))
+dsn.via(grid=r12, mn=np.mean(r23.mn.bbox(rin0), axis=0, dtype=int))
 
 # OUT
 _mn = [r23.mn(nstack.pins['D0'])[0], r23.mn(pstack.pins['D0'])[1]]
