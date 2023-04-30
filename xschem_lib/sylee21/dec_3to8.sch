@@ -121,21 +121,21 @@ lab=VSS}
 N 150 -570 170 -570 {
 lab=VSS}
 N 1160 -360 1180 -360 {
-lab=Y0}
+lab=O0}
 N 1160 -170 1180 -170 {
-lab=Y1}
+lab=O1}
 N 1160 30 1180 30 {
-lab=Y2}
+lab=O2}
 N 1160 220 1180 220 {
-lab=Y3}
+lab=O3}
 N 1160 410 1180 410 {
-lab=Y4}
+lab=O4}
 N 1160 580 1180 580 {
-lab=Y5}
+lab=O5}
 N 1160 760 1180 760 {
-lab=Y6}
+lab=O6}
 N 1160 940 1180 940 {
-lab=Y7}
+lab=O7}
 N 50 -590 50 -490 {
 lab=A2}
 N 390 -590 390 -490 {
@@ -174,20 +174,15 @@ C {ipin.sym} 390 -660 1 0 {name=p2 lab=A1}
 C {ipin.sym} 740 -660 1 0 {name=p3 lab=A0}
 C {iopin.sym} 270 -570 1 0 {name=p24 lab=VDD}
 C {iopin.sym} 150 -570 1 0 {name=p36 lab=VSS}
-C {opin.sym} 1180 -360 0 0 {name=p38 lab=Y0}
-C {opin.sym} 1180 -170 0 0 {name=p39 lab=Y1}
-C {opin.sym} 1180 30 0 0 {name=p40 lab=Y2
+C {opin.sym} 1180 -360 0 0 {name=p38 lab=O0}
+C {opin.sym} 1180 -170 0 0 {name=p39 lab=O1}
+C {opin.sym} 1180 30 0 0 {name=p40 lab=O2}
+C {opin.sym} 1180 220 0 0 {name=p41 lab=O3
 }
-C {opin.sym} 1180 220 0 0 {name=p41 lab=Y3
-}
-C {opin.sym} 1180 410 0 0 {name=p42 lab=Y4
-}
-C {opin.sym} 1180 580 0 0 {name=p43 lab=Y5
-}
-C {opin.sym} 1180 760 0 0 {name=p44 lab=Y6
-}
-C {opin.sym} 1180 940 0 0 {name=p45 lab=Y7
-}
+C {opin.sym} 1180 410 0 0 {name=p42 lab=O4}
+C {opin.sym} 1180 580 0 0 {name=p43 lab=O5}
+C {opin.sym} 1180 760 0 0 {name=p44 lab=O6}
+C {opin.sym} 1180 940 0 0 {name=p45 lab=O7}
 C {xschem_lib/sylee21/and_4in.sym} 1090 -360 0 0 {name=x_AndF1 NF=2}
 C {xschem_lib/sylee21/and_4in.sym} 1090 -170 0 0 {name=x_AndF2 NF=2}
 C {xschem_lib/sylee21/and_4in.sym} 1090 30 0 0 {name=x_AndF3 NF=2}

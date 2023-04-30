@@ -88,7 +88,6 @@ for instance in inst_info:
     else:
         instances.append(tv2laygolib[instance["Module"]].generate(name=instance["name"], netmap=instance["portlist"]))
 
-
 # 4. Place instances.
 inv0, inv1, inv2 = instances[0], instances[1], instances[2]
 ands = instances[3:]
@@ -176,12 +175,16 @@ for p in PINS.keys(): # PINS.keys() : pin names
         if PINS[p] in cur_netnames:   # p : pin names user defines, PINS[p] : netnames corresponding to pin name p
             if p in [pin.netname for pin in cur_pins]: continue     # only save each pins once
             cur_port_key = list(i.pins.keys())[cur_netnames.index(PINS[p])] # cur_netnames is from i.pins.values (converted to string)
-            cur_pins.append(dsn.pin(name=p, grid=r23_cmos, mn=r23_cmos.mn.bbox(i.pins[cur_port_key])))
+            
+            P = p
+            if '[' in list(p) and p.count('[') == p.count(']'):
+                print(P, end=" --> "); P=p.replace('[', ''); P=P.replace(']', ''); print(P)
+            
+            cur_pins.append(dsn.pin(name=P, grid=r23_cmos, mn=r23_cmos.mn.bbox(i.pins[cur_port_key])))
                                       # name as user defined pin name (p)       # need pin name of the instance i (cur_port_key)
                                                                                 # that is connected to the netname PINS[p]
 pvss0 = dsn.pin(name='VSS', grid=r12, mn=r12.mn.bbox(rvss0))
 pvdd0 = dsn.pin(name='VDD', grid=r12, mn=r12.mn.bbox(rvdd0))
-
 
 # 7. Export to physical database.
 print("Export design")

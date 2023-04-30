@@ -26,7 +26,7 @@ def info_from_verilog_code(filename):
     
     ast, directives = parse(filelist)
 
-    ast.show()
+    # ast.show()
 
     # =========== Extract Module info =========== #
     ModuleDef = ast.children()  # start from source object
