@@ -83,10 +83,10 @@ rsel = [0]*3
 rclk = [0]*3
 for i in range(3):
     mn_list = [r34.mn(cells[i].pins['SEL'])[0],r34.mn(buf_sel[i].pins['I'])[0]]
-    _track = [None, r34.mn(cells[i].pins['SEL'])[0,1]]
+    _track = [None, r34.mn(cells[i].pins['SEL'])[0,1] - 1]
     rsel[i] = dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
     mn_list = [r34.mn(buf_sel[i].pins['O'])[0], r34.mn(cells[i+1].pins['SEL'])[0]]
-    _track = [None, r34.mn(cells[i+1].pins['SEL'])[0,1]]
+    _track = [None, r34.mn(cells[i+1].pins['SEL'])[0,1] - 1]
     dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
 # clk
 for i in range(3):
