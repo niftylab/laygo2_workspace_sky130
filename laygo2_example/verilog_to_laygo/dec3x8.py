@@ -88,9 +88,8 @@ for instance in inst_info:
     else:
         instances.append(tv2laygolib[instance["Module"]].generate(name=instance["name"], netmap=instance["portlist"]))
 
-
 # 4. Place instances.
-inv0, inv1, inv2 = instances[0], instances[1], instances[2]
+inv0, inv1, inv2 = instances[1], instances[2], instances[0]
 ands = instances[3:]
 
 NTAP0 = templates[tntap_name].generate(name='MNT0', params={'nf':2, 'tie':'TAP0'})
@@ -122,43 +121,43 @@ for i in range(5,8):
 print("Create wires")
 
 # A0bar
-mn_list = [r23.mn(inv0.pins['O'])[0], r23.mn(ands[0].pins['A'])[0], r23.mn(ands[2].pins['A'])[0],
-    r23.mn(ands[4].pins['A'])[0], r23.mn(ands[6].pins['A'])[0]]
+mn_list = [r23.mn(inv0.pins['O'])[0], r23.mn(ands[0].pins['C'])[0], r23.mn(ands[2].pins['C'])[0],
+    r23.mn(ands[4].pins['C'])[0], r23.mn(ands[6].pins['C'])[0]]
 _track = [None, r23.mn(inv0.pins['O'])[0,1]-2]
 dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
 
 # A0
-mn_list = [r23.mn(inv0.pins['I'])[0], r23.mn(ands[1].pins['A'])[0], r23.mn(ands[3].pins['A'])[0],
-    r23.mn(ands[5].pins['A'])[0], r23.mn(ands[7].pins['A'])[0]]
+mn_list = [r23.mn(inv0.pins['I'])[0], r23.mn(ands[1].pins['C'])[0], r23.mn(ands[3].pins['C'])[0],
+    r23.mn(ands[5].pins['C'])[0], r23.mn(ands[7].pins['C'])[0]]
 _track = [None, r23.mn(inv0.pins['I'])[0,1]+1]
 dsn.route_via_track(grid=r23, mn=mn_list, track=_track)
 
 # A1bar
-mn_list = [r23.mn(inv1.pins['O'])[1], r23.mn(ands[0].pins['B'])[1], r23.mn(ands[1].pins['B'])[1],
-    r23.mn(ands[4].pins['B'])[1], r23.mn(ands[5].pins['B'])[1]]
+mn_list = [r23.mn(inv1.pins['O'])[1], r23.mn(ands[0].pins['D'])[1], r23.mn(ands[1].pins['D'])[1],
+    r23.mn(ands[4].pins['D'])[1], r23.mn(ands[5].pins['D'])[1]]
 _track = [None, r23.mn(inv1.pins['O'])[1,1]-1]
 dsn.route_via_track(grid=r23, mn=mn_list, track=_track)
 # A1
-mn_list = [r23.mn(inv1.pins['I'])[0], r23.mn(ands[2].pins['B'])[0], r23.mn(ands[3].pins['B'])[0],
-    r23.mn(ands[6].pins['B'])[0], r23.mn(ands[7].pins['B'])[0]]
+mn_list = [r23.mn(inv1.pins['I'])[0], r23.mn(ands[2].pins['D'])[0], r23.mn(ands[3].pins['D'])[0],
+    r23.mn(ands[6].pins['D'])[0], r23.mn(ands[7].pins['D'])[0]]
 _track = [None, r23.mn(inv1.pins['I'])[0,1]+2]
 dsn.route_via_track(grid=r23, mn=mn_list, track=_track)
 
 # A2bar
-mn_list = [r23.mn(inv2.pins['O'])[1], r23.mn(ands[0].pins['C'])[1], r23.mn(ands[1].pins['C'])[1],
-    r23.mn(ands[2].pins['C'])[1], r23.mn(ands[3].pins['C'])[1]]
+mn_list = [r23.mn(inv2.pins['O'])[1], r23.mn(ands[0].pins['B'])[1], r23.mn(ands[1].pins['B'])[1],
+    r23.mn(ands[2].pins['B'])[1], r23.mn(ands[3].pins['B'])[1]]
 _track = [None, r23.mn(inv2.pins['O'])[0,1]-1]
 dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
 # A2
-mn_list = [r23.mn(inv2.pins['I'])[0], r23.mn(ands[4].pins['C'])[0], r23.mn(ands[5].pins['C'])[0],
-    r23.mn(ands[6].pins['C'])[0], r23.mn(ands[7].pins['C'])[0]]
+mn_list = [r23.mn(inv2.pins['I'])[0], r23.mn(ands[4].pins['B'])[0], r23.mn(ands[5].pins['B'])[0],
+    r23.mn(ands[6].pins['B'])[0], r23.mn(ands[7].pins['B'])[0]]
 _track = [None, r23.mn(inv2.pins['I'])[0,1]+3]
 dsn.route_via_track(grid=r23, mn=mn_list, track=_track)
 #Enable
 mn_list=[]
 for i in range(8):
-    mn_list.append(r34.mn(ands[i].pins['D'])[0])
-_track = [None, r34.mn(ands[0].pins['D'])[0,1]]
+    mn_list.append(r34.mn(ands[i].pins['A'])[0])
+_track = [None, r34.mn(ands[0].pins['A'])[0,1]]
 rEN = dsn.route_via_track(grid=r34, mn=mn_list, track=_track)
 
 # VSS
@@ -176,12 +175,17 @@ for p in PINS.keys(): # PINS.keys() : pin names
         if PINS[p] in cur_netnames:   # p : pin names user defines, PINS[p] : netnames corresponding to pin name p
             if p in [pin.netname for pin in cur_pins]: continue     # only save each pins once
             cur_port_key = list(i.pins.keys())[cur_netnames.index(PINS[p])] # cur_netnames is from i.pins.values (converted to string)
-            cur_pins.append(dsn.pin(name=p, grid=r23_cmos, mn=r23_cmos.mn.bbox(i.pins[cur_port_key])))
+            
+            P = p
+            if '[' in list(p) and p.count('[') == p.count(']'):
+                print(P, end=" --> "); P=p.replace('[', ''); P=P.replace(']', '')
+            print(P)
+            
+            cur_pins.append(dsn.pin(name=P, grid=r23_cmos, mn=r23_cmos.mn.bbox(i.pins[cur_port_key])))
                                       # name as user defined pin name (p)       # need pin name of the instance i (cur_port_key)
                                                                                 # that is connected to the netname PINS[p]
 pvss0 = dsn.pin(name='VSS', grid=r12, mn=r12.mn.bbox(rvss0))
 pvdd0 = dsn.pin(name='VDD', grid=r12, mn=r12.mn.bbox(rvdd0))
-
 
 # 7. Export to physical database.
 print("Export design")

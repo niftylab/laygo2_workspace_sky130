@@ -201,3 +201,5 @@ magic_layout/verilog_to_laygo/
 # save .spice file in lvs_example
 !lvs_example/*.spice
 !lvs_example/DFFRAM/sylee21/*.spice
+
+.bashrc_bag

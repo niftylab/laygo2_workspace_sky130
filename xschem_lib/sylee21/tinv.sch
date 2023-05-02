@@ -1,4 +1,5 @@
-v {xschem version=3.0.0 file_version=1.2 }
+v {xschem version=3.1.0 file_version=1.2
+}
 G {}
 K {}
 V {}
@@ -108,9 +109,9 @@ sa=0 sb=0 sd=0
 model=nfet_01v8_lvt
 spiceprefix=X
 }
-C {ipin.sym} 1000 -1500 0 0 {name=p1 lab=X}
-C {ipin.sym} 1100 -1570 0 0 {name=p2 lab=ENB}
-C {ipin.sym} 1100 -1450 0 0 {name=p3 lab=EN}
-C {opin.sym} 1200 -1500 0 0 {name=p4 lab=Y}
-C {iopin.sym} 1170 -1750 3 0 {name=p5 lab=VDD}
-C {iopin.sym} 1170 -1250 1 0 {name=p6 lab=VSS}
+C {devices/ipin.sym} 1000 -1500 0 0 {name=p1 lab=X}
+C {devices/ipin.sym} 1100 -1570 0 0 {name=p2 lab=ENB}
+C {devices/ipin.sym} 1100 -1450 0 0 {name=p3 lab=EN}
+C {devices/opin.sym} 1200 -1500 0 0 {name=p4 lab=Y}
+C {devices/iopin.sym} 1170 -1750 3 0 {name=p5 lab=VDD}
+C {devices/iopin.sym} 1170 -1250 1 0 {name=p6 lab=VSS}

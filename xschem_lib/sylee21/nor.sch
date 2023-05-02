@@ -1,4 +1,5 @@
-v {xschem version=3.0.0 file_version=1.2 }
+v {xschem version=3.1.0 file_version=1.2
+}
 G {}
 K {}
 V {}
@@ -104,8 +105,8 @@ sa=0 sb=0 sd=0
 model=pfet_01v8
 spiceprefix=X
 }
-C {iopin.sym} 280 -410 3 0 {name=p1 lab=VDD}
-C {iopin.sym} 280 -60 1 0 {name=p2 lab=VSS}
-C {opin.sym} 350 -180 0 0 {name=p3 lab=Y}
-C {ipin.sym} 0 -180 0 0 {name=p4 lab=A}
-C {ipin.sym} 0 -250 0 0 {name=p5 lab=B}
+C {devices/iopin.sym} 280 -410 3 0 {name=p1 lab=VDD}
+C {devices/iopin.sym} 280 -60 1 0 {name=p2 lab=VSS}
+C {devices/opin.sym} 350 -180 0 0 {name=p3 lab=Y}
+C {devices/ipin.sym} 0 -180 0 0 {name=p4 lab=A}
+C {devices/ipin.sym} 0 -250 0 0 {name=p5 lab=B}

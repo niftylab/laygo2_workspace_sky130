@@ -1,0 +1,8 @@
+read_verilog dec3x8_2x_pre_synth.v
+hierarchy -top dec3x8_2x
+proc; fsm; opt; memory; opt
+techmap; opt
+dfflibmap -liberty mycells.lib
+abc -liberty mycells.lib
+clean
+write_verilog dec3x8_2x_post_synth.v

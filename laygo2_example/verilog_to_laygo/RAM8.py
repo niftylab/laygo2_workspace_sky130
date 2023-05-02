@@ -116,7 +116,7 @@ for i in range(4):
 rDECsel = []; rBUFword = []
 for i in range(8):
     # dec output + buf sel
-    _mn = [r34.mn(dec8.pins[f'Y{i}'])[0], r34.mn(buf_sel[i].pins['I'])[0]]
+    _mn = [r34.mn(dec8.pins[f'O{i}'])[0], r34.mn(buf_sel[i].pins['I'])[0]]
     _track = [None, r34.mn(buf_sel[i].pins['I'])[0][1] + 1 + i]
     rDECsel.append(dsn.route_via_track(grid=r34, mn=_mn, track=_track))
     # buf sel[:] -> each word sel

@@ -1,4 +1,5 @@
-v {xschem version=3.0.0 file_version=1.2 }
+v {xschem version=3.1.0 file_version=1.2
+}
 G {}
 K {}
 V {}
@@ -121,21 +122,21 @@ lab=VSS}
 N 150 -570 170 -570 {
 lab=VSS}
 N 1160 -360 1180 -360 {
-lab=Y0}
+lab=O0}
 N 1160 -170 1180 -170 {
-lab=Y1}
+lab=O1}
 N 1160 30 1180 30 {
-lab=Y2}
+lab=O2}
 N 1160 220 1180 220 {
-lab=Y3}
+lab=O3}
 N 1160 410 1180 410 {
-lab=Y4}
+lab=O4}
 N 1160 580 1180 580 {
-lab=Y5}
+lab=O5}
 N 1160 760 1180 760 {
-lab=Y6}
+lab=O6}
 N 1160 940 1180 940 {
-lab=Y7}
+lab=O7}
 N 50 -590 50 -490 {
 lab=A2}
 N 390 -590 390 -490 {
@@ -166,54 +167,49 @@ N 920 -350 920 770 {
 lab=#net1}
 N -110 -340 1010 -340 {
 lab=EN}
-C {xschem_lib/inv.sym} 170 -630 1 0 {name=X_inv7 NF=2}
-C {xschem_lib/inv.sym} 520 -630 1 0 {name=X_inv1 NF=2}
-C {xschem_lib/inv.sym} 880 -630 1 0 {name=X_inv2 NF=2}
-C {ipin.sym} 50 -660 1 0 {name=p1 lab=A2}
-C {ipin.sym} 390 -660 1 0 {name=p2 lab=A1}
-C {ipin.sym} 740 -660 1 0 {name=p3 lab=A0}
-C {iopin.sym} 270 -570 1 0 {name=p24 lab=VDD}
-C {iopin.sym} 150 -570 1 0 {name=p36 lab=VSS}
-C {opin.sym} 1180 -360 0 0 {name=p38 lab=Y0}
-C {opin.sym} 1180 -170 0 0 {name=p39 lab=Y1}
-C {opin.sym} 1180 30 0 0 {name=p40 lab=Y2
+C {/Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/inv.sym} 170 -630 1 0 {name=X_inv7 NF=2}
+C {/Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/inv.sym} 520 -630 1 0 {name=X_inv1 NF=2}
+C {/Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/inv.sym} 880 -630 1 0 {name=X_inv2 NF=2}
+C {devices/ipin.sym} 50 -660 1 0 {name=p1 lab=A2}
+C {devices/ipin.sym} 390 -660 1 0 {name=p2 lab=A1}
+C {devices/ipin.sym} 740 -660 1 0 {name=p3 lab=A0}
+C {devices/iopin.sym} 270 -570 1 0 {name=p24 lab=VDD}
+C {devices/iopin.sym} 150 -570 1 0 {name=p36 lab=VSS}
+C {devices/opin.sym} 1180 -360 0 0 {name=p38 lab=O0}
+C {devices/opin.sym} 1180 -170 0 0 {name=p39 lab=O1}
+C {devices/opin.sym} 1180 30 0 0 {name=p40 lab=O2}
+C {devices/opin.sym} 1180 220 0 0 {name=p41 lab=O3
 }
-C {opin.sym} 1180 220 0 0 {name=p41 lab=Y3
-}
-C {opin.sym} 1180 410 0 0 {name=p42 lab=Y4
-}
-C {opin.sym} 1180 580 0 0 {name=p43 lab=Y5
-}
-C {opin.sym} 1180 760 0 0 {name=p44 lab=Y6
-}
-C {opin.sym} 1180 940 0 0 {name=p45 lab=Y7
-}
-C {xschem_lib/sylee21/and_4in.sym} 1090 -360 0 0 {name=x_AndF1 NF=2}
-C {xschem_lib/sylee21/and_4in.sym} 1090 -170 0 0 {name=x_AndF2 NF=2}
-C {xschem_lib/sylee21/and_4in.sym} 1090 30 0 0 {name=x_AndF3 NF=2}
-C {xschem_lib/sylee21/and_4in.sym} 1090 220 0 0 {name=x_AndF4 NF=2}
-C {xschem_lib/sylee21/and_4in.sym} 1090 410 0 0 {name=x_AndF5 NF=2}
-C {xschem_lib/sylee21/and_4in.sym} 1090 580 0 0 {name=x_AndF6 NF=2}
-C {xschem_lib/sylee21/and_4in.sym} 1090 760 0 0 {name=x_AndF7 NF=2}
-C {xschem_lib/sylee21/and_4in.sym} 1090 940 0 0 {name=x_AndF8 NF=2}
-C {ipin.sym} -110 -660 1 0 {name=p20 lab=EN}
-C {lab_wire.sym} 1100 -410 0 0 {name=l1 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 1100 -220 0 0 {name=l2 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 1100 -20 0 0 {name=l3 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 1100 170 0 0 {name=l4 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 1100 360 0 0 {name=l5 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 1100 530 0 0 {name=l6 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 1100 710 0 0 {name=l7 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 1100 890 0 0 {name=l8 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 1100 -310 2 0 {name=l9 sig_type=std_logic lab=VSS}
-C {lab_wire.sym} 1100 -120 2 0 {name=l10 sig_type=std_logic lab=VSS}
-C {lab_wire.sym} 1100 80 2 0 {name=l11 sig_type=std_logic lab=VSS}
-C {lab_wire.sym} 1100 270 2 0 {name=l12 sig_type=std_logic lab=VSS}
-C {lab_wire.sym} 1100 460 2 0 {name=l13 sig_type=std_logic lab=VSS}
-C {lab_wire.sym} 1100 630 2 0 {name=l14 sig_type=std_logic lab=VSS}
-C {lab_wire.sym} 1100 810 2 0 {name=l15 sig_type=std_logic lab=VSS}
-C {lab_wire.sym} 1100 990 2 0 {name=l16 sig_type=std_logic lab=VSS}
-C {lab_wire.sym} 980 -570 2 0 {name=l17 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 620 -570 2 0 {name=l18 sig_type=std_logic lab=VDD}
-C {lab_wire.sym} 860 -570 0 0 {name=l19 sig_type=std_logic lab=VSS}
-C {lab_wire.sym} 500 -570 0 0 {name=l20 sig_type=std_logic lab=VSS}
+C {devices/opin.sym} 1180 410 0 0 {name=p42 lab=O4}
+C {devices/opin.sym} 1180 580 0 0 {name=p43 lab=O5}
+C {devices/opin.sym} 1180 760 0 0 {name=p44 lab=O6}
+C {devices/opin.sym} 1180 940 0 0 {name=p45 lab=O7}
+C {/Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/and_4in.sym} 1090 -360 0 0 {name=x_AndF1 NF=2}
+C {/Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/and_4in.sym} 1090 -170 0 0 {name=x_AndF2 NF=2}
+C {/Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/and_4in.sym} 1090 760 0 0 {name=x_AndF7 NF=2}
+C {/Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/and_4in.sym} 1090 940 0 0 {name=x_AndF8 NF=2}
+C {devices/ipin.sym} -110 -660 1 0 {name=p20 lab=EN}
+C {devices/lab_wire.sym} 1100 -410 0 0 {name=p5 sig_type=std_logic lab=VDD}
+C {devices/lab_wire.sym} 1100 -220 0 0 {name=p6 sig_type=std_logic lab=VDD}
+C {devices/lab_wire.sym} 1100 -20 0 0 {name=p7 sig_type=std_logic lab=VDD}
+C {devices/lab_wire.sym} 1100 170 0 0 {name=p8 sig_type=std_logic lab=VDD}
+C {devices/lab_wire.sym} 1100 360 0 0 {name=p13 sig_type=std_logic lab=VDD}
+C {devices/lab_wire.sym} 1100 530 0 0 {name=p15 sig_type=std_logic lab=VDD}
+C {devices/lab_wire.sym} 1100 710 0 0 {name=p21 sig_type=std_logic lab=VDD}
+C {devices/lab_wire.sym} 1100 890 0 0 {name=p25 sig_type=std_logic lab=VDD}
+C {devices/lab_wire.sym} 1100 -310 2 0 {name=p9 sig_type=std_logic lab=VSS}
+C {devices/lab_wire.sym} 1100 -120 2 0 {name=p10 sig_type=std_logic lab=VSS}
+C {devices/lab_wire.sym} 1100 80 2 0 {name=p11 sig_type=std_logic lab=VSS}
+C {devices/lab_wire.sym} 1100 270 2 0 {name=p12 sig_type=std_logic lab=VSS}
+C {devices/lab_wire.sym} 1100 460 2 0 {name=p14 sig_type=std_logic lab=VSS}
+C {devices/lab_wire.sym} 1100 630 2 0 {name=p16 sig_type=std_logic lab=VSS}
+C {devices/lab_wire.sym} 1100 810 2 0 {name=p22 sig_type=std_logic lab=VSS}
+C {devices/lab_wire.sym} 1100 990 2 0 {name=p23 sig_type=std_logic lab=VSS}
+C {devices/lab_wire.sym} 980 -570 2 0 {name=p17 sig_type=std_logic lab=VDD}
+C {devices/lab_wire.sym} 620 -570 2 0 {name=p18 sig_type=std_logic lab=VDD}
+C {devices/lab_wire.sym} 860 -570 0 0 {name=p19 sig_type=std_logic lab=VSS}
+C {devices/lab_wire.sym} 500 -570 0 0 {name=p4 sig_type=std_logic lab=VSS}
+C {/Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/and_4in.sym} 1090 30 0 0 {name=x_AndF3 NF=2}
+C {/Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/and_4in.sym} 1090 220 0 0 {name=x_AndF4 NF=2}
+C {/Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/and_4in.sym} 1090 410 0 0 {name=x_AndF5 NF=2}
+C {/Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/and_4in.sym} 1090 580 0 0 {name=x_AndF6 NF=2}
