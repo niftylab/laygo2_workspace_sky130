@@ -1,15 +1,16 @@
-v {xschem version=3.0.0 file_version=1.2 }
+v {xschem version=3.1.0 file_version=1.2
+}
 G {}
 K {}
 V {}
 S {}
 E {}
 N 1040 -1600 1100 -1600 {
-lab=X}
+lab=#net1}
 N 1100 -1650 1100 -1590 {
-lab=X}
+lab=#net1}
 N 1100 -1590 1100 -1540 {
-lab=X}
+lab=#net1}
 N 1140 -1620 1140 -1570 {
 lab=Y}
 N 1140 -1600 1220 -1600 {
@@ -58,7 +59,7 @@ sa=0 sb=0 sd=0
 model=pfet_01v8
 spiceprefix=X
 }
-C {iopin.sym} 1140 -1450 1 0 {name=p2 lab=VSS}
-C {ipin.sym} 1050 -1600 0 0 {name=p3 lab=X}
-C {opin.sym} 1210 -1600 0 0 {name=p4 lab=Y}
-C {iopin.sym} 1140 -1710 3 0 {name=p1 lab=VDD}
+C {devices/iopin.sym} 1140 -1450 1 0 {name=p2 lab=VSS}
+C {devices/ipin.sym} 1050 -1600 0 0 {name=p3 lab=X}
+C {devices/opin.sym} 1210 -1600 0 0 {name=p4 lab=Y}
+C {devices/iopin.sym} 1140 -1710 3 0 {name=p1 lab=VDD}

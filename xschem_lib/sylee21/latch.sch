@@ -1,4 +1,5 @@
-v {xschem version=3.0.0 file_version=1.2 }
+v {xschem version=3.1.0 file_version=1.2
+}
 G {}
 K {}
 V {}
@@ -38,20 +39,20 @@ N 220 140 320 140 {
 lab=OUT}
 N 320 -80 320 140 {
 lab=OUT}
-C {ipin.sym} -200 -120 0 0 {name=p1 lab=CLKB}
-C {ipin.sym} -200 -80 0 0 {name=p2 lab=IN}
-C {ipin.sym} -200 -40 0 0 {name=p3 lab=CLK}
-C {iopin.sym} -190 -220 0 0 {name=p4 lab=VDD}
-C {iopin.sym} -190 -200 0 0 {name=p5 lab=VSS}
-C {lab_pin.sym} -70 -160 0 0 {name=l1 sig_type=std_logic lab=VDD}
-C {lab_pin.sym} -70 0 0 0 {name=l2 sig_type=std_logic lab=VSS}
-C {lab_pin.sym} 200 0 0 0 {name=l3 sig_type=std_logic lab=VSS}
-C {lab_pin.sym} 200 -160 0 0 {name=l4 sig_type=std_logic lab=VDD}
-C {lab_pin.sym} 260 100 0 1 {name=l5 sig_type=std_logic lab=CLK}
-C {lab_pin.sym} 260 180 0 1 {name=l6 sig_type=std_logic lab=CLKB}
-C {lab_pin.sym} 150 60 0 0 {name=l7 sig_type=std_logic lab=VDD}
-C {lab_pin.sym} 150 220 0 0 {name=l8 sig_type=std_logic lab=VSS}
-C {opin.sym} 380 -80 0 0 {name=p6 lab=OUT}
-C {xschem_lib/tinv.sym} -140 -40 0 0 {name=X_tinv1 NF=NF}
-C {xschem_lib/inv.sym} 140 -40 0 0 {name=X_inv1 NF=NF}
-C {xschem_lib/tinv_small.sym} 220 180 0 1 {name=X_tinv_small1}
+C {devices/ipin.sym} -200 -120 0 0 {name=p1 lab=CLKB}
+C {devices/ipin.sym} -200 -80 0 0 {name=p2 lab=IN}
+C {devices/ipin.sym} -200 -40 0 0 {name=p3 lab=CLK}
+C {devices/iopin.sym} -190 -220 0 0 {name=p4 lab=VDD}
+C {devices/iopin.sym} -190 -200 0 0 {name=p5 lab=VSS}
+C {devices/lab_pin.sym} -70 -160 0 0 {name=p14 sig_type=std_logic lab=VDD}
+C {devices/lab_pin.sym} -70 0 0 0 {name=p13 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 200 0 0 0 {name=p8 sig_type=std_logic lab=VSS}
+C {devices/lab_pin.sym} 200 -160 0 0 {name=p7 sig_type=std_logic lab=VDD}
+C {devices/lab_pin.sym} 260 100 0 1 {name=p10 sig_type=std_logic lab=CLK}
+C {devices/lab_pin.sym} 260 180 0 1 {name=p11 sig_type=std_logic lab=CLKB}
+C {devices/lab_pin.sym} 150 60 0 0 {name=p9 sig_type=std_logic lab=VDD}
+C {devices/lab_pin.sym} 150 220 0 0 {name=p12 sig_type=std_logic lab=VSS}
+C {devices/opin.sym} 380 -80 0 0 {name=p6 lab=OUT}
+C {/Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/tinv.sym} -140 -40 0 0 {name=X_tinv1 NF=NF}
+C {/Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/inv.sym} 140 -40 0 0 {name=X_inv1 NF=NF}
+C {/Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/tinv_small.sym} 220 180 0 1 {name=X_tinv_small1}

@@ -6,7 +6,8 @@ export BAG_WORK_DIR="$PWD"
 export BAG_FRAMEWORK="$BAG_WORK_DIR/BAG_framework"
 # set BAG python executable
 # export BAG_PYTHON="/usr/anaconda3/bin/python3.9"
-export BAG_PYTHON="~/anaconda3/envs/py38/bin/python3.8"
+# export BAG_PYTHON="~/anaconda3/envs/py38/bin/python3.8"
+export BAG_PYTHON="~/anaconda3/envs/py39/bin/python3.9"
 # set jupyter notebook path
 export BAG_JUPYTER="/usr/anaconda3/bin/jupyter-notebook"
 # set technology/project configuration directory 
