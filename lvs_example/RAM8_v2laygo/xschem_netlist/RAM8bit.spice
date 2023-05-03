@@ -1,0 +1,305 @@
+** sch_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/RAM8bit.sch
+.subckt RAM8bit EN A<2> A<1> A<0> Di<0> Di<1> Di<2> Di<3> Di<4> Di<5> Di<6> Di<7> Di<8> Di<9> Di<10>
++ Di<11> Di<12> Di<13> Di<14> Di<15> Di<16> Di<17> Di<18> Di<19> Di<20> Di<21> Di<22> Di<23> Di<24> Di<25>
++ Di<26> Di<27> Di<28> Di<29> Di<30> Di<31> VDD VSS WE<0> WE<1> WE<2> WE<3> CLK Do<0> Do<1> Do<2> Do<3>
++ Do<4> Do<5> Do<6> Do<7> Do<8> Do<9> Do<10> Do<11> Do<12> Do<13> Do<14> Do<15> Do<16> Do<17> Do<18> Do<19>
++ Do<20> Do<21> Do<22> Do<23> Do<24> Do<25> Do<26> Do<27> Do<28> Do<29> Do<30> Do<31>
+*.PININFO EN:I A<2>:I A<1>:I A<0>:I Di<0>:I Di<1>:I Di<2>:I Di<3>:I Di<4>:I Di<5>:I Di<6>:I Di<7>:I
+*+ Di<8>:I Di<9>:I Di<10>:I Di<11>:I Di<12>:I Di<13>:I Di<14>:I Di<15>:I Di<16>:I Di<17>:I Di<18>:I Di<19>:I
+*+ Di<20>:I Di<21>:I Di<22>:I Di<23>:I Di<24>:I Di<25>:I Di<26>:I Di<27>:I Di<28>:I Di<29>:I Di<30>:I Di<31>:I
+*+ VDD:B VSS:B WE<0>:I WE<1>:I WE<2>:I WE<3>:I CLK:I Do<0>:O Do<1>:O Do<2>:O Do<3>:O Do<4>:O Do<5>:O Do<6>:O
+*+ Do<7>:O Do<8>:O Do<9>:O Do<10>:O Do<11>:O Do<12>:O Do<13>:O Do<14>:O Do<15>:O Do<16>:O Do<17>:O Do<18>:O
+*+ Do<19>:O Do<20>:O Do<21>:O Do<22>:O Do<23>:O Do<24>:O Do<25>:O Do<26>:O Do<27>:O Do<28>:O Do<29>:O Do<30>:O
+*+ Do<31>:O
+xword0 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[0] CLK_buf Di<9> Di<7> Di<19> Di<20> Di<30> Di<8> Di<10>
++ Di<4> Di<12> Di<24> Di<5> Di<23> Di<29> Di<3> Di<14> Di<18> Di<28> Di<17> Di<16> Di<27> Di<21> Di<22>
++ Di<0> Di<1> Di<31> Di<26> Di<25> Di<15> Di<2> Di<13> Di<6> Di<11> Do<21> Do<22> Do<27> Do<23> Do<28>
++ Do<8> Do<9> Do<10> Do<11> Do<12> Do<29> Do<30> Do<13> Do<14> Do<15> Do<16> Do<24> Do<17> Do<1> Do<7>
++ Do<6> Do<5> Do<18> Do<0> Do<2> Do<3> Do<4> Do<19> Do<20> Do<25> Do<26> Do<31> word NF=2
+x_dec3 A<1> EN A<2> A<0> VDD VSS Y3 Y2 Y1 Y0 Y7 Y6 Y5 Y4 dec_3to8 NF=2
+X_inv1 Y0 VDD VSS net1 inv NF=12
+X_inv2 net1 VDD VSS SEL[0] inv NF=12
+X_inv3 Y1 VDD VSS net2 inv NF=12
+X_inv4 net2 VDD VSS SEL[1] inv NF=12
+X_inv5 Y2 VDD VSS net3 inv NF=12
+X_inv6 net3 VDD VSS SEL[2] inv NF=12
+X_inv7 Y3 VDD VSS net4 inv NF=12
+X_inv8 net4 VDD VSS SEL[3] inv NF=12
+X_inv9 Y4 VDD VSS net5 inv NF=12
+X_inv10 net5 VDD VSS SEL[4] inv NF=12
+X_inv11 Y5 VDD VSS net6 inv NF=12
+X_inv12 net6 VDD VSS SEL[5] inv NF=12
+X_inv13 Y6 VDD VSS net7 inv NF=12
+X_inv14 net7 VDD VSS SEL[6] inv NF=12
+X_inv15 Y7 VDD VSS net8 inv NF=12
+X_inv16 net8 VDD VSS SEL[7] inv NF=12
+X_inv24 CLK VDD VSS net9 inv NF=24
+X_inv17 net9 VDD VSS CLK_buf inv NF=24
+X_inv26 WE<3> VDD VSS net10 inv NF=24
+X_inv18 net10 VDD VSS WE[3] inv NF=24
+X_inv19 WE<2> VDD VSS net11 inv NF=24
+X_inv20 net11 VDD VSS WE[2] inv NF=24
+X_inv21 WE<1> VDD VSS net12 inv NF=24
+X_inv22 net12 VDD VSS WE[1] inv NF=24
+X_inv23 WE<0> VDD VSS net13 inv NF=24
+X_inv25 net13 VDD VSS WE[0] inv NF=24
+xword1 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[1] CLK_buf Di<9> Di<7> Di<19> Di<20> Di<30> Di<8> Di<10>
++ Di<4> Di<12> Di<24> Di<5> Di<23> Di<29> Di<3> Di<14> Di<18> Di<28> Di<17> Di<16> Di<27> Di<21> Di<22>
++ Di<0> Di<1> Di<31> Di<26> Di<25> Di<15> Di<2> Di<13> Di<6> Di<11> Do<21> Do<22> Do<27> Do<23> Do<28>
++ Do<8> Do<9> Do<10> Do<11> Do<12> Do<29> Do<30> Do<13> Do<14> Do<15> Do<16> Do<24> Do<17> Do<1> Do<7>
++ Do<6> Do<5> Do<18> Do<0> Do<2> Do<3> Do<4> Do<19> Do<20> Do<25> Do<26> Do<31> word NF=2
+xword2 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[2] CLK_buf Di<9> Di<7> Di<19> Di<20> Di<30> Di<8> Di<10>
++ Di<4> Di<12> Di<24> Di<5> Di<23> Di<29> Di<3> Di<14> Di<18> Di<28> Di<17> Di<16> Di<27> Di<21> Di<22>
++ Di<0> Di<1> Di<31> Di<26> Di<25> Di<15> Di<2> Di<13> Di<6> Di<11> Do<21> Do<22> Do<27> Do<23> Do<28>
++ Do<8> Do<9> Do<10> Do<11> Do<12> Do<29> Do<30> Do<13> Do<14> Do<15> Do<16> Do<24> Do<17> Do<1> Do<7>
++ Do<6> Do<5> Do<18> Do<0> Do<2> Do<3> Do<4> Do<19> Do<20> Do<25> Do<26> Do<31> word NF=2
+xword3 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[3] CLK_buf Di<9> Di<7> Di<19> Di<20> Di<30> Di<8> Di<10>
++ Di<4> Di<12> Di<24> Di<5> Di<23> Di<29> Di<3> Di<14> Di<18> Di<28> Di<17> Di<16> Di<27> Di<21> Di<22>
++ Di<0> Di<1> Di<31> Di<26> Di<25> Di<15> Di<2> Di<13> Di<6> Di<11> Do<21> Do<22> Do<27> Do<23> Do<28>
++ Do<8> Do<9> Do<10> Do<11> Do<12> Do<29> Do<30> Do<13> Do<14> Do<15> Do<16> Do<24> Do<17> Do<1> Do<7>
++ Do<6> Do<5> Do<18> Do<0> Do<2> Do<3> Do<4> Do<19> Do<20> Do<25> Do<26> Do<31> word NF=2
+xword4 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[4] CLK_buf Di<9> Di<7> Di<19> Di<20> Di<30> Di<8> Di<10>
++ Di<4> Di<12> Di<24> Di<5> Di<23> Di<29> Di<3> Di<14> Di<18> Di<28> Di<17> Di<16> Di<27> Di<21> Di<22>
++ Di<0> Di<1> Di<31> Di<26> Di<25> Di<15> Di<2> Di<13> Di<6> Di<11> Do<21> Do<22> Do<27> Do<23> Do<28>
++ Do<8> Do<9> Do<10> Do<11> Do<12> Do<29> Do<30> Do<13> Do<14> Do<15> Do<16> Do<24> Do<17> Do<1> Do<7>
++ Do<6> Do<5> Do<18> Do<0> Do<2> Do<3> Do<4> Do<19> Do<20> Do<25> Do<26> Do<31> word NF=2
+xword5 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[5] CLK_buf Di<9> Di<7> Di<19> Di<20> Di<30> Di<8> Di<10>
++ Di<4> Di<12> Di<24> Di<5> Di<23> Di<29> Di<3> Di<14> Di<18> Di<28> Di<17> Di<16> Di<27> Di<21> Di<22>
++ Di<0> Di<1> Di<31> Di<26> Di<25> Di<15> Di<2> Di<13> Di<6> Di<11> Do<21> Do<22> Do<27> Do<23> Do<28>
++ Do<8> Do<9> Do<10> Do<11> Do<12> Do<29> Do<30> Do<13> Do<14> Do<15> Do<16> Do<24> Do<17> Do<1> Do<7>
++ Do<6> Do<5> Do<18> Do<0> Do<2> Do<3> Do<4> Do<19> Do<20> Do<25> Do<26> Do<31> word NF=2
+xord6 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[6] CLK_buf Di<9> Di<7> Di<19> Di<20> Di<30> Di<8> Di<10>
++ Di<4> Di<12> Di<24> Di<5> Di<23> Di<29> Di<3> Di<14> Di<18> Di<28> Di<17> Di<16> Di<27> Di<21> Di<22>
++ Di<0> Di<1> Di<31> Di<26> Di<25> Di<15> Di<2> Di<13> Di<6> Di<11> Do<21> Do<22> Do<27> Do<23> Do<28>
++ Do<8> Do<9> Do<10> Do<11> Do<12> Do<29> Do<30> Do<13> Do<14> Do<15> Do<16> Do<24> Do<17> Do<1> Do<7>
++ Do<6> Do<5> Do<18> Do<0> Do<2> Do<3> Do<4> Do<19> Do<20> Do<25> Do<26> Do<31> word NF=2
+xord7 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[7] CLK_buf Di<9> Di<7> Di<19> Di<20> Di<30> Di<8> Di<10>
++ Di<4> Di<12> Di<24> Di<5> Di<23> Di<29> Di<3> Di<14> Di<18> Di<28> Di<17> Di<16> Di<27> Di<21> Di<22>
++ Di<0> Di<1> Di<31> Di<26> Di<25> Di<15> Di<2> Di<13> Di<6> Di<11> Do<21> Do<22> Do<27> Do<23> Do<28>
++ Do<8> Do<9> Do<10> Do<11> Do<12> Do<29> Do<30> Do<13> Do<14> Do<15> Do<16> Do<24> Do<17> Do<1> Do<7>
++ Do<6> Do<5> Do<18> Do<0> Do<2> Do<3> Do<4> Do<19> Do<20> Do<25> Do<26> Do<31> word NF=2
+.ends
+
+* expanding   symbol:  word.sym # of pins=72
+** sym_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/word.sym
+** sch_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/word.sch
+.subckt word VDD VSS WE[3] WE[2] WE[1] WE[0] SEL CLK Di[9] Di[7] Di[19] Di[20] Di[30] Di[8] Di[10]
++ Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21] Di[22]
++ Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23] Do[28]
++ Do[8] Do[9] Do[10] Do[11] Do[12] Do[29] Do[30] Do[13] Do[14] Do[15] Do[16] Do[24] Do[17] Do[1] Do[7]
++ Do[6] Do[5] Do[18] Do[0] Do[2] Do[3] Do[4] Do[19] Do[20] Do[25] Do[26] Do[31]  NF=2
+*.PININFO SEL:I VDD:B VSS:B CLK:I Di[31]:I Di[30]:I Di[29]:I Di[28]:I Di[27]:I Di[26]:I Di[25]:I
+*+ Di[24]:I Do[31]:O Do[30]:O Do[29]:O Do[28]:O Do[27]:O Do[26]:O Do[25]:O Do[24]:O Di[23]:I Di[22]:I Di[21]:I
+*+ Di[20]:I Di[19]:I Di[18]:I Di[17]:I Di[16]:I Do[23]:O Do[22]:O Do[21]:O Do[20]:O Do[19]:O Do[18]:O Do[17]:O
+*+ Do[16]:O Di[15]:I Di[14]:I Di[13]:I Di[12]:I Di[11]:I Di[10]:I Di[9]:I Di[8]:I Do[15]:O Do[14]:O Do[13]:O
+*+ Do[12]:O Do[11]:O Do[10]:O Do[9]:O Do[8]:O Di[7]:I Di[6]:I Di[5]:I Di[4]:I Di[3]:I Di[2]:I Di[1]:I Di[0]:I
+*+ Do[7]:O Do[6]:O Do[5]:O Do[4]:O Do[3]:O Do[2]:O Do[1]:O Do[0]:O WE[0]:I WE[1]:I WE[2]:I WE[3]:I
+X_inv3 CLK VDD VSS net1 inv NF=2
+X_inv1 net1 VDD VSS CLK_buf0 inv NF=2
+X_inv2 CLK_buf0 VDD VSS net2 inv NF=2
+X_inv4 net2 VDD VSS CLK_buf1 inv NF=2
+X_inv5 CLK_buf1 VDD VSS net3 inv NF=2
+X_inv6 net3 VDD VSS CLK_buf2 inv NF=2
+X_inv7 SEL VDD VSS net4 inv NF=2
+X_inv8 net4 VDD VSS SEL_buf0 inv NF=2
+X_inv9 SEL_buf0 VDD VSS net5 inv NF=2
+X_inv10 net5 VDD VSS SEL_buf1 inv NF=2
+X_inv11 SEL_buf1 VDD VSS net6 inv NF=2
+X_inv12 net6 VDD VSS SEL_buf2 inv NF=2
+xByte_1 VDD VSS WE[3] Di[27] Di[31] Do[27] Do[31] CLK SEL Di[26] Di[30] Do[26] Do[30] Di[29] Di[25]
++ Do[29] Do[25] Di[28] Do[28] Di[24] Do[24] byte_dff NF=2
+xByte_2 VDD VSS WE[2] Di[19] Di[23] Do[19] Do[23] CLK_buf0 SEL_buf0 Di[18] Di[22] Do[18] Do[22]
++ Di[21] Di[17] Do[21] Do[17] Di[20] Do[20] Di[16] Do[16] byte_dff NF=2
+xByte_3 VDD VSS WE[1] Di[11] Di[15] Do[11] Do[15] CLK_buf1 SEL_buf1 Di[10] Di[14] Do[10] Do[14]
++ Di[13] Di[9] Do[13] Do[9] Di[12] Do[12] Di[8] Do[8] byte_dff NF=2
+xByte_4 VDD VSS WE[0] Di[3] Di[7] Do[3] Do[7] CLK_buf2 SEL_buf2 Di[2] Di[6] Do[2] Do[6] Di[5] Di[1]
++ Do[5] Do[1] Di[4] Do[4] Di[0] Do[0] byte_dff NF=2
+.ends
+
+
+* expanding   symbol:  dec_3to8.sym # of pins=14
+** sym_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/dec_3to8.sym
+** sch_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/dec_3to8.sch
+.subckt dec_3to8 A1 EN A2 A0 VDD VSS O3 O2 O1 O0 O7 O6 O5 O4  NF=2
+*.PININFO A2:I A1:I A0:I VDD:B VSS:B O0:O O1:O O2:O O3:O O4:O O5:O O6:O O7:O EN:I
+X_inv7 A2 VDD VSS net3 inv NF=2
+X_inv1 A1 VDD VSS net2 inv NF=2
+X_inv2 A0 VDD VSS net1 inv NF=2
+x_AndF1 net3 net2 O0 VDD VSS net1 EN and_4in NF=2
+x_AndF2 net3 net2 O1 VDD VSS A0 EN and_4in NF=2
+x_AndF7 A2 A1 O6 VDD VSS net1 EN and_4in NF=2
+x_AndF8 A2 A1 O7 VDD VSS A0 EN and_4in NF=2
+x_AndF3 net3 A1 O2 VDD VSS net1 EN and_4in NF=2
+x_AndF4 net3 A1 O3 VDD VSS A0 EN and_4in NF=2
+x_AndF5 A2 net2 O4 VDD VSS net1 EN and_4in NF=2
+x_AndF6 A2 net2 O5 VDD VSS A0 EN and_4in NF=2
+.ends
+
+
+* expanding   symbol:  inv.sym # of pins=4
+** sym_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/inv.sym
+** sch_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/inv.sch
+.subckt inv X VDD VSS Y  NF=2
+*.PININFO VSS:B X:I Y:O VDD:B
+XM1 Y X VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 m=NF
+XM2 Y X VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 m=NF
+.ends
+
+
+* expanding   symbol:  byte_dff.sym # of pins=21
+** sym_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/byte_dff.sym
+** sch_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/byte_dff.sch
+.subckt byte_dff VDD VSS WE Di<3> Di<7> Do<3> Do<7> CLK SEL Di<2> Di<6> Do<2> Do<6> Di<5> Di<1>
++ Do<5> Do<1> Di<4> Do<4> Di<0> Do<0>  NF=2
+*.PININFO Di<7>:I Do<6>:O Di<6>:I Do<5>:O Di<5>:I Di<4>:I Do<3>:O Di<3>:I Do<2>:O Di<2>:I Do<1>:O
+*+ Di<1>:I Do<0>:O Di<0>:I WE:I SEL:I CLK:I VDD:B VSS:B Do<7>:O Do<4>:O
+X_nand1 SEL WE net2 VDD VSS nand NF=2
+X_inv2 SEL VDD VSS SEL_bar inv NF=2
+x1 VDD net3 ck_o CLK VSS clk_gate NF=2
+xDFF1 VDD VSS Di<7> net18 ck_o DFF NF=2
+X_inv1 net2 VDD VSS net3 inv NF=2
+X_tinv0 net4 SEL SEL_bar VDD VSS Do<0> tinv NF=2
+xDFF2 VDD VSS Di<6> net15 ck_o DFF NF=2
+xDFF3 VDD VSS Di<5> net13 ck_o DFF NF=2
+xDFF4 VDD VSS Di<4> net11 ck_o DFF NF=2
+xDFF5 VDD VSS Di<3> net9 ck_o DFF NF=2
+xDFF6 VDD VSS Di<2> net7 ck_o DFF NF=2
+xDFF7 VDD VSS Di<1> net5 ck_o DFF NF=2
+xDFF8 VDD VSS Di<0> net1 ck_o DFF NF=2
+X_inv3 net1 VDD VSS net4 inv NF=2
+X_tinv1 net6 SEL SEL_bar VDD VSS Do<1> tinv NF=2
+X_inv4 net5 VDD VSS net6 inv NF=2
+X_tinv2 net8 SEL SEL_bar VDD VSS Do<2> tinv NF=2
+X_inv5 net7 VDD VSS net8 inv NF=2
+X_tinv3 net10 SEL SEL_bar VDD VSS Do<3> tinv NF=2
+X_inv6 net9 VDD VSS net10 inv NF=2
+X_tinv4 net12 SEL SEL_bar VDD VSS Do<4> tinv NF=2
+X_inv7 net11 VDD VSS net12 inv NF=2
+X_tinv8 net14 SEL SEL_bar VDD VSS Do<5> tinv NF=2
+X_inv9 net13 VDD VSS net14 inv NF=2
+X_tinv10 net16 SEL SEL_bar VDD VSS Do<6> tinv NF=2
+X_inv11 net15 VDD VSS net16 inv NF=2
+X_tinv12 net17 SEL SEL_bar VDD VSS Do<7> tinv NF=2
+X_inv13 net18 VDD VSS net17 inv NF=2
+.ends
+
+
+* expanding   symbol:  and_4in.sym # of pins=7
+** sym_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/and_4in.sym
+** sch_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/and_4in.sch
+.subckt and_4in B D O VDD VSS C A  NF=2
+*.PININFO VDD:B VSS:B A:I B:I C:I D:I O:O
+X_nand2 D C net2 VDD VSS nand NF=2
+X_nand1 B A net1 VDD VSS nand NF=2
+X_nand3 O net1 net2 VDD VSS nor NF=2
+.ends
+
+
+* expanding   symbol:  ./nand.sym # of pins=5
+** sym_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/nand.sym
+** sch_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/nand.sch
+.subckt nand B A Y VDD VSS  NF=2
+*.PININFO Y:O A:I VDD:B VSS:B B:I
+XM1 Y A net1 VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 m=NF
+XM2 net1 B VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 m=NF
+XM3 Y B VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 m=NF
+XM4 Y A VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 m=NF
+.ends
+
+
+* expanding   symbol:  ./clk_gate.sym # of pins=5
+** sym_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/clk_gate.sym
+** sch_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/clk_gate.sch
+.subckt clk_gate VDD EN CK_O CK_I VSS  NF=2
+*.PININFO CK_I:I VDD:B VSS:B EN:I CK_O:O
+X_inv1 CK_I VDD VSS net1 inv NF=2
+X_latch1 EN net1 CK_I VSS VDD net2 latch NF=2
+X_nand1 CK_I net2 net3 VDD VSS nand NF=2
+X_inv2 net3 VDD VSS CK_O inv NF=2
+.ends
+
+
+* expanding   symbol:  ./DFF.sym # of pins=5
+** sym_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/DFF.sym
+** sch_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/DFF.sch
+.subckt DFF VDD VSS I O CLK  NF=2
+*.PININFO VDD:B VSS:B I:I CLK:I O:O
+X_latch1 I clk_bar clk_buf VSS VDD net1 latch NF=2
+X_latch2 net1 clk_buf clk_bar VSS VDD O latch NF=2
+X_inv1 CLK VDD VSS clk_bar inv NF=2
+X_inv2 clk_bar VDD VSS clk_buf inv NF=2
+.ends
+
+
+* expanding   symbol:  ./tinv.sym # of pins=6
+** sym_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/tinv.sym
+** sch_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/tinv.sch
+.subckt tinv X EN ENB VDD VSS Y  NF=2
+*.PININFO X:I ENB:I EN:I Y:O VDD:B VSS:B
+XM1 net2 X VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 m=NF
+XM2 Y ENB net2 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 m=NF
+XM3 Y EN net1 VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 m=NF
+XM4 net1 X VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 m=NF
+.ends
+
+
+* expanding   symbol:  nor.sym # of pins=5
+** sym_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/nor.sym
+** sch_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/nor.sch
+.subckt nor Y A B VDD VSS  NF=2
+*.PININFO VDD:B VSS:B Y:O A:I B:I
+XM1 Y B VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 m=NF
+XM2 Y A VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 m=NF
+XM3 Y A net1 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 m=NF
+XM4 net1 B VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 m=NF
+.ends
+
+
+* expanding   symbol:  latch.sym # of pins=6
+** sym_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/latch.sym
+** sch_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/latch.sch
+.subckt latch IN CLK CLKB VSS VDD OUT  NF=2
+*.PININFO CLKB:I IN:I CLK:I VDD:B VSS:B OUT:O
+X_tinv1 IN CLK CLKB VDD VSS net1 tinv NF=NF
+X_inv1 net1 VDD VSS OUT inv NF=NF
+X_tinv_small1 OUT CLKB CLK VDD VSS net1 tinv_small
+.ends
+
+
+* expanding   symbol:  tinv_small.sym # of pins=6
+** sym_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/tinv_small.sym
+** sch_path:
+*+ /Users/brianlsy/Desktop/brianlsy/git_workspace/fork/laygo2_workspace_sky130/xschem_lib/sylee21/tinv_small.sch
+.subckt tinv_small X EN ENB VDD VSS Y
+*.PININFO X:I ENB:I EN:I Y:O VDD:B VSS:B
+XM1 net2 X VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 m=1
+XM2 Y ENB net2 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=2.4 nf=1 m=1
+XM3 Y EN net1 VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 m=1
+XM4 net1 X VSS VSS sky130_fd_pr__nfet_01v8_lvt L=0.15 W=1.2 nf=1 m=1
+.ends
+
+.end
