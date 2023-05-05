@@ -88,11 +88,11 @@ rvss0 = dsn.route(grid=r12, mn=[r12.mn.bottom_left(nand0), r12.mn.bottom_right(n
 rvdd0 = dsn.route(grid=r12, mn=[r12.mn.top_left(nand0), r12.mn.top_right(nor0)])
 
 # 6. Create pins.
-pD = dsn.pin(name='D', grid=r23_cmos, mn=r23_cmos.mn.bbox(nand0.pins['B']))
-pC = dsn.pin(name='C', grid=r23_cmos, mn=r23_cmos.mn.bbox(nand0.pins['A']))
-pB = dsn.pin(name='B', grid=r23_cmos, mn=r23_cmos.mn.bbox(nand1.pins['B']))
-pA = dsn.pin(name='A', grid=r23_cmos, mn=r23_cmos.mn.bbox(nand1.pins['A']))
-pout = dsn.pin(name='Y', grid=r23_cmos, mn=r23_cmos.mn.bbox(nor0.pins['OUT']))
+pD = dsn.pin(name='A3', grid=r23_cmos, mn=r23_cmos.mn.bbox(nand0.pins['B']))
+pC = dsn.pin(name='A2', grid=r23_cmos, mn=r23_cmos.mn.bbox(nand0.pins['A']))
+pB = dsn.pin(name='A1', grid=r23_cmos, mn=r23_cmos.mn.bbox(nand1.pins['B']))
+pA = dsn.pin(name='A0', grid=r23_cmos, mn=r23_cmos.mn.bbox(nand1.pins['A']))
+pout = dsn.pin(name='OUT', grid=r23_cmos, mn=r23_cmos.mn.bbox(nor0.pins['OUT']))
 pvss0 = dsn.pin(name='VSS', grid=r12, mn=r12.mn.bbox(rvss0))
 pvdd0 = dsn.pin(name='VDD', grid=r12, mn=r12.mn.bbox(rvdd0))
 

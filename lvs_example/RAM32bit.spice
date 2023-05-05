@@ -3,14 +3,14 @@
 + Do[5] Di<6> Do[6] Di<7> Do[7] Di<8> Do[8] Di<9> Do[9] Di<10> Do[10] Di<11> Do[11] Di<12> Do[12] Di<13>
 + Do[13] Di<14> Do[14] Di<15> Do[15] Di<16> Do[16] Di<17> Do[17] Di<18> Do[18] Di<19> Do[19] Di<20> Do[20]
 + Di<21> Do[21] Di<22> Do[22] Di<23> Do[23] Di<24> Do[24] Di<25> Do[25] Di<26> Do[26] Di<27> Do[27] Di<28>
-+ Do[28] Di<29> Do[29] Di<30> Do[30] Di<31> Do[31] VDD VSS WE0 WE1 WE2 WE3 CLK
++ Do[28] Di<29> Do[29] Di<30> Do[30] Di<31> Do[31] VDD VSS WE<0> WE<1> WE<2> WE<3> CLK
 *.PININFO A3:I A4:I EN:I A2:I A1:I A0:I Di<0>:I Do[0]:O Di<1>:I Do[1]:O Di<2>:I Do[2]:O Di<3>:I
 *+ Do[3]:O Di<4>:I Do[4]:O Di<5>:I Do[5]:O Di<6>:I Do[6]:O Di<7>:I Do[7]:O Di<8>:I Do[8]:O Di<9>:I Do[9]:O
 *+ Di<10>:I Do[10]:O Di<11>:I Do[11]:O Di<12>:I Do[12]:O Di<13>:I Do[13]:O Di<14>:I Do[14]:O Di<15>:I Do[15]:O
 *+ Di<16>:I Do[16]:O Di<17>:I Do[17]:O Di<18>:I Do[18]:O Di<19>:I Do[19]:O Di<20>:I Do[20]:O Di<21>:I Do[21]:O
 *+ Di<22>:I Do[22]:O Di<23>:I Do[23]:O Di<24>:I Do[24]:O Di<25>:I Do[25]:O Di<26>:I Do[26]:O Di<27>:I Do[27]:O
-*+ Di<28>:I Do[28]:O Di<29>:I Do[29]:O Di<30>:I Do[30]:O Di<31>:I Do[31]:O VDD:B VSS:B WE0:I WE1:I WE2:I WE3:I
-*+ CLK:I
+*+ Di<28>:I Do[28]:O Di<29>:I Do[29]:O Di<30>:I Do[30]:O Di<31>:I Do[31]:O VDD:B VSS:B WE<0>:I WE<1>:I WE<2>:I
+*+ WE<3>:I CLK:I
 xbyte1 VDD VSS WE[3] WE[2] WE[1] WE[0] SEL[0] CLK_buf Di[9] Di[7] Di[19] Di[20] Di[30] Di[8] Di[10]
 + Di[4] Di[12] Di[24] Di[5] Di[23] Di[29] Di[3] Di[14] Di[18] Di[28] Di[17] Di[16] Di[27] Di[21] Di[22]
 + Di[0] Di[1] Di[31] Di[26] Di[25] Di[15] Di[2] Di[13] Di[6] Di[11] Do[21] Do[22] Do[27] Do[23] Do[28]
@@ -242,13 +242,13 @@ X_inv63 Y31 VDD VSS net36 inv NF=12
 X_inv64 net36 VDD VSS SEL[31] inv NF=12
 X_inv65 net39 VDD VSS net37 inv NF=8
 X_inv66 net37 VDD VSS net38 inv NF=16
-X_inv67 WE3 VDD VSS net40 inv NF=12
+X_inv67 WE<3> VDD VSS net40 inv NF=12
 X_inv68 net40 VDD VSS WE[3] inv NF=12
-X_inv69 WE2 VDD VSS net41 inv NF=12
+X_inv69 WE<2> VDD VSS net41 inv NF=12
 X_inv70 net41 VDD VSS WE[2] inv NF=12
-X_inv71 WE1 VDD VSS net42 inv NF=12
+X_inv71 WE<1> VDD VSS net42 inv NF=12
 X_inv72 net42 VDD VSS WE[1] inv NF=12
-X_inv73 WE0 VDD VSS net43 inv NF=12
+X_inv73 WE<0> VDD VSS net43 inv NF=12
 X_inv74 net43 VDD VSS WE[0] inv NF=12
 X_inv75 Di<0> VDD VSS net44 inv NF=14
 X_inv76 net44 VDD VSS Di[0] inv NF=14

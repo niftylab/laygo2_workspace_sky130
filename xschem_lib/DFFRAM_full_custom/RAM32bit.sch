@@ -8126,25 +8126,25 @@ C {xschem_lib/DFFRAM_full_custom/inv.sym} -940 -1060 0 0 {name=X_inv67 NF=12}
 C {xschem_lib/DFFRAM_full_custom/inv.sym} -780 -1060 0 0 {name=X_inv68 NF=12}
 C {lab_wire.sym} -800 -1140 0 0 {name=l2493 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -800 -1060 0 0 {name=l2494 sig_type=std_logic lab=VSS}
-C {lab_wire.sym} -950 -1100 0 0 {name=l2495 sig_type=std_logic lab=WE3}
+C {lab_wire.sym} -950 -1100 0 0 {name=l2495 sig_type=std_logic lab=WE<3>}
 C {lab_wire.sym} -620 -1100 0 0 {name=l2496 sig_type=std_logic lab=WE[3]}
 C {xschem_lib/DFFRAM_full_custom/inv.sym} -940 -1180 0 0 {name=X_inv69 NF=12}
 C {xschem_lib/DFFRAM_full_custom/inv.sym} -780 -1180 0 0 {name=X_inv70 NF=12}
 C {lab_wire.sym} -800 -1260 0 0 {name=l2497 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -800 -1180 0 0 {name=l2498 sig_type=std_logic lab=VSS}
-C {lab_wire.sym} -950 -1220 0 0 {name=l2499 sig_type=std_logic lab=WE2}
+C {lab_wire.sym} -950 -1220 0 0 {name=l2499 sig_type=std_logic lab=WE<2>}
 C {lab_wire.sym} -620 -1220 0 0 {name=l2500 sig_type=std_logic lab=WE[2]}
 C {xschem_lib/DFFRAM_full_custom/inv.sym} -940 -1310 0 0 {name=X_inv71 NF=12}
 C {xschem_lib/DFFRAM_full_custom/inv.sym} -780 -1310 0 0 {name=X_inv72 NF=12}
 C {lab_wire.sym} -800 -1390 0 0 {name=l2501 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -800 -1310 0 0 {name=l2502 sig_type=std_logic lab=VSS}
-C {lab_wire.sym} -950 -1350 0 0 {name=l2503 sig_type=std_logic lab=WE1}
+C {lab_wire.sym} -950 -1350 0 0 {name=l2503 sig_type=std_logic lab=WE<1>}
 C {lab_wire.sym} -620 -1350 0 0 {name=l2504 sig_type=std_logic lab=WE[1]}
 C {xschem_lib/DFFRAM_full_custom/inv.sym} -940 -1430 0 0 {name=X_inv73 NF=12}
 C {xschem_lib/DFFRAM_full_custom/inv.sym} -780 -1430 0 0 {name=X_inv74 NF=12}
 C {lab_wire.sym} -800 -1510 0 0 {name=l2505 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -800 -1430 0 0 {name=l2506 sig_type=std_logic lab=VSS}
-C {lab_wire.sym} -950 -1470 0 0 {name=l2507 sig_type=std_logic lab=WE0}
+C {lab_wire.sym} -950 -1470 0 0 {name=l2507 sig_type=std_logic lab=WE<0>}
 C {lab_wire.sym} -620 -1470 0 0 {name=l2508 sig_type=std_logic lab=WE[0]}
 C {xschem_lib/DFFRAM_full_custom/inv.sym} -1760 880 0 0 {name=X_inv75 NF=14}
 C {xschem_lib/DFFRAM_full_custom/inv.sym} -1600 880 0 0 {name=X_inv76 NF=14}
@@ -8404,10 +8404,10 @@ C {devices/ipin.sym} -470 -2370 0 0 {name=p38 lab=Di<31>}
 C {devices/opin.sym} -550 -2060 0 0 {name=p70 lab=Do[31]}
 C {iopin.sym} -340 -2580 0 0 {name=p71 lab=VDD}
 C {iopin.sym} -340 -2550 0 0 {name=p72 lab=VSS}
-C {ipin.sym} -290 -2500 0 0 {name=p73 lab=WE0}
-C {ipin.sym} -290 -2470 0 0 {name=p74 lab=WE1}
-C {ipin.sym} -290 -2440 0 0 {name=p75 lab=WE2}
-C {ipin.sym} -290 -2410 0 0 {name=p76 lab=WE3}
+C {ipin.sym} -290 -2500 0 0 {name=p73 lab=WE<0>}
+C {ipin.sym} -290 -2470 0 0 {name=p74 lab=WE<1>}
+C {ipin.sym} -290 -2440 0 0 {name=p75 lab=WE<2>}
+C {ipin.sym} -290 -2410 0 0 {name=p76 lab=WE<3>}
 C {ipin.sym} -290 -2370 0 0 {name=p77 lab=CLK}
 C {lab_wire.sym} -1550 -2040 0 0 {name=l2637 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -1550 -1940 2 0 {name=l2638 sig_type=std_logic lab=VSS}
