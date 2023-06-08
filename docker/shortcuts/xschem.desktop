@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Xschem
+Exec=/usr/local/bin/xschem
+Type=Application
+Terminal=false

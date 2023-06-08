@@ -1,0 +1,11 @@
+{
+	"name": "laygo2_sky130_container",
+	"image": "laygo2_sky130_docker:latest",
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:1": {},
+		"ghcr.io/devcontainers/features/git:1": {},
+	},
+	"workspaceFolder": "/laygo2_workspace_sky130",
+	"workspaceMount": "src=astrus,dst=/laygo2_workspace_sky130,type=volume",
+	"containerUser": "root",
+}
