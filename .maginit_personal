@@ -1,2 +1,2 @@
-addpath /WORK/hjpark/temp/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
-addpath /WORK/hjpark/temp/laygo2_workspace_sky130/magic_layout/logic_generated
+addpath /WORK/jypark/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+addpath /WORK/jypark/laygo2_workspace_sky130/magic_layout/logic_generated

@@ -30,3 +30,18 @@
 #export PATH=$TSMC_CAL_DFM_PATH:$PATH
 ### Setup BAG
 source .bashrc_bag
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/usr/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<

@@ -167,7 +167,7 @@ class netMap_vert(netMap_basic):
             for unmerged_metal in col_unmerged.metal_list:
                 metal_index = self.search_metal_index(col_index, unmerged_metal.mn[0][1])-1
                 self.cols[col_index].metal_list[metal_index].metal_seg.append(unmerged_metal)
-                self.cols[col_index].metal_list[metal_index].net_name = self.cols[col_index].metal_list[metal_index].net_name|unmerged_metal.net_name
+                self.cols[col_index].metal_list[metal_index].net_name|unmerged_metal.net_name
             col_index = col_index + 1
 
 
@@ -273,7 +273,7 @@ class netMap_hor(netMap_basic):
             for unmerged_metal in row_unmerged.metal_list:
                 metal_index = self.search_metal_index(row_index, unmerged_metal.mn[0][0])-1
                 self.rows[row_index].metal_list[metal_index].metal_seg.append(unmerged_metal)
-                self.rows[row_index].metal_list[metal_index].net_name = self.rows[row_index].metal_list[metal_index].net_name|unmerged_metal.net_name
+                self.rows[row_index].metal_list[metal_index].net_name|unmerged_metal.net_name
             row_index = row_index+1
 
 
@@ -282,13 +282,16 @@ class netMap:
 #layers : dict
 #layers_orient : dict
 #pins : list
-
+#_via_table : dict
+#grid : laygo2.object.grid
 #orient : bool
-    def __init__(self, orient_first="vertical",layer_names:list=['M1','M2','M3','M4','M5']):
+    def __init__(self, grid, via_table:dict, orient_first="vertical",layer_names:list=['M1','M2','M3','M4','M5']):
         self.layers=dict()
         self.layers_orient=dict()
         self.pins=list()
         self.vias=list()
+        self._via_table=via_table
+        self.grid=grid
         if orient_first=="vertical":
             self.orient_order = True
             for idx in range(len(layer_names)//2):
@@ -311,17 +314,52 @@ class netMap:
                 self.layers[layer_names[-1]] = netMap_hor(layer_names[-1])
                 self.layers_orient[layer_names[-1]] = "horizontal"
         else:
-            print("wrong orient")    
+            print("wrong orient")
     
-    def insert_metal(self, param_list):
-        return self.layers[param_list[0]].insert_metal([param_list[1], param_list[2]], param_list[3])
+    def translate_rect(self, elem, master): # translate mn of metals of (virtual)instances
+        mxy = master.xy
+        mtf = master.transform
+        _xy = np.sort(elem.xy, axis=0)  # make sure obj.xy is sorted
+        _xy = mxy + np.dot(_xy, tf.Mt(mtf).T)
+        return self.grid.mn(_xy)
+        #self.layers[elem.layer[0]].insert_metal(self.grid.mn(_xy), netname=elem.netname) # TODO: insert metal로 바꿀 것    
+    
+    def insert_metal(self, metal):
+        return self.layers[metal.layer[0]].insert_metal(self.grid.mn(metal.xy), net_name=metal.netname)
 
     def merge(self):
         for layer in self.layers.values():
             layer.merge()
+    
+    def insert_instance_blackbox(self, inst):
+        pin_list = list()
+        for pin in inst.pins.values():
+            # _mn = [[-9999,-9999],[9999,9999]]
+            # _mn[0][0] = round(pin.xy[0][0]/72)
+            # _mn[0][1] = round(pin.xy[0][1]/72)
+            # _mn[1][0] = round(pin.xy[1][0]/72)
+            # _mn[1][1] = round(pin.xy[1][1]/72)
+            self.layers[pin.layer[0]].insert_metal(self.grid.mn(pin), net_name=pin.netname)
+            pin_list.append(pin)
+        return pin_list
 
-    def insert_pin(self, param_list):
-        _layer_name = param_list[0]
+    def insert_virtual_instance(self, vinst): 
+        via_list=list()
+        pin_list=list()
+        for velem in vinst.native_elements.values():
+            if velem.__class__ == laygo2.object.Rect: #insert metals of a virtual instance
+                _mn = self.translate_rect(velem, vinst)
+                self.layers[velem.layer[0]].insert_metal(_mn, net_name=velem.netname)
+            # vias of instance & virtual instance are not inserted -> changed. vias are inerted
+            elif self.is_via(velem):
+                via_list.append(viaNode(self._via_table[velem.cellname], self.grid.mn(velem.xy)))
+        #TODO: implement insert instance code
+        for vpin in vinst.pins.values():
+            pin_list.append(vpin)
+        return pin_list, via_list
+
+    def insert_pin(self, pin):
+        _layer_name = pin.layer[0]
         _layer = self.layers[_layer_name]
         # somehow grid.mn(pin.xy) dosen't work (it returns 'None' for numbers those are not multiple of 72)
         # _mn = [[-9999,-9999],[9999,9999]]
@@ -329,7 +367,7 @@ class netMap:
         # _mn[0][1] = round(pin.xy[0][1]/72)
         # _mn[1][0] = round(pin.xy[1][0]/72)
         # _mn[1][1] = round(pin.xy[1][1]/72)
-        _mn = [param_list[1], param_list[2]]
+        _mn = self.grid.mn(pin)
     #    print(_layer_name, _mn, pin.netname, pin.name)
         if _mn[0][0] > _mn[1][0]:
             _mn[0][0], _mn[1][0]=_mn[1][0], _mn[0][0]       
@@ -349,7 +387,7 @@ class netMap:
                 _pin_idx = _layer.search_metal_index(_row_idx, _mn[0][0])-1
                 if _layer.rows[_row_idx].metal_list[_pin_idx].mn[1][0] < _mn[1][0]:
                     print("pin error: No metal on "+_layer+', x='+str(_mn[1][0])+', y='+str(_mn[0][1]))
-                self.pins.append([param_list[0], param_list[3], _layer.rows[_row_idx].metal_list[_pin_idx]])
+                self.pins.append((pin,_layer.rows[_row_idx].metal_list[_pin_idx]))
         else: # layer orient == vertical
             for i in range(_mn[0][0], _mn[1][0]+1):
                 _col_idx = self.layers[_layer_name].search_rc(i)
@@ -363,18 +401,23 @@ class netMap:
                 _pin_idx = _layer.search_metal_index(_col_idx, _mn[0][1])-1
                 if _layer.cols[_col_idx].metal_list[_pin_idx].mn[1][1] < _mn[1][1]:
                     print("pin error: No metal on "+_layer_name+', x= %d, y= %d' % (_mn[1][0],_mn[1][1]))
-                self.pins.append([param_list[0], param_list[3], _layer.cols[_col_idx].metal_list[_pin_idx]])
+                self.pins.append((pin,_layer.cols[_col_idx].metal_list[_pin_idx]))
 
+    def is_via(self, _inst):
+        if _inst.cellname in self._via_table:
+            return True
+        else: 
+            return False
 
-
-    def insert_via(self, param_list):
+    def insert_via(self, via):
+        # if not self.is_via(inst):
+        #     print("error:"+inst+"is not_via")
         #via_mn, layer1(vertical), layer2(horizontal) mapping
-        via_mn = param_list[1]
-        
-        if self.layers_orient[param_list[0][0]] == "vertical":
-            layer1_name, layer2_name = param_list[0]
+        via_mn = via.mn
+        if self.layers_orient[via.layer_pair[0]] == "vertical":
+            layer1_name, layer2_name = via.layer_pair
         else:
-            layer2_name, layer1_name = param_list[0]
+            layer2_name, layer1_name = via.layer_pair
         layer1, layer2 = self.layers[layer1_name], self.layers[layer2_name]
         col_index = layer1.search_rc(via_mn[0])
         if col_index is None:
@@ -468,69 +511,38 @@ class netMap:
                 if not node.visited:
                     queue.append(node)
                     node.visited = True
-
-
-
-
-layer_names = ['M1','M2','M3','M4','M5']
-nMap = netMap(orient_first="vertical", layer_names=layer_names)
-f = open("/WORK/jypark/laygo2_workspace_sky130/laygo2_test/pre_LVS/abs_gds.txt", "rt")
-pin_list = list()
-pin_set = set()
-
-while True:
-    line = f.readline()
-    print(line)
-    if line=='':
-        break
-    if line[0] == '#' or line[0] == '\n':
-        continue
-            
-    param_list = line.split(',')
-    for i in range(len(param_list)):
-        param_list[i] = param_list[i].strip()
-    
-    if param_list[0] == 'M':
-        dot_a = param_list[2].lstrip('[').rstrip(']').split(' ')
-        dot_b = param_list[3].lstrip('[').rstrip(']').split(' ')
-        param_list[2] = [int(dot_a[0]), int(dot_a[1])]
-        param_list[3] = [int(dot_b[0]), int(dot_b[1])]
-        if len(param_list) == 4:
-            param_list.append(None)
-        nMap.insert_metal(param_list[1:])
-    elif param_list[0] == 'P':
-        dot_a = param_list[2].lstrip('[').rstrip(']').split(' ')
-        dot_b = param_list[3].lstrip('[').rstrip(']').split(' ')
-        param_list[2] = [int(dot_a[0]), int(dot_a[1])]
-        param_list[3] = [int(dot_b[0]), int(dot_b[1])]
-        pin_list.append(param_list[1:])
-    elif param_list[0] == 'N':
-        dot_a = param_list[2].lstrip('[').rstrip(']').split(' ')
-        dot_b = param_list[3].lstrip('[').rstrip(']').split(' ')
-        param_list[2] = [int(dot_a[0]), int(dot_a[1])]
-        param_list[3] = [int(dot_b[0]), int(dot_b[1])]
-        nMap.insert_metal(param_list[1:])
-    elif param_list[0] == 'V':
-        param_list[1] = [param_list[1], layer_names[layer_names.index(param_list[1])+1]]                #M1->[M1, M2]형태
-        dot = param_list[2].lstrip('[').rstrip(']').split(' ')
-        param_list[2] = [int(dot[0]), int(dot[1])]
-        nMap.vias.append(param_list[1:])
-    else:
-        print("Error: First parameter should be one of M, P, N or V")
-#unmerged->merge
-nMap.merge()
-
-for via in nMap.vias:
-    nMap.insert_via(via)
-for pin in pin_list:
-    nMap.insert_pin(pin)            #결과적으로, 레이어, 이름, 좌표 순으로 저장됨.
-#lvs test by bfs
-for pin in nMap.pins:
-    print("netname: %s, layer: %s, pin_node.xy:" %(pin[1], pin[0]),end=' ')
-    print(pin[2].mn)
-    nMap.net_traverse(pin[2],pin[1],pin_set)
-for layer in nMap.layers.values():
-    for mlist in layer.rc:
-        for metal in mlist.metal_list:
-            if metal.visited is not True:
-                print(metal.layer, metal.mn, metal.net_name)
+    @classmethod
+    def lvs_check(cls, dsn, grid, via_table, orient_first="vertical", layer_names=['M1','M2','M3','M4','M5']):
+        nMap = cls(grid=grid, via_table=via_table, orient_first=orient_first, layer_names=layer_names)
+        pin_list = list()
+        pin_set = set()
+        for pin in dsn.pins.values():
+            pin_list.append(pin)
+        for vinst in dsn.virtual_instances.values():
+            _pin_list, _via_list = nMap.insert_virtual_instance(vinst)
+            pin_list.extend(_pin_list)
+            nMap.vias.extend(_via_list)
+        for inst in dsn.instances.values():
+            if nMap.is_via(inst):
+                nMap.vias.append(viaNode(nMap._via_table[inst.cellname], nMap.grid.mn(inst.xy)))
+            else:
+                pin_list.extend(nMap.insert_instance_blackbox(inst))
+        for rect in dsn.rects.values():
+            _metal = nMap.insert_metal(rect)
+        #unmerged->merge
+        nMap.merge()
+        for via in nMap.vias:
+            nMap.insert_via(via)
+        for pin in pin_list:
+            nMap.insert_pin(pin)
+        #lvs test by bfs
+        for pin, pin_node in nMap.pins:
+            print("pin name: %s, netname: %s, layer: %s, xy:[[%d %d][%d %d]], pin_node.xy:"\
+                % (pin.name, pin.netname,pin.layer[0],nMap.grid.mn(pin)[0][0],nMap.grid.mn(pin)[0][1],nMap.grid.mn(pin)[1][0],nMap.grid.mn(pin)[1][1]),end='')
+            print(pin_node.mn)
+            nMap.net_traverse(pin_node,pin.netname,pin_set)
+        for layer in nMap.layers.values():
+            for mlist in layer.rc:
+                for metal in mlist.metal_list:
+                    if metal.visited is not True:
+                        print(metal.layer, metal.mn, metal.net_name)
