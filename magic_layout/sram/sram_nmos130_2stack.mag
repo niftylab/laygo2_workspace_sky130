@@ -1,0 +1,71 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1705151531
+<< pwell >>
+rect 0 -66 184 369
+<< nmoslvt >>
+rect 31 71 61 271
+rect 123 71 153 271
+<< ndiff >>
+rect -31 172 31 271
+rect -31 112 -17 172
+rect 17 112 31 172
+rect -31 71 31 112
+rect 61 172 123 271
+rect 61 112 75 172
+rect 109 112 123 172
+rect 61 71 123 112
+rect 153 172 215 271
+rect 153 112 167 172
+rect 201 112 215 172
+rect 153 71 215 112
+<< ndiffc >>
+rect -17 112 17 172
+rect 75 112 109 172
+rect 167 112 201 172
+<< psubdiff >>
+rect 39 -17 63 17
+rect 113 -17 143 17
+<< psubdiffcont >>
+rect 63 -17 113 17
+<< poly >>
+rect -30 352 61 362
+rect -30 318 -10 352
+rect 24 318 61 352
+rect -30 308 61 318
+rect 31 271 61 308
+rect 123 271 153 362
+rect 31 45 61 71
+rect 123 45 153 71
+<< polycont >>
+rect -10 318 24 352
+<< locali >>
+rect -26 352 40 362
+rect -26 318 -10 352
+rect 24 318 40 352
+rect -26 308 40 318
+rect -26 172 26 191
+rect -26 112 -17 172
+rect 17 112 26 172
+rect -26 66 26 112
+rect 66 172 118 191
+rect 66 112 75 172
+rect 109 112 118 172
+rect 66 66 118 112
+rect 158 172 210 191
+rect 158 112 167 172
+rect 201 112 210 172
+rect 158 66 210 112
+rect -26 17 210 27
+rect -26 -17 63 17
+rect 113 -17 210 17
+rect -26 -27 210 -17
+<< metal1 >>
+rect -26 -27 210 27
+<< labels >>
+flabel locali -26 308 26 362 0 FreeSans 136 0 0 0 G0
+flabel locali 66 66 118 100 0 FreeSans 160 0 0 0 S0
+flabel locali 158 66 210 100 0 FreeSans 160 0 0 0 D1
+flabel locali -26 66 26 100 0 FreeSans 160 0 0 0 D0
+<< end >>

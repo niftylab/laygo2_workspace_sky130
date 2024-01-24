@@ -1,0 +1,11 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1704363589
+<< error_p >>
+rect 92 -66 168 369
+<< nwell >>
+rect 0 -66 92 369
+<< properties >>
+string FIXED_BBOX 0 0 92 414
+<< end >>

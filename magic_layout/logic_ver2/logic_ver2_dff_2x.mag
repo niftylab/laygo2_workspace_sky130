@@ -1,0 +1,167 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1704394732
+<< checkpaint >>
+rect -1294 -1344 5384 2156
+<< metal1 >>
+rect 60 332 124 498
+rect 152 140 216 275
+rect 428 140 492 358
+rect 888 332 952 498
+rect 520 57 584 275
+rect 1164 57 1228 358
+rect 1348 140 1412 358
+rect 1624 140 1688 358
+rect 1716 57 1780 275
+rect 1808 57 1872 358
+rect 2084 223 2148 358
+rect 2176 223 2240 358
+rect 2820 140 2884 358
+rect 3004 57 3068 358
+rect 3280 57 3344 358
+rect 3372 57 3436 275
+rect 3464 140 3528 358
+rect 3740 223 3804 358
+rect 3832 223 3896 581
+<< metal2 >>
+rect -34 804 4082 856
+rect 1538 306 2602 358
+rect 3194 306 3890 358
+rect 1262 223 2142 275
+rect 2918 223 3798 275
+rect 158 140 3522 192
+rect 526 57 3338 109
+rect -34 -26 4082 26
+use logic_ver2_inv_2x  inv0 magic_layout/logic_ver2
+timestamp 1704394705
+transform 1 0 0 0 1 0
+box -34 -84 444 896
+use logic_ver2_inv_2x  inv1
+timestamp 1704394705
+transform 1 0 368 0 1 0
+box -34 -84 444 896
+use logic_ver2_inv_2x  inv2
+timestamp 1704394705
+transform 1 0 2024 0 1 0
+box -34 -84 444 896
+use logic_ver2_inv_2x  inv3
+timestamp 1704394705
+transform 1 0 3680 0 1 0
+box -34 -84 444 896
+use via_M3_M4_0  NoName_1 /WORK/hjpark/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+timestamp 1704387757
+transform 1 0 552 0 1 83
+box -32 -26 32 26
+use via_M3_M4_0  NoName_3
+timestamp 1704387757
+transform 1 0 1196 0 1 83
+box -32 -26 32 26
+use via_M3_M4_0  NoName_5
+timestamp 1704387757
+transform 1 0 3036 0 1 83
+box -32 -26 32 26
+use via_M3_M4_0  NoName_7
+timestamp 1704387757
+transform 1 0 1840 0 1 83
+box -32 -26 32 26
+use via_M3_M4_0  NoName_9
+timestamp 1704387757
+transform 1 0 3312 0 1 83
+box -32 -26 32 26
+use via_M3_M4_0  NoName_12
+timestamp 1704387757
+transform 1 0 184 0 1 166
+box -32 -26 32 26
+use via_M3_M4_0  NoName_14
+timestamp 1704387757
+transform 1 0 460 0 1 166
+box -32 -26 32 26
+use via_M3_M4_0  NoName_16
+timestamp 1704387757
+transform 1 0 1380 0 1 166
+box -32 -26 32 26
+use via_M3_M4_0  NoName_18
+timestamp 1704387757
+transform 1 0 2852 0 1 166
+box -32 -26 32 26
+use via_M3_M4_0  NoName_20
+timestamp 1704387757
+transform 1 0 1656 0 1 166
+box -32 -26 32 26
+use via_M3_M4_0  NoName_22
+timestamp 1704387757
+transform 1 0 3496 0 1 166
+box -32 -26 32 26
+use via_M3_M4_0  NoName_25
+timestamp 1704387757
+transform 1 0 2116 0 1 249
+box -32 -26 32 26
+use via_M3_M4_0  NoName_26
+timestamp 1704387757
+transform 1 0 1288 0 1 249
+box -32 -26 32 26
+use via_M3_M4_0  NoName_28
+timestamp 1704387757
+transform 1 0 1748 0 1 249
+box -32 -26 32 26
+use via_M3_M4_0  NoName_31
+timestamp 1704387757
+transform 1 0 3772 0 1 249
+box -32 -26 32 26
+use via_M3_M4_0  NoName_32
+timestamp 1704387757
+transform 1 0 2944 0 1 249
+box -32 -26 32 26
+use via_M3_M4_0  NoName_34
+timestamp 1704387757
+transform 1 0 3404 0 1 249
+box -32 -26 32 26
+use via_M3_M4_0  NoName_37
+timestamp 1704387757
+transform 1 0 2208 0 1 332
+box -32 -26 32 26
+use via_M3_M4_0  NoName_38
+timestamp 1704387757
+transform 1 0 2576 0 1 332
+box -32 -26 32 26
+use via_M3_M4_0  NoName_39
+timestamp 1704387757
+transform 1 0 1564 0 1 332
+box -32 -26 32 26
+use via_M3_M4_0  NoName_42
+timestamp 1704387757
+transform 1 0 3864 0 1 332
+box -32 -26 32 26
+use via_M3_M4_0  NoName_43
+timestamp 1704387757
+transform 1 0 3220 0 1 332
+box -32 -26 32 26
+use logic_ver2_tinv_2x  tinv0 magic_layout/logic_ver2
+timestamp 1704394724
+transform 1 0 736 0 1 0
+box -34 -84 812 896
+use logic_ver2_tinv_2x  tinv1
+timestamp 1704394724
+transform 1 0 2392 0 1 0
+box -34 -84 812 896
+use logic_ver2_tinv_small_1x  tinv_small0 magic_layout/logic_ver2
+timestamp 1704394368
+transform 1 0 1472 0 1 0
+box -34 -84 628 896
+use logic_ver2_tinv_small_1x  tinv_small1
+timestamp 1704394368
+transform 1 0 3128 0 1 0
+box -34 -84 628 896
+<< labels >>
+flabel metal1 92 415 92 415 0 FreeSans 512 90 0 0 CLK
+port 1 nsew
+flabel metal1 920 415 920 415 0 FreeSans 512 90 0 0 I
+port 2 nsew
+flabel metal1 3864 415 3864 415 0 FreeSans 512 90 0 0 O
+port 3 nsew
+flabel metal2 2024 830 2024 830 0 FreeSans 416 0 0 0 VDD
+port 4 nsew
+flabel metal2 2024 0 2024 0 0 FreeSans 416 0 0 0 VSS
+port 5 nsew
+<< end >>

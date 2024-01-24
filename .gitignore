@@ -191,6 +191,7 @@ parsetab.py
 .magicrc_personal
 
 # magic/netgen extraction file
+magic_layout/skywater130_microtemplates_dense_bak/
 magic_layout/logic_advanced/
 magic_layout/logic_generated/
 magic_layout/scan_generated/

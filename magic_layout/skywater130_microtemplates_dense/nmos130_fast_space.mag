@@ -1,0 +1,8 @@
+magic
+tech sky130A
+timestamp 1704363523
+<< pwell >>
+rect 0 -42 46 140
+<< properties >>
+string FIXED_BBOX 0 0 46 207
+<< end >>

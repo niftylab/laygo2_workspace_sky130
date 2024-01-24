@@ -1,88 +1,97 @@
 grids:
   skywater130_microtemplates_dense:
+  # scale = 0.5
     placement_basic:
       horizontal:
         elements:
         - 0
         scope:
         - 0
-        - 24 #15
+        - 83
       type: placement
       vertical:
         elements:
         - 0
         scope:
         - 0
-        - 72
+        - 46
     routing_12_cmos:
       horizontal:
         elements:
         - 0
-        - 144
-        - 216
-        - 360
-        - 504
-        - 648
-        - 792
-        - 864
+        - 83 # 314
+        - 249 # 112
+        - 332 # 190
+        - 415 # 168
+        - 498 # 168
+        - 581 # 190
+        - 747
         extension:
-        - 20
-        - 10
-        - 10
-        - 10
-        - 10
-        - 10
-        - 10
-        - 10
+        # TODO: fix this param 
+        - 34
+        - 17
+        - 17
+        - 17
+        - 17
+        - 17
+        - 17
+        - 17
         extension0:
         #  TODO
-        - 0
+        - 34
+        - 34
+        - 34
+        - 34
+        - 34
+        - 34
+        - 34
+        - 34
         layer:
-        - - M2
+        - - metal1 #metal2
           - drawing
-        - - M2
+        - - locali
           - drawing
-        - - M2
+        - - locali
           - drawing
-        - - M2
+        - - locali
           - drawing
-        - - M2
+        - - locali
           - drawing
-        - - M2
+        - - locali
           - drawing
-        - - M2
+        - - locali
           - drawing
-        - - M2
+        - - locali
           - drawing
         pin_layer:
-        - - M2
+        - - metal1 #metal2
           - pin
-        - - M2
+        - - locali
           - pin
-        - - M2
+        - - locali
           - pin
-        - - M2
+        - - locali
           - pin
-        - - M2
+        - - locali
           - pin
-        - - M2
+        - - locali
           - pin
-        - - M2
+        - - locali
           - pin
-        - - M2
+        - - locali
           - pin
         scope:
         - 0
-        - 1008
+        - 830
         width:
-        - 60
-        - 30
-        - 30
-        - 30
-        - 30
-        - 30
-        - 30
-        - 30
+        - 52
+        - 34
+        - 34
+        - 34
+        - 34
+        - 34
+        - 34
+        - 34
         ycolor:
         - not MPT
         - not MPT
@@ -98,25 +107,25 @@ grids:
         elements:
         - 0
         extension:
-        - 10
+        - 17
         extension0:
-        - 72
+        - 34
         layer:
-        - - M1
+        - - locali
           - drawing
         pin_layer:
-        - - M1
+        - - locali
           - pin
         scope:
         - 0
-        - 72 #43
+        - 92 #43
         width:
-        - 30
+        - 52
         xcolor:
         - not MPT
       via:
         map:
-        - - via_M1_M2_1
+        - - via_M1_M2_1 #via_M2_M3_M4
           - via_M1_M2_0
           - via_M1_M2_0
           - via_M1_M2_0
@@ -129,20 +138,22 @@ grids:
         elements:
         - 0
         extension:
-        - 15
+        # TODO: fix this param 
+        - 17
         extension0:
-        - 15
+        #  TODO
+        - 34
         layer:
-        - - M2
+        - - locali
           - drawing
         pin_layer:
-        - - M2
+        - - locali
           - pin
         scope:
         - 0
-        - 72
+        - 83
         width:
-        - 30
+        - 34
         ycolor:
         - not MPT
       primary_grid: horizontal
@@ -151,20 +162,20 @@ grids:
         elements:
         - 0
         extension:
-        - 15
+        - 26
         extension0:
-        - 30
+        - 78
         layer:
-        - - M3
+        - - metal1
           - drawing
         pin_layer:
-        - - M3
+        - - metal1
           - pin
         scope:
         - 0
-        - 72
+        - 92 #43
         width:
-        - 30
+        - 64
         xcolor:
         - not MPT
       via:
@@ -174,71 +185,72 @@ grids:
       horizontal:
         elements:
         - 0
-        - 144 #216
-        - 216 #288
-        - 360
-        - 504
-        - 648
-        - 792
-        - 864
+        - 83 # 314
+        - 249 # 112
+        - 332 # 190
+        - 415 # 168
+        - 498 # 168
+        - 581 # 190
+        - 747
         extension:
-        - 20
-        - 10
-        - 10
-        - 10
-        - 10
-        - 10
-        - 10
-        - 10
+        # TODO: fix this param 
+        - 34
+        - 17
+        - 17
+        - 17
+        - 17
+        - 17
+        - 17
+        - 17
         extension0:
         #  TODO
-        - 0
+        - 60
         layer:
-        - - M2
+        - - metal1 #metal2
           - drawing
-        - - M2
+        - - locali
           - drawing
-        - - M2
+        - - locali
           - drawing
-        - - M2
+        - - locali
           - drawing
-        - - M2
+        - - locali
           - drawing
-        - - M2
+        - - locali
           - drawing
-        - - M2
+        - - locali
           - drawing
-        - - M2
+        - - locali
           - drawing
         pin_layer:
-        - - M2
+        - - metal1 #metal2
           - pin
-        - - M2
+        - - locali
           - pin
-        - - M2
+        - - locali
           - pin
-        - - M2
+        - - locali
           - pin
-        - - M2
+        - - locali
           - pin
-        - - M2
+        - - locali
           - pin
-        - - M2
+        - - locali
           - pin
-        - - M2
+        - - locali
           - pin
         scope:
         - 0
-        - 1008
+        - 830
         width:
-        - 30
-        - 30
-        - 30
-        - 30
-        - 30
-        - 30
-        - 30
-        - 30
+        - 52
+        - 34
+        - 34
+        - 34
+        - 34
+        - 34
+        - 34
+        - 34
         ycolor:
         - not MPT
         - not MPT
@@ -254,26 +266,25 @@ grids:
         elements:
         - 0
         extension:
-        - 15
+        - 26
         extension0:
-        #  TODO
-        - 72
+        - 78
         layer:
-        - - M3
+        - - metal1
           - drawing
         pin_layer:
-        - - M3
+        - - metal1
           - pin
         scope:
         - 0
-        - 72 #43
+        - 92 #43
         width:
-        - 30
+        - 64
         xcolor:
         - not MPT
       via:
         map:
-        - - via_M2_M3_1 
+        - - via_M2_M3_1 #via_M2_M3_M4 
           - via_M2_M3_0 
           - via_M2_M3_0
           - via_M2_M3_0
@@ -281,25 +292,144 @@ grids:
           - via_M2_M3_0
           - via_M2_M3_0
           - via_M2_M3_0
+    routing_23_cmos_thick:
+    # TODO: setup this grid for power mesh (currently identical to ordinary cmos)
+      horizontal:
+        elements:
+        - 0
+        - 83 # 314
+        - 249 # 112
+        - 332 # 190
+        - 415 # 168
+        - 498 # 168
+        - 581 # 190
+        - 747
+        extension:
+        # TODO: fix this param 
+        - 34
+        - 17
+        - 17
+        - 17
+        - 17
+        - 17
+        - 17
+        - 17
+        extension0:
+        #  TODO
+        - 34
+        - 34
+        - 34
+        - 34
+        - 34
+        - 34
+        - 34
+        - 34
+        layer:
+        - - metal1 #metal2
+          - drawing
+        - - locali
+          - drawing
+        - - locali
+          - drawing
+        - - locali
+          - drawing
+        - - locali
+          - drawing
+        - - locali
+          - drawing
+        - - locali
+          - drawing
+        - - locali
+          - drawing
+        pin_layer:
+        - - metal1 #metal2
+          - pin
+        - - locali
+          - pin
+        - - locali
+          - pin
+        - - locali
+          - pin
+        - - locali
+          - pin
+        - - locali
+          - pin
+        - - locali
+          - pin
+        - - locali
+          - pin
+        scope:
+        - 0
+        - 830
+        width:
+        - 52
+        - 34
+        - 34
+        - 34
+        - 34
+        - 34
+        - 34
+        - 34
+        ycolor:
+        - not MPT
+        - not MPT
+        - not MPT
+        - not MPT
+        - not MPT
+        - not MPT
+        - not MPT
+        - not MPT
+      primary_grid: horizontal
+      type: routing
+      vertical:
+        elements:
+        - 0
+        extension:
+        - 17
+        extension0:
+        - 34
+        layer:
+        - - metal1
+          - drawing
+        pin_layer:
+        - - metal1
+          - pin
+        scope:
+        - 0
+        - 92 #43
+        width:
+        - 64
+        xcolor:
+        - not MPT
+      via:
+        map:
+        - - via_M2_M3_3 
+          - via_M2_M3_2 
+          - via_M2_M3_2
+          - via_M2_M3_2
+          - via_M2_M3_2
+          - via_M2_M3_2
+          - via_M2_M3_2
+          - via_M2_M3_2
     routing_34_basic:
       horizontal:
         elements:
         - 0
         extension:
-        - 15
+        - 26
         extension0:
-        - 15
+        - 32
         layer:
-        - - M4
+        - - metal2
           - drawing
         pin_layer:
-        - - M4
+        - - metal2
           - pin
         scope:
         - 0
-        - 72 #45
+        - 83
         width:
-        - 30
+        - 52
         ycolor:
         - not MPT
       primary_grid: horizontal
@@ -308,312 +438,514 @@ grids:
         elements:
         - 0
         extension:
-        - 15
+        - 26
         extension0:
-      # - 140
-        - 30
+        - 26
         layer:
-        - - M3
+        - - metal1
           - drawing
         pin_layer:
-        - - M3
+        - - metal1
           - pin
         scope:
         - 0
-      #  - 43
-        - 72
+        - 92 #43
         width:
-        - 30
+        - 64
         xcolor:
         - not MPT
       via:
         map:
         - - via_M3_M4_0
+    routing_45_basic:
+    # TODO: determine the position of this grid
+      horizontal:
+        elements:
+        - 0
+        extension:
+        - 26
+        extension0:
+        - 32
+        layer:
+        - - metal2
+          - drawing
+        pin_layer:
+        - - metal2
+          - pin
+        scope:
+        - 0
+        - 83
+        width:
+        - 52
+        ycolor:
+        - not MPT
+      primary_grid: horizontal
+      type: routing
+      vertical:
+        elements:
+        - 0
+        extension:
+        - 29
+        extension0:
+        - 34
+        layer:
+        - - metal5
+          - drawing
+        pin_layer:
+        - - metal5
+          - pin
+        scope:
+        - 0
+        - 180 #43
+        width:
+        - 88
+        xcolor:
+        - not MPT
+      via:
+        map:
+        - - via_M4_M5_0
 templates:
   skywater130_microtemplates_dense:
-    nmos13_fast_boundary:
+    nmos130_fast_boundary:
       pins: {}
       unit_size:
-      - 72 #43
-      - 504
+      - 92 #43
+      - 415
       xy:
       - - 0
         - 0
-      - - 72 #- 43
-        - 504
-    nmos13_fast_space:
+      - - 92 #- 43
+        - 415
+    nmos130_fast_space:
       pins: {}
       unit_size:
-    #  - 43
-      - 72
-      - 504
+      - 92 #43
+      - 415
       xy:
       - - 0
         - 0
-      - - 72 #- 43
-        - 504
-    nmos13_fast_space_1x:
+      - - 92 #- 43
+        - 415
+    nmos130_fast_space_1x:
       pins: {}
       unit_size:
-    #  - 43
-      - 72
-      - 504
+      - 92 #43
+      - 415
       xy:
       - - 0
         - 0
-      - - 72 #- 43
-        - 504
-    nmos13_fast_space_2x:
+      - - 92 #- 43
+        - 415
+    nmos130_fast_space_2x:
       pins: {}
       unit_size:
-    #  - 86
-      - 144
-      - 504
+      - 184 #43
+      - 415
       xy:
       - - 0
         - 0
-      - - 144 #- 86
-        - 504
-    pmos13_fast_boundary:
+      - - 184 #- 43
+        - 415
+    pmos130_fast_boundary:
       pins: {}
       unit_size:
-      - 72 #- 43
-      - 504
+      - 92 #43
+      - 415
       xy:
       - - 0
         - 0
-      - - 72 #- 43
-        - 504
-    pmos13_fast_space:
+      - - 92 #- 43
+        - 415
+    pmos130_fast_space:
       pins: {}
       unit_size:
-      - 72 #- 43
-      - 504
+      - 92 #43
+      - 415
       xy:
       - - 0
         - 0
-      - - 72 #- 43
-        - 504
-    pmos13_fast_space_1x:
+      - - 92 #- 43
+        - 415
+    pmos130_fast_space_1x:
       pins: {}
       unit_size:
-      - 72 #- 43
-      - 504
+      - 92 #43
+      - 415
       xy:
       - - 0
         - 0
-      - - 72 #- 43
-        - 504
-    pmos13_fast_space_2x:
+      - - 92 #- 43
+        - 415
+    pmos130_fast_space_2x:
       pins: {}
       unit_size:
-      - 144 #- 86
-      - 504
+      - 184 #43
+      - 415
       xy:
       - - 0
         - 0
-      - - 144 #- 86
-        - 504
-    nmos13_fast_center_nf2:
+      - - 184 #- 43
+        - 415
+    nmos130_fast_center_nf2:
       pins:
         D0:
           layer:
-          - M2
+          - locali
           - pin
           netname: D0
           xy:
-          - - 57 #30
-            - 144 #216 #173
-          - - 87 #56
-            - 307 #288 #204 #207
+          - - 66 
+            - 235 
+          - - 118
+            - 269 
         G0:
           layer:
-          - M1
+          - locali
           - pin
           netname: G0
           xy:
-          - - 62 #11
-            - 345 #225
-          - - 82 #75
-            - 375 #253
+          - - 55
+            - 318
+          - - 130
+            - 352 
         S0:
           layer:
-          - M1
+          - locali
           - pin
           netname: S0
           xy:
-          - - -15 #-11
-            - 144
-          - - 15 #11
-            - 307 #207
+          - - -24 
+            - 66 
+          - - 24
+            - 100 
         S1:
           layer:
-          - M1
+          - locali
           - pin
           netname: S1
           xy:
-          - - 129 #75
-            - 144
-          - - 159 #97
-            - 307 #207
+          - - 160 
+            - 66
+          - - 208 
+            - 100 
       unit_size:
-      - 144 #86
-      - 504
+      - 184 #43
+      - 415
       xy:
       - - 0
         - 0
-      - - 144 #86
-        - 504
-    pmos13_fast_center_nf2:
+      - - 184 #- 43
+        - 415
+    pmos130_fast_center_nf2:
       pins:
         D0:
           layer:
-          - M2
+          - locali
           - pin
           netname: D0
           xy:
-          - - 57 #61 #31
-            - 144 #216 #132
-          - - 87 #83 #56
-            - 297 #288 #196
+          - - 66 
+            - 232 
+          - - 118
+            - 266 
         G0:
           layer:
-          - M1
+          - locali
           - pin
           netname: G0
           xy:
-          - - 62 #11
-            - 345 #224 #225
-          - - 82 #76
-            - 375 #260 #253
+          - - 58
+            - 308
+          - - 126
+            - 362 
         S0:
           layer:
-          - M1
+          - locali
           - pin
           netname: S0
           xy:
-          - - -15 #-11.5 #-11
-            - 144 #60
-          - - 15 #11.5 #12
-            - 297 #198
+          - - -26
+            - 66
+          - - 26
+            - 100 
         S1:
           layer:
-          - M1
+          - locali
           - pin
           netname: S1
           xy:
-          - - 129 #132.5 #75
-            - 144 #60
-          - - 159 #155.5 #98
-            - 297 #198
+          - - 158 
+            - 66
+          - - 210 
+            - 100 
       unit_size:
-      - 144 #86
-      - 504
+      - 184 #43
+      - 415
       xy:
       - - 0
         - 0
-      - - 144 #86
-        - 504
-    nmos13_fast_center_2stack:
+      - - 184 #- 43
+        - 415
+    nmos130_fast_center_nf1_left:
       pins:
-        D0:
-          layer:
-          - M1
-          - pin
-          netname: D0
-          xy:
-          - - 129 #132.5
-            - 144 #216 #166.5
-          - - 159 #155.5
-            - 307 #288 #189.5
         G0:
           layer:
-          - M1
+          - locali
           - pin
           netname: G0
           xy:
-          - - -16
-            - 344 #224
-          - - 16
-            - 376 #260
-        G1:
-          layer:
-          - M1
-          - pin
-          netname: G1
-          xy:
-          - - 128
-            - 344 #224
-          - - 160
-            - 376 #260
+          - - -44
+            - 560 #224
+          - - 44
+            - 670 #260
         S0:
           layer:
-          - M1
+          - locali
           - pin
           netname: S0
           xy:
-          - - -15 #-11.5
-            - 144 #216 #166.5
-          - - 15 #11.5
-            - 307 #288 #189.5
-      unit_size:
-      - 144
-      - 504
-      xy:
-      - - 0
-        - 0
-      - - 144
-        - 504
-    pmos13_fast_center_2stack:
-      pins:
+          - - -44
+            - 280
+          - - 44
+            - 470
         D0:
           layer:
-          - M1
+          - locali
           - pin
           netname: D0
           xy:
-          - - 129 #132.5
-            - 144 #216 #166.5
-          - - 159 #155.5
-            - 307 #288 #189.5
-        G0:
-          layer:
-          - M1
-          - pin
-          netname: G0
-          xy:
-          - - -16
-            - 344 #224
-          - - 16
-            - 376 #260
-        G1:
-          layer:
-          - M1
-          - pin
-          netname: G1
-          xy:
-          - - 128
-            - 344 #224
-          - - 160
-            - 376 #260
-        S0:
-          layer:
-          - M1
-          - pin
-          netname: S0
-          xy:
-          - - -15 #-11.5
-            - 144 #216 #166.5
-          - - 15 #11.5
-            - 307 #288 #189.5
+          - - 136 
+            - 280 
+          - - 224
+            - 470
       unit_size:
-      - 144
-      - 504
+      - 180 #86
+      - 784
       xy:
       - - 0
         - 0
-      - - 144
-        - 504
+      - - 180 #86
+        - 784           
+    nmos130_fast_center_nf1_right:
+      pins:
+        G0:
+          layer:
+          - locali
+          - pin
+          netname: G0
+          xy:
+          - - 316
+            - 560 #224
+          - - 404
+            - 670 #260
+        S0:
+          layer:
+          - locali
+          - pin
+          netname: S0
+          xy:
+          - - -44
+            - 280
+          - - 44
+            - 470
+        D0:
+          layer:
+          - locali
+          - pin
+          netname: D0
+          xy:
+          - - 136 
+            - 280 
+          - - 224
+            - 470 
+      unit_size:
+      - 180 #86
+      - 784
+      xy:
+      - - 0
+        - 0
+      - - 180 #86
+        - 784
+    pmos130_fast_center_nf1_left:
+      pins:
+        G0:
+          layer:
+          - locali
+          - pin
+          netname: G0
+          xy:
+          - - -44
+            - 560 #224
+          - - 44
+            - 670 #260
+        S0:
+          layer:
+          - locali
+          - pin
+          netname: S0
+          xy:
+          - - -44
+            - 280
+          - - 44
+            - 470 
+        D0:
+          layer:
+          - locali
+          - pin
+          netname: D0
+          xy:
+          - - 136 
+            - 280 
+          - - 224
+            - 470 
+      unit_size:
+      - 180 #86
+      - 784
+      xy:
+      - - 0
+        - 0
+      - - 180 #86
+        - 784           
+    pmos130_fast_center_nf1_right:
+      pins:
+        G0:
+          layer:
+          - locali
+          - pin
+          netname: G0
+          xy:
+          - - 316
+            - 560 #224
+          - - 404
+            - 670 #260
+        S0:
+          layer:
+          - locali
+          - pin
+          netname: S0
+          xy:
+          - - -44
+            - 280
+          - - 44
+            - 470
+        D0:
+          layer:
+          - locali
+          - pin
+          netname: D0
+          xy:
+          - - 136 
+            - 280 
+          - - 224
+            - 470 
+      unit_size:
+      - 180 #86
+      - 784
+      xy:
+      - - 0
+        - 0
+      - - 180 #86
+        - 784                  
+    nmos130_fast_center_2stack:
+      pins:
+        D0:
+          layer:
+          - locali
+          - pin
+          netname: D0
+          xy:
+          - - 158 
+            - 66
+          - - 210 
+            - 100 
+        G0:
+          layer:
+          - locali
+          - pin
+          netname: G0
+          xy:
+          - - -24
+            - 318 #224
+          - - 24
+            - 352 #260
+        G1:
+          layer:
+          - locali
+          - pin
+          netname: G1
+          xy:
+          - - 160
+            - 318 #224
+          - - 208
+            - 352 #260
+        S0:
+          layer:
+          - locali
+          - pin
+          netname: S0
+          xy:
+          - - -26
+            - 66
+          - - 26
+            - 100 
+      unit_size:
+      - 184 #43
+      - 415
+      xy:
+      - - 0
+        - 0
+      - - 184 #- 43
+        - 415
+    pmos130_fast_center_2stack:
+      pins:
+        D0:
+          layer:
+          - locali
+          - pin
+          netname: D0
+          xy:
+          - - 158 
+            - 66
+          - - 210 
+            - 100 
+        G0:
+          layer:
+          - locali
+          - pin
+          netname: G0
+          xy:
+          - - -26
+            - 308 #224
+          - - 26
+            - 362 #260
+        G1:
+          layer:
+          - locali
+          - pin
+          netname: G1
+          xy:
+          - - 158
+            - 308 #224
+          - - 210
+            - 362 #260
+        S0:
+          layer:
+          - locali
+          - pin
+          netname: S0
+          xy:
+          - - -26
+            - 66
+          - - 26
+            - 100 
+      unit_size:
+      - 184 #43
+      - 415
+      xy:
+      - - 0
+        - 0
+      - - 184 #- 43
+        - 415
     via_M1_M2_0:
       unit_size:
       - 0
@@ -650,6 +982,33 @@ templates:
         - 0
       - - 0
         - 0
+    via_M2_M3_2:
+      unit_size:
+      - 0
+      - 0
+      xy:
+      - - 0
+        - 0
+      - - 0
+        - 0
+    via_M2_M3_3:
+      unit_size:
+      - 0
+      - 0
+      xy:
+      - - 0
+        - 0
+      - - 0
+        - 0
+    via_M2_M3_M4:
+      unit_size:
+      - 0
+      - 0
+      xy:
+      - - 0
+        - 0
+      - - 0
+        - 0
     via_M3_M4_0:
       unit_size:
       - 0
@@ -659,58 +1018,67 @@ templates:
         - 0
       - - 0
         - 0
-  #TODO make dmy layout for skywater
-    nmos13_fast_dmy_nf2:
-      pins:
-        D0:
-          layer:
-          - M1
-          - pin
-          netname: D0
-          xy:
-          - - 30
-            - 173
-          - - 56
-            - 207
-        G0:
-          layer:
-          - M1
-          - pin
-          netname: G0
-          xy:
-          - - 11
-            - 225
-          - - 75
-            - 253
-        S0:
-          layer:
-          - M1
-          - pin
-          netname: S0
-          xy:
-          - - -11
-            - 103
-          - - 11
-            - 207
-        S1:
-          layer:
-          - M1
-          - pin
-          netname: S1
-          xy:
-          - - 75
-            - 103
-          - - 97
-            - 207
+    via_M4_M5_0:
       unit_size:
-      - 86
-      - 504
+      - 0
+      - 0
       xy:
       - - 0
         - 0
-      - - 86
-        - 504
-    nmos13_fast_left:
+      - - 0
+        - 0
+  #TODO make dmy layout for gf180
+    nmos130_fast_dmy_nf2:
+      pins:
+        D0:
+          layer:
+          - locali
+          - pin
+          netname: D0
+          xy:
+          - - 66 
+            - 232 
+          - - 118
+            - 266 
+        G0:
+          layer:
+          - locali
+          - pin
+          netname: G0
+          xy:
+          - - 58
+            - 308
+          - - 126
+            - 362 
+        S0:
+          layer:
+          - locali
+          - pin
+          netname: S0
+          xy:
+          - - -26
+            - 66
+          - - 26
+            - 100 
+        S1:
+          layer:
+          - locali
+          - pin
+          netname: S1
+          xy:
+          - - 158 
+            - 66
+          - - 210 
+            - 100 
+      unit_size:
+      - 184 #43
+      - 415
+      xy:
+      - - 0
+        - 0
+      - - 184 #- 43
+        - 415
+    nmos130_fast_left:
       pins: {}
       unit_size:
       - 0
@@ -720,7 +1088,7 @@ templates:
         - 0
       - - 0
         - 0
-    nmos13_fast_right:
+    nmos130_fast_right:
       pins: {}
       unit_size:
       - 0
@@ -730,56 +1098,56 @@ templates:
         - 0
       - - 0
         - 0
-    pmos13_fast_dmy_nf2:
+    pmos130_fast_dmy_nf2:
       pins:
         D0:
           layer:
-          - M1
+          - locali
           - pin
           netname: D0
           xy:
-          - - 0
-            - 0
-          - - 0
-            - 0
+          - - 66 
+            - 232 
+          - - 118
+            - 266 
         G0:
           layer:
-          - M1
+          - locali
           - pin
           netname: G0
           xy:
-          - - 0
-            - 0
-          - - 0
-            - 0
+          - - 58
+            - 308
+          - - 126
+            - 362 
         S0:
           layer:
-          - M1
+          - locali
           - pin
           netname: S0
           xy:
-          - - 0
-            - 0
-          - - 0
-            - 0
+          - - -26
+            - 66
+          - - 26
+            - 100 
         S1:
           layer:
-          - M1
+          - locali
           - pin
           netname: S1
           xy:
-          - - 0
-            - 0
-          - - 0
-            - 0
+          - - 158 
+            - 66
+          - - 210 
+            - 100 
       unit_size:
-      - 0
-      - 0
+      - 184 #43
+      - 415
       xy:
       - - 0
         - 0
-      - - 0
-        - 0
+      - - 184 #- 43
+        - 415
     pmos13_fast_left:
       pins: {}
       unit_size:
@@ -800,12 +1168,21 @@ templates:
         - 0
       - - 0
         - 0
+    via_M2_M3_M4:
+      unit_size:
+      - 0
+      - 0
+      xy:
+      - - 0
+        - 0
+      - - 0
+        - 0
   #TODO set size of tap to 144 like mos_center
     ntap_fast_center_nf2_v2:
       pins:
         TAP0:
           layer:
-          - M1
+          - locali
           - pin
           netname: TAP0
           xy:
@@ -815,7 +1192,7 @@ templates:
             - 288 #220
         TAP1:
           layer:
-          - M1
+          - locali
           - pin
           netname: TAP1
           xy:
@@ -825,7 +1202,7 @@ templates:
             - 288 #220
         TAP2:
           layer:
-          - M1
+          - locali
           - pin
           netname: TAP2
           xy:
@@ -845,7 +1222,7 @@ templates:
       pins:
         TAP0:
           layer:
-          - M1
+          - locali
           - pin
           netname: TAP0
           xy:
@@ -855,7 +1232,7 @@ templates:
             - 252 #206
         TAP1:
           layer:
-          - M1
+          - locali
           - pin
           netname: TAP1
           xy:
@@ -865,7 +1242,7 @@ templates:
             - 252 #206
         TAP2:
           layer:
-          - M1
+          - locali
           - pin
           netname: TAP2
           xy:

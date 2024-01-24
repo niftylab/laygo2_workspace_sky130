@@ -326,9 +326,9 @@ C {ipin.sym} 380 -550 0 0 {name=p71 lab=WE[3]}
 C {ipin.sym} 280 -480 0 0 {name=p72 lab=CLK}
 C {sky130_fd_pr/pfet_01v8.sym} -30 -20 2 0 {name=M1
 L=0.15
-W=2.4
-nf=1
-mult=2
+W=2*2.4
+nf=2
+mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -340,9 +340,9 @@ spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8_lvt.sym} -230 -20 0 0 {name=M2
 L=0.15
-W=1.2
-nf=1
-mult=2
+W=2*1.2
+nf=2
+mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 

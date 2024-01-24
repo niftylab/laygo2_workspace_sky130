@@ -1,16 +1,12 @@
 magic
 tech sky130A
-timestamp 1647525606
+timestamp 1704386328
+<< locali >>
+rect -13 10 13 13
+rect -13 -13 13 -10
+<< viali >>
+rect -13 -10 13 10
 << metal1 >>
-rect -16 13 16 16
-rect -16 -13 -13 13
-rect 13 -13 16 13
-rect -16 -16 16 -13
-<< via1 >>
-rect -13 -13 13 13
-<< metal2 >>
-rect -16 13 16 16
-rect -16 -13 -13 13
-rect 13 -13 16 13
-rect -16 -16 16 -13
+rect -13 10 13 13
+rect -13 -13 13 -10
 << end >>

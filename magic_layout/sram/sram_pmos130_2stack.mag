@@ -1,0 +1,91 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1705150875
+<< error_p >>
+rect -67 228 0 264
+rect 184 228 251 264
+rect -67 128 -31 228
+rect 0 128 36 228
+rect 148 128 184 228
+rect 215 128 251 228
+rect -67 92 0 128
+rect 184 92 251 128
+rect -5 -53 0 53
+rect 31 -17 36 17
+rect 148 -17 153 17
+rect 184 -53 189 53
+<< nwell >>
+rect 0 -84 184 280
+<< pmos >>
+rect 31 128 61 228
+rect 123 128 153 228
+<< pdiff >>
+rect -31 180 31 228
+rect -31 140 -17 180
+rect 17 140 31 180
+rect -31 128 31 140
+rect 61 180 123 228
+rect 61 140 75 180
+rect 109 140 123 180
+rect 61 128 123 140
+rect 153 180 215 228
+rect 153 140 167 180
+rect 201 140 215 180
+rect 153 128 215 140
+<< pdiffc >>
+rect -17 140 17 180
+rect 75 140 109 180
+rect 167 140 201 180
+<< nsubdiff >>
+rect 31 -17 72 17
+rect 110 -17 153 17
+<< nsubdiffcont >>
+rect 72 -17 110 17
+<< poly >>
+rect -32 352 61 362
+rect -32 318 -4 352
+rect 30 318 61 352
+rect -32 308 61 318
+rect 31 228 61 308
+rect 123 352 215 362
+rect 123 318 154 352
+rect 188 318 215 352
+rect 123 308 215 318
+rect 123 228 153 308
+rect 31 100 61 128
+rect 123 100 153 128
+<< polycont >>
+rect -4 318 30 352
+rect 154 318 188 352
+<< locali >>
+rect -24 318 -4 352
+rect 30 318 46 352
+rect 138 318 154 352
+rect 188 318 208 352
+rect -24 180 24 196
+rect -24 140 -17 180
+rect 17 140 24 180
+rect -24 100 24 140
+rect 68 180 116 198
+rect 68 140 75 180
+rect 109 140 116 180
+rect 68 100 116 140
+rect 160 180 208 198
+rect 160 140 167 180
+rect 201 140 208 180
+rect 160 100 208 140
+rect -26 66 26 100
+rect 66 66 118 100
+rect 158 66 210 100
+rect -24 -17 72 17
+rect 110 -17 208 17
+<< labels >>
+flabel locali 162 318 208 352 0 FreeSans 136 0 0 0 G1
+flabel locali -24 318 22 352 0 FreeSans 136 0 0 0 G0
+flabel locali 158 66 210 100 0 FreeSans 136 0 0 0 D1
+flabel locali -26 66 26 100 0 FreeSans 136 0 0 0 D0
+flabel locali 66 66 118 100 0 FreeSans 136 0 0 0 S0
+<< properties >>
+string FIXED_BBOX 0 0 184 415
+<< end >>

@@ -1,0 +1,87 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1705159926
+<< checkpaint >>
+rect -1260 -1326 1812 2174
+<< error_s >>
+rect 336 758 385 764
+rect 336 736 351 758
+rect 336 730 385 736
+<< locali >>
+rect 167 564 394 598
+rect 158 432 210 515
+rect 342 481 394 564
+rect 158 398 385 432
+<< metal1 >>
+rect 152 57 216 773
+rect 336 57 400 773
+use sram_nmos130_boundary  nbndl /WORK/hjpark/laygo2_workspace_sky130/magic_layout/sram
+timestamp 1704363574
+transform 1 0 0 0 1 0
+box 0 -66 92 369
+use sram_nmos130_boundary  nbndr
+timestamp 1704363574
+transform 1 0 460 0 1 0
+box 0 -66 92 369
+use via_M2_M3_0  NoName_0 /WORK/hjpark/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+timestamp 1704386899
+transform 1 0 184 0 1 83
+box -32 -17 32 17
+use via_M2_M3_0  NoName_2
+timestamp 1704386899
+transform 1 0 184 0 1 747
+box -32 -17 32 17
+use via_M1_M2_0  NoName_4 /WORK/hjpark/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+timestamp 1704392934
+transform 1 0 368 0 1 581
+box -17 -17 17 17
+use via_M2_M3_0  NoName_6
+timestamp 1704386899
+transform 1 0 184 0 1 581
+box -32 -17 32 17
+use via_M2_M3_0  NoName_7
+timestamp 1704386899
+transform 1 0 368 0 1 83
+box -32 -17 32 17
+use via_M2_M3_0  NoName_9
+timestamp 1704386899
+transform 1 0 368 0 1 747
+box -32 -17 32 17
+use via_M1_M2_0  NoName_11
+timestamp 1704392934
+transform 1 0 184 0 1 415
+box -17 -17 17 17
+use via_M2_M3_0  NoName_13
+timestamp 1704386899
+transform 1 0 368 0 1 415
+box -32 -17 32 17
+use sram_pmos130_space  nspace0 /WORK/hjpark/laygo2_workspace_sky130/magic_layout/sram
+timestamp 1704363493
+transform 1 0 92 0 -1 830
+box 0 -84 92 280
+use sram_pmos130_space  nspace1
+timestamp 1704363493
+transform 1 0 368 0 -1 830
+box 0 -84 92 280
+use sram_nmos130_2stack  nstack0 /WORK/hjpark/laygo2_workspace_sky130/magic_layout/sram
+timestamp 1705151531
+transform 1 0 92 0 1 0
+box -31 -66 215 369
+use sram_nmos130_2stack  nstack1
+timestamp 1705151531
+transform -1 0 460 0 1 0
+box -31 -66 215 369
+use sram_pmos130_boundary  pbndl /WORK/hjpark/laygo2_workspace_sky130/magic_layout/sram
+timestamp 1704363493
+transform 1 0 0 0 -1 830
+box 0 -84 92 280
+use sram_pmos130_boundary  pbndr
+timestamp 1704363493
+transform 1 0 460 0 -1 830
+box 0 -84 92 280
+use sram_pmos130_2stack  pstack0 /WORK/hjpark/laygo2_workspace_sky130/magic_layout/sram
+timestamp 1705150875
+transform 1 0 184 0 -1 830
+box -67 -84 251 362
+<< end >>

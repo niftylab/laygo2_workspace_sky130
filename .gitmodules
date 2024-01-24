@@ -1,4 +1,9 @@
-[submodule "laygo2"]
-	path = laygo2
-	url = https://github.com/niftylab/laygo2.git
-	branch = master
+[submodule "laygo2_legacy"]
+	path = laygo2_legacy
+	url = https://github.com/Park-Hyung-Joo/laygo2_legacy.git
+[submodule "lef-parser"]
+	path = lef-parser
+	url = https://github.com/Park-Hyung-Joo/lef-parser.git
+[submodule "sky130_ngspice_reram"]
+	path = sky130_ngspice_reram
+	url = https://github.com/Park-Hyung-Joo/sky130_ngspice_reram.git
