@@ -31,4 +31,4 @@ from .laygo2_tech_grids import load_grids
 #from .laygo2_tech_templates import generate_pwr_rail
 from .laygo2_tech_templates import generate_pwr_rail
 #from .laygo2_tech_templates import fill_by_instance
-name = 'skywater130'
+name = 'sky130B'

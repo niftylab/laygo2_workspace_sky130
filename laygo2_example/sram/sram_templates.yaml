@@ -1,0 +1,184 @@
+sram:
+  6Tcell_1x:
+    bbox:
+    - - 0
+      - 0
+    - - 552
+      - 830
+    cellname: 6Tcell_1x
+    libname: sram
+    pins: {}
+  nmos130_2stack:
+    bbox:
+    - - 0
+      - 0
+    - - 184
+      - 415
+    pins:
+      D0:
+        layer:
+        - locali
+        - pin
+        netname: S0
+        xy:
+        - - -26
+          - 66
+        - - 26
+          - 100
+      D1:
+        layer:
+        - locali
+        - pin
+        netname: D0
+        xy:
+        - - 158
+          - 66
+        - - 210
+          - 100
+      G0:
+        layer:
+        - locali
+        - pin
+        netname: G0
+        xy:
+        - - -26
+          - 308
+        - - 26
+          - 362
+      G1:
+        layer:
+        - locali
+        - pin
+        netname: G1
+        xy:
+        - - 158
+          - 308
+        - - 210
+          - 362
+      S0:
+        layer:
+        - locali
+        - pin
+        netname: D0
+        xy:
+        - - 66
+          - 66
+        - - 118
+          - 100
+    unit_size:
+    - 184
+    - 415
+    xy:
+    - - 0
+      - 0
+    - - 184
+      - 415
+  nmos130_boundary:
+    bbox:
+    - - 0
+      - 0
+    - - 92
+      - 415
+    pins: {}
+    unit_size:
+    - 92
+    - 415
+  nmos130_space:
+    bbox:
+    - - 0
+      - 0
+    - - 92
+      - 415
+    pins: {}
+    unit_size:
+    - 92
+    - 415
+  pmos130_2stack:
+    bbox:
+    - - 0
+      - 0
+    - - 184
+      - 415
+    pins:
+      D0:
+        layer:
+        - locali
+        - pin
+        netname: D0
+        xy:
+        - - -26
+          - 66
+        - - 26
+          - 100
+      D1:
+        layer:
+        - locali
+        - pin
+        netname: D1
+        xy:
+        - - 158
+          - 66
+        - - 210
+          - 100
+      G0:
+        layer:
+        - locali
+        - pin
+        netname: G0
+        xy:
+        - - -26
+          - 308
+        - - 26
+          - 362
+      G1:
+        layer:
+        - locali
+        - pin
+        netname: G1
+        xy:
+        - - 158
+          - 308
+        - - 210
+          - 362
+      S0:
+        layer:
+        - locali
+        - pin
+        netname: S0
+        xy:
+        - - 66
+          - 66
+        - - 118
+          - 100
+    unit_size:
+    - 184
+    - 415
+  pmos130_boundary:
+    bbox:
+    - - 0
+      - 0
+    - - 92
+      - 415
+    pins: {}
+    unit_size:
+    - 92
+    - 415
+  pmos130_space:
+    bbox:
+    - - 0
+      - 0
+    - - 92
+      - 415
+    pins: {}
+    unit_size:
+    - 92
+    - 415
+  senseAmp_1x:
+    bbox:
+    - - 0
+      - 0
+    - - 1472
+      - 830
+    cellname: senseAmp_1x
+    libname: sram
+    pins: {}

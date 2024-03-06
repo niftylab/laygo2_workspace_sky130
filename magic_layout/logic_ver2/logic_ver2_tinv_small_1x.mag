@@ -1,12 +1,12 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1704394368
+timestamp 1708320397
 << checkpaint >>
-rect -1260 2116 1888 2156
-rect -1294 -799 1888 2116
-rect -1294 -1286 1846 -799
-rect -1260 -1344 1812 -1286
+rect -1260 2117 1888 2156
+rect -1294 -799 1888 2117
+rect -1294 -1289 1846 -799
+rect -1260 -1344 1812 -1289
 << locali >>
 rect 66 730 118 847
 rect 66 432 118 515
@@ -16,13 +16,12 @@ rect 66 315 118 398
 rect 259 315 385 349
 rect 66 -17 118 100
 << metal1 >>
+rect -17 804 569 856
 rect 60 306 124 524
 rect 152 306 216 524
 rect 244 57 308 773
 rect 336 306 400 524
-<< metal2 >>
-rect -34 804 586 856
-rect -34 -26 586 26
+rect -17 -26 569 26
 use nmos130_fast_boundary  nbndl /WORK/hjpark/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
 timestamp 1704363493
 transform 1 0 0 0 1 0
@@ -71,14 +70,14 @@ use via_M1_M2_0  NoName_16
 timestamp 1704392934
 transform 1 0 276 0 1 498
 box -17 -17 17 17
-use via_M2_M3_M4  NoName_20 /WORK/hjpark/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
-timestamp 1704389274
+use via_M1_M2_1  NoName_20 /WORK/hjpark/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
+timestamp 1704386328
 transform 1 0 92 0 1 0
-box -32 -26 32 26
-use via_M2_M3_M4  NoName_23
-timestamp 1704389274
+box -26 -26 26 26
+use via_M1_M2_1  NoName_23
+timestamp 1704386328
 transform 1 0 92 0 1 830
-box -32 -26 32 26
+box -26 -26 26 26
 use nmos130_fast_space  nspace0 /WORK/hjpark/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
 timestamp 1704363523
 transform 1 0 368 0 1 0
@@ -88,7 +87,7 @@ timestamp 1704363523
 transform 1 0 460 0 1 0
 box 0 -84 92 280
 use nmos130_fast_center_2stack  nstack /WORK/hjpark/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
-timestamp 1704390160
+timestamp 1705137788
 transform 1 0 92 0 1 0
 box -32 -84 215 362
 use pmos130_fast_boundary  pbndl /WORK/hjpark/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
@@ -120,8 +119,8 @@ flabel metal1 92 415 92 415 0 FreeSans 512 90 0 0 I
 port 3 nsew
 flabel metal1 276 415 276 415 0 FreeSans 512 90 0 0 O
 port 4 nsew
-flabel metal2 276 830 276 830 0 FreeSans 416 0 0 0 VDD
+flabel metal1 276 830 276 830 0 FreeSans 416 0 0 0 VDD
 port 5 nsew
-flabel metal2 276 0 276 0 0 FreeSans 416 0 0 0 VSS
+flabel metal1 276 0 276 0 0 FreeSans 416 0 0 0 VSS
 port 6 nsew
 << end >>

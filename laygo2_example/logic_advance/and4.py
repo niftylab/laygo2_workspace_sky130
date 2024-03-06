@@ -11,6 +11,7 @@ import pprint
 import laygo2
 import laygo2.interface
 import laygo2_tech as tech
+from laygo2.object.netmap import NetMap
 # Parameter definitions #############
 # Variables
 cell_type = 'and4'
@@ -27,7 +28,7 @@ r23_cmos_name = 'routing_23_cmos'
 r34_name = 'routing_34_basic'
 # Design hierarchy
 libname = 'logic_advanced'
-ref_dir_template = './laygo2_example/logic/' #export this layout's information into the yaml in this dir 
+ref_dir_template = './laygo2_example/logic_ver2/' #export this layout's information into the yaml in this dir 
 ref_dir_export = './laygo2_example/logic_advance/'
 ref_dir_MAG_exported = './laygo2_example/logic_advance/TCL/'
 ref_dir_layout = './magic_layout'
@@ -38,7 +39,7 @@ ref_dir_layout = './magic_layout'
 print("Load templates")
 templates = tech.load_templates()
 tpmos, tnmos = templates[tpmos_name], templates[tnmos_name]
-tlib = laygo2.interface.yaml.import_template(filename=ref_dir_template+'logic_generated_templates.yaml')
+tlib = laygo2.interface.yaml.import_template(filename=ref_dir_template+'logic_ver2_generated_templates.yaml')
 #print(templates[tpmos_name], templates[tnmos_name], sep="\n")
 
 print("Load grids")
@@ -98,10 +99,15 @@ pvdd0 = dsn.pin(name='VDD', grid=r12, mn=r12.mn.bbox(rvdd0))
 
 # 7. Export to physical database.
 print("Export design")
-
+grid_table = dict()
+grid_table['metal1'] = r34
+grid_table['metal2'] = r34
+via_table = dict()
+via_table["via_M3_M4_0"] = ('metal1','metal2')
+nMap = NetMap.import_from_design(dsn, grid_table, via_table, orient_first="vertical", layer_names=['metal1','metal2'], net_ignore = ['VSS','VDD'], lib_ref = "laygo2_example/prj_db/library.yaml")
 # Uncomment for BAG export
 laygo2.interface.magic.export(lib, filename=ref_dir_MAG_exported +libname+'_'+cellname+'.tcl', cellname=None, libpath=ref_dir_layout, scale=1, reset_library=False, tech_library='sky130A')
 
 # 8. Export to a template database file.
-nat_temp = dsn.export_to_template()
+nat_temp = dsn.export_to_template(obstacle_layers=['metal1','metal2','metal3'])
 laygo2.interface.yaml.export_template(nat_temp, filename=ref_dir_export+libname+'_templates.yaml', mode='append')

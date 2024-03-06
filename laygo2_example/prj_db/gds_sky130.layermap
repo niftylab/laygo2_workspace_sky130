@@ -1,0 +1,12 @@
+#technology layer information
+#layername  layerpurpose stream# datatype
+text        drawing 100 0
+prBoundary  drawing 101 0
+locali      drawing 50  0
+locali      pin     50  10
+metal1      drawing 51  0
+metal1      pin     51  10
+metal2      drawing 52  0
+metal2      pin     52  10
+metal3      drawing 53  0
+metal3      pin     53  10

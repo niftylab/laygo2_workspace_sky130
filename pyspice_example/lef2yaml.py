@@ -5,7 +5,7 @@ from parselef import lef_parser
 lef_osu = lef_parser.LefParser("./sky130_osu_sc_t12/12T_hs/lef/sky130_osu_sc_12T_hs.lef")
 lef_osu.parse()
 
-scale = 100
+scale = 200
 export_path = 'laygo2_example/osu_12t/'
 lib_name = 'sky130_osu_sc_12T_hs'
 

@@ -1,10 +1,11 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1704394732
+timestamp 1708255532
 << checkpaint >>
-rect -1294 -1344 5384 2156
+rect -1277 -1344 5384 2156
 << metal1 >>
+rect -17 804 4065 856
 rect 60 332 124 498
 rect 152 140 216 275
 rect 428 140 492 358
@@ -24,31 +25,30 @@ rect 3372 57 3436 275
 rect 3464 140 3528 358
 rect 3740 223 3804 358
 rect 3832 223 3896 581
+rect -17 -26 4065 26
 << metal2 >>
-rect -34 804 4082 856
 rect 1538 306 2602 358
 rect 3194 306 3890 358
 rect 1262 223 2142 275
 rect 2918 223 3798 275
 rect 158 140 3522 192
 rect 526 57 3338 109
-rect -34 -26 4082 26
-use logic_ver2_inv_2x  inv0 magic_layout/logic_ver2
-timestamp 1704394705
+use logic_ver2_inv_2x  inv0 /WORK/hjpark/laygo2_workspace_sky130/magic_layout/logic_ver2
+timestamp 1706249504
 transform 1 0 0 0 1 0
-box -34 -84 444 896
+box -17 -84 444 896
 use logic_ver2_inv_2x  inv1
-timestamp 1704394705
+timestamp 1706249504
 transform 1 0 368 0 1 0
-box -34 -84 444 896
+box -17 -84 444 896
 use logic_ver2_inv_2x  inv2
-timestamp 1704394705
+timestamp 1706249504
 transform 1 0 2024 0 1 0
-box -34 -84 444 896
+box -17 -84 444 896
 use logic_ver2_inv_2x  inv3
-timestamp 1704394705
+timestamp 1706249504
 transform 1 0 3680 0 1 0
-box -34 -84 444 896
+box -17 -84 444 896
 use via_M3_M4_0  NoName_1 /WORK/hjpark/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
 timestamp 1704387757
 transform 1 0 552 0 1 83
@@ -137,22 +137,22 @@ use via_M3_M4_0  NoName_43
 timestamp 1704387757
 transform 1 0 3220 0 1 332
 box -32 -26 32 26
-use logic_ver2_tinv_2x  tinv0 magic_layout/logic_ver2
-timestamp 1704394724
+use logic_ver2_tinv_2x  tinv0 /WORK/hjpark/laygo2_workspace_sky130/magic_layout/logic_ver2
+timestamp 1706249518
 transform 1 0 736 0 1 0
-box -34 -84 812 896
+box -17 -84 812 896
 use logic_ver2_tinv_2x  tinv1
-timestamp 1704394724
+timestamp 1706249518
 transform 1 0 2392 0 1 0
-box -34 -84 812 896
-use logic_ver2_tinv_small_1x  tinv_small0 magic_layout/logic_ver2
-timestamp 1704394368
+box -17 -84 812 896
+use logic_ver2_tinv_small_1x  tinv_small0 /WORK/hjpark/laygo2_workspace_sky130/magic_layout/logic_ver2
+timestamp 1706249525
 transform 1 0 1472 0 1 0
-box -34 -84 628 896
+box -17 -84 628 896
 use logic_ver2_tinv_small_1x  tinv_small1
-timestamp 1704394368
+timestamp 1706249525
 transform 1 0 3128 0 1 0
-box -34 -84 628 896
+box -17 -84 628 896
 << labels >>
 flabel metal1 92 415 92 415 0 FreeSans 512 90 0 0 CLK
 port 1 nsew
@@ -160,8 +160,8 @@ flabel metal1 920 415 920 415 0 FreeSans 512 90 0 0 I
 port 2 nsew
 flabel metal1 3864 415 3864 415 0 FreeSans 512 90 0 0 O
 port 3 nsew
-flabel metal2 2024 830 2024 830 0 FreeSans 416 0 0 0 VDD
+flabel metal1 2024 830 2024 830 0 FreeSans 416 0 0 0 VDD
 port 4 nsew
-flabel metal2 2024 0 2024 0 0 FreeSans 416 0 0 0 VSS
+flabel metal1 2024 0 2024 0 0 FreeSans 416 0 0 0 VSS
 port 5 nsew
 << end >>

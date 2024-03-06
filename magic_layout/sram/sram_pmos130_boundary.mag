@@ -1,8 +1,10 @@
 magic
 tech sky130A
-timestamp 1704363493
+timestamp 1706519162
+<< error_p >>
+rect 46 -33 84 140
 << nwell >>
-rect 0 -42 46 140
+rect 0 -33 46 140
 << properties >>
 string FIXED_BBOX 0 0 46 207
 << end >>

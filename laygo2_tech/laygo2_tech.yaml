@@ -28,7 +28,7 @@ grids:
         - 747
         extension:
         # TODO: fix this param 
-        - 34
+        - 17
         - 17
         - 17
         - 17
@@ -479,7 +479,7 @@ grids:
         - 52
         ycolor:
         - not MPT
-      primary_grid: horizontal
+      primary_grid: vertical
       type: routing
       vertical:
         elements:
@@ -489,16 +489,16 @@ grids:
         extension0:
         - 34
         layer:
-        - - metal5
+        - - metal3
           - drawing
         pin_layer:
-        - - metal5
+        - - metal3
           - pin
         scope:
         - 0
-        - 180 #43
+        - 92 #43
         width:
-        - 88
+        - 76
         xcolor:
         - not MPT
       via:

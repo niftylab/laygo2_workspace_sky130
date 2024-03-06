@@ -54,7 +54,7 @@ N 990 -1500 1020 -1500 {
 lab=X}
 C {sky130_fd_pr/pfet_01v8.sym} 1150 -1680 0 0 {name=M1
 L=0.15
-W=NF*2.4
+W=NF*1
 nf=NF
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -68,7 +68,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8_lvt.sym} 1150 -1450 0 0 {name=M3
 L=0.15
-W=NF*1.2
+W=NF*0.5
 nf=NF
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -88,7 +88,7 @@ C {iopin.sym} 1170 -1750 3 0 {name=p5 lab=VDD}
 C {iopin.sym} 1170 -1250 1 0 {name=p6 lab=VSS}
 C {sky130_fd_pr/pfet_01v8.sym} 1150 -1570 0 0 {name=M2
 L=0.15
-W=NF*2.4
+W=NF*1
 nf=NF
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -102,7 +102,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8_lvt.sym} 1150 -1330 0 0 {name=M4
 L=0.15
-W=NF*1.2
+W=NF*0.5
 nf=NF
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 

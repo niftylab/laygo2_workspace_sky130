@@ -1,9 +1,11 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1705151531
+timestamp 1706519099
 << pwell >>
-rect 0 -66 184 369
+rect 0 362 184 369
+rect 0 308 210 362
+rect 0 -84 184 308
 << nmoslvt >>
 rect 31 71 61 271
 rect 123 71 153 271
@@ -35,16 +37,25 @@ rect -30 318 -10 352
 rect 24 318 61 352
 rect -30 308 61 318
 rect 31 271 61 308
-rect 123 271 153 362
+rect 123 352 214 362
+rect 123 318 160 352
+rect 194 318 214 352
+rect 123 308 214 318
+rect 123 271 153 308
 rect 31 45 61 71
 rect 123 45 153 71
 << polycont >>
 rect -10 318 24 352
+rect 160 318 194 352
 << locali >>
 rect -26 352 40 362
 rect -26 318 -10 352
 rect 24 318 40 352
 rect -26 308 40 318
+rect 144 352 210 362
+rect 144 318 160 352
+rect 194 318 210 352
+rect 144 308 210 318
 rect -26 172 26 191
 rect -26 112 -17 172
 rect 17 112 26 172
@@ -68,4 +79,5 @@ flabel locali -26 308 26 362 0 FreeSans 136 0 0 0 G0
 flabel locali 66 66 118 100 0 FreeSans 160 0 0 0 S0
 flabel locali 158 66 210 100 0 FreeSans 160 0 0 0 D1
 flabel locali -26 66 26 100 0 FreeSans 160 0 0 0 D0
+flabel locali 144 308 196 362 0 FreeSans 136 0 0 0 G1
 << end >>

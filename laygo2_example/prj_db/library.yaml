@@ -1,0 +1,13 @@
+libraries:
+  logic_generated:
+    path: laygo2_example/logic/logic_generated_templates.yaml
+  logic_ver2:
+    path: laygo2_example/logic_ver2/logic_ver2_templates.yaml
+  osu_cell:
+    path: laygo2_example/osu_12t/sky130_osu_sc_12T_hs.yaml
+  scan_generated:
+    path: laygo2_example/scan/scan_generated_templates.yaml
+  sram:
+    path: laygo2_example/sram/sram_templates.yaml
+  dffram:
+    path: laygo2_example/scan/dffram_templates.yaml

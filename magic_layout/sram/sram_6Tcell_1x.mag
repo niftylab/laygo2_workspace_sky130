@@ -1,87 +1,287 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1705159926
+timestamp 1706519301
 << checkpaint >>
-rect -1260 -1326 1812 2174
-<< error_s >>
-rect 336 758 385 764
-rect 336 736 351 758
-rect 336 730 385 736
+rect -1260 -1344 1812 2174
+<< nwell >>
+rect 0 550 552 896
+<< pwell >>
+rect 0 -84 552 370
+<< nmos >>
+rect 102 153 132 271
+<< pmos >>
+rect 215 602 245 702
+rect 307 602 337 702
+<< nmoslvt >>
+rect 215 71 245 271
+rect 307 71 337 271
+rect 421 153 451 271
+<< ndiff >>
+rect 40 242 102 271
+rect 40 182 55 242
+rect 89 182 102 242
+rect 40 153 102 182
+rect 132 244 215 271
+rect 132 184 166 244
+rect 200 184 215 244
+rect 132 153 215 184
+rect 170 71 215 153
+rect 245 172 307 271
+rect 245 112 259 172
+rect 293 112 307 172
+rect 245 71 307 112
+rect 337 244 421 271
+rect 337 184 350 244
+rect 384 184 421 244
+rect 337 153 421 184
+rect 451 242 513 271
+rect 451 182 465 242
+rect 499 182 513 242
+rect 451 153 513 182
+rect 337 71 372 153
+<< pdiff >>
+rect 153 690 215 702
+rect 153 650 167 690
+rect 201 650 215 690
+rect 153 602 215 650
+rect 245 690 307 702
+rect 245 650 259 690
+rect 293 650 307 690
+rect 245 602 307 650
+rect 337 690 399 702
+rect 337 650 351 690
+rect 385 650 399 690
+rect 337 602 399 650
+<< ndiffc >>
+rect 55 182 89 242
+rect 166 184 200 244
+rect 259 112 293 172
+rect 350 184 384 244
+rect 465 182 499 242
+<< pdiffc >>
+rect 167 650 201 690
+rect 259 650 293 690
+rect 351 650 385 690
+<< psubdiff >>
+rect 131 -17 155 17
+rect 205 -17 235 17
+rect 317 -17 347 17
+rect 397 -17 421 17
+<< nsubdiff >>
+rect 215 813 256 847
+rect 294 813 337 847
+<< psubdiffcont >>
+rect 155 -17 205 17
+rect 347 -17 397 17
+<< nsubdiffcont >>
+rect 256 813 294 847
+<< poly >>
+rect 215 702 245 730
+rect 307 702 337 730
+rect 215 553 245 602
+rect 214 522 245 553
+rect 307 541 337 602
+rect 152 512 245 522
+rect 152 478 180 512
+rect 214 478 245 512
+rect 152 468 245 478
+rect 55 352 132 362
+rect 55 318 75 352
+rect 109 318 132 352
+rect 214 342 245 468
+rect 55 308 132 318
+rect 102 271 132 308
+rect 215 271 245 342
+rect 306 522 337 541
+rect 306 512 399 522
+rect 306 478 338 512
+rect 372 478 399 512
+rect 306 468 399 478
+rect 306 330 337 468
+rect 307 271 337 330
+rect 421 352 495 362
+rect 421 318 441 352
+rect 475 318 495 352
+rect 421 308 495 318
+rect 421 271 451 308
+rect 102 126 132 153
+rect 421 126 451 153
+rect 215 45 245 71
+rect 307 45 337 71
+<< polycont >>
+rect 180 478 214 512
+rect 75 318 109 352
+rect 338 478 372 512
+rect 441 318 475 352
 << locali >>
-rect 167 564 394 598
-rect 158 432 210 515
-rect 342 481 394 564
-rect 158 398 385 432
+rect 250 847 302 848
+rect 160 813 256 847
+rect 294 813 392 847
+rect 158 730 166 764
+rect 200 730 210 764
+rect 250 730 302 813
+rect 342 730 350 764
+rect 384 730 394 764
+rect 160 690 208 730
+rect 160 650 167 690
+rect 201 650 208 690
+rect 160 634 208 650
+rect 252 690 300 730
+rect 252 650 259 690
+rect 293 650 300 690
+rect 252 632 300 650
+rect 344 690 392 730
+rect 344 650 351 690
+rect 385 650 392 690
+rect 344 632 392 650
+rect 201 564 394 598
+rect 346 512 394 564
+rect 158 478 180 512
+rect 214 478 230 512
+rect 322 478 338 512
+rect 372 478 394 512
+rect 158 432 206 478
+rect 158 398 351 432
+rect 59 352 125 362
+rect 425 352 491 362
+rect 59 318 75 352
+rect 109 318 258 352
+rect 292 318 441 352
+rect 475 318 491 352
+rect 59 308 125 318
+rect 425 308 491 318
+rect 46 260 98 261
+rect 46 242 108 260
+rect 46 182 55 242
+rect 89 218 108 242
+rect 89 182 108 184
+rect 46 154 108 182
+rect 157 244 209 263
+rect 157 184 166 244
+rect 200 184 209 244
+rect 341 244 393 263
+rect 157 164 209 184
+rect 250 172 302 191
+rect 46 153 98 154
+rect 250 112 259 172
+rect 293 112 302 172
+rect 341 184 350 244
+rect 384 184 393 244
+rect 341 164 393 184
+rect 442 261 476 262
+rect 442 242 508 261
+rect 442 218 465 242
+rect 442 182 465 184
+rect 499 182 508 242
+rect 442 158 508 182
+rect 456 153 508 158
+rect 250 27 302 112
+rect 0 18 552 27
+rect 0 17 250 18
+rect 0 -17 155 17
+rect 205 -17 250 17
+rect 0 -18 250 -17
+rect 300 17 552 18
+rect 300 -17 347 17
+rect 397 -17 552 17
+rect 300 -18 552 -17
+rect 0 -27 552 -18
+<< viali >>
+rect 256 813 294 847
+rect 166 730 200 764
+rect 350 730 384 764
+rect 167 564 201 598
+rect 351 398 385 432
+rect 258 318 292 352
+rect 74 184 89 218
+rect 89 184 108 218
+rect 166 184 200 218
+rect 350 184 384 218
+rect 442 184 465 218
+rect 465 184 476 218
+rect 250 -18 300 18
 << metal1 >>
-rect 152 57 216 773
-rect 336 57 400 773
-use sram_nmos130_boundary  nbndl /WORK/hjpark/laygo2_workspace_sky130/magic_layout/sram
-timestamp 1704363574
-transform 1 0 0 0 1 0
-box 0 -66 92 369
-use sram_nmos130_boundary  nbndr
-timestamp 1704363574
-transform 1 0 460 0 1 0
-box 0 -66 92 369
-use via_M2_M3_0  NoName_0 /WORK/hjpark/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
-timestamp 1704386899
-transform 1 0 184 0 1 83
-box -32 -17 32 17
-use via_M2_M3_0  NoName_2
-timestamp 1704386899
-transform 1 0 184 0 1 747
-box -32 -17 32 17
-use via_M1_M2_0  NoName_4 /WORK/hjpark/laygo2_workspace_sky130/magic_layout/skywater130_microtemplates_dense
-timestamp 1704392934
-transform 1 0 368 0 1 581
-box -17 -17 17 17
-use via_M2_M3_0  NoName_6
-timestamp 1704386899
-transform 1 0 184 0 1 581
-box -32 -17 32 17
-use via_M2_M3_0  NoName_7
-timestamp 1704386899
-transform 1 0 368 0 1 83
-box -32 -17 32 17
-use via_M2_M3_0  NoName_9
-timestamp 1704386899
-transform 1 0 368 0 1 747
-box -32 -17 32 17
-use via_M1_M2_0  NoName_11
-timestamp 1704392934
-transform 1 0 184 0 1 415
-box -17 -17 17 17
-use via_M2_M3_0  NoName_13
-timestamp 1704386899
-transform 1 0 368 0 1 415
-box -32 -17 32 17
-use sram_pmos130_space  nspace0 /WORK/hjpark/laygo2_workspace_sky130/magic_layout/sram
-timestamp 1704363493
-transform 1 0 92 0 -1 830
-box 0 -84 92 280
-use sram_pmos130_space  nspace1
-timestamp 1704363493
-transform 1 0 368 0 -1 830
-box 0 -84 92 280
-use sram_nmos130_2stack  nstack0 /WORK/hjpark/laygo2_workspace_sky130/magic_layout/sram
-timestamp 1705151531
-transform 1 0 92 0 1 0
-box -31 -66 215 369
-use sram_nmos130_2stack  nstack1
-timestamp 1705151531
-transform -1 0 460 0 1 0
-box -31 -66 215 369
-use sram_pmos130_boundary  pbndl /WORK/hjpark/laygo2_workspace_sky130/magic_layout/sram
-timestamp 1704363493
-transform 1 0 0 0 -1 830
-box 0 -84 92 280
-use sram_pmos130_boundary  pbndr
-timestamp 1704363493
-transform 1 0 460 0 -1 830
-box 0 -84 92 280
-use sram_pmos130_2stack  pstack0 /WORK/hjpark/laygo2_workspace_sky130/magic_layout/sram
-timestamp 1705150875
-transform 1 0 184 0 -1 830
-box -67 -84 251 362
+rect 0 847 552 858
+rect 0 813 256 847
+rect 294 813 552 847
+rect 0 803 552 813
+rect 152 764 216 770
+rect 152 730 166 764
+rect 200 730 216 764
+rect 152 598 216 730
+rect 152 564 167 598
+rect 201 564 216 598
+rect 60 362 124 364
+rect 60 310 66 362
+rect 118 310 124 362
+rect 60 218 124 310
+rect 60 184 74 218
+rect 108 184 124 218
+rect 60 158 124 184
+rect 152 218 216 564
+rect 336 764 400 770
+rect 336 730 350 764
+rect 384 730 400 764
+rect 336 432 400 730
+rect 336 398 351 432
+rect 385 398 400 432
+rect 244 352 308 362
+rect 244 318 258 352
+rect 292 318 308 352
+rect 244 276 308 318
+rect 244 224 250 276
+rect 302 224 308 276
+rect 244 222 308 224
+rect 152 184 166 218
+rect 200 184 216 218
+rect 152 158 216 184
+rect 336 218 400 398
+rect 336 184 350 218
+rect 384 184 400 218
+rect 336 158 400 184
+rect 428 476 434 528
+rect 486 476 492 528
+rect 428 218 492 476
+rect 428 184 442 218
+rect 476 184 492 218
+rect 428 158 492 184
+rect 0 18 552 27
+rect 0 -18 250 18
+rect 300 -18 552 18
+rect 0 -27 552 -18
+<< via1 >>
+rect 66 310 118 362
+rect 250 224 302 276
+rect 434 476 486 528
+<< metal2 >>
+rect 0 476 434 528
+rect 486 476 552 528
+rect 0 310 66 362
+rect 118 310 552 362
+rect 286 276 296 278
+rect 244 224 250 276
+rect 246 223 296 224
+rect 286 222 296 223
+rect 352 222 368 278
+<< via2 >>
+rect 296 276 352 278
+rect 296 224 302 276
+rect 302 224 352 276
+rect 296 222 352 224
+<< metal3 >>
+rect 276 278 368 802
+rect 276 222 296 278
+rect 352 222 368 278
+rect 276 32 368 222
+<< labels >>
+flabel locali 346 478 392 512 0 FreeSans 136 0 0 0 pstack0.G1
+flabel locali 160 478 206 512 0 FreeSans 136 0 0 0 pstack0.G0
+flabel locali 342 730 394 764 0 FreeSans 136 0 0 0 pstack0.D1
+flabel locali 158 730 210 764 0 FreeSans 136 0 0 0 pstack0.D0
+flabel locali 250 730 302 764 0 FreeSans 136 0 0 0 pstack0.S0
+flabel locali 250 66 302 100 0 FreeSans 160 0 0 0 nstack1.D0
+flabel locali 250 66 302 100 0 FreeSans 160 0 0 0 nstack0.D0
+flabel locali 439 308 491 362 0 FreeSans 136 0 0 0 nstack1.G0
+flabel locali 59 308 111 362 0 FreeSans 136 0 0 0 nstack0.G0
 << end >>

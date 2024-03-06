@@ -11,25 +11,26 @@ import pprint
 import laygo2
 import laygo2.interface
 import laygo2_tech as tech
+from laygo2.object.netmap import NetMap
 # Parameter definitions #############
 # Variables
 cell_type = 'buffer'
 nf_list = [2,4,8,12,14,16,18,24]
 # Templates
-tpmos_name = 'pmos_sky'
-tnmos_name = 'nmos_sky'
-tptap_name = 'ptap_sky'
-tntap_name = 'ntap_sky'
+tpmos_name = 'pmos'
+tnmos_name = 'nmos'
+
 # Grids
 pg_name = 'placement_basic'
 r12_name = 'routing_12_cmos'
-r23_basic_name = 'routing_23_basic'
-r23_cmos_name = 'routing_23_cmos'
+r23_name = 'routing_23_cmos'
 r34_name = 'routing_34_basic'
+
 # Design hierarchy
-libname = 'logic_generated'
-ref_dir_template = './laygo2_example/logic/' #export this layout's information into the yaml in this dir 
-ref_dir_MAG_exported = './laygo2_example/logic/TCL/'
+libname = 'logic_ver2'
+ref_dir_template = './laygo2_example/logic_ver2/' #export this layout's information into the yaml in this dir 
+ref_dir_MAG_exported = './laygo2_example/logic_ver2/TCL/'
+yaml_import_path = './laygo2_example/logic_ver2/'
 ref_dir_layout = './magic_layout'
 # End of parameter definitions ######
 
@@ -37,14 +38,12 @@ ref_dir_layout = './magic_layout'
 # 1. Load templates and grids.
 print("Load templates")
 templates = tech.load_templates()
+tlogic = laygo2.interface.yaml.import_template(filename= yaml_import_path +'logic_ver2_templates.yaml')
 tpmos, tnmos = templates[tpmos_name], templates[tnmos_name]
-tlib = laygo2.interface.yaml.import_template(filename=ref_dir_template+'logic_generated_templates.yaml')
-#print(templates[tpmos_name], templates[tnmos_name], sep="\n")
 
 print("Load grids")
 grids = tech.load_grids(templates=templates)
-pg, r12, r23_cmos, r23, r34 = grids[pg_name], grids[r12_name], grids[r23_cmos_name], grids[r23_basic_name], grids[r34_name]
-#print(grids[pg_name], grids[r12_name], grids[r23_basic_name], grids[r34_name], sep="\n")
+pg, r12, r23, r34 = grids[pg_name], grids[r12_name], grids[r23_name], grids[r34_name]
 
 for nf in nf_list:
    cellname = cell_type+'_'+str(nf)+'x'
@@ -58,8 +57,8 @@ for nf in nf_list:
 
 # 3. Create istances.
    print("Create instances")
-   inv0 = tlib['inv_'+str(nf)+'x'].generate(name='inv0')
-   inv1 = tlib['inv_'+str(nf)+'x'].generate(name='inv1')
+   inv0 = tlogic['inv_'+str(nf)+'x'].generate(name='inv0')
+   inv1 = tlogic['inv_'+str(nf)+'x'].generate(name='inv1')
 
 # 4. Place instances.
    dsn.place(grid=pg, inst=inv0, mn=[0,0])
@@ -79,17 +78,21 @@ for nf in nf_list:
    rvdd0 = dsn.route(grid=r12, mn=[r12.mn.top_left(inv0), r12.mn.top_right(inv1)]) 
 
 # 6. Create pins.
-   pin0 = dsn.pin(name='I', grid=r23_cmos, mn=r23_cmos.mn.bbox(inv0.pins['I']))
-   pout0 = dsn.pin(name='O', grid=r23_cmos, mn=r23_cmos.mn.bbox(inv1.pins['O']))
+   pin0 = dsn.pin(name='I', grid=r23, mn=r23.mn.bbox(inv0.pins['I']))
+   pout0 = dsn.pin(name='O', grid=r23, mn=r23.mn.bbox(inv1.pins['O']))
    pvss0 = dsn.pin(name='VSS', grid=r12, mn=r12.mn.bbox(rvss0))
    pvdd0 = dsn.pin(name='VDD', grid=r12, mn=r12.mn.bbox(rvdd0))
    
 # 7. Export to physical database.
-   print("Export design")
-   
-# Uncomment for BAG export
-   laygo2.interface.magic.export(lib, filename=ref_dir_MAG_exported +libname+'_'+cellname+'.tcl', cellname=None, libpath=ref_dir_layout, scale=1, reset_library=False, tech_library='sky130A')
-   
+   grid_table = dict()
+   grid_table['metal1'] = r34
+   grid_table['metal2'] = r34
+   via_table = dict()
+   via_table["via_M3_M4_0"] = ('metal1','metal2')
+   nMap = NetMap.import_from_design(dsn, grid_table, via_table, orient_first="vertical", layer_names=['metal1','metal2'], net_ignore = ['VSS','VDD'], lib_ref = "laygo2_example/prj_db/library.yaml")   
+   # Uncomment for BAG export
+   laygo2.interface.magic.export(lib, filename=ref_dir_MAG_exported +libname+'_'+cellname+'.tcl', cellname=None, libpath=ref_dir_layout, scale=0.5, reset_library=False, tech_library='sky130A')
+
 # 8. Export to a template database file.
-   nat_temp = dsn.export_to_template()
+   nat_temp = dsn.export_to_template(obstacle_layers=['metal1','metal2'])
    laygo2.interface.yaml.export_template(nat_temp, filename=ref_dir_template+libname+'_templates.yaml', mode='append')

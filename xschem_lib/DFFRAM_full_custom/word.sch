@@ -5,9 +5,10 @@ V {}
 S {}
 E {}
 T {Byte_DFF x4} 580 -510 0 0 1 1 {}
-T {CLK_gate} -250 90 0 0 1 1 {}
 T {BUF_SEL} -10 -430 0 1 1 1 {}
 T {PINS} 170 -540 0 1 0.5 0.5 {}
+T {BUF_RE} -30 -150 0 1 1 1 {}
+T {BUF_CLK} 0 100 0 1 1 1 {}
 N -150 -240 -130 -240 {
 lab=SEL_bar}
 N -230 -290 -230 -280 {
@@ -39,11 +40,11 @@ lab=Di[25]}
 N 280 -330 280 -310 {
 lab=Di[24]}
 N 300 -330 300 -310 {
-lab=CLK_gated}
+lab=CLK_buf}
 N 320 -330 320 -310 {
 lab=SEL_buf}
 N 340 -330 340 -310 {
-lab=WE[3]}
+lab=WE3}
 N 160 -90 160 -70 {
 lab=Do[31]}
 N 180 -90 180 -70 {
@@ -83,11 +84,11 @@ lab=Di[17]}
 N 580 -330 580 -310 {
 lab=Di[16]}
 N 600 -330 600 -310 {
-lab=CLK_gated}
+lab=CLK_buf}
 N 620 -330 620 -310 {
 lab=SEL_buf}
 N 640 -330 640 -310 {
-lab=WE[2]}
+lab=WE2}
 N 460 -90 460 -70 {
 lab=Do[23]}
 N 480 -90 480 -70 {
@@ -127,11 +128,11 @@ lab=Di[9]}
 N 900 -330 900 -310 {
 lab=Di[8]}
 N 920 -330 920 -310 {
-lab=CLK_gated}
+lab=CLK_buf}
 N 940 -330 940 -310 {
 lab=SEL_buf}
 N 960 -330 960 -310 {
-lab=WE[1]}
+lab=WE1}
 N 780 -90 780 -70 {
 lab=Do[15]}
 N 800 -90 800 -70 {
@@ -171,11 +172,11 @@ lab=Di[1]}
 N 1200 -330 1200 -310 {
 lab=Di[0]}
 N 1220 -330 1220 -310 {
-lab=CLK_gated}
+lab=CLK_buf}
 N 1240 -330 1240 -310 {
 lab=SEL_buf}
 N 1260 -330 1260 -310 {
-lab=WE[0]}
+lab=WE0}
 N 1080 -90 1080 -70 {
 lab=Do[7]}
 N 1100 -90 1100 -70 {
@@ -198,31 +199,61 @@ N 1260 -90 1260 -70 {
 lab=VDD}
 N 1260 -70 1280 -70 {
 lab=VDD}
-N -210 -50 -50 -50 {
-lab=CLK_gated}
-N -210 10 -50 10 {
-lab=CLK}
 N -140 -280 -140 -240 {
 lab=SEL_bar}
-N -10 -20 10 -20 {
-lab=SEL_bar}
-N -270 -20 -250 -20 {
-lab=SEL_buf}
-N -140 10 -140 30 {
+N -290 10 -270 10 {
+lab=#net1}
+N -370 -40 -370 -30 {
+lab=VDD}
+N -370 50 -370 60 {
+lab=VSS}
+N -440 10 -430 10 {
+lab=#net2}
+N -460 10 -440 10 {
+lab=#net2}
+N -120 10 -100 10 {
+lab=#net3}
+N -200 -40 -200 -30 {
+lab=VDD}
+N -200 50 -200 60 {
+lab=VSS}
+N -270 10 -260 10 {
+lab=#net1}
+N 50 10 70 10 {
+lab=RE_buf}
+N -30 -40 -30 -30 {
+lab=VDD}
+N -30 50 -30 60 {
+lab=VSS}
+N -100 10 -90 10 {
+lab=#net3}
+N -550 -50 -550 -40 {
+lab=VDD}
+N -550 60 -550 70 {
+lab=VSS}
+N -610 -10 -600 -10 {
+lab=SEL}
+N -610 30 -600 30 {
+lab=RE}
+N -90 280 -70 280 {
+lab=CLK_bar}
+N -170 230 -170 240 {
+lab=VDD}
+N -10 230 -10 240 {
+lab=VDD}
+N -170 320 -170 330 {
+lab=VSS}
+N -10 320 -10 330 {
+lab=VSS}
+N -240 280 -230 280 {
 lab=CLK}
-N -140 -80 -140 -50 {
-lab=CLK_gated}
-N -210 -20 -190 -20 {
-lab=VSS}
-N -190 -20 -190 40 {
-lab=VSS}
-N -60 -20 -50 -20 {
-lab=VDD}
-N -60 -100 -60 -20 {
-lab=VDD}
-C {xschem_lib/DFFRAM_full_custom/byte_dff.sym} 1160 -200 1 0 {name=xByte_1 NF=2}
-C {xschem_lib/DFFRAM_full_custom/inv.sym} -290 -200 0 0 {name=X_inv1 NF=36}
-C {xschem_lib/DFFRAM_full_custom/inv.sym} -130 -200 0 0 {name=X_inv2 NF=36}
+N 70 280 80 280 {
+lab=CLK_buf}
+N -80 240 -80 280 {
+lab=CLK_bar}
+C {xschem_lib/DFFRAM_full_custom/byte_dff.sym} 1160 -200 1 0 {name=xByte_1 NF=NF}
+C {xschem_lib/DFFRAM_full_custom/inv.sym} -290 -200 0 0 {name=X_inv1 NF=2}
+C {xschem_lib/DFFRAM_full_custom/inv.sym} -130 -200 0 0 {name=X_inv2 NF=6}
 C {lab_wire.sym} -230 -290 1 0 {name=l1 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} -230 -190 2 0 {name=l2 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} -70 -290 1 0 {name=l3 sig_type=std_logic lab=VDD}
@@ -232,10 +263,9 @@ C {ipin.sym} 220 -480 0 0 {name=p1 lab=SEL}
 C {lab_wire.sym} 360 -70 2 0 {name=l6 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 320 -70 2 0 {name=l7 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} 320 -330 1 0 {name=l8 sig_type=std_logic lab=SEL_buf}
-C {ipin.sym} 380 -490 0 0 {name=p2 lab=WE[0]}
-C {lab_wire.sym} 340 -330 1 0 {name=l9 sig_type=std_logic lab=WE[3]}
+C {ipin.sym} 380 -490 0 0 {name=p2 lab=WE0}
+C {lab_wire.sym} 340 -330 1 0 {name=l9 sig_type=std_logic lab=WE3}
 C {lab_wire.sym} -300 -240 0 0 {name=l10 sig_type=std_logic lab=SEL}
-C {lab_wire.sym} 300 -330 1 0 {name=l11 sig_type=std_logic lab=CLK_gated}
 C {ipin.sym} 140 -330 1 0 {name=p3 lab=Di[31]}
 C {ipin.sym} 160 -330 1 0 {name=p4 lab=Di[30]}
 C {ipin.sym} 180 -330 1 0 {name=p5 lab=Di[29]}
@@ -254,12 +284,11 @@ C {opin.sym} 280 -70 1 0 {name=p17 lab=Do[25]}
 C {opin.sym} 300 -70 1 0 {name=p18 lab=Do[24]}
 C {iopin.sym} 200 -550 0 0 {name=p19 lab=VDD}
 C {iopin.sym} 200 -530 0 0 {name=p20 lab=VSS}
-C {xschem_lib/DFFRAM_full_custom/byte_dff.sym} 860 -200 1 0 {name=xByte_2 NF=2}
+C {xschem_lib/DFFRAM_full_custom/byte_dff.sym} 860 -200 1 0 {name=xByte_2 NF=NF}
 C {lab_wire.sym} 660 -70 2 0 {name=l12 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 620 -70 2 0 {name=l13 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} 620 -330 1 0 {name=l14 sig_type=std_logic lab=SEL_buf}
-C {lab_wire.sym} 640 -330 1 0 {name=l15 sig_type=std_logic lab=WE[2]}
-C {lab_wire.sym} 600 -330 1 0 {name=l16 sig_type=std_logic lab=CLK_gated}
+C {lab_wire.sym} 640 -330 1 0 {name=l15 sig_type=std_logic lab=WE2}
 C {ipin.sym} 440 -330 1 0 {name=p21 lab=Di[23]}
 C {ipin.sym} 460 -330 1 0 {name=p22 lab=Di[22]}
 C {ipin.sym} 480 -330 1 0 {name=p23 lab=Di[21]}
@@ -276,12 +305,11 @@ C {opin.sym} 540 -70 1 0 {name=p33 lab=Do[19]}
 C {opin.sym} 560 -70 1 0 {name=p34 lab=Do[18]}
 C {opin.sym} 580 -70 1 0 {name=p35 lab=Do[17]}
 C {opin.sym} 600 -70 1 0 {name=p36 lab=Do[16]}
-C {xschem_lib/DFFRAM_full_custom/byte_dff.sym} 540 -200 1 0 {name=xByte_3 NF=2}
+C {xschem_lib/DFFRAM_full_custom/byte_dff.sym} 540 -200 1 0 {name=xByte_3 NF=NF}
 C {lab_wire.sym} 980 -70 2 0 {name=l17 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 940 -70 2 0 {name=l18 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} 940 -330 1 0 {name=l19 sig_type=std_logic lab=SEL_buf}
-C {lab_wire.sym} 960 -330 1 0 {name=l20 sig_type=std_logic lab=WE[1]}
-C {lab_wire.sym} 920 -330 1 0 {name=l21 sig_type=std_logic lab=CLK_gated}
+C {lab_wire.sym} 960 -330 1 0 {name=l20 sig_type=std_logic lab=WE1}
 C {ipin.sym} 760 -330 1 0 {name=p37 lab=Di[15]}
 C {ipin.sym} 780 -330 1 0 {name=p38 lab=Di[14]}
 C {ipin.sym} 800 -330 1 0 {name=p39 lab=Di[13]}
@@ -298,12 +326,11 @@ C {opin.sym} 860 -70 1 0 {name=p49 lab=Do[11]}
 C {opin.sym} 880 -70 1 0 {name=p50 lab=Do[10]}
 C {opin.sym} 900 -70 1 0 {name=p51 lab=Do[9]}
 C {opin.sym} 920 -70 1 0 {name=p52 lab=Do[8]}
-C {xschem_lib/DFFRAM_full_custom/byte_dff.sym} 240 -200 1 0 {name=xByte_4 NF=2}
+C {xschem_lib/DFFRAM_full_custom/byte_dff.sym} 240 -200 1 0 {name=xByte_4 NF=NF}
 C {lab_wire.sym} 1280 -70 2 0 {name=l22 sig_type=std_logic lab=VDD}
 C {lab_wire.sym} 1240 -70 2 0 {name=l23 sig_type=std_logic lab=VSS}
 C {lab_wire.sym} 1240 -330 1 0 {name=l24 sig_type=std_logic lab=SEL_buf}
-C {lab_wire.sym} 1260 -330 1 0 {name=l25 sig_type=std_logic lab=WE[0]}
-C {lab_wire.sym} 1220 -330 1 0 {name=l26 sig_type=std_logic lab=CLK_gated}
+C {lab_wire.sym} 1260 -330 1 0 {name=l25 sig_type=std_logic lab=WE0}
 C {ipin.sym} 1060 -330 1 0 {name=p53 lab=Di[7]}
 C {ipin.sym} 1080 -330 1 0 {name=p54 lab=Di[6]}
 C {ipin.sym} 1100 -330 1 0 {name=p55 lab=Di[5]}
@@ -320,42 +347,41 @@ C {opin.sym} 1160 -70 1 0 {name=p65 lab=Do[3]}
 C {opin.sym} 1180 -70 1 0 {name=p66 lab=Do[2]}
 C {opin.sym} 1200 -70 1 0 {name=p67 lab=Do[1]}
 C {opin.sym} 1220 -70 1 0 {name=p68 lab=Do[0]}
-C {ipin.sym} 380 -510 0 0 {name=p69 lab=WE[1]}
-C {ipin.sym} 380 -530 0 0 {name=p70 lab=WE[2]}
-C {ipin.sym} 380 -550 0 0 {name=p71 lab=WE[3]}
+C {ipin.sym} 380 -510 0 0 {name=p69 lab=WE1}
+C {ipin.sym} 380 -530 0 0 {name=p70 lab=WE2}
+C {ipin.sym} 380 -550 0 0 {name=p71 lab=WE3}
 C {ipin.sym} 280 -480 0 0 {name=p72 lab=CLK}
-C {sky130_fd_pr/pfet_01v8.sym} -30 -20 2 0 {name=M1
-L=0.15
-W=2*2.4
-nf=2
-mult=1
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=pfet_01v8
-spiceprefix=X
-}
-C {sky130_fd_pr/nfet_01v8_lvt.sym} -230 -20 0 0 {name=M2
-L=0.15
-W=2*1.2
-nf=2
-mult=1
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=nfet_01v8_lvt
-spiceprefix=X
-}
-C {lab_wire.sym} -270 -20 0 0 {name=l27 sig_type=std_logic lab=SEL_buf}
 C {lab_wire.sym} -140 -280 1 0 {name=l28 sig_type=std_logic lab=SEL_bar}
-C {lab_wire.sym} 10 -20 2 0 {name=l29 sig_type=std_logic lab=SEL_bar}
-C {lab_wire.sym} -140 30 2 0 {name=l30 sig_type=std_logic lab=CLK}
-C {lab_wire.sym} -140 -80 2 0 {name=l31 sig_type=std_logic lab=CLK_gated}
-C {lab_wire.sym} -190 40 2 0 {name=l32 sig_type=std_logic lab=VSS}
-C {lab_wire.sym} -60 -100 2 0 {name=l33 sig_type=std_logic lab=VDD}
+C {xschem_lib/DFFRAM_full_custom/nand.sym} -580 40 0 0 {name=X_nand1 NF=2}
+C {xschem_lib/DFFRAM_full_custom/inv.sym} -430 50 0 0 {name=X_inv3 NF=2}
+C {lab_wire.sym} -370 -40 1 0 {name=l27 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} -370 60 2 0 {name=l29 sig_type=std_logic lab=VSS}
+C {xschem_lib/DFFRAM_full_custom/inv.sym} -260 50 0 0 {name=X_inv4 NF=6}
+C {lab_wire.sym} -200 -40 1 0 {name=l30 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} -200 60 2 0 {name=l31 sig_type=std_logic lab=VSS}
+C {xschem_lib/DFFRAM_full_custom/inv.sym} -90 50 0 0 {name=X_inv5 NF=18}
+C {lab_wire.sym} -30 -40 1 0 {name=l32 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} -30 60 2 0 {name=l33 sig_type=std_logic lab=VSS}
+C {lab_wire.sym} -550 -50 1 0 {name=l34 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} -550 70 2 0 {name=l35 sig_type=std_logic lab=VSS}
+C {lab_wire.sym} 70 10 2 0 {name=l36 sig_type=std_logic lab=RE_buf}
+C {lab_wire.sym} -610 -10 0 0 {name=l37 sig_type=std_logic lab=SEL}
+C {lab_wire.sym} -610 30 0 0 {name=l38 sig_type=std_logic lab=RE}
+C {xschem_lib/DFFRAM_full_custom/inv.sym} -230 320 0 0 {name=X_inv6 NF=2}
+C {xschem_lib/DFFRAM_full_custom/inv.sym} -70 320 0 0 {name=X_inv7 NF=8}
+C {lab_wire.sym} -170 230 1 0 {name=l39 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} -170 330 2 0 {name=l40 sig_type=std_logic lab=VSS}
+C {lab_wire.sym} -10 230 1 0 {name=l41 sig_type=std_logic lab=VDD}
+C {lab_wire.sym} -10 330 2 0 {name=l42 sig_type=std_logic lab=VSS}
+C {lab_wire.sym} 80 280 2 0 {name=l43 sig_type=std_logic lab=CLK_buf}
+C {lab_wire.sym} -240 280 0 0 {name=l44 sig_type=std_logic lab=CLK}
+C {lab_wire.sym} -80 240 1 0 {name=l45 sig_type=std_logic lab=CLK_bar}
+C {lab_wire.sym} 300 -330 1 0 {name=l11 sig_type=std_logic lab=CLK_buf}
+C {lab_wire.sym} 600 -330 1 0 {name=l16 sig_type=std_logic lab=CLK_buf}
+C {lab_wire.sym} 920 -330 1 0 {name=l21 sig_type=std_logic lab=CLK_buf}
+C {lab_wire.sym} 1220 -330 1 0 {name=l26 sig_type=std_logic lab=CLK_buf}
+C {ipin.sym} 160 -480 0 0 {name=p73 lab=RE}
+C {lab_wire.sym} 140 -90 3 0 {name=l46 sig_type=std_logic lab=RE_buf}
+C {lab_wire.sym} 440 -90 3 0 {name=l47 sig_type=std_logic lab=RE_buf}
+C {lab_wire.sym} 760 -90 3 0 {name=l48 sig_type=std_logic lab=RE_buf}
+C {lab_wire.sym} 1060 -90 3 0 {name=l49 sig_type=std_logic lab=RE_buf}
